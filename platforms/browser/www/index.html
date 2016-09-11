@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline' 'unsafe-eval'">
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>BikeFight1</title>
+
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <!-- Views -->
+    <div class="views">
+        <!-- View -->
+        <div class="view view-main">
+
+    <!-- Speed Dial Wrap -->
+    <div class="speed-dial theme-black">
+        <a href="#" class="floating-button">
+            <i class="fa fa-plus fa-3x color-white press_plus"></i>
+            <i class="fa fa-minus fa-3x color-white"></i>
+        </a>
+        <div class="speed-dial-buttons">
+            <!-- First Speed Dial button -->
+            <a href="#page4" class="item-link item-content press_play" style="background-color:black;width:50px;height:50px">
+                <i class="fa fa-play fa-3x color-white"></i>
+            </a>
+            <!-- Second Speed Dial  button -->
+            <a href="#page5" class="item-link item-content press_play press_envelope" style="background-color:black;width:50px;height:50px">
+                <i class="fa fa-envelope fa-3x color-white"></i>
+            </a>
+            <!-- Third Speed Dial  button -->
+            <a href="#page10" class="item-link item-content press_play press_people" style="background-color:black;width:50px;height:50px">
+                <i class="fa fa-users fa-3x color-white"></i>
+            </a>
+        </div>
+    </div>
+
+  <div class="pages navbar-fixed theme-black">
+
+<div class="popup popup-about">
+    <div class="page-content bg-black color-white">
+        <!--<div class="content-block">-->
+        <!--<div id="center_title" style="font-weight: bold" class="center">PRESENTED BY ... - </div>-->
+        <div id="shoppage_popup"></div>
+        <!--<p class="color-white"><a href="#" class="close-popup">Close popup</a></p>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<!--LEADERBOARD PAGE page10 - START  ***********************************************-->
+<div data-page="page10" class="page cached layout-dark"">
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="center">LEADERS</div>
+    </div>
+</div>
+<div class="page-content">
+    <!-- swiper-init to initialize swiper automatically -->
+    <div class="swiper-container2 swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
+        data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
+        <div class="swiper-wrapper">
+
+            <!-- first swipe of LEADERBOARDS -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px"></h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <h2>SWIPE TO VIEW THE CURRENT ACTIVE LEADERS.</h2>
+                            <h2>TAP ON TEAM NAME TO SEE MORE INFORMATION.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ui_report5 LIST OF PAST HOURS BEST -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">PAST HOUR'S BEST ROUNDERS</h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <div id="ui_report5_main">
+                                <div class="row bg-black">
+                                    <div class="col-40"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">NAME</a></div>
+                                    <div class="col-25"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">RND</a></div>
+                                    <div class="col-35 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 1.1em"><b class=" color-white">TEAM</b></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="ui_report5" class="click_ui">
+                                <h3 class="cls_report5"></h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3px;margin-bottom: 10px;margin-left: 7px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">MY BEST: 00</h2>
+                    </div>
+                </div>
+                <div id="timer_btn25" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+                <div id="timer_btn_bubbles5" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            </div>
+            <!-- REPORT5 LIST OF PAST HOURS BEST -->
+
+            <!-- ui_report3 LIST OF TODAYS BEST -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TODAY'S BEST ROUNDERS</h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <div id="ui_report3_main">
+                                <div class="row bg-black">
+                                    <div class="col-40"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">NAME</a></div>
+                                    <div class="col-25"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">RND</a></div>
+                                    <div class="col-35 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 1.1em"><b class=" color-white">TEAM</b></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="ui_report3" class="click_ui">
+                                <h3 class="cls_report3"></h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3px;margin-bottom: 10px;margin-left: 7px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">TODAY'S BEST: 00</h2>
+                    </div>
+                </div>
+                <div id="timer_btn25" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+                <div id="timer_btn_bubbles5" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            </div>
+            <!-- REPORT3 LIST OF TODAYS BEST -->
+
+            <!-- ui_report4 - BY TEAM -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TEAM LEADERBOARD</h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <div id="ui_report4_main">
+                                <div class="row bg-black">
+                                    <div class="col-40"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">NAME</a></div>
+                                    <div class="col-25"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">RND</a></div>
+                                    <div class="col-35 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 1.1em"><b class=" color-white">TEAM</b></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="ui_report4">
+                                <h3 class="cls_report4"></h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3px;margin-bottom: 10px;margin-left: 7px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">TODAY'S BEST: 00</h2>
+                    </div>
+                </div>
+                <div id="timer_btn26" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+                <div id="timer_btn_bubbles5" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            </div>
+            <!-- END REPORT4 - BY TEAM -->
+
+            <!-- ui_report6 - BY GROUP -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">GROUP LEADERBOARD</h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <div id="ui_report6_main">
+                                <div class="row bg-black">
+                                    <div class="col-40"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">NAME</a></div>
+                                    <div class="col-25"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">RND</a></div>
+                                    <div class="col-35 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 1.1em"><b class=" color-white">TEAM</b></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="ui_report6">
+                                <h3 class="cls_report6"></h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3px;margin-bottom: 10px;margin-left: 7px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">TODAY'S BEST: 00</h2>
+                    </div>
+                </div>
+                <div id="timer_btn27" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+                <div id="timer_btn_bubbles27" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            </div>
+            <!-- END REPORT6 - BY GROUP -->
+
+            <!-- REPORT7 - BY STYLE -->
+            <div class="swiper-slide bg-black">
+                <div class="card bg-black" style="margin-top:0px">
+                    <div class="card-header color-white bg-black no-border">
+                        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">STYLE LEADERBOARD</h5>
+                    </div>
+                    <div class="card-content bg-black">
+                        <div class="card-content-inner small_content_inner color-white bg-black">
+                            <hr>
+                            <div id="ui_report7_main">
+                                <div class="row bg-black">
+                                    <div class="col-40"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">NAME</a></div>
+                                    <div class="col-25"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1.1em;text-align:center;">RND</a></div>
+                                    <div class="col-35 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 1.1em"><b class=" color-white">TEAM</b></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="ui_report7">
+                                <h3 class="cls_report7"></h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3px;margin-bottom: 10px;margin-left: 7px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">TODAY'S BEST: 00</h2>
+                    </div>
+                </div>
+                <div id="timer_btn28" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+                <div id="timer_btn_bubbles28" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            </div>
+            
+
+        </div>
+        <!-- SWIPER WRAPPER -->
+        <div class="swiper-pagination">
+            <br>
+        </div>
+    </div>
+</div>
+</div>
+<!--LEADERBOARD PAGE page10 - END  ***********************************************-->
+
+
+
+
+<!--PAGE INDEX - START:    ***********************************************-->
+<div data-page="index" class="page navbar-fixed">
+     <div class="navbar" style="margin-top:20px">
+                        <div class="navbar-inner">
+                            <h1 class="color-white" style="margin-top:20px;font-size:2em;font-weight:bold;text-align:center;padding-left:15px">BIKE FIGHT</h1>
+                        </div>
+                         <div class="sub-navbar"><h3 style="margin-top:50px;margin-bottom:1px;text-align:center;"></h3></div>
+
+                    </div>
+    <div class="toolbar toolbar-bottom">
+        <div class="toolbar-inner">
+            <a href="#" class="link">
+                <h2>LEARN MORE</h2>
+            </a>
+            <a href="#" class="link"> </a>
+        </div>
+    </div>
+
+
+<div class="page-content bg-black color-white">
+
+    </div>
+
+
+</div>
+<!--PAGE INDEX - END  ***********************************************-->
+
+
+<!--POPUP SHOP_PAGE - START:    ***********************************************-->
+<div data-page="shop_page_popup" class="page cached layout-dark">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center">
+                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div id="shoppage_popup2"></div>
+        <br><br>
+    </div>
+</div>
+<!-- POPUP SHOP_PAGE - END:    ***********************************************-->
+
+
+<!--MESSAGING PAGE page5 - START  ***********************************************-->
+<div data-page="page5" class="page cached layout-dark">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center">MESSAGING</div>
+        </div>
+    </div>
+    <div class="page-content">
+
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">Send Message</div>
+                            <div class="item-input">
+                                <input id="snd_Message" type="text" placeholder="Tell Everyone!">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="content-block">
+                <p class="buttons-row">
+                    <a id="msg_Submit" href="#" class="button button-big button-fill button-raised color-red">Send</a>
+                </p>
+            </div>
+        </div>
+        <div class="content-block">
+            <h3>TEAM MESSAGES</h3>
+            <div class="list-block media-list">
+                <ul id="fb_team_msg">
+                    <li class="fb-msg-li-team">
+                        <a href="#" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-after"></div>
+                                </div>
+                                <div class="item-subtitle"></div>
+                                <div class="item-text"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>GROUP MESSAGES</h3>
+            <div class="list-block media-list">
+                <ul id="fb_group_msg">
+                    <li class="fb-msg-li-group">
+                        <a href="#" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-after"></div>
+                                </div>
+                                <div class="item-subtitle"></div>
+                                <div class="item-text"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <hr>
+            <div id="timer_btn4" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+            <div id="timer_btn_bubbles6" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+            <hr><br>
+        </div>
+    </div>
+</div>
+<!--MESSAGING PAGE page5 - END  ***********************************************-->
+
+
+<!--SWIPER PAGE - START  ***********************************************-->
+<div data-page="page4" class="page cached">
+    <!-- Top Navbar-->
+    <div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
+        <div class="buttons-row bg-black color-white" style="padding: 10px;">
+            <a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Distance</a>
+            <a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Duration</a>
+        </div>
+    </div>
+
+<div class="page-content">
+
+<!-- swiper-init to initialize swiper automatically -->
+<div class="swiper-container swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
+    data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
+    <div class="swiper-wrapper">
+
+
+    <!-- #1  Intro Swipe -->
+    <div class="swiper-slide bg-black">
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h3 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP RIDERS</h3>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+
+    
+    <div id="front_page" class="content-block">
+
+        <div class="cls_front_page cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- #2  Team Swipe -->
+    <div class="swiper-slide bg-black">
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h3 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP TEAMS</h3>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+
+
+    <div id="front_page_teams" class="content-block">
+
+        <div class="cls_front_page_teams cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+        <!-- #FORM   hSwipe -->
+        <div class="swiper-slide">
+
+<div class="list-block layout-dark" style="margin-top: 10px">
+<!-- Form has additional "store-data" class to enable form storage on this form -->
+<form id="my-form" class="list-block store-data" style="margin-top: 5px">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-inner" style="padding:0;margin:0;">
+          <div class="item-title label" style="background-color:black;color:white">Name</div>
+          <div class="item-input" style="margin:1;">
+
+            <input id='f7name' type="text" name="name" placeholder="Name">
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner" style="padding:0;margin:0;">
+          <div class="item-title label" style="background-color:black;color:white">Team</div>
+          <div class="item-input" style="margin:1;">
+                          <select name="team" style="background-color:black;color:white">
+              <option>Solo</option><option>Zen Bikes</option><option>Off the Bridge</option><option>Square Pizza</option><option>EVEPC</option>
+            </select>
+            <!--<input id="team" type="text" name="team" placeholder="Team Name">-->
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner" style="padding:0;margin:0;">
+          <div class="item-title label" style="background-color:black;color:white">Group</div>
+          <div class="item-input" style="margin:1;">
+
+            <input id="group" type="text" name="group" placeholder="Riding Group">
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner" style="padding:0;margin:0;">
+          <div class="item-title label" style="background-color:black;color:white">Style</div>
+          <div class="item-input" style="margin:1;">
+            <select name="style" style="background-color:black;color:white">
+              <option>Road</option><option>Mountain</option><option>Cycle Cross</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner" style="padding:0;margin:0;">
+          <div class="item-title label" style="background-color:black;color:white">Tire Size</div>
+          <div class="item-input" style="margin:1;">
+            <select name="tire" style="background-color:black;color:white">
+              <option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
+              <option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
+
+            </select>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="buttons-row" style="padding-left:10px">
+      <a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-size:1em;font-weight: bold; content-align: center;">START</a>
+      <a id="stop_btn" href="#" class="button button-fill button-raised color-black" style="font-size:1em;font-weight: bold; content-align: center;"></a>
+      </div>
+</form>
+</div>
+
+</div>
+
+<!-- #BTSWIPE  hSwipe -->
+<div class="swiper-slide">
+    <div class="content-block" style="margin-top:2px;margin-bottom:4px;">
+
+        <p style="color:white;text-align:center;font-weight: bold; font-size:1em">BLUETOOTH SENSORS</p>
+        <p class="buttons-row">
+            <a href="#" class="button tab-link color-white">MPH</a>
+            <a href="#" class="button tab-link color-white">BPM</a>
+            <a href="#" class="button tab-link color-white">RPM</a>
+        </p>
+        <div class="row">
+            <a href="#" class="button tab-link color-white tab-btn-s">00.0</a>
+            <a href="#" class="button tab-link color-white tab-btn-h">000</a>
+            <a href="#" class="button tab-link color-white tab-btn-c">000</a>
+        </div>
+    </div>
+    <hr>
+    <div class="list-block media-list">
+        <ul id="ble_results_ul" class="color-white class_ble_results_ul">
+        </ul>
+        <ul id="ble_results_ul_csc" class="color-white class_ble_results_ul_csc">
+        </ul>
+    </div>
+    <div class="content-block">
+        <p class="buttons-row" style="margin:7px">
+            <a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR SCAN</a>
+            <a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD SCAN</a>
+        </p>
+    </div>
+</div>
+
+<!-- #1  hSwipe -->
+<div class="swiper-slide">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-content-inner row bg-black color-white">
+                <div class="col-50 color-white">SPEED
+                    <div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+                        <div id="rt_speed_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+                        </div>
+                    </div>
+                    <div id="rt_speed_val" class="tab-btn-s color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+                    </div>
+                </div>
+                <div class="col-50 color-white">CADENCE
+                    <div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+                        <div id="rt_cad_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+                        </div>
+                    </div>
+                    <div id="rt_cad_val" class="tab-btn-c color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-content-inner row bg-black color-white smaller_card_padding">
+
+                <div class="col-50 color-white">HEARTRATE
+                    <div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+                        <div id="rt_hr_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+                        </div>
+                    </div>
+                    <div id="rt_hr_val" class="tab-btn-h color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+                    </div>
+                </div>
+                <div class="col-50 color-white bg-black">ROUND
+                    <div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+                        <div id="rt_round_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+                        </div>
+                    </div>
+                    <div id="rt_round_val" class="tab-btn-round color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="timer_btn2" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+    <div id="timer_btn_bubbles4" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+</div>
+
+<!-- #2  hSwipe -->
+<div class="swiper-slide">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-content-inner bg-black color-white">
+                <div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
+               <div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
+    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+    </div>
+        </div>
+    </div>
+    <hr>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-content-inner row bg-black color-white">
+
+                <div class="col-50 color-white">ROUND SCORE
+                    <div class="row" style="padding-top: 8px; padding-bottom: 15px;">
+                        <div id="round_score_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    </div>
+                    </div>
+                    <div id="tim_avg_rnd_btn" class="color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+                    </div>
+                </div>
+                <div class="col-50 color-white">LAST ROUND
+                <div class="row" style="padding-top: 8px; padding-bottom: 15px;">
+                    <div id="pub_last_round_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        </div>
+                </div>
+                    <div id="publishLastRNDValue" class="color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+                </div>
+                <div style="margin-top: 10px;" class="chip color-white bg-white">
+                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+                    <div class="chip-label color-black">
+                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">MY TODAY'S BEST: 00</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+    <!-- #3  hSwipe -->
+    <!-- ME VS. CURRENT ROUND BEST -->
+    <div class="swiper-slide bg-black">
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. MY BEST THIS RIDE</h5>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+                    <div id="ui_report10"></div>
+                </div>
+            </div>
+        </div>
+        <div id="timer_btn29" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+<div id="timer_btn_bubbles2" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+    </div>
+
+    <!-- #4  hSwipe -->
+    <!-- ME VS. MY AT ROUND BEST -->
+    <div class="swiper-slide bg-black">
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. MY LAST ROUND</h5>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+                    <div id="ui_report20"></div>
+                </div>
+            </div>
+        </div>
+        <div id="timer_btn20" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+        <div id="timer_btn_bubbles3" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+    </div>
+
+    <!-- #8  hSwipe -->
+    <!-- ui_report1 ME VS THE HOUR'S BEST -->
+    <div class="swiper-slide bg-black">
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h5 id="name_best" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. THE BEST (PAST HOUR)</h5>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+                    <div id="ui_report1_div"></div>
+                </div>
+            </div>
+        </div>
+        <div id="timer_btn21" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+        <div id="timer_btn_bubbles8" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+    </div>
+    <!-- ui_report1 ME VS THE BEST FB END -->
+
+        <!-- #30  hSwipe -->
+    <!-- ui_report30 CONTACT CHIPS -->
+    <div class="swiper-slide bg-black">
+
+        <div class="card bg-black" style="margin-top:0px">
+            <div class="card-header color-white bg-black no-border">
+                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ACTIVE RIDERS (BEST RND)</h5>
+            </div>
+            <div class="card-content bg-black">
+                <div class="card-content-inner small_content_inner color-white bg-black">
+                    <div id="ui_report30_div">
+
+   <div class="cls_rpt30 chip bg-white">
+    <div class="chip-media bg-red">28</div>
+    <div class="chip-label color-black">Hanyo</div>
+  </div>
+<div class="cls_rpt30 chip bg-white">
+    <div class="chip-media bg-red">42</div>
+    <div class="chip-label color-black">Rako</div>
+</div>
+  
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+        <div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+    </div>
+    <!-- ui_report20 CONTACT CHIPS END -->
+
+
+
+    </div>
+    <!-- SWIPER WRAPPER -->
+
+            <div class="swiper-pagination">
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- END PAGE CONENT -->
+</div>
+<!--SWIPER PAGE END  ***********************************************-->
+
+                <!--FRAMEWORK7 CLOSE TAGS  ******************-->
+                <!--Pages Div Close-->
+            </div>
+            <!--View Div Close-->
+        </div>
+        <!--Views Div Close-->
+    </div>
+
+    <!--END FRAMEWORK7 CLOSE TAGS  **************-->
+
+    <!--INLINE JS START  ***********************************************-->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script>
+              // Initialize Firebase
+              var config = {
+                  apiKey: "AIzaSyAkdjVhl4h3F2TMCADtx6DGMBCCpjyy1n4",
+                  authDomain: "project-5844362817932994168.firebaseapp.com",
+                  databaseURL: "https://project-5844362817932994168.firebaseio.com",
+                  storageBucket: "",
+              };
+              firebase.initializeApp(config);
+          </script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="lib/lodash.js"></script>
+    <!-- <script type="text/javascript" src="lib/underscore-min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+
+
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/fb.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/bluetooth.js"></script>
+    <script type="text/javascript" src="js/templates.js"></script>
+
+
+    <!--INLINE JS END  ***********************************************-->
+
+</body>
+
+</html>
