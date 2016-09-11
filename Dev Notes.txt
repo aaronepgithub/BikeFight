@@ -1,0 +1,50 @@
+1.
+Mac Enable/Disable Hidden
+defaults write com.apple.finder AppleShowAllFiles YES
+defaults write com.apple.finder AppleShowAllFiles NO
+
+Hold the 'Option/alt' key, then right click on the Finder icon in the dock and click Relaunch.
+
+2.
+/Users/aaronep/Library/Android/sdk
+
+3.
+SDK Folder: /Users/aaronep/Library/Android/sdk
+export ANDROID_HOME=/Users/aaronep/Library/Android/sdk/
+export PATH=${PATH}:/Users/aaronep/Library/Android/sdk/platform-tools:/Users/aaronep/Library/Android/sdk/tools
+
+4.
+cd Desktop/Yowa5/
+phonegap platforms add ios
+phonegap platforms add android
+
+phonegap prepare ios
+phonegap prepare android
+
+phonegap build ios
+phonegap build android
+
+
+Start
+
+1.	Del old
+
+rm -rf ~/Desktop/Yowa5/;rm -rf ~/Desktop/Dev/Yowa5/;cd ~/Desktop/Dev/;git clone https://github.com/aaronepgithub/Yowa5.git;
+
+2. Copy new
+ditto ~/Desktop/Dev/Yowa5 ~/Desktop/Yowa5/;cd ~/Desktop/Yowa5;
+
+3. Build
+
+phonegap platforms add ios;phonegap platforms add android;phonegap prepare ios;phonegap prepare android;phonegap build ios;phonegap build android;
+
+ - Combined:
+rm -rf ~/Desktop/Yowa5/;rm -rf ~/Desktop/Dev/Yowa5/;cd ~/Desktop/Dev/;git clone https://github.com/aaronepgithub/Yowa5.git;
+ditto ~/Desktop/Dev/Yowa5 ~/Desktop/Yowa5/;cd ~/Desktop/Yowa5;
+phonegap platforms add ios;phonegap platforms add android;phonegap prepare ios;phonegap prepare android;phonegap build ios;phonegap build android;
+
+
+
+
+
+
