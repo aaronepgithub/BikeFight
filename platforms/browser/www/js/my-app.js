@@ -74,11 +74,12 @@ function myNotyCoach(msg) {
 
 function startup() {
     console.log('startup function');
-    home_page_chips();
+
     var storedData = myApp.formGetData('my-form');
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
     tim.timName = storedData.name;
     console.log(tim.timName);
+    home_page_chips();
 //     if (isNaN(storedData)) {
 //       //console.log('undefined');
 //       storedData = myApp.formStoreData('my-form', {
@@ -91,10 +92,12 @@ function startup() {
 // console.log('Startup Stored Data2:  ' + JSON.stringify(storedData));
 //     }
 
+$$('#id_world_champs').on('click', function() {
+  console.log('id_world_champs');
+  home_page_chips();
+});
+
 $$('.press_plus').on('click', function () {
-       
-
-
   var storedData = myApp.formGetData('my-form');
     tim.timName = storedData.name;
     tim.timTeam = storedData.team;
@@ -190,7 +193,7 @@ $$(document).on('deviceready', function () {
         }, function (reason) {
             console.log(reason);
         });
-    
+
     startup();
 
 
@@ -380,6 +383,8 @@ function msg_Get_fb_group() {
         //console.log('Request Data Complete');
     });
 }
+
+
 
 function msg_Submit_fb(post_msg) {
 

@@ -83,7 +83,7 @@
 
 
 <!--PAGE BT - START:    ***********************************************-->
-<div data-page="bluetooth" class="page navbar-fixed">
+<div data-page="bluetooth" class="page cached navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
     <a href="#main" class="back close-popup button button-fill color-red">Back</a>
@@ -121,7 +121,7 @@
 <!--PAGE BT - END  ***********************************************-->
 
 <!--PAGE USER - START  ***********************************************-->
-<div data-page="user" class="page navbar-fixed">
+<div data-page="user" class="page cached navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
     <a href="#main" class="back close-popup button button-fill color-red">Back</a>
@@ -209,7 +209,7 @@
 
 
 <!--opponents - START  ***********************************************-->
-<div data-page="opponents" class="page navbar-fixed">
+<div data-page="opponents" class="page cached navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
     <a href="#main" class="back close-popup button button-fill color-red">Back</a>
@@ -227,7 +227,7 @@
 <!--opponents - END  ***********************************************-->
 
 <!--champs - START  ***********************************************-->
-<div data-page="champs" class="page navbar-fixed">
+<div data-page="champs" class="page cached navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
     <a href="#main" class="back close-popup button button-fill color-red">Back</a>
@@ -242,6 +242,8 @@
               <div class="card-content-inner small_content_inner color-white bg-black">
                   <div id="champs_page" class="content-block">
                       <div class="cls_front_page" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+                      <!-- <div class="ui_report30_div" style="font-size:3.5em;font-weight: bold;text-align:center"></div> -->
+
                   </div>
               </div>
           </div>
@@ -388,7 +390,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#champs" class="item-link item-content">
+                          <a id="id_world_champs" href="#champs" class="item-link item-content">
                             <div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
                             <div class="item-inner">
                               <div class="item-title">World Champs</div>
@@ -538,7 +540,7 @@
 
     <!-- #8  hSwipe -->
     <!-- ui_report1 ME VS THE HOUR'S BEST -->
-    <div class="swiper-slide bg-black">
+    <!-- <div class="swiper-slide bg-black">
         <div class="card bg-black" style="margin-top:0px">
             <div class="card-header color-white bg-black no-border">
                 <h5 id="name_best" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. THE BEST (PAST HOUR)</h5>
@@ -551,35 +553,64 @@
         </div>
         <div id="timer_btn21" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
         <div id="timer_btn_bubbles8" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
+    </div> -->
     <!-- ui_report1 ME VS THE BEST FB END -->
 
         <!-- #30  hSwipe -->
     <!-- ui_report30 CONTACT CHIPS -->
     <div class="swiper-slide bg-black">
 
-        <div class="card bg-black" style="margin-top:0px">
-            <div class="card-header color-white bg-black no-border">
-                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ACTIVE RIDERS (BEST RND)</h5>
-            </div>
-            <div class="card-content bg-black">
-                <div class="card-content-inner small_content_inner color-white bg-black">
-                    <div id="ui_report30_div">
 
-   <div class="cls_rpt30 chip bg-white">
-    <div class="chip-media bg-red">28</div>
-    <div class="chip-label color-black">Hanyo</div>
-  </div>
-<div class="cls_rpt30 chip bg-white">
-    <div class="chip-media bg-red">42</div>
-    <div class="chip-label color-black">Rako</div>
-</div>
-
-
-                    </div>
+<div class="card bg-black" style="margin-top:0px">
+    <div class="card-header color-white bg-black no-border">
+        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">KINGS OF THE RING</h5>
+    </div>
+    <div class="card-content bg-black">
+        <div class="card-content-inner small_content_inner color-white bg-black">
+            <!-- <div id="ui_report30_div"> -->
+            <div id="top6">
+                <div class="cls_top6 chip bg-white">
+                    <div class="chip-media bg-red">28</div>
+                    <div class="chip-label color-black">Hanyo</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- <div class="card bg-black" style="margin-top:0px">
+    <div class="card-header color-white bg-black no-border">
+        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
+    </div>
+    <div class="card-content bg-black">
+        <div class="card-content-inner small_content_inner color-white bg-black">
+            <div id="ui_top_chal">
+                <div class="cls_top_chal chip bg-white">
+                    <div class="chip-media bg-red">28</div>
+                    <div class="chip-label color-black">Hanyo</div>
+                </div>
+                <div class="cls_top_chal chip bg-white">
+                    <div class="chip-media bg-red">42</div>
+                    <div class="chip-label color-black">Rako</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="card bg-black" style="margin-top:0px">
+    <div class="card-header color-white bg-black no-border">
+        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUND</h5>
+    </div>
+    <div class="card-content bg-black">
+        <div class="card-content-inner small_content_inner color-white bg-black">
+            <div id="my_last_rnd">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
         <div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
         <div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>

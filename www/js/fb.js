@@ -19,6 +19,69 @@ var pubYear = yyyy;
 //console.log(pubFullDate + pubMonth + pubDay + pubYear);
 
 
+function round_post(r1, r2, r3, r4) {
+  firebase.database().ref('rounds/' + pubFullDate + '/').push({
+      fb_timName: tim.timName,
+      fb_RND: r1,
+      fb_timTeam: tim.timTeam,
+      fb_Date:  pubFullDate,
+      fb_DateNow: Date.now(),
+      fb_SPD: r2,
+      fb_CAD: r3,
+      fb_HR: r4
+  });
+}
+
+
+
+function get_round_data() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+      dd = '0' + dd;
+  }
+  if (mm < 10) {
+      mm = '0' + mm;
+  }
+  var pubFullDate = yyyy + mm + dd;
+
+  $$('.cls_top6').remove();
+
+  $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
+    // console.log('Round Data:  ' + JSON.stringify(a));
+    var a = _.values(data);
+    var a1 = _.orderBy(a, 'fb_RND', 'desc');
+    var a2 = _.take(a1, 10);
+    console.log('Round Data:  ' + JSON.stringify(a2));
+
+
+    _.forEach(a2, function(value, key) {
+
+myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
+
+e1 = value.fb_timName;
+e3 =  value.fb_RND;
+
+  //console.log(e1 + ' - '  + e3);
+ $$('#top6').append(
+     '<div class="cls_top6 chip bg-white">' +
+     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+     '<div class="chip-label color-black">'+ e1 +'</div>' +
+     '</div>'
+ );
+   }); //END FOR EACH
+   $$('#my_last_rnd').html(
+       '<div class="cls_top6 chip bg-white">' +
+       '<div class="chip-media bg-red">'+ Math.round(tim.timLastRND) +'</div>' +
+       '<div class="chip-label color-black">'+ tim.timName+'</div>' +
+       '</div>'
+   );
+
+  });
+}
+
 //INSERT SHOPPAGE INTO DIV
 function get_shop_pages() {
   $$.getJSON('https://project-5844362817932994168.firebaseio.com/shoppages_'+tim.timTeam+'.json',function(data){

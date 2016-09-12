@@ -318,6 +318,16 @@ $$('#start_btn').on('click', function (e) {
              rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             }
 
+            if (count === 290) {
+             round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+            }
+
+            if (count === 290) {
+            get_round_data();
+            }
+
+
+
             // if (count === 287) {
 
             //   if (Number(localStorage.getItem("atbscore")) <= tim.timTodayBestRoundScore) {
