@@ -71,6 +71,117 @@
 </div>
 <!-- About Popup -->
 
+<!-- Learn More Popup -->
+<div class="bg-black popup popup-learn" style="background-color:black">
+  <div class="bg-black content-block">
+    <div class="buttons-row bg-black color-white">
+<a href="#" class="close-popup button button-fill color-red">Back</a>
+  </div>
+  </div>
+</div>
+<!-- Learn More Popup -->
+
+
+<!--PAGE BT - START:    ***********************************************-->
+<div data-page="bluetooth" class="page navbar-fixed">
+    <div class="navbar" style="margin-top:5px">
+  <div class="buttons-row" style="margin:7px">
+    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+      <a href="#user" class="close-popup button button-fill color-red">Next</a>
+</div>
+    </div>
+    <div class="page-content bg-black color-white">
+        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+            <p class="buttons-row">
+                <a href="#" class="button tab-link color-white">MPH</a>
+                <a href="#" class="button tab-link color-white">BPM</a>
+                <a href="#" class="button tab-link color-white">RPM</a>
+            </p>
+            <div class="row">
+                <a href="#" class="button tab-link color-white tab-btn-s">00.0</a>
+                <a href="#" class="button tab-link color-white tab-btn-h">000</a>
+                <a href="#" class="button tab-link color-white tab-btn-c">000</a>
+            </div>
+        </div>
+        <hr>
+        <div class="list-block media-list">
+            <ul id="ble_results_ul" class="color-white class_ble_results_ul">
+            </ul>
+            <ul id="ble_results_ul_csc" class="color-white class_ble_results_ul_csc">
+            </ul>
+        </div>
+        <div class="content-block">
+            <p class="buttons-row" style="margin:7px">
+                <a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR</a>
+                <a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD</a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--PAGE BT - END  ***********************************************-->
+
+<!--PAGE USER - START  ***********************************************-->
+<div data-page="user" class="page navbar-fixed">
+    <div class="navbar" style="margin-top:5px">
+  <div class="buttons-row" style="margin:7px">
+    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+      <a href="#bike" class="close-popup button button-fill color-red">Next</a>
+</div>
+    </div>
+    <div class="page-content bg-black color-white">
+        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+        </div>
+    </div>
+</div>
+<!--PAGE USER - END  ***********************************************-->
+
+<!--bike - START  ***********************************************-->
+<div data-page="bike" class="page navbar-fixed">
+    <div class="navbar" style="margin-top:5px">
+  <div class="buttons-row" style="margin:7px">
+    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+      <a href="#opponents" class="close-popup button button-fill color-red">Next</a>
+</div>
+    </div>
+    <div class="page-content bg-black color-white">
+        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+        </div>
+    </div>
+</div>
+<!--bike - END  ***********************************************-->
+
+<!--opponents - START  ***********************************************-->
+<div data-page="opponents" class="page navbar-fixed">
+    <div class="navbar" style="margin-top:5px">
+  <div class="buttons-row" style="margin:7px">
+    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+      <a href="#champs" class="close-popup button button-fill color-red">Next</a>
+</div>
+    </div>
+    <div class="page-content bg-black color-white">
+        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+        </div>
+    </div>
+</div>
+<!--opponents - END  ***********************************************-->
+
+<!--champs - START  ***********************************************-->
+<div data-page="champs" class="page navbar-fixed">
+    <div class="navbar" style="margin-top:5px">
+  <div class="buttons-row" style="margin:7px">
+    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+      <a href="#bluetooth" class="close-popup button button-fill color-red">Next</a>
+</div>
+    </div>
+    <div class="page-content bg-black color-white">
+        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+        </div>
+    </div>
+</div>
+<!--champs - END  ***********************************************-->
+
+
+
 
 
 
@@ -124,7 +235,7 @@
 <!--PAGE INDEX - END  ***********************************************-->
 
 
-<!--SWIPER PAGE - START  ***********************************************-->
+<!--MAIN  ***********************************************-->
 <div data-page="main" class="page cached">
     <!-- Top Navbar-->
     <div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
@@ -140,6 +251,78 @@
 <div class="swiper-container swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
     data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
     <div class="swiper-wrapper">
+
+
+      <!-- #1  Settings -->
+  <div class="swiper-slide bg-black">
+      <div class="card bg-black" style="margin-top:0px">
+          <div class="card-header color-white bg-black no-border">
+              <h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
+          </div>
+          <hr>
+
+          <div class="card-content bg-black">
+              <div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
+                  <div class="content-block" style="margin:0px">
+
+                    <div class="list-block inset">
+                      <ul>
+                        <li>
+                          <!-- <a href="#" class="item-link item-content"> -->
+                            <a href="#bluetooth" class="item-link item-content">
+                            <div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Bluetooth</div>
+                              <!-- <div class="item-after">Label</div> -->
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#user" class="item-link item-content">
+                            <div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">User Settings</div>
+                              <!-- <div class="item-after">Label</div> -->
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#bike" class="item-link item-content">
+                            <div class="item-media"><i class="fa fa-bicycle fa-2x"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Bike Details</div>
+                              <!-- <div class="item-after">Label</div> -->
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#opponents" class="item-link item-content">
+                            <div class="item-media"><i class="fa fa-users fa-2x"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Select Opponents</div>
+                              <!-- <div class="item-after">Label</div> -->
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#champs" class="item-link item-content">
+                            <div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">World Champs</div>
+                              <!-- <div class="item-after">Label</div> -->
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                      <div class="buttons-row bg-black color-white" style="padding: 10px;">
+                          <a id="begin_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
     <!-- #1  Intro Swipe -->
@@ -264,8 +447,8 @@
 
 <!-- #BTSWIPE  hSwipe -->
 <div class="swiper-slide">
-    <div class="content-block" style="margin-top:2px;margin-bottom:4px;">
 
+    <!-- <div class="content-block" style="margin-top:2px;margin-bottom:4px;">
         <p style="color:white;text-align:center;font-weight: bold; font-size:1em">BLUETOOTH SENSORS</p>
         <p class="buttons-row">
             <a href="#" class="button tab-link color-white">MPH</a>
@@ -278,6 +461,7 @@
             <a href="#" class="button tab-link color-white tab-btn-c">000</a>
         </div>
     </div>
+
     <hr>
     <div class="list-block media-list">
         <ul id="ble_results_ul" class="color-white class_ble_results_ul">
@@ -290,7 +474,8 @@
             <a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR SCAN</a>
             <a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD SCAN</a>
         </p>
-    </div>
+    </div> -->
+
 </div>
 
 <!-- #1  hSwipe -->

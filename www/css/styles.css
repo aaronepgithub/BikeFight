@@ -14,7 +14,10 @@
     background: black;
 }
 
-
+.modal-overlay.modal-overlay-visible, .picker-modal-overlay.modal-overlay-visible, .popup-overlay.modal-overlay-visible, .preloader-indicator-overlay.modal-overlay-visible {
+    visibility: visible;
+    opacity: 0;
+}
 
 .sub-sub-title {
 	color: white;
@@ -85,4 +88,3 @@
 .report_margin {
   margin:1px;
 }
-
