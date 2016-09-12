@@ -35,17 +35,17 @@ function round_post(r1, r2, r3, r4) {
 
 
 function get_round_data() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1; //January is 0!
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-      dd = '0' + dd;
-  }
-  if (mm < 10) {
-      mm = '0' + mm;
-  }
-  var pubFullDate = yyyy + mm + dd;
+  // var today = new Date();
+  // var dd = today.getDate();
+  // var mm = today.getMonth() + 1; //January is 0!
+  // var yyyy = today.getFullYear();
+  // if (dd < 10) {
+  //     dd = '0' + dd;
+  // }
+  // if (mm < 10) {
+  //     mm = '0' + mm;
+  // }
+  // var pubFullDate = yyyy + mm + dd;
 
   $$('.cls_top6').remove();
 
@@ -59,7 +59,7 @@ function get_round_data() {
 
     _.forEach(a2, function(value, key) {
 
-myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
+//myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
 
 e1 = value.fb_timName;
 e3 =  value.fb_RND;
