@@ -93,12 +93,26 @@ function home_page_chips() {
                '<div class="chip-label color-black">'+ e1 +'</div>' +
                '</div>'
            );
+           $$('#champs_page').append(
+               '<div class="cls_front_page chip bg-white">' +
+               '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+               '<div class="chip-label color-black">'+ e1 +'</div>' +
+               '</div>'
+           );
+
             $$('#front_page_teams').append(
                '<div class="cls_front_page_teams chip bg-white">' +
                '<div class="chip-media bg-red">'+ e4 +'</div>' +
                '<div class="chip-label color-black">'+ e2 +'</div>' +
                '</div>'
            );
+           $$('#champs_page_teams').append(
+              '<div class="cls_front_page_teams chip bg-white">' +
+              '<div class="chip-media bg-red">'+ e4 +'</div>' +
+              '<div class="chip-label color-black">'+ e2 +'</div>' +
+              '</div>'
+          );
+
         rptChips_count++;
           }
         });
@@ -111,7 +125,7 @@ unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });
         if(rptChips_count2 === 20){
           }
         else {
-            
+
           e1 = value.fb_Name;
           e2 = value.fb_Team;
           e3 =  value.fb_RND_t;

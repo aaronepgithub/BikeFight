@@ -86,7 +86,7 @@
 <div data-page="bluetooth" class="page navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
-    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+    <a href="#main" class="back close-popup button button-fill color-red">Back</a>
       <a href="#user" class="close-popup button button-fill color-red">Next</a>
 </div>
     </div>
@@ -124,42 +124,103 @@
 <div data-page="user" class="page navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
-    <a href="#" class="back close-popup button button-fill color-red">Back</a>
-      <a href="#bike" class="close-popup button button-fill color-red">Next</a>
-</div>
-    </div>
-    <div class="page-content bg-black color-white">
-        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
-        </div>
-    </div>
-</div>
-<!--PAGE USER - END  ***********************************************-->
-
-<!--bike - START  ***********************************************-->
-<div data-page="bike" class="page navbar-fixed">
-    <div class="navbar" style="margin-top:5px">
-  <div class="buttons-row" style="margin:7px">
-    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+    <a href="#main" class="back close-popup button button-fill color-red">Back</a>
       <a href="#opponents" class="close-popup button button-fill color-red">Next</a>
 </div>
     </div>
     <div class="page-content bg-black color-white">
         <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+
+          <div class="list-block layout-dark" style="margin-top: 20px">
+          <!-- Form has additional "store-data" class to enable form storage on this form -->
+          <form id="my-form" class="list-block store-data" style="margin-top: 5px">
+            <ul>
+              <hr><li>
+                <div class="item-content">
+                  <div class="item-inner" style="padding:0;margin:0;">
+                    <div class="item-title label" style="background-color:black;color:white">Name</div>
+                    <div class="item-input" style="margin:1;">
+
+                      <input id='f7name' type="text" name="name" placeholder="Name">
+                    </div>
+                  </div>
+                </div>
+              </li><hr>
+              <li>
+                <div class="item-content">
+                  <div class="item-inner" style="padding:0;margin:0;">
+                    <div class="item-title label" style="background-color:black;color:white">Team</div>
+                    <div class="item-input" style="margin:1;">
+                                    <select name="team" style="background-color:black;color:white">
+                        <option>Solo</option><option>Zen Bikes</option><option>Off the Bridge</option><option>Square Pizza</option><option>EVEPC</option>
+                      </select>
+                      <!--<input id="team" type="text" name="team" placeholder="Team Name">-->
+                    </div>
+                  </div>
+                </div>
+              </li><hr>
+              <li>
+                <div class="item-content">
+                  <div class="item-inner" style="padding:0;margin:0;">
+                    <div class="item-title label" style="background-color:black;color:white">Group</div>
+                    <div class="item-input" style="margin:1;">
+                      <input id="group" type="text" name="group" placeholder="Riding Group">
+                    </div>
+                  </div>
+                </div>
+              </li><hr>
+              <li>
+                <div class="item-content">
+                  <div class="item-inner" style="padding:0;margin:0;">
+                    <div class="item-title label" style="background-color:black;color:white">Style</div>
+                    <div class="item-input" style="margin:1;">
+                      <select name="style" style="background-color:black;color:white">
+                        <option>Road</option><option>Mountain</option><option>Cycle Cross</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </li><hr>
+              <li>
+                <div class="item-content">
+                  <div class="item-inner" style="padding:0;margin:0;">
+                    <div class="item-title label" style="background-color:black;color:white">Tire Size</div>
+                    <div class="item-input" style="margin:1;">
+                      <select name="tire" style="background-color:black;color:white">
+                        <option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
+                        <option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </li><hr>
+            </ul>
+
+          </form>
+          </div>
+
+
         </div>
     </div>
 </div>
-<!--bike - END  ***********************************************-->
+<!--PAGE USER - END  ***********************************************-->
+
+
 
 <!--opponents - START  ***********************************************-->
 <div data-page="opponents" class="page navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
-    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+    <a href="#main" class="back close-popup button button-fill color-red">Back</a>
       <a href="#champs" class="close-popup button button-fill color-red">Next</a>
 </div>
     </div>
-    <div class="page-content bg-black color-white">
-        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+    <div class="page-content bg-black color-white" style="margin-top:25px"><br>
+        <div class="content-block bg-black" style="margin:25px;">
+          <a href="#" class="button button-fill color-red">vs. Team</a><hr><br>
+          <a href="#" class="button button-fill color-red">vs. Opponents</a><hr><br>
+          <a href="#" class="button button-fill color-red">vs. Trainers</a><hr>
         </div>
     </div>
 </div>
@@ -169,12 +230,35 @@
 <div data-page="champs" class="page navbar-fixed">
     <div class="navbar" style="margin-top:5px">
   <div class="buttons-row" style="margin:7px">
-    <a href="#" class="back close-popup button button-fill color-red">Back</a>
+    <a href="#main" class="back close-popup button button-fill color-red">Back</a>
       <a href="#bluetooth" class="close-popup button button-fill color-red">Next</a>
 </div>
     </div>
     <div class="page-content bg-black color-white">
         <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+          <br><div style="margin-bottom:35px">TOP 10 ACTIVE FIGHTERS</div>
+          <div class="card bg-black" style="margin-top:5px">
+            <div class="card-content bg-black">
+              <div class="card-content-inner small_content_inner color-white bg-black">
+                  <div id="champs_page" class="content-block">
+                      <div class="cls_front_page" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+<br><hr><br><div style="margin-bottom:35px">TOP TEAMS</div>
+<div class="card-content bg-black">
+    <div class="card-content-inner small_content_inner color-white bg-black">
+        <div id="front_page_teams" class="content-block">
+            <div class="cls_front_page_teams cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+        </div>
+    </div>
+</div>
+
+
+
         </div>
     </div>
 </div>
@@ -286,16 +370,15 @@
                             </div>
                           </a>
                         </li>
-                        <li>
+                        <!-- <li>
                           <a href="#bike" class="item-link item-content">
                             <div class="item-media"><i class="fa fa-bicycle fa-2x"></i></div>
                             <div class="item-inner">
                               <div class="item-title">Bike Details</div>
-                              <!-- <div class="item-after">Label</div> -->
                             </div>
                           </a>
                         </li>
-                        <li>
+                        <li> -->
                           <a href="#opponents" class="item-link item-content">
                             <div class="item-media"><i class="fa fa-users fa-2x"></i></div>
                             <div class="item-inner">
@@ -315,7 +398,7 @@
                         </li>
                       </ul>
                       <div class="buttons-row bg-black color-white" style="padding: 10px;">
-                          <a id="begin_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
+                          <a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
                       </div>
                   </div>
                   </div>
@@ -325,158 +408,7 @@
   </div>
 
 
-    <!-- #1  Intro Swipe -->
-<div class="swiper-slide bg-black">
-    <div class="card bg-black" style="margin-top:0px">
-        <div class="card-header color-white bg-black no-border">
-            <h3 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP RIDERS</h3>
-        </div>
-        <!-- <div class="card-content bg-black">
-            <div class="card-content-inner small_content_inner color-white bg-black">
-                <div id="front_page" class="content-block">
-                    <div class="cls_front_page cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-</div>
 
-    <!-- #2  Team Swipe -->
-    <div class="swiper-slide bg-black">
-        <div class="card bg-black" style="margin-top:0px">
-            <div class="card-header color-white bg-black no-border">
-                <h3 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP TEAMS</h3>
-            </div>
-            <div class="card-content bg-black">
-                <div class="card-content-inner small_content_inner color-white bg-black">
-
-
-    <div id="front_page_teams" class="content-block">
-
-        <div class="cls_front_page_teams cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-        <!-- #FORM   hSwipe -->
-        <div class="swiper-slide">
-
-<div class="list-block layout-dark" style="margin-top: 10px">
-<!-- Form has additional "store-data" class to enable form storage on this form -->
-<form id="my-form" class="list-block store-data" style="margin-top: 5px">
-  <ul>
-    <li>
-      <div class="item-content">
-        <div class="item-inner" style="padding:0;margin:0;">
-          <div class="item-title label" style="background-color:black;color:white">Name</div>
-          <div class="item-input" style="margin:1;">
-
-            <input id='f7name' type="text" name="name" placeholder="Name">
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="item-content">
-        <div class="item-inner" style="padding:0;margin:0;">
-          <div class="item-title label" style="background-color:black;color:white">Team</div>
-          <div class="item-input" style="margin:1;">
-                          <select name="team" style="background-color:black;color:white">
-              <option>Solo</option><option>Zen Bikes</option><option>Off the Bridge</option><option>Square Pizza</option><option>EVEPC</option>
-            </select>
-            <!--<input id="team" type="text" name="team" placeholder="Team Name">-->
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="item-content">
-        <div class="item-inner" style="padding:0;margin:0;">
-          <div class="item-title label" style="background-color:black;color:white">Group</div>
-          <div class="item-input" style="margin:1;">
-
-            <input id="group" type="text" name="group" placeholder="Riding Group">
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="item-content">
-        <div class="item-inner" style="padding:0;margin:0;">
-          <div class="item-title label" style="background-color:black;color:white">Style</div>
-          <div class="item-input" style="margin:1;">
-            <select name="style" style="background-color:black;color:white">
-              <option>Road</option><option>Mountain</option><option>Cycle Cross</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="item-content">
-        <div class="item-inner" style="padding:0;margin:0;">
-          <div class="item-title label" style="background-color:black;color:white">Tire Size</div>
-          <div class="item-input" style="margin:1;">
-            <select name="tire" style="background-color:black;color:white">
-              <option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
-              <option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
-
-            </select>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
-  <div class="buttons-row" style="padding-left:10px">
-      <a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-size:1em;font-weight: bold; content-align: center;">START</a>
-      <a id="stop_btn" href="#" class="button button-fill button-raised color-black" style="font-size:1em;font-weight: bold; content-align: center;"></a>
-      </div>
-</form>
-</div>
-
-</div>
-
-<!-- #BTSWIPE  hSwipe -->
-<div class="swiper-slide">
-
-    <!-- <div class="content-block" style="margin-top:2px;margin-bottom:4px;">
-        <p style="color:white;text-align:center;font-weight: bold; font-size:1em">BLUETOOTH SENSORS</p>
-        <p class="buttons-row">
-            <a href="#" class="button tab-link color-white">MPH</a>
-            <a href="#" class="button tab-link color-white">BPM</a>
-            <a href="#" class="button tab-link color-white">RPM</a>
-        </p>
-        <div class="row">
-            <a href="#" class="button tab-link color-white tab-btn-s">00.0</a>
-            <a href="#" class="button tab-link color-white tab-btn-h">000</a>
-            <a href="#" class="button tab-link color-white tab-btn-c">000</a>
-        </div>
-    </div>
-
-    <hr>
-    <div class="list-block media-list">
-        <ul id="ble_results_ul" class="color-white class_ble_results_ul">
-        </ul>
-        <ul id="ble_results_ul_csc" class="color-white class_ble_results_ul_csc">
-        </ul>
-    </div>
-    <div class="content-block">
-        <p class="buttons-row" style="margin:7px">
-            <a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR SCAN</a>
-            <a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD SCAN</a>
-        </p>
-    </div> -->
-
-</div>
 
 <!-- #1  hSwipe -->
 <div class="swiper-slide">
