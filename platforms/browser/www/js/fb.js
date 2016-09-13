@@ -48,6 +48,8 @@ function get_round_data() {
   // var pubFullDate = yyyy + mm + dd;
 
   $$('.cls_top6').remove();
+    $$('.cls_champs_page').remove();
+
 
   $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
     // console.log('Round Data:  ' + JSON.stringify(a));
@@ -79,8 +81,43 @@ e3 =  value.fb_RND;
      '</div>'
  );
 
+ $$('#champs_page').append(
+     '<div class="chip bg-white">' +
+     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+     '<div class="chip-label color-black">'+ e1 +'</div>' +
+     '</div>'
+ );
+
 
    }); //END FOR EACH
+
+   var unique = a.map(function(obj) { return obj.fb_timTeam; });
+   unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });
+   var rptChips_count2 = 0;
+   console.log('unique:  ' + JSON.stringify(unique));
+    $$('.cls_champs_page_teams').remove();
+            _.forEach(unique, function(value, key) {
+           if(rptChips_count2 === 10){
+             }
+           else {
+
+             e1 = value.fb_timName;
+             e2 = value.fb_timTeam;
+             if(value.fb_timTeam === "") {e2 = "None";}
+             e3 =  value.fb_RND;
+
+
+               $$('#champs_page_teams').append(
+                  '<div class="cls_champs_page_teams chip bg-white">' +
+               //    '<div class="chip-media bg-red"></div>' +
+                  '<div class="chip-label color-black">'+ unique[rptChips_count2] +'</div>' +
+                  '</div>'
+              );
+           rptChips_count2++;
+             }
+           });
+
+
    $$('#my_last_rnd').html(
        '<div class="cls_top6 chip bg-white">' +
        '<div class="chip-media bg-red">'+ Math.round(tim.timLastRND) +'</div>' +
@@ -191,10 +228,11 @@ function home_page_chips_delme() {
 
 var unique = a.map(function(obj) { return obj.fb_Team; });
 unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });
+var rptChips_count2 = 0;
 // console.log(JSON.stringify(unique));
  $$('.cls_front_page_teams').remove();
          _.forEach(unique, function(value, key) {
-        if(rptChips_count2 === 20){
+        if(rptChips_count2 === 10){
           }
         else {
 
