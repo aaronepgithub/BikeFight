@@ -36,20 +36,9 @@ function round_post(r1, r2, r3, r4) {
 
 
 function get_round_data() {
-  // var today = new Date();
-  // var dd = today.getDate();
-  // var mm = today.getMonth() + 1; //January is 0!
-  // var yyyy = today.getFullYear();
-  // if (dd < 10) {
-  //     dd = '0' + dd;
-  // }
-  // if (mm < 10) {
-  //     mm = '0' + mm;
-  // }
-  // var pubFullDate = yyyy + mm + dd;
 
-  $$('.cls_top_kings').remove();
-    $$('.cls_champs_page').remove();
+  // $$('.cls_top_kings').remove();
+  //   $$('.cls_champs_page').remove();
 
 
   $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
@@ -59,16 +48,18 @@ function get_round_data() {
     var a2 = _.take(a1, 10);
     console.log('Round Data:  ' + JSON.stringify(a2));
 
-    $$('#top_king').text(a2[0].fb_timName);
-    $$('#me_vs_king_title').text('ME VS.  ' + a2[0].fb_timName.toUpperCase() + ' (THE KING) ');
-    top_king_name = a2[0].fb_timName;
-    top_king_team = a2[0].fb_timTeam;
-    top_king_rnd = a2[0].fb_RND;
-    top_king_spd = a2[0].fb_SPD;
-    top_king_cad = a2[0].fb_CAD;
-    top_king_hr = a2[0].fb_HR;
+    $$('#top_king').text(a1[0].fb_timName);
+    $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE KING) ');
+    top_king_name = a1[0].fb_timName;
+    top_king_team = a1[0].fb_timTeam;
+    top_king_rnd = a1[0].fb_RND;
+    top_king_spd = a1[0].fb_SPD;
+    top_king_cad = a1[0].fb_CAD;
+    top_king_hr = a1[0].fb_HR;
     ui_report200();
 
+    $$('.cls_top_kings').remove();
+      $$('.cls_front_page').remove();
 
     _.forEach(a2, function(value, key) {
 
@@ -100,6 +91,7 @@ e3 =  value.fb_RND;
 
 
    }); //END FOR EACH
+
 
    $$('.cls_champs_page').remove();
     _.forEach(a1, function(value, key) {
@@ -145,12 +137,7 @@ e3 =  value.fb_RND;
            });
 
 
-   $$('#my_last_rnd').html(
-       '<div class="cls_top6 chip bg-white">' +
-       '<div class="chip-media bg-red">'+ Math.round(tim.timLastRND) +'</div>' +
-       '<div class="chip-label color-black">'+ tim.timName+'</div>' +
-       '</div>'
-   );
+
 
   });
 }

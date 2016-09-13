@@ -120,6 +120,13 @@ var a5 = y[0].date;var a6 = y[0].time;
 ui_report10(a1, a2, a3, a4);
 ui_report20(lr, ls, lc, lh);
 
+$$('#my_last_rnd').html(
+    '<div class="cls_top6 chip bg-white">' +
+    '<div class="chip-media bg-red">'+ Math.round(lr) +'</div>' +
+    '<div class="chip-label color-black">'+ tim.timName+'</div>' +
+    '</div>'
+);
+
 
 //console.log('Only Today:  ' + JSON.stringify(y));
 
@@ -265,21 +272,22 @@ $$('#start_btn').on('click', function (e) {
             // }
 
 
-            if (count === 297) {
-             rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-            }
+            // if (count === 297) {
+            //  rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+            // }
 
-            if (count === 293) {
+            if (count === 290) {
              round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             }
 
-            if (count === 290) {
+            if (count === 280) {
             get_round_data();
             }
 
 
 
             if (count === 239) {
+              get_round_data();
                 myCenterAlert('4 Minutes Remain', 1500);
             }
             if (count === 179) {
