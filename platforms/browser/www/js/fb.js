@@ -1,4 +1,5 @@
 var database = firebase.database();
+var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 
 //DATE FUNCTION
 var today = new Date();
@@ -58,6 +59,17 @@ function get_round_data() {
     var a2 = _.take(a1, 10);
     console.log('Round Data:  ' + JSON.stringify(a2));
 
+    $$('#top_king').text(a2[0].fb_timName);
+    $$('#me_vs_king_title').text('ME VS.  ' + a2[0].fb_timName.toUpperCase() + ' (THE KING) ');
+    top_king_name = a2[0].fb_timName;
+    top_king_team = a2[0].fb_timTeam;
+    top_king_rnd = a2[0].fb_RND;
+    top_king_spd = a2[0].fb_SPD;
+    top_king_cad = a2[0].fb_CAD;
+    top_king_hr = a2[0].fb_HR;
+    ui_report200();
+
+
     _.forEach(a2, function(value, key) {
 
 e1 = value.fb_timName;
@@ -78,15 +90,33 @@ e3 =  value.fb_RND;
      '</div>'
  );
 
- $$('#champs_page').append(
-     '<div class="chip bg-white">' +
-     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
-     '<div class="chip-label color-black">'+ e1 +'</div>' +
-     '</div>'
- );
+//MOVE THIS BELOW AND SHOW ALL SCORES
+ // $$('#champs_page').append(
+ //     '<div class="chip bg-white">' +
+ //     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+ //     '<div class="chip-label color-black">'+ e1 +'</div>' +
+ //     '</div>'
+ // );
 
 
    }); //END FOR EACH
+
+   $$('.cls_champs_page').remove();
+    _.forEach(a1, function(value, key) {
+
+      e1 = value.fb_timName;
+      e3 =  value.fb_RND;
+
+
+      $$('#champs_page').append(
+          '<div class="chip cls_champs_page bg-white">' +
+          '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+          '<div class="chip-label color-black">'+ e1 +'</div>' +
+          '</div>'
+      );
+    });
+
+
 
    var unique = a.map(function(obj) { return obj.fb_timTeam; });
    unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });

@@ -119,6 +119,8 @@ var a5 = y[0].date;var a6 = y[0].time;
 
 ui_report10(a1, a2, a3, a4);
 ui_report20(lr, ls, lc, lh);
+
+
 //console.log('Only Today:  ' + JSON.stringify(y));
 
 var stringChip = null;
