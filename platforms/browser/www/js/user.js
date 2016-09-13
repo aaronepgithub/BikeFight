@@ -285,18 +285,20 @@ $$('#start_btn').on('click', function (e) {
             }
 
 
-
             if (count === 239) {
-              get_round_data();
+                get_top_fighters();
                 myCenterAlert('4 Minutes Remain', 1500);
             }
             if (count === 179) {
+              get_round_data();
                 myCenterAlert('3 Minutes Remain', 1500);
             }
             if (count === 119) {
+              get_top_fighters();
                 myCenterAlert('2 Minutes Remain', 1500);
             }
             if (count === 59) {
+              get_round_data();
                 myCenterAlert('Final Minute', 1500);
             }
 

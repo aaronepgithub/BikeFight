@@ -1,5 +1,5 @@
 var database = firebase.database();
-var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
+//var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 
 //DATE FUNCTION
 var today = new Date();
@@ -32,6 +32,104 @@ function round_post(r1, r2, r3, r4) {
       fb_HR: r4
   });
 }
+
+
+
+function get_top_fighters() {
+  $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
+    // console.log('Round Data:  ' + JSON.stringify(a));
+    var a = _.values(data);
+    var a1 = _.orderBy(a, 'fb_RND', 'desc');
+    var a2 = _.take(a1, 30);
+    console.log('Round Data:  ' + JSON.stringify(a2));
+
+$$('.cls_champs_page').remove();
+    // $$('.cls_top_kings').remove();
+    //   $$('.cls_front_page').remove();
+
+    _.forEach(a2, function(value, key) {
+
+e1 = value.fb_timName;
+e3 =  value.fb_RND;
+
+    $$('#champs_page').append(
+        '<div class="chip cls_champs_page bg-white">' +
+        '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+        '<div class="chip-label color-black">'+ e1 +'</div>' +
+        '</div>'
+    );
+  });
+
+});
+}
+
+
+
+
+  //console.log(e1 + ' - '  + e3);
+ // $$('#top_kings').append(
+ //     '<div class="cls_top_kings chip bg-white">' +
+ //     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+ //     '<div class="chip-label color-black">'+ e1 +'</div>' +
+ //     '</div>'
+ // );
+ //
+ // $$('#front_page').append(
+ //     '<div class="chip bg-white">' +
+ //     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+ //     '<div class="chip-label color-black">'+ e1 +'</div>' +
+ //     '</div>'
+ // );
+
+
+
+
+
+  //  $$('.cls_champs_page').remove();
+  //   _.forEach(a1, function(value, key) {
+   //
+  //     e1 = value.fb_timName;
+  //     e3 =  value.fb_RND;
+   //
+   //
+  //     $$('#champs_page').append(
+  //         '<div class="chip cls_champs_page bg-white">' +
+  //         '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+  //         '<div class="chip-label color-black">'+ e1 +'</div>' +
+  //         '</div>'
+  //     );
+  //   });
+
+
+
+  //  var unique = a.map(function(obj) { return obj.fb_timTeam; });
+  //  unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });
+  //  var rptChips_count2 = 0;
+  //  console.log('unique:  ' + JSON.stringify(unique));
+  //   $$('.cls_champs_page_teams').remove();
+  //           _.forEach(unique, function(value, key) {
+  //          if(rptChips_count2 === 2){
+  //            }
+  //          else {
+   //
+  //            e1 = value.fb_timName;
+  //            e2 = value.fb_timTeam;
+  //            if(value.fb_timTeam === "") {e2 = "None";}
+  //            e3 =  value.fb_RND;
+   //
+   //
+  //              $$('#champs_page_teams').append(
+  //                 '<div class="cls_champs_page_teams chip bg-white">' +
+  //              //    '<div class="chip-media bg-red"></div>' +
+  //                 '<div class="chip-label color-black">'+ unique[rptChips_count2] +'</div>' +
+  //                 '</div>'
+  //             );
+  //          rptChips_count2++;
+  //            }
+  //          });
+
+
+
 
 
 
@@ -81,63 +179,9 @@ e3 =  value.fb_RND;
      '</div>'
  );
 
-//MOVE THIS BELOW AND SHOW ALL SCORES
- // $$('#champs_page').append(
- //     '<div class="chip bg-white">' +
- //     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
- //     '<div class="chip-label color-black">'+ e1 +'</div>' +
- //     '</div>'
- // );
 
 
    }); //END FOR EACH
-
-
-   $$('.cls_champs_page').remove();
-    _.forEach(a1, function(value, key) {
-
-      e1 = value.fb_timName;
-      e3 =  value.fb_RND;
-
-
-      $$('#champs_page').append(
-          '<div class="chip cls_champs_page bg-white">' +
-          '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
-          '<div class="chip-label color-black">'+ e1 +'</div>' +
-          '</div>'
-      );
-    });
-
-
-
-   var unique = a.map(function(obj) { return obj.fb_timTeam; });
-   unique = unique.filter(function(v,i) { return unique.indexOf(v) == i; });
-   var rptChips_count2 = 0;
-   console.log('unique:  ' + JSON.stringify(unique));
-    $$('.cls_champs_page_teams').remove();
-            _.forEach(unique, function(value, key) {
-           if(rptChips_count2 === 10){
-             }
-           else {
-
-             e1 = value.fb_timName;
-             e2 = value.fb_timTeam;
-             if(value.fb_timTeam === "") {e2 = "None";}
-             e3 =  value.fb_RND;
-
-
-               $$('#champs_page_teams').append(
-                  '<div class="cls_champs_page_teams chip bg-white">' +
-               //    '<div class="chip-media bg-red"></div>' +
-                  '<div class="chip-label color-black">'+ unique[rptChips_count2] +'</div>' +
-                  '</div>'
-              );
-           rptChips_count2++;
-             }
-           });
-
-
-
 
   });
 }
