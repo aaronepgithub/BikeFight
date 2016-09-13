@@ -47,7 +47,7 @@ function get_round_data() {
   // }
   // var pubFullDate = yyyy + mm + dd;
 
-  $$('.cls_top6').remove();
+  $$('.cls_top_kings').remove();
     $$('.cls_champs_page').remove();
 
 
@@ -58,17 +58,14 @@ function get_round_data() {
     var a2 = _.take(a1, 10);
     console.log('Round Data:  ' + JSON.stringify(a2));
 
-
     _.forEach(a2, function(value, key) {
-
-//myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
 
 e1 = value.fb_timName;
 e3 =  value.fb_RND;
 
   //console.log(e1 + ' - '  + e3);
- $$('#top6').append(
-     '<div class="cls_top6 chip bg-white">' +
+ $$('#top_kings').append(
+     '<div class="cls_top_kings chip bg-white">' +
      '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
      '<div class="chip-label color-black">'+ e1 +'</div>' +
      '</div>'
@@ -257,7 +254,7 @@ var rptChips_count2 = 0;
 
 }
 
-function getScores() {
+function getScores_delme() {
   //SET FREQUENCY
   //PUB TO REPORT VIEWS
   $$.getJSON('https://project-5844362817932994168.firebaseio.com/scores/users.json?orderBy="fb_RND_t"&limitToLast=20',function(scores){
@@ -274,7 +271,7 @@ function getScores() {
           e1 = value.fb_Name;
         //   e2 = value.fb_Team;
           e3 =  value.fb_RND_t;
-            //console.log(e1 + ' - '  + e3);
+
            $$('#ui_report30_div').append(
                '<div class="cls_rpt30 chip bg-white">' +
                '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +

@@ -132,57 +132,12 @@ var filter2 = _.takeRight(filter1, 12);
 var y2 = _.orderBy(filter2, 'rnd', 'desc');
 var a7 = y2[0].rnd;var a8 = y2[0].spd;var a9 = y2[0].cad;var a10 = y2[0].hr;
 var a11 = y2[0].date;var a12 = y2[0].time;
-
-//console.log('Past Hour:  ' + JSON.stringify(y2));
-//HTML MODAL, PAST 5 RND
-// strLast5 =
-//   '<div card style="font-weight:bold">' +
-//   Math.round(y2[0].rnd) + '     |  LAST RND 1<br>' +
-//   Math.round(y2[1].rnd) + '     |  LAST RND 2<br>' +
-//   Math.round(y2[2].rnd) + '     |  LAST RND 3<br>' +
-//   Math.round(y2[3].rnd) + '     |  LAST RND 4<br>' +
-//   Math.round(y2[4].rnd) + '     |  LAST RND 5</div> '
-//   ;
-
-//DOESN'T WORK, NO VAL FOR y2[]
-// if(y2[4].rnd) {
-// strLast5 =
-//   '<div card style="font-weight:bold">' +
-//   Math.round(y2[0].rnd) + '     |  LAST RND 1<br>' +
-//   Math.round(y2[1].rnd) + '     |  LAST RND 2<br>' +
-//   Math.round(y2[2].rnd) + '     |  LAST RND 3<br>' +
-//   Math.round(y2[3].rnd) + '     |  LAST RND 4<br>' +
-//   Math.round(y2[4].rnd) + '     |  LAST RND 5</div> '
-//   ;
-//
-//     setTimeout(function() {
-//       myApp.modal({title: strLast5});
-//     }, 25000);
-//
-//     setTimeout(function() {
-//       myApp.closeModal();
-//     }, 30000);
-//
-// }
-
-
-  // if (count === 250 || count === 130) {
-  //   myApp.modal({title: strLast5});
-  //   setTimeout(function() {
-  //     myApp.closeModal();
-  //   }, 5000);
-  // }
-
-
 //LIST OF PAST 5
 var filter3 = _.takeRight(filter1, 5);
-//console.log('Past 5:  ' + JSON.stringify(filter3));
-//CREATE ALERT FOR THIS PAST 5
 
 
 //REMOVE ALL AT SCORES AND LOCAL STORAGE
 populate_last_rnd_bubbles();
-
 setScores(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12);
 }
 
@@ -248,6 +203,13 @@ $$('#start_btn').on('click', function (e) {
 
     tim.timStartTime = _.now();
 
+    if ( storedData === undefined) {
+      //console.log('Yes, StoredData is undefined');
+       $$(this).show();
+       myCenterAlert('Enter a Name in User Settings');
+    }
+
+
     tim.timName = storedData.name;
     tim.timTeam = storedData.team;
     tim.timGroup = storedData.group;
@@ -295,30 +257,17 @@ $$('#start_btn').on('click', function (e) {
 
 // ********************
 //NEW ALL DATA FUNCTION
-            var remdr15 = count % 13;
-            if (remdr15 === 0) {
-                getScores();
-                //allData();
-            }
+            // var remdr15 = count % 13;
+            // if (remdr15 === 0) {
+            //     getScores();
+            // }
 
-            if (count === 298) {
-              //console.log('populate_last_rnd_bubbles');
-            //   tim.timATRoundScore = Number(localStorage.getItem("atbscore"));
-            //   tim.timATSpeedScore = Number(localStorage.getItem("atbspeed"));
-            //   tim.timATCadenceScore = Number(localStorage.getItem("atbcadence"));
-            //   tim.timATHeartrateScore = Number(localStorage.getItem("atbheartrate"));
-            //   tim.timATRoundScoreDate = Number(localStorage.getItem("atbfulldate"));
-            //   tim.timATRoundScoreTime = Number(localStorage.getItem("atbfulltime"));
-                // populate_last_rnd_bubbles();
-                //allData();
-                //START OF NEW ROUND
-            }
 
-            if (count === 295) {
+            if (count === 297) {
              rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             }
 
-            if (count === 290) {
+            if (count === 293) {
              round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             }
 
@@ -327,106 +276,6 @@ $$('#start_btn').on('click', function (e) {
             }
 
 
-
-            // if (count === 287) {
-
-            //   if (Number(localStorage.getItem("atbscore")) <= tim.timTodayBestRoundScore) {
-            //       localStorage.setItem("atbscore" , tim.timTodayBestRoundScore);
-            //       localStorage.setItem("atbfulldate" , tim.timTodayBestRoundScoreDate);
-            //       localStorage.setItem("atbfulltime" , tim.timTodayBestRoundScoreTime);
-            //       tim.timATRoundScore = tim.timTodayBestRoundScore;
-            //       tim.timATRoundScoreDate = pubFullDate;
-            //       tim.timATRoundScoreTime = pubFullTime;
-            //       //myCenterAlert('New Personal Best Round:  ' + tim.timATRoundScore, 2000);
-            //   }
-            //   if (Number(localStorage.getItem("atbspeed")) <= tim.timTodayBestSPD) {
-            //     localStorage.setItem("atbspeed" , tim.timTodayBestSPD);
-            //       tim.timATSpeedScore = tim.timTodayBestSPD;
-            //   }
-            //   if (Number(localStorage.getItem("atbcadence")) <= tim.timTodayBestCAD) {
-            //     localStorage.setItem("atbcadence" , tim.timTodayBestCAD);
-            //       tim.timATCadenceScore = tim.timTodayBestCAD;
-            //   }
-            //   if (Number(localStorage.getItem("atbheartrate")) <= tim.timTodayBestHR) {
-            //     localStorage.setItem("atbheartrate" , tim.timTodayBestHR);
-            //       tim.timATHeartrateScore = tim.timTodayBestHR;
-            //   }
-
-            //   tim.timATRoundScore = Number(localStorage.getItem("atbscore"));
-            //   tim.timATSpeedScore = Number(localStorage.getItem("atbspeed"));
-            //   tim.timATCadenceScore = Number(localStorage.getItem("atbcadence"));
-            //   tim.timATHeartrateScore = Number(localStorage.getItem("atbheartrate"));
-            //   tim.timATRoundScoreDate = Number(localStorage.getItem("atbfulldate"));
-            //   tim.timATRoundScoreTime = Number(localStorage.getItem("atbfulltime"));
-
-            //   //ui_report20();
-            // }
-
-
-
-            // if (count === 290) {
-            //     if (tim.timLastRND >= tim.timTodayBestRoundScore) {
-            //         tim.timTodayBestRoundScore = tim.timLastRND;
-            //         tim.timTodayBestRoundScoreDate = pubFullDate;
-            //          tim.timTodayBestRoundScoreTime = pubFullTime;
-            //         // var stringChip = null;
-            //         // $('.best_round_chip').each(function (index, obj) {
-            //         //     stringChip += $(this).text("MY BEST TODAY:   " + tim.timTodayBestRoundScore);
-            //         // });
-            //     }
-            //     if (tim.timLastSPD >= tim.timTodayBestSPD) {
-            //         tim.timTodayBestSPD = tim.timLastSPD;
-            //     }
-
-            //     if (tim.timLastHR >= tim.timTodayBestHR) {
-            //         tim.timTodayBestHR = tim.timLastHR;
-            //     }
-            //     if (tim.timLastCAD >= tim.timTodayBestCAD) {
-            //         tim.timTodayBestCAD = tim.timLastCAD;
-            //     }
-                //ui_report10();
-            // }
-
-
-
-            // if (count === 285) {
-            //   var str_mod = '<div card style="font-weight:bold">' +
-            //   Math.round(tim.timLastRND) + '     |  LAST RND<br>' +
-            //   Math.round(tim.timLastSPD) + '     |  LAST SPD<br>' +
-            //   Math.round(tim.timLastCAD) + '     |  LAST CAD<br>' +
-            //   Math.round(tim.timLastHR)  + '     |  LAST HR</div>'
-            //   ;
-            //   myApp.modal({title: str_mod});
-            //   setTimeout(function() {
-            //     myApp.closeModal();
-            //   }, 5000);
-            // }
-            //     myCenterAlert('Last Round Score: ' + tim.timLastRND, 2000);
-            // }
-            //             if (count === 283) {
-            //     myCenterAlert('Last Round Speed: ' + tim.timLastSPD, 2000);
-            // }
-            //             if (count === 281) {
-            //     myCenterAlert('Last Round Cadence: ' + tim.timLastCAD, 2000);
-            // }
-            //             if (count === 279) {
-            //     myCenterAlert('Last Round HR: ' + tim.timLastHR, 2000);
-            //}
-
-
-            //NOT USED YET
-            // if (count === 250) {
-            //   // console.log('setScoreFB');
-            //   //   setScoreFB();
-            //     //score/users/' + tim.timName
-            //     //not used
-            //     //End of round update to FB
-            //     //Can also be used for rt-share is on
-            // }
-
-            // if (count === 220 || count === 110) {
-            //   myCenterAlert(announcement1, 5000);
-            // }
 
             if (count === 239) {
                 myCenterAlert('4 Minutes Remain', 1500);
@@ -448,9 +297,6 @@ $$('#start_btn').on('click', function (e) {
             if (count === 30) {
                 myCenterAlert('30 Seconds Remain', 1000);
             }
-            // if (count === 20) {
-            //     myCenterAlert('20 Seconds Remain', 1000);
-            // }
 
             if (count === 5) {
                 myCenterAlert('5 Seconds Remain', 1000);
@@ -476,8 +322,6 @@ $$('#start_btn').on('click', function (e) {
                 //****ALL POST ROUND PROCESSING
                 rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
                 //****
-
-
                 myCenterAlert('Round Complete', 1000);
 
             }
@@ -499,12 +343,6 @@ $$('#start_btn').on('click', function (e) {
             //TODO - SET ALL VALUES TO ZERO AND UPDATE FB
             //TODO - CREATE SUMMARY
         }
-
-        // $$('#stop_btn').on('click', function (e) {
-        //     $$('#start_btn').css('color', 'white').removeAttr("disabled");
-        //     $$('#stop_btn').css('color', 'red').attr("disabled", true);
-        //     myStopFunction();
-        // });
 
     }
     countdown();
