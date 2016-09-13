@@ -35,17 +35,17 @@ function round_post(r1, r2, r3, r4) {
 
 
 function get_round_data() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1; //January is 0!
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-      dd = '0' + dd;
-  }
-  if (mm < 10) {
-      mm = '0' + mm;
-  }
-  var pubFullDate = yyyy + mm + dd;
+  // var today = new Date();
+  // var dd = today.getDate();
+  // var mm = today.getMonth() + 1; //January is 0!
+  // var yyyy = today.getFullYear();
+  // if (dd < 10) {
+  //     dd = '0' + dd;
+  // }
+  // if (mm < 10) {
+  //     mm = '0' + mm;
+  // }
+  // var pubFullDate = yyyy + mm + dd;
 
   $$('.cls_top6').remove();
 
@@ -59,7 +59,7 @@ function get_round_data() {
 
     _.forEach(a2, function(value, key) {
 
-myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
+//myCenterAlertOK('NAME:  ' + value.fb_timName + ' | RND:   ' + value.fb_RND + ' | SPD:  ' + value.fb_SPD + ' | HR:  ' + value.fb_HR);
 
 e1 = value.fb_timName;
 e3 =  value.fb_RND;
@@ -71,6 +71,15 @@ e3 =  value.fb_RND;
      '<div class="chip-label color-black">'+ e1 +'</div>' +
      '</div>'
  );
+
+ $$('#front_page').append(
+     '<div class="chip bg-white">' +
+     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+     '<div class="chip-label color-black">'+ e1 +'</div>' +
+     '</div>'
+ );
+
+
    }); //END FOR EACH
    $$('#my_last_rnd').html(
        '<div class="cls_top6 chip bg-white">' +
@@ -132,7 +141,7 @@ function get_shop_pages_popup(bs_name) {
 }
 
 //HOMEPAGE CHIPS
-function home_page_chips() {
+function home_page_chips_delme() {
     $$.getJSON('https://project-5844362817932994168.firebaseio.com/scores/users.json?orderBy="fb_RND_t"&limitToLast=10',function(scores){
     var a = _.values(scores);
     //console.log('a:  ' + JSON.stringify(a));

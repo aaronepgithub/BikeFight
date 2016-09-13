@@ -71,6 +71,15 @@ e3 =  value.fb_RND;
      '<div class="chip-label color-black">'+ e1 +'</div>' +
      '</div>'
  );
+
+ $$('#front_page').append(
+     '<div class="chip bg-white">' +
+     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+     '<div class="chip-label color-black">'+ e1 +'</div>' +
+     '</div>'
+ );
+
+
    }); //END FOR EACH
    $$('#my_last_rnd').html(
        '<div class="cls_top6 chip bg-white">' +
@@ -132,7 +141,7 @@ function get_shop_pages_popup(bs_name) {
 }
 
 //HOMEPAGE CHIPS
-function home_page_chips() {
+function home_page_chips_delme() {
     $$.getJSON('https://project-5844362817932994168.firebaseio.com/scores/users.json?orderBy="fb_RND_t"&limitToLast=10',function(scores){
     var a = _.values(scores);
     //console.log('a:  ' + JSON.stringify(a));

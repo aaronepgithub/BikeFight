@@ -75,15 +75,7 @@
     "cordova-plugin-inappbrowser": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-inappbrowser"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-tts": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-tts"
+            "id": "cordova-plugin-inappbrowser@1.4.0"
         },
         "is_top_level": true,
         "variables": {}

@@ -79,7 +79,8 @@ function startup() {
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
     tim.timName = storedData.name;
     console.log(tim.timName);
-    home_page_chips();
+    get_round_data(); 
+    //home_page_chips();
 //     if (isNaN(storedData)) {
 //       //console.log('undefined');
 //       storedData = myApp.formStoreData('my-form', {
@@ -94,7 +95,7 @@ function startup() {
 
 $$('#id_world_champs').on('click', function() {
   console.log('id_world_champs');
-  home_page_chips();
+  //home_page_chips();
 });
 
 $$('.press_plus').on('click', function () {
@@ -187,12 +188,12 @@ function update_settings_onstart() {
 $$(document).on('deviceready', function () {
 
     console.log('Device is ready!');
-     TTS
-        .speak('hello, Kazumi!', function () {
-            console.log('success');
-        }, function (reason) {
-            console.log(reason);
-        });
+    //  TTS
+    //     .speak('hello, Kazumi!', function () {
+    //         console.log('success');
+    //     }, function (reason) {
+    //         console.log(reason);
+    //     });
 
     startup();
 
@@ -281,11 +282,11 @@ $$(document).on('deviceready', function () {
 
     $$('#header_btn1').on('click', function (e) {
         //console.log('clicked hdr1');
-        mainView.router.loadPage("#page5")
+        mainView.router.loadPage("#page5");
     });
         $$('#header_btn2').on('click', function (e) {
         //console.log('clicked hdr2');
-        mainView.router.loadPage("#page10")
+        mainView.router.loadPage("#page10");
     });
 
     $$('#msg_Submit').on('click', function (e) {
