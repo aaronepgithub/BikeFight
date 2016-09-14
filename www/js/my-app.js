@@ -187,12 +187,13 @@ function update_settings_onstart() {
 $$(document).on('deviceready', function () {
 
     console.log('Device is ready!');
-    //  TTS
-    //     .speak('hello, Kazumi!', function () {
-    //         console.log('success');
-    //     }, function (reason) {
-    //         console.log(reason);
-    //     });
+
+     TTS
+        .speak('hello, Kazumi!', function () {
+            console.log('success');
+        }, function (reason) {
+            console.log(reason);
+        });
 
     startup();
 
