@@ -21,14 +21,14 @@ $$('#scanHR').on('click', function (e) {
     $$('.class_ble_results_li_hr').remove();
     console.log('clicked scanHR');
     appII.allScanII();
-    myCenterAlert('Scanning for HR', 3000);
+    myCenterAlert('Scanning for HR', 5000);
     });
 
     $$('#scanCSC').on('click', function (e) {
       $$('.class_ble_results_li_csc').remove();
     console.log('clicked scanCSC');
     appII.allScanCSC();
-    myCenterAlert('Scanning for Speed/Cadence', 4000);
+    myCenterAlert('Scanning for Speed/Cadence', 5000);
     });
 
 
@@ -156,7 +156,7 @@ var appII = {
 
 
         ble.startScan(['180d'], onScanII, scanFailureII);
-        setTimeout(ble.stopScan, 3000,
+        setTimeout(ble.stopScan, 5000,
         function() { console.log("Scan complete"); myCenterAlert('Complete', 500); },
         function() { console.log("stopScan failed"); }
             );
@@ -169,12 +169,11 @@ var appII = {
     connectHR: function (thisItemHR) {
         console.log('thisItemHR:  ' + thisItemHR);
         console.log('Attempting Connect HR');
-        myCenterAlert('Connecting...', 3000);
+        myCenterAlert('Connecting HR Sensor', 1000);
         ble.connect(thisItemHR, onConnectHR, onDisconnectHR);
 
         function onConnectHR() {
             console.log('HR onConnect');
-
 
             btService = {
                 serviceHR: '180d',
@@ -185,6 +184,7 @@ var appII = {
                 measurementPOW: '2A63'
             };
             console.log('About to start HR Notification');
+            myCenterAlert('HR Sensor Connected.  Connect a Speed and Cadence Sensor or Press the Back Button Followed by the Start Button', 2000);
             ble.startNotification(thisItemHR, btService.serviceHR, btService.measurementHR, appII.onDataHR, appII.onErrorHR);
         }
 
@@ -196,7 +196,8 @@ var appII = {
             //   $('.tab-btn-h').each(function(index, obj) {
             //       string += $(this).text('0');
             //   });
-            myCenterAlert('HR Sensor has Disconnected', 10000);
+            myCenterAlert('HR Sensor has Disconnected', 1000);
+            mainView.router.loadPage("#bluetooth");
         }
     },
 
@@ -208,7 +209,7 @@ var appII = {
     connectCSC: function (thisItem) {
         console.log('thisItem:  ' + thisItem);
         console.log('CSC Attempting Connect');
-        myCenterAlert('Connecting...', 15000);
+        myCenterAlert('Connecting Speed/Cadence Sensor', 1000);
         ble.connect(thisItem, onConnectCSC, onDisconnectCSC);
 
         function onConnectCSC() {
@@ -222,6 +223,8 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
+            console.log('About to start CSC Notification');
+            myCenterAlert('Speed/Cadence Sensor Connected.  Connect a HR Sensor or Press the Back Button Followed by the Start Button', 2000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataCSC, appII.onErrorCSC);
         }
 
@@ -240,7 +243,8 @@ var appII = {
                 stringCad += $(this).text(tim.timCadence);
             });
 
-            myCenterAlert('CSC Sensor has Disconnected', 25000);
+            myCenterAlert('Speed/Cadence Sensor has Disconnected', 1000);
+            mainView.router.loadPage("#bluetooth");
         }
     },
 
@@ -327,7 +331,7 @@ var appII = {
         }
 
         ble.startScan(['1816'], onScanCSC, scanFailureCSC);
-        setTimeout(ble.stopScan, 4000,
+        setTimeout(ble.stopScan, 5000,
         function() { console.log("Scan complete"); myCenterAlert('Complete', 500); },
         function() { console.log("stopScan failed"); }
             );
@@ -340,7 +344,7 @@ var appII = {
     connectWAS: function (thisItem) {
         console.log('thisItem:  ' + thisItem);
         console.log('Attempting Connect WAS');
-        myCenterAlert('Connecting...', 10000);
+        myCenterAlert('Connecting Wahoo Speed Sensor', 1500);
         ble.connect(thisItem, onConnectWAS, onDisconnectWAS);
 
         function onConnectWAS() {
@@ -353,19 +357,21 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
+            myCenterAlert('Speed Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAS, appII.onErrorWAS);
         }
 
         function onDisconnectWAS() {
             console.log('onDisconnect WAS');
-            myCenterAlert('Wahoo Speed Sensor has Disconnected', 15000);
+            myCenterAlert('Wahoo Speed Sensor has Disconnected', 1000);
+            mainView.router.loadPage("#bluetooth");
         }
     },
 
     connectWAC: function (thisItem) {
         console.log('thisItem:  ' + thisItem);
         console.log('Attempting Connect WAC');
-        myCenterAlert('Connecting...', 10000);
+        myCenterAlert('Connecting Wahoo Cadence Sensor', 1500);
         ble.connect(thisItem, onConnectWAC, onDisconnectWAC);
 
         function onConnectWAC() {
@@ -378,12 +384,14 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
+            myCenterAlert('Cadence Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAC, appII.onErrorWAC);
         }
 
         function onDisconnectWAC() {
             console.log('onDisconnect WAC');
-            myCenterAlert('Wahoo Cadence Sensor has Disconnected', 15000);
+            myCenterAlert('Wahoo Cadence Sensor has Disconnected', 1000);
+            mainView.router.loadPage("#bluetooth");
         }
     },
 

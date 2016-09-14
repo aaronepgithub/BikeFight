@@ -1,5 +1,5 @@
 var database = firebase.database();
-//var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
+var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 
 //DATE FUNCTION
 var today = new Date();
@@ -23,6 +23,7 @@ var pubYear = yyyy;
 function round_post(r1, r2, r3, r4) {
   firebase.database().ref('rounds/' + pubFullDate + '/').push({
       fb_timName: tim.timName,
+      fb_timGroup: tim.timGroup,
       fb_RND: r1,
       fb_timTeam: tim.timTeam,
       fb_Date:  pubFullDate,
@@ -41,7 +42,13 @@ function get_top_fighters() {
     var a = _.values(data);
     var a1 = _.orderBy(a, 'fb_RND', 'desc');
     var a2 = _.take(a1, 30);
-    console.log('Round Data:  ' + JSON.stringify(a2));
+    //console.log('Round Data:  ' + JSON.stringify(a2));
+    top_king_name = a1[0].fb_timName;
+    top_king_team = a1[0].fb_timTeam;
+    top_king_rnd = a1[0].fb_RND;
+    top_king_spd = a1[0].fb_SPD;
+    top_king_cad = a1[0].fb_CAD;
+    top_king_hr = a1[0].fb_HR;
 
 $$('.cls_champs_page').remove();
     // $$('.cls_top_kings').remove();
@@ -135,10 +142,6 @@ e3 =  value.fb_RND;
 
 function get_round_data() {
 
-  // $$('.cls_top_kings').remove();
-  //   $$('.cls_champs_page').remove();
-
-
   $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
     // console.log('Round Data:  ' + JSON.stringify(a));
     var a = _.values(data);
@@ -160,10 +163,8 @@ function get_round_data() {
       $$('.cls_front_page').remove();
 
     _.forEach(a2, function(value, key) {
-
 e1 = value.fb_timName;
 e3 =  value.fb_RND;
-
   //console.log(e1 + ' - '  + e3);
  $$('#top_kings').append(
      '<div class="cls_top_kings chip bg-white">' +
@@ -178,13 +179,53 @@ e3 =  value.fb_RND;
      '<div class="chip-label color-black">'+ e1 +'</div>' +
      '</div>'
  );
+   }); //END FOR EACH
+  });
+}
 
+//START GROUP LEADERBOARD
+function get_round_data_group() {
+
+  $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/'+pubFullDate+'.json',function(data){
+    // console.log('Round Data:  ' + JSON.stringify(a));
+    var a = _.values(data);
+    var a0 = _.filter(a, { 'fb_timGroup': tim.timGroup});
+    var a1 = _.orderBy(a0, 'fb_RND', 'desc');
+    var a2 = _.take(a1, 10);
+    console.log('Group Round Data:  ' + JSON.stringify(a2));
+
+    $$('#top_king_group').text(a1[0].fb_timName);
+    // $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE KING) ');
+    // top_king_name = a1[0].fb_timName;
+    // top_king_team = a1[0].fb_timTeam;
+    // top_king_rnd = a1[0].fb_RND;
+    // top_king_spd = a1[0].fb_SPD;
+    // top_king_cad = a1[0].fb_CAD;
+    // top_king_hr = a1[0].fb_HR;
+    // ui_report200();
+
+    $$('.cls_top_kings_group').remove();
+
+
+    _.forEach(a2, function(value, key) {
+e1 = value.fb_timName;
+e3 =  value.fb_RND;
+  //console.log(e1 + ' - '  + e3);
+ $$('#top_kings_group').append(
+     '<div class="cls_top_kings chip bg-white">' +
+     '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
+     '<div class="chip-label color-black">'+ e1 +'</div>' +
+     '</div>'
+ );
 
 
    }); //END FOR EACH
-
   });
 }
+//END GROUP LEADERBOARD
+
+
+
 
 //INSERT SHOPPAGE INTO DIV
 function get_shop_pages() {

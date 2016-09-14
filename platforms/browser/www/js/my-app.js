@@ -279,14 +279,14 @@ $$(document).on('deviceready', function () {
     });
 
 
-    $$('#header_btn1').on('click', function (e) {
-        //console.log('clicked hdr1');
-        mainView.router.loadPage("#page5");
-    });
-        $$('#header_btn2').on('click', function (e) {
-        //console.log('clicked hdr2');
-        mainView.router.loadPage("#page10");
-    });
+    // $$('#header_btn1').on('click', function (e) {
+    //     //console.log('clicked hdr1');
+    //     mainView.router.loadPage("#page5");
+    // });
+    //     $$('#header_btn2').on('click', function (e) {
+    //     //console.log('clicked hdr2');
+    //     mainView.router.loadPage("#page10");
+    // });
 
     $$('#msg_Submit').on('click', function (e) {
         console.log('Sending Message');

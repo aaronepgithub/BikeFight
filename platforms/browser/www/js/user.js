@@ -276,34 +276,69 @@ $$('#start_btn').on('click', function (e) {
             //  rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             // }
 
-            if (count === 290) {
+            if (count === 298) {
              round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
             }
 
-            if (count === 280) {
+            if (count === 295) {
+                myCenterAlert('A New Round Begins.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 5000);
+            }
+
+            if (count === 290) {
             get_round_data();
             }
 
+            if (count === 285) {
+            get_round_data_group();
+            }
 
-            if (count === 239) {
+
+            if (count === 280) {
+            get_top_fighters();
+            }
+
+
+            if (count === 245) {
                 get_top_fighters();
-                myCenterAlert('4 Minutes Remain', 1500);
+                //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
+                //myCenterAlert('4 Minutes Remain', 500);
             }
-            if (count === 179) {
+            if (count === 240) {
+                myCenterAlert('4 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 5000);
+            }
+
+
+            if (count === 185) {
               get_round_data();
-                myCenterAlert('3 Minutes Remain', 1500);
             }
-            if (count === 119) {
-              get_top_fighters();
-                myCenterAlert('2 Minutes Remain', 1500);
+            if (count === 180) {
+                myCenterAlert('3 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 5000);
             }
-            if (count === 59) {
-              get_round_data();
-                myCenterAlert('Final Minute', 1500);
+
+            if (count === 165) {
+            get_round_data_group();
             }
 
             if (count === 150) {
                 myCenterAlert('Halfway', 1000);
+            }
+
+            if (count === 125) {
+              get_top_fighters();
+            }
+            if (count === 120) {
+                myCenterAlert('2 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 5000);
+            }
+
+            if (count === 65) {
+              get_round_data();
+            }
+            if (count === 60) {
+                myCenterAlert('Final Minute.  The King is ' + top_king_name + ' from Team' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 5000);
+            }
+
+            if (count === 45) {
+            get_round_data_group();
             }
 
             if (count === 30) {
