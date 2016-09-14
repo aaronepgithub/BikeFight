@@ -198,24 +198,6 @@ $$(document).on('deviceready', function () {
     startup();
 
 
-//GET RID OF THIS
-//**********************************
-    // if (localStorage.atbscore === undefined || localStorage.atbscore.length < 2 || localStorage.atbscore === 'undefined' || localStorage.atbscore === 'none') {
-    //     localStorage.setItem("atbscore", "0");
-    // }
-    // if (localStorage.atbfulldate === undefined || localStorage.atbfulldate.length < 2 || localStorage.atbfulldate === 'undefined' || localStorage.atbfulldate === 'none') {
-    //     localStorage.setItem("atbfulldate" , "0");
-    // }
-    // if (localStorage.atbheartrate === undefined || localStorage.atbheartrate.length < 2 || localStorage.atbheartrate === 'undefined' || localStorage.atbheartrate === 'none') {
-    //     localStorage.setItem("atbheartrate" , "0");
-    // }
-    // if (localStorage.atbcadence === undefined || localStorage.atbcadence.length < 2 || localStorage.atbcadence === 'undefined' || localStorage.atbcadence === 'none') {
-    //     localStorage.setItem("atbcadence" , "0");
-    // }
-    // if (localStorage.atbspeed === undefined || localStorage.atbspeed.length < 2 || localStorage.atbspeed === 'undefined' || localStorage.atbspeed === 'none') {
-    //     localStorage.setItem("atbspeed" , "0");
-    // }
-//**********************************
 
     $$('#settings_link').on('click', function () {
         console.log('clicked settings ');

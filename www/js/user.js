@@ -281,7 +281,16 @@ $$('#start_btn').on('click', function (e) {
             }
 
             if (count === 295) {
+              var spkr1 = 'A New Round Begins.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .';
                 myCenterAlert('A New Round Begins.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+
+
+                TTS
+                   .speak(spkr1, function () {
+                       console.log('success');
+                   }, function (reason) {
+                       console.log(reason);
+                   });
             }
 
             if (count === 290) {
@@ -304,7 +313,16 @@ $$('#start_btn').on('click', function (e) {
                 //myCenterAlert('4 Minutes Remain', 500);
             }
             if (count === 240) {
+              var spkr4 = '4 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .';
                 myCenterAlert('4 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+
+                TTS
+                   .speak(spkr4, function () {
+                       console.log('success');
+                   }, function (reason) {
+                       console.log(reason);
+                   });
+
             }
 
 
