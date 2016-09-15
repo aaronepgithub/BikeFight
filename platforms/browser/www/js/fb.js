@@ -21,6 +21,9 @@ var pubYear = yyyy;
 
 
 function round_post(r1, r2, r3, r4) {
+
+if (r1 !== 0) {
+
   firebase.database().ref('rounds/' + pubFullDate + '/').push({
       fb_timName: tim.timName,
       fb_timGroup: tim.timGroup,
@@ -32,6 +35,10 @@ function round_post(r1, r2, r3, r4) {
       fb_CAD: r3,
       fb_HR: r4
   });
+
+  }
+
+
 }
 
 
@@ -205,6 +212,7 @@ function get_round_data_group() {
     // ui_report200();
 
     $$('.cls_top_kings_group').remove();
+    $$('#riding_group_title').text('KING OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
 
 
     _.forEach(a2, function(value, key) {
@@ -212,7 +220,7 @@ e1 = value.fb_timName;
 e3 =  value.fb_RND;
   //console.log(e1 + ' - '  + e3);
  $$('#top_kings_group').append(
-     '<div class="cls_top_kings chip bg-white">' +
+     '<div class="cls_top_kings_group chip bg-white">' +
      '<div class="chip-media bg-red">'+ Math.round(e3) +'</div>' +
      '<div class="chip-label color-black">'+ e1 +'</div>' +
      '</div>'

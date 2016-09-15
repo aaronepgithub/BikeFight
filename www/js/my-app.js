@@ -76,36 +76,20 @@ function startup() {
     console.log('startup function');
     var storedData = myApp.formGetData('my-form');
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
-    //tim.timName = storedData.name;
     console.log(tim.timName);
     get_round_data();
-    //home_page_chips();
-//     if (isNaN(storedData)) {
-//       //console.log('undefined');
-//       storedData = myApp.formStoreData('my-form', {
-//           'name': 'Tim',
-//           'team': 'Solo',
-//           'group': 'Group',
-//           'style': 'Touring',
-//           'tire': '700X25'
-//         });
-// console.log('Startup Stored Data2:  ' + JSON.stringify(storedData));
-//     }
+     ui_report10(0, 0, 0, 0);
+      ui_report20(0, 0, 0, 0);
 
-// $$('#id_world_champs').on('click', function() {
-//   console.log('id_world_champs');
-//   //home_page_chips();
-// });
-
-$$('.press_plus').on('click', function () {
-  var storedData = myApp.formGetData('my-form');
-    tim.timName = storedData.name;
-    tim.timTeam = storedData.team;
-    tim.timGroup = storedData.group;
-    tim.timStyle  = storedData.style;
-    tim.timTire = storedData.tire;
-    console.log('Speed Dial Play - Update timObject');
-});
+    $$('.press_plus').on('click', function () {
+      var storedData = myApp.formGetData('my-form');
+        tim.timName = storedData.name;
+        tim.timTeam = storedData.team;
+        tim.timGroup = storedData.group;
+        tim.timStyle  = storedData.style;
+        tim.timTire = storedData.tire;
+        console.log('Speed Dial Play - Update timObject');
+    });
 
 
     $$('.press_play').on('click', function () {
@@ -113,45 +97,13 @@ $$('.press_plus').on('click', function () {
       $$('#group').val(tim.timGroup);
       $$('#style').val(tim.timStyle);
       $$('#team').val(tim.timTeam);
-      // var storedData = myApp.formGetData('my-form');
-      //   tim.timName = storedData.name;
-      //   tim.timTeam = storedData.team;
-      //   tim.timGroup = storedData.group;
-      //   tim.timStyle  = storedData.style;
-      //   tim.timTire = storedData.tire;
-      //   console.log('Speed Dial Play - Update timObject');
     });
 
     $$('.press_envelope').on('click', function () {
     msg_Get_fb();
     msg_Get_fb_group();
   });
-
-//   $$('.press_people').on('click', function () {
-// getScores();
-// });
-
-
-
-    console.log('timObject:  ' + JSON.stringify(tim));
-    // $$('.center cls_bike_shop_name').text(tim.timTeam);
-
-
-
-
-    //$$('#frm_Username').val(localStorage.frm_Username);
-    // $$('#frm_Bikeshop_Name').val(localStorage.frm_Bikeshop_Name);
-    //$$('#frm_Name').val(localStorage.frm_Username);
-    // tim.timName = localStorage.frm_Username;
-    // tim.timTeam = localStorage.frm_Bikeshop_Name;
-    // $$('#name').text(tim.timName);
-    // console.log('tim.timName:  ' + tim.timName);
-    // console.log('tim.timTeam:  ' + tim.timTeam);
-    // console.log('tim.timTeam:  ' + tim.timTeam);
-
-
-
-
+    //console.log('timObject:  ' + JSON.stringify(tim));
 }
 
 function update_settings_onstart() {
@@ -164,84 +116,40 @@ function update_settings_onstart() {
   if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
   if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
 
-//   var inp = $$('#frm_Name').val();
-//   tim.timRealTimeShare = $$('#frm_RTShare').val();
-//   tim.timTeam = $$('#frm_Team').val();
-//   localStorage.frm_Riding_Type = $$('#frm_Riding_Type').val();
-// tim.timRidingType = $$('#frm_Riding_Type').val();
-//   timTire = $$('#frm_tireSize').val();
-//   if (tim.timTireSize === '700X23') { tim.timTireCircum = 2.10; }
-//   if (tim.timTireSize === '700X25') { tim.timTireCircum = 2.11; }
-//   if (tim.timTireSize === '700X28' || tim.timTireSize === '700X30') { tim.timTireCircum = 2.145; }
-//   if (tim.timTireSize === '700X32' || tim.timTireSize === '700X38') { tim.timTireCircum = 2.175; }
-//   if (tim.timTireSize === '700X40' || tim.timTireSize === '700X42' || tim.timTireSize === '700X44') { tim.timTireCircum = 2.22; }
-//   console.log('timRealTimeShare:  ' + tim.timRealTimeShare);
-//   console.log('tim.timName:  ' + tim.timName);
-//   console.log('localStorage.frm_Riding_Type:  ' + tim.timRidingType);
-//   $$('#name').text(tim.timName);
   updateUserDataTim();
   remove_FB_users();
 }
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function () {
-
     console.log('Device is ready!');
-
-     TTS
-        .speak('hello, Kazumi!', function () {
-            console.log('success');
-        }, function (reason) {
-            console.log(reason);
-        });
+    //  TTS
+    //     .speak('hello, Kazumi!', function () {
+    //         console.log('success');
+    //     }, function (reason) {
+    //         console.log(reason);
+    //     });
 
     startup();
-
-
 
     $$('#settings_link').on('click', function () {
         console.log('clicked settings ');
     });
 
-    $$('#messaging_link').on('click', function () {
-        console.log('clicked messaging_link ');
-        msg_Get_fb();
-        msg_Get_fb_group();
-    });
+    // $$('#messaging_link').on('click', function () {
+    //     console.log('clicked messaging_link ');
+    //     msg_Get_fb();
+    //     msg_Get_fb_group();
+    // });
 
 
     $$('#fb_clear').on('click', function (e) {
         console.log('clicked fb_clear ');
         remove_FB_users();
-        //NEED TO PUT THIS SOMEWHERE...
     });
 
     $$('#frm_Submit').on('click', function (e) {
         // console.log('clicked frm_Submit ');
-        // $$('#frm_Submit').text('UPDATE');
-        // var inp = $$('#frm_Name').val();
-        // tim.timRealTimeShare = $$('#frm_RTShare').val();
-        // tim.timTeam = $$('#frm_Team').val();
-        // localStorage.setItem("frm_Riding_Type", $$('#frm_Riding_Type').val());
-        //console.log('localStorage.frm_Riding_Type:  ' + localStorage.frm_Riding_Type);
-        //tim.timRidingType =  $$('#frm_Riding_Type').val();
-        //console.log('timRidingType:  ' + tim.timRidingType);
-        //tim.timTireSize = $$('#frm_tireSize').val();
-        // if (tim.timTireSize === '700X23') { tim.timTireCircum = 2.10; }
-        // if (tim.timTireSize === '700X25') { tim.timTireCircum = 2.11; }
-        // if (tim.timTireSize === '700X28' || tim.timTireSize === '700X30') { tim.timTireCircum = 2.145; }
-        // if (tim.timTireSize === '700X32' || tim.timTireSize === '700X38') { tim.timTireCircum = 2.175; }
-        // if (tim.timTireSize === '700X40' || tim.timTireSize === '700X42' || tim.timTireSize === '700X44') { tim.timTireCircum = 2.22; }
-        // console.log('timRealTimeShare:  ' + tim.timRealTimeShare);
-        // console.log('tim.timName:  ' + tim.timName);
-        // $$('#name').text(tim.timName);
-        // if (tim.timRealTimeShare === 'On') {
-        //     console.log('updateUserDataTim');
-        //     updateUserDataTim();
-        // }
-        // console.log('remove_FB_users');
-        // remove_FB_users();
-        // myCenterAlert('Record Updated', 300);
     });
 
     $$('#update').on('click', function (e) {
@@ -260,7 +168,6 @@ $$(document).on('deviceready', function () {
             myApp.hidePreloader();
         }, 5000);
     });
-
 
     // $$('#header_btn1').on('click', function (e) {
     //     //console.log('clicked hdr1');

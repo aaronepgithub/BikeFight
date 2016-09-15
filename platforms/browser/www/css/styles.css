@@ -66,6 +66,14 @@
   padding: 4px;
 }
 
+.smaller_content_padding {
+  padding: 2px;
+}
+
+.timer_btn_cls {
+  padding-top: 5px;
+}
+
 .text_right {
     text-align: right;
 }

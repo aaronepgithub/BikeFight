@@ -281,7 +281,28 @@ $$('#start_btn').on('click', function (e) {
             }
 
             if (count === 295) {
-                myCenterAlert('A New Round Begins.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+              var spkr0 = 'A New Round Begins.  ' +
+              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+              'The King has posted a score of ' + top_king_rnd + '. ' +
+              ' You have a current score of ' + tim.timAvgRND + ' .';
+
+            myApp.modal({
+           title:  '<div>A New Round Begins.<hr>  The King is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+           'The King has posted a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+         });
+         setTimeout(function () {
+             myApp.closeModal();
+             myCenterAlert('<hr>You have a current score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"' + tim.timAvgRND + '</span> .<hr>', 3000);
+         }, 10000);
+
+          TTS
+             .speak(spkr0, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
+
             }
 
             if (count === 290) {
@@ -304,15 +325,57 @@ $$('#start_btn').on('click', function (e) {
                 //myCenterAlert('4 Minutes Remain', 500);
             }
             if (count === 240) {
-                myCenterAlert('4 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+              var spkr4 = '4 Minutes Remain.  ' +
+              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+              'The King has posted a score of ' + top_king_rnd + '. ' +
+              ' You have a current score of ' + tim.timAvgRND + ' .';
+
+            myApp.modal({
+           title:  '<div>4 Minutes Remain.<hr>  The King is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+           'The King has posted a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+         });
+         setTimeout(function () {
+             myApp.closeModal();
+             myCenterAlert('<hr>You have a current score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"' + tim.timAvgRND + '</span> .<hr>', 3000);
+         }, 10000);
+
+          TTS
+             .speak(spkr4, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
+
             }
 
 
             if (count === 185) {
               get_round_data();
             }
+
             if (count === 180) {
-                myCenterAlert('3 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+              var spkr3 = '3 Minutes Remain.  ' +
+              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+              'The King has posted a score of ' + top_king_rnd + '. ' +
+              ' You have a current score of ' + tim.timAvgRND + ' .';
+
+            myApp.modal({
+           title:  '<div>3 Minutes Remain.<hr>  The King is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+           'The King has posted a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+         });
+         setTimeout(function () {
+             myApp.closeModal();
+             myCenterAlert('<hr>You have a current score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"' + tim.timAvgRND + '</span> .<hr>', 3000);
+         }, 10000);
+
+          TTS
+             .speak(spkr3, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
             }
 
             if (count === 165) {
@@ -327,14 +390,58 @@ $$('#start_btn').on('click', function (e) {
               get_top_fighters();
             }
             if (count === 120) {
-                myCenterAlert('2 Minutes Remain.  The King is ' + top_king_name + ' from Team ' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+              var spkr2 = '2 Minutes Remain.  ' +
+              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+              'The King has posted a score of ' + top_king_rnd + '. ' +
+              ' You have a current score of ' + tim.timAvgRND + ' .';
+
+            myApp.modal({
+           title:  '<div>2 Minutes Remain.<hr>  The King is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+           'The King has posted a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+         });
+         setTimeout(function () {
+             myApp.closeModal();
+             myCenterAlert('<hr>You have a current score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"' + tim.timAvgRND + '</span> .<hr>', 3000);
+         }, 10000);
+
+          TTS
+             .speak(spkr2, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
+
+
             }
 
             if (count === 65) {
               get_round_data();
             }
+
+            
             if (count === 60) {
-                myCenterAlert('Final Minute.  The King is ' + top_king_name + ' from Team' + top_king_team + '.  The King has posted a score of ' + top_king_rnd + '.  You have a current score of ' + tim.timAvgRND + ' .', 10000);
+              var spkr1 = '1 Minute To Go.  ' +
+              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+              'The King has posted a score of ' + top_king_rnd + '. ' +
+              ' You have a current score of ' + tim.timAvgRND + ' .';
+
+            myApp.modal({
+            title:  '<div>1 Minute To Go.<hr>  The King is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+            '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+            'The King has posted a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+            });
+            setTimeout(function () {
+             myApp.closeModal();
+             myCenterAlert('<hr>You have a current score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"' + tim.timAvgRND + '</span> .<hr>', 3000);
+            }, 10000);
+
+            TTS
+             .speak(spkr1, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
             }
 
             if (count === 45) {

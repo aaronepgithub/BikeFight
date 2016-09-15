@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.aaronep.yowa5" version="5.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.aaronep.bikefight" version="5.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>BikeFight</name>
     <description>
-        Yowa5
+        BikeFight
     </description>
     <author email="yowa5@yowa.com" href="http://cordova.io">
         S.Onada
