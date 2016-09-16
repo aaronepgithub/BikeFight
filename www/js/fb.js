@@ -154,10 +154,10 @@ function get_round_data() {
     var a = _.values(data);
     var a1 = _.orderBy(a, 'fb_RND', 'desc');
     var a2 = _.take(a1, 10);
-    console.log('Round Data:  ' + JSON.stringify(a2));
+    //console.log('Round Data:  ' + JSON.stringify(a2));
 
     $$('#top_king').text(a1[0].fb_timName);
-    $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE KING) ');
+    $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
     top_king_name = a1[0].fb_timName;
     top_king_team = a1[0].fb_timTeam;
     top_king_rnd = a1[0].fb_RND;
@@ -199,7 +199,7 @@ function get_round_data_group() {
     var a0 = _.filter(a, { 'fb_timGroup': tim.timGroup});
     var a1 = _.orderBy(a0, 'fb_RND', 'desc');
     var a2 = _.take(a1, 10);
-    console.log('Group Round Data:  ' + JSON.stringify(a2));
+    //console.log('Group Round Data:  ' + JSON.stringify(a2));
 
     $$('#top_king_group').text(a1[0].fb_timName);
     // $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE KING) ');
@@ -212,7 +212,7 @@ function get_round_data_group() {
     // ui_report200();
 
     $$('.cls_top_kings_group').remove();
-    $$('#riding_group_title').text('KING OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
+    $$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
 
 
     _.forEach(a2, function(value, key) {
