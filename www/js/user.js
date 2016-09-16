@@ -275,11 +275,11 @@ $$('#start_btn').on('click', function (e) {
     });
 
       function someCallbackFunction () {
-      console.log('someCallbackFunction');
+      //console.log('someCallbackFunction');
       var current_time = timer.msToTime(timer.lap());
       var ct = Math.round(timer.lap()/1000);
       //$('#clock').val(ct);
-      console.log(ct);
+      //console.log(ct);
       newTimer(ct);
       publishAvg(ct);
       }
