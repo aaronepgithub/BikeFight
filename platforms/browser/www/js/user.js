@@ -156,7 +156,21 @@ populate_last_rnd_bubbles();
 setScores(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12);
 }
 
-function publishAvg() {
+
+
+// function populate_timer(timer_val) {
+//     var val1 = Math.round(timer_val / 50);
+//     var val2 = Math.round(7 - val1);
+//     var val3 = '.cls_timer_bubbles';
+//     populate_timer_bubbles(val1, val2, val3);
+// }
+
+function publishAvg(timer_val) {
+      var val1 = Math.round(timer_val / 50);
+      var val2 = Math.round(7 - val1);
+      var val3 = '.cls_timer_bubbles';
+      populate_timer_bubbles(val1, val2, val3);
+
 
     var sumHR = 0;
     var sumSPD = 0;
@@ -209,22 +223,20 @@ function calculate_duration() {
 
 
 var global_timer;
+
+
 $$('#start_btn').on('click', function (e) {
     $$(this).hide();
     $$("#start_btn").prop("disabled", true);
 
     var storedData = myApp.formGetData('my-form');
     console.log(JSON.stringify(storedData));
-
     tim.timStartTime = _.now();
 
     if ( storedData === undefined) {
-      //console.log('Yes, StoredData is undefined');
        $$(this).show();
        myCenterAlert('Enter a Name in User Settings');
     }
-
-
     tim.timName = storedData.name;
     tim.timTeam = storedData.team;
     tim.timGroup = storedData.group;
@@ -234,19 +246,54 @@ $$('#start_btn').on('click', function (e) {
     var mySwiper = $$('.swiper-container')[0].swiper;
     mySwiper.slideNext();
 
-    update_settings_onstart();
+    //update_settings_onstart();
 
-    function populate_timer(timer_val) {
-        var val1 = Math.round(timer_val / 50);
-        var val2 = Math.round(7 - val1);
-        var val3 = '.cls_timer_bubbles';
-        populate_timer_bubbles(val1, val2, val3);
-    }
+    // function populate_timer(timer_val) {
+    //     var val1 = Math.round(timer_val / 50);
+    //     var val2 = Math.round(7 - val1);
+    //     var val3 = '.cls_timer_bubbles';
+    //     populate_timer_bubbles(val1, val2, val3);
+    // }
 
-    function countdown() {
-        var count = cntdown;
-        var timerId = setInterval(function () {
-            count--;
+
+
+        update_settings_onstart();
+        timer.start(300000);
+
+
+
+  });
+  //END OF START BUTTON PRESS
+
+
+  //START TOCK
+      var timer = new Tock({
+      countdown: true,
+      interval: 1000,
+      callback: someCallbackFunction,
+      complete: someCompleteFunction
+    });
+
+      function someCallbackFunction () {
+      console.log('someCallbackFunction');
+      var current_time = timer.msToTime(timer.lap());
+      var ct = Math.round(timer.lap()/1000);
+      //$('#clock').val(ct);
+      console.log(ct);
+      newTimer(ct);
+      publishAvg(ct);
+      }
+      function someCompleteFunction () {
+        console.log('someCompleteFunction');
+        timer.start(300000);
+      }
+      //END TOCK
+
+
+
+
+    function newTimer(count) {
+
             var stringTimer = null;
             $('.timer_btn_cls').each(function (index, obj) {
                 stringTimer += $(this).text(count + ' SECONDS REMAIN');
@@ -254,7 +301,7 @@ $$('#start_btn').on('click', function (e) {
 
             global_timer = 300 - count;
             calculate_duration();
-            populate_timer(count);
+            //populate_timer(count);
 
             arrTimerHR.push(tim.timHR);
             arrTimerHR.shift();
@@ -270,17 +317,11 @@ $$('#start_btn').on('click', function (e) {
                 bubbleMaker();
             }
 
-// ********************
-//NEW ALL DATA FUNCTION
-            // var remdr15 = count % 13;
-            // if (remdr15 === 0) {
-            //     getScores();
-            // }
+            var remdr1 = count % 1;
+            if (remdr1 === 0) {
+                publishAvg();
+            }
 
-
-            // if (count === 297) {
-            //  rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-            // }
 
             if (count === 298) {
              round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
@@ -301,26 +342,25 @@ $$('#start_btn').on('click', function (e) {
              myApp.closeModal();
          }, 5000);
 
-          // TTS
-          //    .speak(spkr0, function () {
-          //        console.log('success');
-          //    }, function (reason) {
-          //        console.log(reason);
-          //    });
 
+         var storedData = myApp.formGetData('my-form');
+         if (storedData.style !== "NO") {
+           TTS
+             .speak({
+                 text: spkr0,
+                 locale: 'en-GB',
+                 rate: 1.5
+             }, function () {
+                 console.log('success');
+             }, function (reason) {
+                 console.log(reason);
+             });
 
-          TTS
-            .speak({
-                text: spkr0,
-                locale: 'en-GB',
-                rate: 1.5
-            }, function () {
-                console.log('success');
-            }, function (reason) {
-                console.log(reason);
-            });
+         }
+
 
             }
+            //END TTS
 
             if (count === 290) {
             get_round_data();
@@ -377,6 +417,8 @@ $$('#start_btn').on('click', function (e) {
             if (count === 125) {
               get_top_fighters();
             }
+
+
             if (count === 120) {
             myApp.modal({
            title:  '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
@@ -408,12 +450,6 @@ $$('#start_btn').on('click', function (e) {
              myApp.closeModal();
            }, 5000);
 
-            // TTS
-            //  .speak(spkr1, function () {
-            //      console.log('success');
-            //  }, function (reason) {
-            //      console.log(reason);
-            //  });
             }
 
             if (count === 45) {
@@ -454,26 +490,29 @@ $$('#start_btn').on('click', function (e) {
             //END OF COUNT AT 1
 
             if (count === 0) {
-                //console.log('Stop and Calculate/Update Leaderboards');
-                count = cntdown;
+
+                //count = cntdown;
             }
+
             //CALLED EVERY SECOND
             //SETS THE CURRENT AVG SPD, CAD, HR AND RND
-            publishAvg();
-        }, 1000);
-
-        function myStopFunction() {
-            //$$('.start_btn_disable').show();
-            clearInterval(timerId);
-            myCenterAlert('Stopping Timer - ending session', 2000);
-            //TODO - SET ALL VALUES TO ZERO AND UPDATE FB
-            //TODO - CREATE SUMMARY
+            //publishAvg();
         }
+        //end of the New Timer function with count passed in.
 
-    }
-    countdown();
+        // function myStopFunction() {
+        //     //$$('.start_btn_disable').show();
+        //     clearInterval(timerId);
+        //     myCenterAlert('Stopping Timer - ending session', 2000);
+        //     //TODO - SET ALL VALUES TO ZERO AND UPDATE FB
+        //     //TODO - CREATE SUMMARY
+        // }
 
-});
+
+
+    // countdown();
+
+
 
 //SWIPER P1 BUBBLES
 
@@ -575,6 +614,6 @@ function populate_tim_avg_rnd_bubbles() {
     var val3 = '#round_score_bubbles';
     populate_round_bubbles(val1, val2, val3);
 
-    calculate_duration();
+    //calculate_duration();
 
 }

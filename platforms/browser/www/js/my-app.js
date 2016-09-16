@@ -78,8 +78,45 @@ function startup() {
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
     console.log(tim.timName);
     get_round_data();
-     ui_report10(0, 0, 0, 0);
-      ui_report20(0, 0, 0, 0);
+    ui_report10(0, 0, 0, 0);
+    ui_report20(0, 0, 0, 0);
+
+// //START TOCK
+//     var timer = new Tock({
+//     countdown: true,
+//     interval: 1000,
+//     callback: someCallbackFunction,
+//     complete: someCompleteFunction
+//   });
+//
+//     function someCallbackFunction () {
+//     console.log('someCallbackFunction');
+//     var current_time = timer.msToTime(timer.lap());
+//     var ct = Math.round(timer.lap()/1000);
+//     //$('#clock').val(ct);
+//     newTimer(ct);
+//     publishAvg(ct);
+//     }
+//     function someCompleteFunction () {
+//       console.log('someCompleteFunction');
+//       timer.start(300000);
+//     }
+//     //END TOCK
+
+  // $('#start').on('click', function() {
+  //     timer.start(10000);
+  // });
+  //
+  // $('#stop').on('click', function() {
+  //     timer.stop();
+  // });
+  //
+  // $('#reset').on('click', function() {
+  //     timer.reset();
+  // });
+
+  //END TOCK
+
 
     $$('.press_plus').on('click', function () {
       var storedData = myApp.formGetData('my-form');
