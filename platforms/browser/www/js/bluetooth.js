@@ -47,7 +47,7 @@ var appII = {
         var currHR = dataHR[1];
 
         tim.timHR = dataHR[1];
-        updateUserDataTim();
+        //updateUserDataTim();
 
         var string = null;
         $('.tab-btn-h').each(function (index, obj) {
@@ -184,7 +184,7 @@ var appII = {
                 measurementPOW: '2A63'
             };
             console.log('About to start HR Notification');
-            myCenterAlert('HR Sensor Connected.  Connect a Speed and Cadence Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('HR Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItemHR, btService.serviceHR, btService.measurementHR, appII.onDataHR, appII.onErrorHR);
         }
 
@@ -224,7 +224,7 @@ var appII = {
                 measurementPOW: '2A63'
             };
             console.log('About to start CSC Notification');
-            myCenterAlert('Speed/Cadence Sensor Connected.  Connect a HR Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Speed/Cadence Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataCSC, appII.onErrorCSC);
         }
 
@@ -357,7 +357,7 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
-            myCenterAlert('Speed Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Speed Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAS, appII.onErrorWAS);
         }
 
@@ -384,7 +384,7 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
-            myCenterAlert('Cadence Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Cadence Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAC, appII.onErrorWAC);
         }
 
@@ -430,7 +430,7 @@ var appII = {
         console.log('tim.timPower:  ' + tim.timPower);
         // $$('#POW').text(tim.timPower);
         // $$('#POW1').text(tim.timPower);
-        updateUserDataTim();
+        //updateUserDataTim();
     },
     //END ONDATA-POW
 
@@ -594,7 +594,7 @@ function calcCSC(s, c) {
         stringCad += $(this).text(tim.timCadence);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 }
 //END CSC CALC
 
@@ -628,6 +628,10 @@ function calcWahooCadence(wc) {
         tim.timWAC = 0;
     }
 
+    if (tim.timWAC > 120) {
+        tim.timWAC = 80;
+    }
+
 
     tim.timCadence = tim.timWAC;
 
@@ -636,7 +640,7 @@ function calcWahooCadence(wc) {
         stringCad += $(this).text(tim.timCadence);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 }
 
 
@@ -743,6 +747,6 @@ function calcWahooSpeed(ws) {
         wstringSpd += $(this).text(Math.round(tim.timSpeed * 10) / 10);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 
 }

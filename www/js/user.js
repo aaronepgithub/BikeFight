@@ -222,7 +222,7 @@ function someCallbackFunction() {
 }
 
 function someCompleteFunction() {
-    console.log('someCompleteFunction');
+    console.log('Round Complete, Restarting Timer');
     timer.start(299000);
 }
 //END TOCK
@@ -401,6 +401,7 @@ function newTimer(count) {
     }
 
     if (count === 0) {
+      console.log('End of Round');
         $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
         $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgCAD + '</h1>');
         $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgHR + '</h1>');

@@ -184,7 +184,7 @@ var appII = {
                 measurementPOW: '2A63'
             };
             console.log('About to start HR Notification');
-            myCenterAlert('HR Sensor Connected.  Connect a Speed and Cadence Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('HR Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItemHR, btService.serviceHR, btService.measurementHR, appII.onDataHR, appII.onErrorHR);
         }
 
@@ -224,7 +224,7 @@ var appII = {
                 measurementPOW: '2A63'
             };
             console.log('About to start CSC Notification');
-            myCenterAlert('Speed/Cadence Sensor Connected.  Connect a HR Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Speed/Cadence Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataCSC, appII.onErrorCSC);
         }
 
@@ -357,7 +357,7 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
-            myCenterAlert('Speed Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Speed Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAS, appII.onErrorWAS);
         }
 
@@ -384,7 +384,7 @@ var appII = {
                 servicePOW: '1818',
                 measurementPOW: '2A63'
             };
-            myCenterAlert('Cadence Sensor Connected.  Connect another Sensor or Press the Back Button Followed by the Start Button', 2000);
+            myCenterAlert('Cadence Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
             ble.startNotification(thisItem, btService.serviceCSC, btService.measurementCSC, appII.onDataWAC, appII.onErrorWAC);
         }
 
