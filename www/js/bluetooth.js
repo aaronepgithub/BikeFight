@@ -47,7 +47,7 @@ var appII = {
         var currHR = dataHR[1];
 
         tim.timHR = dataHR[1];
-        updateUserDataTim();
+        //updateUserDataTim();
 
         var string = null;
         $('.tab-btn-h').each(function (index, obj) {
@@ -430,7 +430,7 @@ var appII = {
         console.log('tim.timPower:  ' + tim.timPower);
         // $$('#POW').text(tim.timPower);
         // $$('#POW1').text(tim.timPower);
-        updateUserDataTim();
+        //updateUserDataTim();
     },
     //END ONDATA-POW
 
@@ -594,7 +594,7 @@ function calcCSC(s, c) {
         stringCad += $(this).text(tim.timCadence);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 }
 //END CSC CALC
 
@@ -628,6 +628,10 @@ function calcWahooCadence(wc) {
         tim.timWAC = 0;
     }
 
+    if (tim.timWAC > 120) {
+        tim.timWAC = 80;
+    }
+
 
     tim.timCadence = tim.timWAC;
 
@@ -636,7 +640,7 @@ function calcWahooCadence(wc) {
         stringCad += $(this).text(tim.timCadence);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 }
 
 
@@ -743,6 +747,6 @@ function calcWahooSpeed(ws) {
         wstringSpd += $(this).text(Math.round(tim.timSpeed * 10) / 10);
     });
 
-    updateUserDataTim();
+    //updateUserDataTim();
 
 }
