@@ -2,4 +2,17 @@ Leaders:
 By Distance
 By Duration
 
+		    if (hasWheel && hasCrank) {
+		    	wheelRevs = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT32, 1);
+		    	wheelElapsed = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 5);
+		    	crankRevs = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 7);
+		    	crankElapsed = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 9);
+		    } else if (hasWheel) {
+		    	wheelRevs = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT32, 1);
+		    	wheelElapsed = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 5);
+		    } else if (hasCrank) {
+		    	crankRevs = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 1);
+		    	crankElapsed = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 3);
+		    }
+
 
