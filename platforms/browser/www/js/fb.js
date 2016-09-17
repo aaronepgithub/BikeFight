@@ -23,7 +23,19 @@ var pubYear = yyyy;
 function round_post(r1, r2, r3, r4) {
     if (r1 !== 0) {
 
-        firebase.database().ref('rounds/' + pubFullDate + '/').push({
+      var today2 = new Date();
+      var dd2 = today.getDate();
+      var mm2 = today.getMonth() + 1; //January is 0!
+      var yyyy2 = today.getFullYear();
+      if (dd2 < 10) {
+          dd2 = '0' + dd2;
+      }
+      if (mm2 < 10) {
+          mm2 = '0' + mm2;
+      }
+      var pubFullDate2 = yyyy2 + mm2 + dd2;
+
+        firebase.database().ref('rounds/' + pubFullDate2 + '/').push({
             fb_timName: tim.timName,
             fb_timGroup: tim.timGroup,
             fb_RND: r1,
