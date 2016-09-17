@@ -72,7 +72,12 @@ var tim = {
     timStartTime: 0
 };
 
-
+var arrCAD = [];
+var arrCADt = [];
+var arrSPD = [];
+var arrSPDt = [];
+// calcCadence2(currCAD,currCADt);
+// calcSpeed2(currSPD, currSPDt);
 
 var cntdown = 300;
 var arrTimerHR = new Array(cntdown);

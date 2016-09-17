@@ -402,6 +402,13 @@ var appII = {
         var currCAD = dataCSC[7];
         var currSPD = dataCSC[1];
         calcCSC(currSPD, currCAD);
+
+
+        var currCADt = dataCSC[9];
+        var currSPDt = dataCSC[5];
+
+        calcCadence2(currCAD,currCADt);
+        calcSpeed2(currSPD, currSPDt);
     },
     //END ONDATA-CSC
 
@@ -669,7 +676,7 @@ function calcWahooSpeed(ws) {
     arrTimeSpeedWahoo.push(Date.now());
     arrTimeSpeedWahoo.shift();
 
-    console.log(JSON.stringify(arrSpeedWahoo));
+    //console.log(JSON.stringify(arrSpeedWahoo));
 
     //DIST CALCULATION
     if (arrSpeedWahoo[0] > arrSpeedWahoo[1]) {
@@ -696,9 +703,9 @@ function calcWahooSpeed(ws) {
     else {
     ws3 = ws2 + ws1;
 
-    console.log('ws1: ' + ws1);
-        console.log('ws2: ' + ws2);
-            console.log('ws3: ' + ws3);
+    // console.log('ws1: ' + ws1);
+    //     console.log('ws2: ' + ws2);
+    //         console.log('ws3: ' + ws3);
 
     //S2 WILL HAVE THE COUNT JUST PRIOR TO A NEW ADDITION ARRIVING
     ws2 = ws3;
@@ -750,3 +757,76 @@ function calcWahooSpeed(ws) {
     //updateUserDataTim();
 
 }
+
+function calcCadence2(c, t) {
+  console.log('calcCadence2');
+  arrCAD.push(c);
+  arrCADt.push(t);
+
+//using 2nd from the end, may need to use more
+//need to reset arr at the end of each round
+//should use this for the average as well
+
+  var lastCAD = _.last(arrCAD);
+  var next2lastCAD = _.nth(arrCAD, -2);
+  var lastCADt = _.last(arrCADt);
+  var next2lastCADt = _.nth(arrCADt, -2);
+  var tempCAD, tempCADt;
+  var myCAD;
+
+  if (next2lastCAD > lastCAD) {
+      tempCAD = (lastCAD - next2lastCAD) + 255;
+  } else {
+      tempCAD = lastCAD - next2lastCAD;
+  }
+
+  tempCADt1 = lastCADt - next2lastCADt;
+  tempCADt2 = tempCADt1 / 1000;
+  tempCADt = 60 / tempCADt2;
+
+  if (Math.round(tempCAD * tempCADt) >=0) {
+    myCAD = Math.round(tempCAD * tempCADt);
+    console.log('myCAD:  ' + myCAD);
+  }
+
+
+}
+//end new calc cad
+
+function calcSpeed2(s, t) {
+  console.log('calcSpeed2');
+  arrSPD.push(s);
+  arrSPDt.push(t);
+
+  var lastSPD = _.last(arrSPD);
+  var next2lastSPD = _.nth(arrSPD, -2);
+  var arrSPDt = _.last(arrSPDt);
+  var next2lastSPDt = _.nth(arrSPDt, -2);
+  var tempSPD, tempSPDt;
+  var mySPD;
+
+  if (next2lastSPD > lastSPD) {
+      tempSPD = (lastSPD - next2lastSPD) + 255;
+  } else {
+      tempSPD = lastSPD - next2lastSPD;
+  }
+
+  tempSPDt1 = lastSPDt - next2lastSPDt;
+  tempSPDt2 = tempSPDt1 / 1000;
+  tempSPDt = 60 / tempSPDt2;
+
+  tempSPD2 = tempSPD * tim.timTireCircum;
+  //CONVERTTO MILES
+  var tempSPD2Miles = tempSPD2 * 0.000621371;
+
+//TIME SLICE SPEED AND DISTANCE
+  var arrSPDt1 = arrSPDt - next2lastSPDt;
+  var arrSPDt2 = arrSPDt1 / 1000;
+  var arrSPDt3 = arrSPDt2 / 60;
+  var arrSPDt4 = arrSPDt3 / 60;
+
+  var arrSPDt5 = tempSPD2Miles * arrSPDt4;
+  console.log(mySPD + (Math.round(wtimeslice_mph * 100) / 100));
+
+
+  }
