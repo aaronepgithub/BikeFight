@@ -71,15 +71,34 @@ function myNotyCoach(msg) {
     }, 1500);
 }
 
+function updateTim() {
+  console.log('Fctn updateTim');
+  var storedData = myApp.formGetData('my-form');
+  tim.timName = storedData.name;
+  tim.timTeam = storedData.team;
+  tim.timGroup = storedData.group;
+  tim.timStyle  = storedData.style;
+  tim.timTire = storedData.tire;
+
+  if (tim.timTire === '700X23') { tim.timTireCircum = 2.10; }
+  if (tim.timTire === '700X25') { tim.timTireCircum = 2.11; }
+  if (tim.timTire === '700X28') { tim.timTireCircum = 2.14; }
+  if (tim.timTire === '700X30') { tim.timTireCircum = 2.15; }
+  if (tim.timTire === '700X32') { tim.timTireCircum = 2.17; }
+  if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
+  if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
+}
 
 function startup() {
     console.log('startup function');
     var storedData = myApp.formGetData('my-form');
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
-    console.log(tim.timName);
+    //console.log(tim.timName);
     get_round_data();
     ui_report10(0, 0, 0, 0);
     ui_report20(0, 0, 0, 0);
+    updateTim();
+    }
 
 // //START TOCK
 //     var timer = new Tock({
@@ -118,60 +137,56 @@ function startup() {
   //END TOCK
 
 
-    $$('.press_plus').on('click', function () {
-      var storedData = myApp.formGetData('my-form');
-        tim.timName = storedData.name;
-        tim.timTeam = storedData.team;
-        tim.timGroup = storedData.group;
-        tim.timStyle  = storedData.style;
-        tim.timTire = storedData.tire;
-        console.log('Speed Dial Play - Update timObject');
-    });
+    // $$('.press_plus').on('click', function () {
+    //   var storedData = myApp.formGetData('my-form');
+    //     tim.timName = storedData.name;
+    //     tim.timTeam = storedData.team;
+    //     tim.timGroup = storedData.group;
+    //     tim.timStyle  = storedData.style;
+    //     tim.timTire = storedData.tire;
+    //     console.log('Speed Dial Play - Update timObject');
+    // });
 
 
-    $$('.press_play').on('click', function () {
-      $$('#tire').val(tim.timTire);
-      $$('#group').val(tim.timGroup);
-      $$('#style').val(tim.timStyle);
-      $$('#team').val(tim.timTeam);
-    });
+    // $$('.press_play').on('click', function () {
+    //   $$('#tire').val(tim.timTire);
+    //   $$('#group').val(tim.timGroup);
+    //   $$('#style').val(tim.timStyle);
+    //   $$('#team').val(tim.timTeam);
+    // });
 
-    $$('.press_envelope').on('click', function () {
-    msg_Get_fb();
-    msg_Get_fb_group();
-  });
+  //   $$('.press_envelope').on('click', function () {
+  //   msg_Get_fb();
+  //   msg_Get_fb_group();
+  // });
     //console.log('timObject:  ' + JSON.stringify(tim));
-}
 
-function update_settings_onstart() {
-  console.log('update_settings_onstart');
-  if (tim.timTire === '700X23') { tim.timTireCircum = 2.10; }
-  if (tim.timTire === '700X25') { tim.timTireCircum = 2.11; }
-  if (tim.timTire === '700X28') { tim.timTireCircum = 2.14; }
-  if (tim.timTire === '700X30') { tim.timTireCircum = 2.15; }
-  if (tim.timTire === '700X32') { tim.timTireCircum = 2.17; }
-  if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
-  if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
 
-  updateUserDataTim();
-  remove_FB_users();
-}
+//function update_settings_onstart() {
+  //console.log('update_settings_onstart');
+  // if (tim.timTire === '700X23') { tim.timTireCircum = 2.10; }
+  // if (tim.timTire === '700X25') { tim.timTireCircum = 2.11; }
+  // if (tim.timTire === '700X28') { tim.timTireCircum = 2.14; }
+  // if (tim.timTire === '700X30') { tim.timTireCircum = 2.15; }
+  // if (tim.timTire === '700X32') { tim.timTireCircum = 2.17; }
+  // if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
+  // if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
+
+  //updateUserDataTim();
+  //remove_FB_users();
+//}
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function () {
     console.log('Device is ready!');
-    //  TTS
-    //     .speak('hello, Kazumi!', function () {
-    //         console.log('success');
-    //     }, function (reason) {
-    //         console.log(reason);
-    //     });
-
     startup();
 
-    $$('#settings_link').on('click', function () {
-        console.log('clicked settings ');
+
     });
+
+    // $$('#settings_link').on('click', function () {
+    //     console.log('clicked settings ');
+    //});
 
     // $$('#messaging_link').on('click', function () {
     //     console.log('clicked messaging_link ');
@@ -180,31 +195,31 @@ $$(document).on('deviceready', function () {
     // });
 
 
-    $$('#fb_clear').on('click', function (e) {
-        console.log('clicked fb_clear ');
-        remove_FB_users();
-    });
+    // $$('#fb_clear').on('click', function (e) {
+    //     console.log('clicked fb_clear ');
+    //     remove_FB_users();
+    // });
 
-    $$('#frm_Submit').on('click', function (e) {
-        // console.log('clicked frm_Submit ');
-    });
+    // $$('#frm_Submit').on('click', function (e) {
+    //     // console.log('clicked frm_Submit ');
+    // });
 
-    $$('#update').on('click', function (e) {
-        console.log('clicked update');
-        requestUserData();
-    });
+    // $$('#update').on('click', function (e) {
+    //     console.log('clicked update');
+    //     requestUserData();
+    // });
+    //
+    // $$('#get_active_riders').on('click', function (e) {
+    //     console.log('clicked update');
+    //     requestUserData();
+    // });
 
-    $$('#get_active_riders').on('click', function (e) {
-        console.log('clicked update');
-        requestUserData();
-    });
-
-    $$('.open-preloader-title').on('click', function () {
-        myApp.showPreloader('Working');
-        setTimeout(function () {
-            myApp.hidePreloader();
-        }, 5000);
-    });
+    // $$('.open-preloader-title').on('click', function () {
+    //     myApp.showPreloader('Working');
+    //     setTimeout(function () {
+    //         myApp.hidePreloader();
+    //     }, 5000);
+    // });
 
     // $$('#header_btn1').on('click', function (e) {
     //     //console.log('clicked hdr1');
@@ -215,15 +230,14 @@ $$(document).on('deviceready', function () {
     //     mainView.router.loadPage("#page10");
     // });
 
-    $$('#msg_Submit').on('click', function (e) {
-        console.log('Sending Message');
-        var inp_msg = $$('#snd_Message').val();
-        $$('#snd_Message').val('');
-        msg_Submit_fb(inp_msg);
-    });
+    // $$('#msg_Submit').on('click', function (e) {
+    //     console.log('Sending Message');
+    //     var inp_msg = $$('#snd_Message').val();
+    //     $$('#snd_Message').val('');
+    //     msg_Submit_fb(inp_msg);
+    // });
 
 
-});
 
 //GROUP
 function publish_messages_group(m_date, m_group, m_name, m_message) {

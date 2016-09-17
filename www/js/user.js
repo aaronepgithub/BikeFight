@@ -1,14 +1,8 @@
 var tim = {
-    // timName: storedData.name,
-    // timTeam: storedData.team,
-    // timGroup: storedData.group,
-    // timStyle: storedData.style,
-    // timTire: storedData.tire,
-    // timTireSize: storedData.tire,
     timName: 'Required',
     timTeam: 'Solo',
     timGroup: 'None',
-    timStyle: 'CitiBike',
+    timStyle: 'Road',
     timTire: '700X25',
     timTireSize: '700X25',
     timTireCircum: 2.11,
@@ -79,97 +73,72 @@ var tim = {
 };
 
 
-//CHANGE AFTER TESTING
+
 var cntdown = 300;
-//var cntdown = 10;
 var arrTimerHR = new Array(cntdown);
 var arrTimerSPD = new Array(cntdown);
 var arrTimerCAD = new Array(cntdown);
 var arrTimerRND = new Array(cntdown);
-
-var arrPastHour = [];
-var strLast5;
-
 var objScores = {};
+
+
 function rounds_end(lr, ls, lc, lh) {
 
-objScores[ tim.timNumberofRounds ] = {
-    ind: tim.timNumberofRounds,
-    rnd: lr,
-    spd: ls,
-    cad: lc,
-    hr: lh,
-    date: pubFullDate,
-    time: pubFullTime,
-    name: tim.timName,
-    group: tim.timGroup,
-    team: tim.timTeam,
-    style: tim.timStyle
-};
+    objScores[tim.timNumberofRounds] = {
+        ind: tim.timNumberofRounds,
+        rnd: lr,
+        spd: ls,
+        cad: lc,
+        hr: lh,
+        date: pubFullDate,
+        time: pubFullTime,
+        name: tim.timName,
+        group: tim.timGroup,
+        team: tim.timTeam,
+        style: tim.timStyle
+    };
 
-//BEST ROUND
-var x = _.values(objScores);
-//var x_ordered = _.orderBy(x, 'rnd', 'desc');
+    //BEST ROUND
+    var x = _.values(objScores);
+    var y = _.orderBy(x, 'rnd', 'desc');
+    var a1 = y[0].rnd;
+    var a2 = y[0].spd;
+    var a3 = y[0].cad;
+    var a4 = y[0].hr;
+    var a5 = y[0].date;
+    var a6 = y[0].time;
+    ui_report10(a1, a2, a3, a4);
+    ui_report20(lr, ls, lc, lh);
 
-//ONLY TODAY
-var filter1 = _.filter(x, { date : pubFullDate });
-var y = _.orderBy(filter1, 'rnd', 'desc');
-var a1 = y[0].rnd;var a2 = y[0].spd;var a3 = y[0].cad;var a4 = y[0].hr;
-var a5 = y[0].date;var a6 = y[0].time;
+    $$('#my_last_rnd').html(
+        '<div class="cls_top6 chip bg-white">' +
+        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
+        '<div class="chip-label color-black">' + tim.timName + '</div>' +
+        '</div>'
+    );
 
-ui_report10(a1, a2, a3, a4);
-ui_report20(lr, ls, lc, lh);
+    $$('#my_last_rnd2').html(
+        '<div class="cls_top6 chip bg-white">' +
+        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
+        '<div class="chip-label color-black">' + tim.timName + '</div>' +
+        '</div>'
+    );
 
-$$('#my_last_rnd').html(
-    '<div class="cls_top6 chip bg-white">' +
-    '<div class="chip-media bg-red">'+ Math.round(lr) +'</div>' +
-    '<div class="chip-label color-black">'+ tim.timName+'</div>' +
-    '</div>'
-);
+    var stringChip = null;
+    $('.best_round_chip').each(function(index, obj) {
+        stringChip += $(this).text("MY BEST:   " + a1);
+    });
 
-$$('#my_last_rnd2').html(
-    '<div class="cls_top6 chip bg-white">' +
-    '<div class="chip-media bg-red">'+ Math.round(lr) +'</div>' +
-    '<div class="chip-label color-black">'+ tim.timName+'</div>' +
-    '</div>'
-);
-
-//console.log('Only Today:  ' + JSON.stringify(y));
-
-var stringChip = null;
-$('.best_round_chip').each(function (index, obj) {
-    stringChip += $(this).text("MY BEST:   " + a1);
-});
-
-
-//ONLY TODAY AND ONLY IN PAST HOUR
-var filter2 = _.takeRight(filter1, 12);
-var y2 = _.orderBy(filter2, 'rnd', 'desc');
-var a7 = y2[0].rnd;var a8 = y2[0].spd;var a9 = y2[0].cad;var a10 = y2[0].hr;
-var a11 = y2[0].date;var a12 = y2[0].time;
-//LIST OF PAST 5
-var filter3 = _.takeRight(filter1, 5);
-
-
-//REMOVE ALL AT SCORES AND LOCAL STORAGE
-populate_last_rnd_bubbles();
-setScores(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12);
+    populate_last_rnd_bubbles();
 }
+//END OF ROUNDS END
 
-
-
-// function populate_timer(timer_val) {
-//     var val1 = Math.round(timer_val / 50);
-//     var val2 = Math.round(7 - val1);
-//     var val3 = '.cls_timer_bubbles';
-//     populate_timer_bubbles(val1, val2, val3);
-// }
 
 function publishAvg(timer_val) {
-      var val1 = Math.round(timer_val / 50);
-      var val2 = Math.round(7 - val1);
-      var val3 = '.cls_timer_bubbles';
-      populate_timer_bubbles(val1, val2, val3);
+    var val1 = Math.round(timer_val / 50);
+    var val2 = Math.round(7 - val1);
+    var val3 = '.cls_timer_bubbles';
+    populate_timer_bubbles(val1, val2, val3);
 
 
     var sumHR = 0;
@@ -177,19 +146,19 @@ function publishAvg(timer_val) {
     var sumCAD = 0;
     var sumRND = 0;
 
-    arrTimerSPD.map(function (item) {
+    arrTimerSPD.map(function(item) {
         sumSPD += item;
     });
 
-    arrTimerHR.map(function (item1) {
+    arrTimerHR.map(function(item1) {
         sumHR += item1;
     });
 
-    arrTimerCAD.map(function (item2) {
+    arrTimerCAD.map(function(item2) {
         sumCAD += item2;
     });
 
-    arrTimerRND.map(function (item3) {
+    arrTimerRND.map(function(item3) {
         sumRND += item3;
     });
 
@@ -198,26 +167,17 @@ function publishAvg(timer_val) {
     tim.timAvgSPD = Math.round(sumSPD / cntdown * 10) / 10;
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
 
-
-    //POPULATES BLAST SCORE BUTTON AND BLAST SCORE BUBBLES EVERY SEC
-    // setAvgScore();
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
     populate_tim_avg_rnd_bubbles();
-
 
 }
 
 function calculate_duration() {
-    //TOTAL SECONDS SINCE START
-    //CALLED BY POPULATE TIM AVG RND BUBBLES
-    // var x = (tim.timNumberofRounds * 300) + global_timer;
     var x = _.now() - tim.timStartTime;
     var y = x / 1000;
     var z = new Date(y * 1000).toISOString().substr(11, 8);
-    $$('#completed_duraton_btn').text(z);
-    $$('.tab-btn-duration').text(z);
     $$('#header_btn2').text(z);
-    tim.timCalculatedDurationMS = y;
+    //tim.timCalculatedDurationMS = y;
     tim.timCalculatedDuration = z;
 }
 
@@ -225,294 +185,250 @@ function calculate_duration() {
 var global_timer;
 
 
-$$('#start_btn').on('click', function (e) {
-    $$(this).hide();
-    $$("#start_btn").prop("disabled", true);
-
+$$('#start_btn').on('click', function(e) {
     var storedData = myApp.formGetData('my-form');
-    console.log(JSON.stringify(storedData));
-    tim.timStartTime = _.now();
+    // if ( storedData === undefined) {
+    if (!storedData) {
+        myCenterAlertOK('Enter a Name in User Settings');
+        $$(this).show();
+    } else {
+        $$(this).hide();
+        $$("#start_btn").prop("disabled", true);
+        console.log(JSON.stringify(storedData));
+        updateTim();
+        tim.timStartTime = _.now();
 
-    if ( storedData === undefined) {
-       $$(this).show();
-       myCenterAlert('Enter a Name in User Settings');
-    }
-    tim.timName = storedData.name;
-    tim.timTeam = storedData.team;
-    tim.timGroup = storedData.group;
-    tim.timStyle  = storedData.style;
-    tim.timTireSize = storedData.tire;
+        var mySwiper = $$('.swiper-container')[0].swiper;
+        mySwiper.slideNext();
 
-    var mySwiper = $$('.swiper-container')[0].swiper;
-    mySwiper.slideNext();
-
-    //update_settings_onstart();
-
-    // function populate_timer(timer_val) {
-    //     var val1 = Math.round(timer_val / 50);
-    //     var val2 = Math.round(7 - val1);
-    //     var val3 = '.cls_timer_bubbles';
-    //     populate_timer_bubbles(val1, val2, val3);
-    // }
-
-
-
-        update_settings_onstart();
         timer.start(300000);
+    }
+
+
+});
+//END OF START BUTTON PRESS
+
+
+//START TOCK
+var timer = new Tock({
+    countdown: true,
+    interval: 1000,
+    callback: someCallbackFunction,
+    complete: someCompleteFunction
+});
+
+function someCallbackFunction() {
+    var ct = Math.round(timer.lap() / 1000);
+    newTimer(ct);
+}
+
+function someCompleteFunction() {
+    console.log('someCompleteFunction');
+    timer.start(299000);
+}
+//END TOCK
 
 
 
-  });
-  //END OF START BUTTON PRESS
 
+function newTimer(count) {
 
-  //START TOCK
-      var timer = new Tock({
-      countdown: true,
-      interval: 1000,
-      callback: someCallbackFunction,
-      complete: someCompleteFunction
+    var stringTimer = null;
+    $('.timer_btn_cls').each(function(index, obj) {
+        stringTimer += $(this).text(count + ' SECONDS REMAIN');
     });
 
-      function someCallbackFunction () {
-      //console.log('someCallbackFunction');
-      var current_time = timer.msToTime(timer.lap());
-      var ct = Math.round(timer.lap()/1000);
-      //$('#clock').val(ct);
-      //console.log(ct);
-      newTimer(ct);
-      publishAvg(ct);
-      }
-      function someCompleteFunction () {
-        console.log('someCompleteFunction');
-        timer.start(300000);
-      }
-      //END TOCK
+    global_timer = 300 - count;
 
 
 
+    arrTimerHR.push(tim.timHR);
+    arrTimerHR.shift();
+    arrTimerSPD.push(tim.timSpeed);
+    arrTimerSPD.shift();
+    arrTimerCAD.push(tim.timCadence);
+    arrTimerCAD.shift();
+    arrTimerRND.push(tim.timAvgRND);
+    arrTimerRND.shift();
 
-    function newTimer(count) {
+    var remdr5 = count % 5;
+    if (remdr5 === 0) {
+        bubbleMaker();
+    }
 
-            var stringTimer = null;
-            $('.timer_btn_cls').each(function (index, obj) {
-                stringTimer += $(this).text(count + ' SECONDS REMAIN');
-            });
+    var remdr2 = count % 2;
+    if (remdr2 === 0) {
+        publishAvg();
+    }
 
-            global_timer = 300 - count;
-            calculate_duration();
-            //populate_timer(count);
-
-            arrTimerHR.push(tim.timHR);
-            arrTimerHR.shift();
-            arrTimerSPD.push(tim.timSpeed);
-            arrTimerSPD.shift();
-            arrTimerCAD.push(tim.timCadence);
-            arrTimerCAD.shift();
-            arrTimerRND.push(tim.timAvgRND);
-            arrTimerRND.shift();
-
-            var remdr2 = count % 2;
-            if (remdr2 === 0) {
-                bubbleMaker();
-            }
-
-            var remdr1 = count % 1;
-            if (remdr1 === 0) {
-                publishAvg();
-            }
-
-
-            if (count === 298) {
-             round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-            }
-
-            if (count === 275) {
-              var spkr0 = 'A New Round Has Just Started.  ' +
-              'The Champion is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
-              'The leading score is ' + top_king_rnd + '. ' +
-              ' Your last round score was ' + tim.timLastRND + ' .';
-
-            myApp.modal({
-           title:  '<div>A New Round Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-           'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-         });
-         setTimeout(function () {
-             myApp.closeModal();
-         }, 5000);
-
-
-         var storedData = myApp.formGetData('my-form');
-         if (storedData.style !== "NO") {
-           TTS
-             .speak({
-                 text: spkr0,
-                 locale: 'en-GB',
-                 rate: 1.5
-             }, function () {
-                 console.log('success');
-             }, function (reason) {
-                 console.log(reason);
-             });
-
-         }
-
-
-            }
-            //END TTS
-
-            if (count === 290) {
-            get_round_data();
-            }
-
-            if (count === 285) {
-            get_round_data_group();
-            }
-
-
-            if (count === 280) {
-            get_top_fighters();
-            }
-
-
-            if (count === 245) {
-                get_top_fighters();
-                //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
-                //myCenterAlert('4 Minutes Remain', 500);
-            }
+    calculate_duration();
 
 
 
-            if (count === 185) {
-              get_round_data();
-            }
+    if (count === 298) {
+        round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+    }
 
-            if (count === 180) {
-            myApp.modal({
-           title:  '<div>3 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-           'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-         });
-         setTimeout(function () {
-             myApp.closeModal();
-         }, 5000);
+    if (count === 296) {
+        get_round_data();
+    }
 
-          // TTS
-          //    .speak(spkr3, function () {
-          //        console.log('success');
-          //    }, function (reason) {
-          //        console.log(reason);
-          //    });
-            }
-
-            if (count === 165) {
-            get_round_data_group();
-            }
-
-            if (count === 150) {
-                myCenterAlert('Halfway', 1000);
-            }
-
-            if (count === 125) {
-              get_top_fighters();
-            }
+    if (count === 294) {
+        get_round_data_group();
+    }
 
 
-            if (count === 120) {
-            myApp.modal({
-           title:  '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-           '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-           'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-         });
-         setTimeout(function () {
-             myApp.closeModal();
-         }, 5000);
-            }
-
-            if (count === 65) {
-              get_round_data();
-            }
+    if (count === 280) {
+        get_top_fighters();
+    }
 
 
-            if (count === 60) {
-              var spkr1 = '1 Minute To Go.  ' +
-              'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
-              'The King has posted a score of ' + top_king_rnd + '. ' +
-              ' You have a current score of ' + tim.timAvgRND + ' .';
+    if (count === 290) {
+        var spkr0 = 'A New Round Has Just Started.  ' +
+            'The Champion is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+            'The leading score is ' + top_king_rnd + '. ' +
+            ' Your last round score was ' + tim.timLastRND + ' .';
 
-            myApp.modal({
-            title:  '<div>1 Minute To Go.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-            '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-            'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-            });
-            setTimeout(function () {
-             myApp.closeModal();
-           }, 5000);
-
-            }
-
-            if (count === 45) {
-            get_round_data_group();
-            }
-
-            if (count === 30) {
-                myCenterAlert('30 Seconds Remain', 1000);
-            }
-
-            if (count === 5) {
-                myCenterAlert('5 Seconds Remain', 1000);
-            }
-
-            if (count === 1) {
-                $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
-                $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgCAD + '</h1>');
-                $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgHR + '</h1>');
-                $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
-
-                //THESE ARE THE VALUES  CREATED FOR END OF ROUND
-                tim.timLastHR = tim.timAvgHR;
-                tim.timLastCAD = tim.timAvgCAD;
-                tim.timLastSPD = tim.timAvgSPD;
-                tim.timLastRND = tim.timAvgRND;
+        myApp.modal({
+            title: '<div>A New Round Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+                'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
 
 
+        var storedData = myApp.formGetData('my-form');
+        if (storedData.style !== "NO") {
+            TTS
+                .speak({
+                    text: spkr0,
+                    locale: 'en-GB',
+                    rate: 1.5
+                }, function() {
+                    console.log('success');
+                }, function(reason) {
+                    console.log(reason);
+                });
 
-                tim.timNumberofRounds = tim.timNumberofRounds + 1;
-                $$('#completed_rounds_btn').text(tim.timNumberofRounds);
-
-                //****ALL POST ROUND PROCESSING
-                rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-                //****
-                myCenterAlert('Round Complete', 1000);
-
-            }
-            //END OF COUNT AT 1
-
-            if (count === 0) {
-
-                //count = cntdown;
-            }
-
-            //CALLED EVERY SECOND
-            //SETS THE CURRENT AVG SPD, CAD, HR AND RND
-            //publishAvg();
         }
-        //end of the New Timer function with count passed in.
 
-        // function myStopFunction() {
-        //     //$$('.start_btn_disable').show();
-        //     clearInterval(timerId);
-        //     myCenterAlert('Stopping Timer - ending session', 2000);
-        //     //TODO - SET ALL VALUES TO ZERO AND UPDATE FB
-        //     //TODO - CREATE SUMMARY
-        // }
+
+    }
+    //END TTS
 
 
 
-    // countdown();
+
+    if (count === 245) {
+        get_top_fighters();
+        //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
+        //myCenterAlert('4 Minutes Remain', 500);
+    }
 
 
+
+    if (count === 185) {
+        get_round_data();
+    }
+
+    if (count === 180) {
+        myApp.modal({
+            title: '<div>3 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+                'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
+
+    }
+
+    if (count === 165) {
+        get_round_data_group();
+    }
+
+    if (count === 150) {
+        myCenterAlert('Halfway', 1000);
+    }
+
+    if (count === 125) {
+        get_top_fighters();
+    }
+
+
+    if (count === 120) {
+        myApp.modal({
+            title: '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+                'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
+    }
+
+    if (count === 65) {
+        get_round_data();
+    }
+
+
+    if (count === 60) {
+        var spkr1 = '1 Minute To Go.  ' +
+            'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
+            'The King has posted a score of ' + top_king_rnd + '. ' +
+            ' You have a current score of ' + tim.timAvgRND + ' .';
+
+        myApp.modal({
+            title: '<div>1 Minute To Go.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+                'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
+
+    }
+
+    if (count === 45) {
+        get_round_data_group();
+    }
+
+    if (count === 30) {
+        myCenterAlert('30 Seconds Remain', 1000);
+    }
+
+    if (count === 5) {
+        myCenterAlert('5 Seconds Remain', 1000);
+    }
+
+    if (count === 0) {
+        $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
+        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgCAD + '</h1>');
+        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgHR + '</h1>');
+        $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
+
+        //THESE ARE THE VALUES  CREATED FOR END OF ROUND
+        tim.timLastHR = tim.timAvgHR;
+        tim.timLastCAD = tim.timAvgCAD;
+        tim.timLastSPD = tim.timAvgSPD;
+        tim.timLastRND = tim.timAvgRND;
+        tim.timNumberofRounds = tim.timNumberofRounds + 1;
+        //****ALL POST ROUND PROCESSING
+        rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+        //****
+        myCenterAlert('Round Complete', 1000);
+
+    }
+    //END OF COUNT AT 1
+
+    // if (count === 0) {
+    //   console.log('End of Round');
+    // }
+
+}
+//end of the New Timer function with count passed in.
 
 //SWIPER P1 BUBBLES
 
@@ -534,10 +450,6 @@ function bubbleMaker() {
     var vCadence3 = '#rt_cad_bubbles';
     populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
-    var vDistance1 = (Math.round(tim.timDistanceTraveled) % 20);
-    var vDistance2 = 20 - vDistance1;
-    var vDistance3 = '#rt_dist_bubbles';
-    populate_rt_bubbles(vDistance1, vDistance2, vDistance3);
 
     var vRound1 = (Math.round(tim.timAvgRND) / 5);
     var vRound2 = 20 - vRound1;
@@ -545,7 +457,7 @@ function bubbleMaker() {
     $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
 
     var stringRND = null;
-    $('.cls_rt_round_val').each(function (index, obj) {
+    $('.cls_rt_round_val').each(function(index, obj) {
         stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
     });
     populate_rt_bubbles(vRound1, vRound2, vRound3);
@@ -557,14 +469,14 @@ function bubbleMaker() {
         var d = b.repeat(Math.ceil(Math.round(y)));
         var e;
 
-        if (Math.round(x + y) > 19.50) { e = c.concat(d); }
-        if (Math.round(x + y) < 19.51) { e = c.concat(d + 1); }
-        //     console.log('x: ' + x);
-        // console.log('y: ' + y);
+        if (Math.round(x + y) > 19.50) {
+            e = c.concat(d);
+        }
+        if (Math.round(x + y) < 19.51) {
+            e = c.concat(d + 1);
+        }
         e = c.concat(d);
-        // $$('#rt_speed_bubbles').html(e);
         $$(z).html(e);
-
     }
 
 
@@ -585,8 +497,12 @@ function populate_round_bubbles(x, y, z) {
     var c = a.repeat(x);
     var d = b.repeat(y);
     var e;
-    if (Math.round(x + y) > 11.50) { e = c.concat(d); }
-    if (Math.round(x + y) < 11.51) { e = c.concat(d + 1); }
+    if (Math.round(x + y) > 11.50) {
+        e = c.concat(d);
+    }
+    if (Math.round(x + y) < 11.51) {
+        e = c.concat(d + 1);
+    }
     // console.log('x: ' + x);
     // console.log('y: ' + y);
     e = c.concat(d);
@@ -595,25 +511,23 @@ function populate_round_bubbles(x, y, z) {
 
 
 function populate_last_rnd_bubbles() {
-    //EVERY 5 min
-    //var x = Math.round((tim.timLastRND / 4) / 2);
     var val1 = Math.round((tim.timLastRND / 4) / 2);
     var val2 = Math.round(12 - val1);
-    if (val1 + val2 < 12) { val1 = Math.round((tim.timLastRND / 4) / 2 + 1); }
+    if (val1 + val2 < 12) {
+        val1 = Math.round((tim.timLastRND / 4) / 2 + 1);
+    }
     var val3 = '#pub_last_round_bubbles';
     populate_round_bubbles(val1, val2, val3);
 
-  }
+}
 
 function populate_tim_avg_rnd_bubbles() {
     //EVERY SECOND
-    //var x = (tim.timAvgRND / 4) / 2;
     var val1 = Math.round((tim.timAvgRND / 4) / 2);
     var val2 = Math.round(12 - val1);
-    if (val1 + val2 < 12) { val1 = Math.round((tim.timAvgRND / 4) / 2 + 1); }
+    if (val1 + val2 < 12) {
+        val1 = Math.round((tim.timAvgRND / 4) / 2 + 1);
+    }
     var val3 = '#round_score_bubbles';
     populate_round_bubbles(val1, val2, val3);
-
-    //calculate_duration();
-
 }

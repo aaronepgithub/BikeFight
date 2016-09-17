@@ -1,7 +1,5 @@
 //START ME VS MY BEST ROUND TODAY
 function ui_report10(rnd1, spd1, cad1, hr1) {
-  //console.log('ui_report10');
-  // console.log('ui_report10  Me vs my best ride - this session');
   $$('#ui_report10').html(
     '        <div class="row bg-red no-border">' +
     '         <div class="col-20"><a href="#" class="no-border button bg-red button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">RND</a></div>' +
@@ -28,8 +26,6 @@ function ui_report10(rnd1, spd1, cad1, hr1) {
 
 //ME VS. LAST RND
 function ui_report20(rnd1, spd1, cad1, hr1) {
-  //console.log('ui_report20');
-  // console.log('ui_report20 Me vs my personal best');
   $$('#ui_report20').html(
     '        <div class="row bg-red">' +
     '         <div class="col-20"><a href="#" class="button bg-red button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">RND</a></div>' +
