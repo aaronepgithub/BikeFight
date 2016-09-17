@@ -196,11 +196,10 @@ $$('#start_btn').on('click', function(e) {
         $$("#start_btn").prop("disabled", true);
         console.log(JSON.stringify(storedData));
         updateTim();
-        tim.timStartTime = _.now();
 
         var mySwiper = $$('.swiper-container')[0].swiper;
         mySwiper.slideNext();
-
+        tim.timStartTime = _.now();
         timer.start(300000);
     }
 
@@ -237,11 +236,9 @@ function newTimer(count) {
     $('.timer_btn_cls').each(function(index, obj) {
         stringTimer += $(this).text(count + ' SECONDS REMAIN');
     });
+    calculate_duration();
 
     global_timer = 300 - count;
-
-
-
     arrTimerHR.push(tim.timHR);
     arrTimerHR.shift();
     arrTimerSPD.push(tim.timSpeed);
@@ -256,12 +253,12 @@ function newTimer(count) {
         bubbleMaker();
     }
 
-    var remdr2 = count % 2;
-    if (remdr2 === 0) {
+    var remdr4 = count % 4;
+    if (remdr4 === 0) {
         publishAvg();
     }
 
-    calculate_duration();
+
 
 
 
