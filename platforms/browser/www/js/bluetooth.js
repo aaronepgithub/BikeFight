@@ -401,7 +401,7 @@ var appII = {
         var dataCSC = new Uint8Array(bufferCSC);
         var currCAD = dataCSC[7];
         var currSPD = dataCSC[1];
-        calcCSC(currSPD, currCAD);
+        //calcCSC(currSPD, currCAD);
         var currCSCtime = _.now();
         onWheelMeasurementReceived(currSPD, currCSCtime);
         onCrankMeasurementReceived(currCAD, currCSCtime);
