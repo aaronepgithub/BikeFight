@@ -6,6 +6,8 @@ var tim = {
     timTire: '700X25',
     timTireSize: '700X25',
     timTireCircum: 2.11,
+    //CM VERSION
+    timTireCircMeters: 2105,
     timEvent: "timEvent",
     timHR: 0,
     timSpeed: 0,
@@ -140,10 +142,10 @@ function rounds_end(lr, ls, lc, lh) {
 
 
 function publishAvg(timer_val) {
-    var val1 = Math.round(timer_val / 50);
-    var val2 = Math.round(7 - val1);
-    var val3 = '.cls_timer_bubbles';
-    populate_timer_bubbles(val1, val2, val3);
+    // var val1 = Math.round(timer_val / 50);
+    // var val2 = Math.round(7 - val1);
+    // var val3 = '.cls_timer_bubbles';
+    // populate_timer_bubbles(val1, val2, val3);
 
 
     var sumHR = 0;
@@ -269,6 +271,7 @@ function newTimer(count) {
 
     if (count === 298) {
         round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+        $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
     }
 
     if (count === 296) {
@@ -282,6 +285,7 @@ function newTimer(count) {
 
     if (count === 280) {
         get_top_fighters();
+
     }
 
 
@@ -325,6 +329,7 @@ function newTimer(count) {
 
     if (count === 245) {
         get_top_fighters();
+                $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
         //myCenterAlert('4 Minutes Remain', 500);
     }
@@ -336,6 +341,7 @@ function newTimer(count) {
     }
 
     if (count === 180) {
+              $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         myApp.modal({
             title: '<div>3 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
                 '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
@@ -361,6 +367,7 @@ function newTimer(count) {
 
 
     if (count === 120) {
+              $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         myApp.modal({
             title: '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
                 '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
@@ -377,6 +384,7 @@ function newTimer(count) {
 
 
     if (count === 60) {
+                    $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         var spkr1 = '1 Minute To Go.  ' +
             'The King is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
             'The King has posted a score of ' + top_king_rnd + '. ' +
@@ -398,6 +406,7 @@ function newTimer(count) {
     }
 
     if (count === 30) {
+                          $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> ');
         myCenterAlert('30 Seconds Remain', 1000);
     }
 
@@ -485,13 +494,18 @@ function bubbleMaker() {
 
 }
 
-function populate_timer_bubbles(x, y, z) {
-    var a = '<i class="fa fa-circle fa-2x color-white"></i> ';
-    var b = '<i class="fa fa-circle fa-2x color-red"></i> ';
-    var c = a.repeat(x);
-    var d = b.repeat(y);
-    var e = d.concat(c);
-    $$(z).html(e);
+function populate_timer_bubbles(x) {
+
+
+  $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+
+
+    // var a = '<i class="fa fa-circle fa-2x color-white"></i> ';
+    // var b = '<i class="fa fa-circle fa-2x color-red"></i> ';
+    // var c = a.repeat(x);
+    // var d = b.repeat(y);
+    // var e = d.concat(c);
+    // $$(z).html(e);
 }
 
 function populate_round_bubbles(x, y, z) {

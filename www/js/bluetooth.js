@@ -453,6 +453,7 @@ var appII = {
         var dataWAC = new Uint8Array(bufferWAC);
         var currWAC = dataWAC[1];
         calcWahooCadence(currWAC);
+        //onCrankMeasurementReceived(dataWAC[1], dataWAC[3]);
     },
     //END ONDATA-WAC
 
@@ -468,6 +469,7 @@ var appII = {
         var dataWAS = new Uint8Array(bufferWAS);
         var currWAS = dataWAS[1];
         calcWahooSpeed(currWAS);
+        //onWheelMeasurementReceived(dataWAS[1], dataWAS[5]);
     },
     //END ONDATA-WAS
 

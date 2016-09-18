@@ -87,6 +87,14 @@ function updateTim() {
   if (tim.timTire === '700X32') { tim.timTireCircum = 2.17; }
   if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
   if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
+
+  if (tim.timTire === '700X23') { tim.timTireCircMeters = 2096; }
+  if (tim.timTire === '700X25') { tim.timTireCircMeters = 2105; }
+  if (tim.timTire === '700X28') { tim.timTireCircMeters = 2136; }
+  if (tim.timTire === '700X30') { tim.timTireCircMeters = 2146; }
+  if (tim.timTire === '700X32') { tim.timTireCircMeters = 2155; }
+  if (tim.timTire === '700X38') { tim.timTireCircMeters = 2180; }
+  if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircMeters = 2212; }
 }
 
 function startup() {
