@@ -7,7 +7,7 @@ var tim = {
     timTireSize: '700X25',
     timTireCircum: 2.11,
     //CM VERSION
-    timTireCircMeters: 2105,
+    timTireCircMeters: 2.105,
     timEvent: "timEvent",
     timHR: 0,
     timSpeed: 0,
@@ -148,32 +148,34 @@ function publishAvg(timer_val) {
     // populate_timer_bubbles(val1, val2, val3);
 
 
-    var sumHR = 0;
-    var sumSPD = 0;
-    var sumCAD = 0;
-    var sumRND = 0;
+    // var sumHR = 0;
+    // var sumSPD = 0;
+    // var sumCAD = 0;
+    // var sumRND = 0;
+    //
+    // arrTimerSPD.map(function(item) {
+    //     sumSPD += item;
+    // });
+    //
+    // arrTimerHR.map(function(item1) {
+    //     sumHR += item1;
+    // });
+    //
+    // arrTimerCAD.map(function(item2) {
+    //     sumCAD += item2;
+    // });
+    //
+    // arrTimerRND.map(function(item3) {
+    //     sumRND += item3;
+    // });
 
-    arrTimerSPD.map(function(item) {
-        sumSPD += item;
-    });
+    // tim.timAvgHR = Math.round(sumHR / cntdown);
+    // tim.timAvgCAD = Math.round(sumCAD / cntdown);
+    // tim.timAvgSPD = Math.round(sumSPD / cntdown * 10) / 10;
+    // tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
+    // $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
 
-    arrTimerHR.map(function(item1) {
-        sumHR += item1;
-    });
-
-    arrTimerCAD.map(function(item2) {
-        sumCAD += item2;
-    });
-
-    arrTimerRND.map(function(item3) {
-        sumRND += item3;
-    });
-
-    tim.timAvgHR = Math.round(sumHR / cntdown);
-    tim.timAvgCAD = Math.round(sumCAD / cntdown);
-    tim.timAvgSPD = Math.round(sumSPD / cntdown * 10) / 10;
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
-
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
     populate_tim_avg_rnd_bubbles();
 
@@ -184,8 +186,8 @@ function calculate_duration() {
     var y = x / 1000;
     var z = new Date(y * 1000).toISOString().substr(11, 8);
     $$('#header_btn2').text(z);
-    //tim.timCalculatedDurationMS = y;
     tim.timCalculatedDuration = z;
+    //tim.timCalculatedDurationMS = y;
 }
 
 
@@ -230,6 +232,9 @@ function someCallbackFunction() {
 
 function someCompleteFunction() {
     console.log('Round Complete, Restarting Timer');
+    createAvgSpeed = [];
+    createAvgCadence = [];
+    createAvgHeartRate = [];
     timer.start(299000);
 }
 //END TOCK

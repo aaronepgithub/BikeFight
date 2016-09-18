@@ -3,44 +3,81 @@ var mLastWheelRevolutions = 0;
 var mLastWheelEventTime = 0;
 var mLastCrankRevolutions = 0;
 var mLastCrankEventTime = 0;
-var mFirstWheelRevolutions = 0;
+var mFirstWheelRevolutions = -1;
+var createAvgSpeed = [];
+var createAvgCadence = [];
+var createAvgHeartRate = [];
+var meanCadence;
+var meanSpeed;
+var meanHR;
+
+// **
+// tim.timAvgHR = Math.round(sumHR / cntdown);
+// tim.timAvgCAD = Math.round(sumCAD / cntdown);
+// tim.timAvgSPD = Math.round(sumSPD / cntdown * 10) / 10;
+
+// **
+
+function onHRMeasurementReceived(hrMeasurement) {
+  tim.timHR = hrMeasurement;
+  createAvgHeartRate.push(tim.timHR);
+  tim.timAvgHR = _.mean(createAvgHeartRate);
+
+
+  var string = null;
+  $('.tab-btn-h').each(function (index, obj) {
+      string += $(this).text(Math.round(tim.timAvgHR));
+  });
+
+}
 
  function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
-console.log(wheelRevolutions + ' : Wheel on Left, Time on Right: ' + lastWheelEventTime);
-    var circumference = 2115; //THIS IS IN MM? Integer.parseInt(preferences.getString(SettingsFragment.SETTINGS_WHEEL_SIZE, String.valueOf(SettingsFragment.SETTINGS_WHEEL_SIZE_DEFAULT))); // [mm]
+    var circumference = tim.timTireCircMeters;
 
-    // if (mFirstWheelRevolutions < 0)
-    //     {mFirstWheelRevolutions = wheelRevolutions;}
+    if (mFirstWheelRevolutions < 0)
+        {mFirstWheelRevolutions = wheelRevolutions;}
 
     if (mLastWheelEventTime == lastWheelEventTime)
-      { return;}
+      {return;}
 
     if (mLastWheelRevolutions >= 0) {
         var timeDifference = 0;
-        if (lastWheelEventTime < mLastWheelEventTime)
-            {
-              timeDifference = (255 + lastWheelEventTime - mLastWheelEventTime) / 1024.0;
-            } // [s]
-        else
-        {
-          timeDifference = (lastWheelEventTime - mLastWheelEventTime) / 1024.0; // [s]
+        timeDifference = (lastWheelEventTime - mLastWheelEventTime) / 1000.0; // [seconds]
+        var distanceDifference = (wheelRevolutions - mLastWheelRevolutions) * circumference; // [meters]
+        var totalDistance =  wheelRevolutions *  circumference * 0.000621371; // [miles]
+        var distance = (wheelRevolutions - mFirstWheelRevolutions) * circumference; // [meters]
+        var speed = distanceDifference / timeDifference; //[meters/second]
+        //console.log('Speed in Meters:  ' + speed);
+        var speed_miles = speed * 60 * 60 * 0.000621371;  //[miles/hr]
+        //console.log('Speed in Miles/Hr:  ' + speed_miles);
+        //console.log('Total Distance in Miles:  ' + totalDistance);
+        //var mWheelCadence = (wheelRevolutions - mLastWheelRevolutions) * 60.0 / timeDifference;
+
+
+        //Publish to UI
+        tim.timDistanceTraveled = totalDistance.toFixed(2);
+        $$('.tab-btn-dist').text(tim.timDistanceTraveled);
+        $$('#header_btn1').text(tim.timDistanceTraveled + ' miles');
+
+
+        if ((!speed_miles) || speed_miles > 55 || isNaN(speed_miles)) {
+            tim.timSpeed = 0;
         }
 
-        var distanceDifference = (wheelRevolutions - mLastWheelRevolutions) * circumference / 1000.0 ; // [m]
-        var totalDistance =  wheelRevolutions *  circumference / 1000.0 ; // [m]
-        var distance = (wheelRevolutions - mFirstWheelRevolutions) * circumference / 1000.0 ; // [m]
-        var speed = distanceDifference / timeDifference;
-        console.log('Speed in Meters:  ' + speed);
-        var speed_miles = speed * 0.000621371;
-        console.log('Speed in Miles:  ' + speed_miles);
-        var mWheelCadence = (wheelRevolutions - mLastWheelRevolutions) * 60.0 / timeDifference;
+        else {
+          tim.timSpeed = Math.round(speed_miles * 100) / 100;
+        }
+
+        createAvgSpeed.push(tim.timSpeed);
+        tim.timAvgSPD = _.mean(createAvgSpeed);
+        //console.log('meanSpeed:  ' + meanSpeed);
+
+        var wstringSpd = null;
+        $('.tab-btn-s').each(function (index, obj) {
+            wstringSpd += $(this).text(Math.round(tim.timAvgSPD * 10) / 10);
+        });
 
 
-        // final Intent broadcast = new Intent(BROADCAST_WHEEL_DATA);
-        // broadcast.putExtra(EXTRA_SPEED, speed);
-        // broadcast.putExtra(EXTRA_DISTANCE, distance);
-        // broadcast.putExtra(EXTRA_TOTAL_DISTANCE, totalDistance);
-        // LocalBroadcastManager.getInstance(this).sendBroadcast(broadcast);
     }
 
     mLastWheelRevolutions = wheelRevolutions;
@@ -49,19 +86,38 @@ console.log(wheelRevolutions + ' : Wheel on Left, Time on Right: ' + lastWheelEv
 
 
 function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
-  console.log(crankRevolutions + ' : Wheel on Left, Time on Right: ' + lastCrankEventTime);
-    if (mLastCrankEventTime == lastCrankEventTime)
+      if (mLastCrankEventTime == lastCrankEventTime)
       {return;}
 
     if (mLastCrankRevolutions >= 0) {
         var timeDifference = 0;
-        if (lastCrankEventTime < mLastCrankEventTime)
-            {timeDifference = (255 + lastCrankEventTime - mLastCrankEventTime) / 1024.0; }// [s]
-        else
-            {timeDifference = (lastCrankEventTime - mLastCrankEventTime) / 1024.0;} // [s]
+        // if (lastCrankEventTime < mLastCrankEventTime)
+        //     {timeDifference = (255 + lastCrankEventTime - mLastCrankEventTime) / 1024.0; }// [s]
+        // else
+            {timeDifference = (lastCrankEventTime - mLastCrankEventTime) / 1000.0;} // [s]
 
-        var crankCadence = (crankRevolutions - mLastCrankRevolutions) * 60.0 / timeDifference;
-        console.log('Crank Cadence:  ' + crankCadence);
+        var crankCadence = (crankRevolutions - mLastCrankRevolutions) * 60.0 / timeDifference; //[min]
+        //console.log('Crank Cadence RPM:  ' + crankCadence);
+
+
+        //Publish to UI
+
+
+        if ((!crankCadence) || crankCadence > 115 || isNaN(crankCadence)) {
+            tim.timCadence = 0;
+        }
+        else {
+          tim.timCadence = Math.round(crankCadence);
+        }
+        createAvgCadence.push(tim.timCadence);
+        tim.timAvgCAD = _.mean(createAvgCadence);
+        //console.log('meanCadence:  ' + meanCadence);
+
+        var stringCad = null;
+        $('.tab-btn-c').each(function (index, obj) {
+            stringCad += $(this).text(Math.round(tim.timAvgCAD));
+        });
+
 
     }
 

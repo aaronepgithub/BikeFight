@@ -61,6 +61,7 @@ function get_round_data() {
 
         $$('#top_king').text(a1[0].fb_timName);
         $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
+        $$('#me_vs_king_title2').text('THE CHAMP:  ' + a1[0].fb_timName.toUpperCase() + ' (' + a1[0].fb_RND + ') ');
         top_king_name = a1[0].fb_timName;
         top_king_team = a1[0].fb_timTeam;
         top_king_rnd = a1[0].fb_RND;

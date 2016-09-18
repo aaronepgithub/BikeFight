@@ -45,14 +45,14 @@ var appII = {
         //console.log('appII.onDataHR');
         var dataHR = new Uint8Array(bufferHR);
         var currHR = dataHR[1];
+        onHRMeasurementReceived(currHR);
 
-        tim.timHR = dataHR[1];
-        //updateUserDataTim();
-
-        var string = null;
-        $('.tab-btn-h').each(function (index, obj) {
-            string += $(this).text(currHR);
-        });
+        // tim.timHR = dataHR[1];
+        //
+        // var string = null;
+        // $('.tab-btn-h').each(function (index, obj) {
+        //     string += $(this).text(currHR);
+        // });
 
 
     },
@@ -402,13 +402,10 @@ var appII = {
         var currCAD = dataCSC[7];
         var currSPD = dataCSC[1];
         calcCSC(currSPD, currCAD);
+        var currCSCtime = _.now();
+        onWheelMeasurementReceived(currSPD, currCSCtime);
+        onCrankMeasurementReceived(currCAD, currCSCtime);
 
-
-        var currCADt = dataCSC[9];
-        var currSPDt = dataCSC[5];
-
-        calcCadence2(currCAD,currCADt);
-        calcSpeed2(currSPD, currSPDt);
     },
     //END ONDATA-CSC
 
@@ -452,8 +449,10 @@ var appII = {
     onDataWAC: function (bufferWAC) {
         var dataWAC = new Uint8Array(bufferWAC);
         var currWAC = dataWAC[1];
-        calcWahooCadence(currWAC);
-        //onCrankMeasurementReceived(dataWAC[1], dataWAC[3]);
+        var currWACtime = _.now();
+        onCrankMeasurementReceived(currWAC, currWACtime);
+        //calcWahooCadence(currWAC);
+        //console.log('WAC:  ' + JSON.stringify(dataWAC));
     },
     //END ONDATA-WAC
 
@@ -468,8 +467,12 @@ var appII = {
     onDataWAS: function (bufferWAS) {
         var dataWAS = new Uint8Array(bufferWAS);
         var currWAS = dataWAS[1];
-        calcWahooSpeed(currWAS);
-        //onWheelMeasurementReceived(dataWAS[1], dataWAS[5]);
+        var currWAStime = _.now();
+        onWheelMeasurementReceived(currWAS, currWAStime);
+        //calcWahooSpeed(currWAS);
+
+        //console.log('WAS:  ' + JSON.stringify(dataWAS));
+
     },
     //END ONDATA-WAS
 
@@ -700,7 +703,7 @@ function calcWahooSpeed(ws) {
     //WS3 MAINTAINS THE TOTAL REVS
 
     if (isNaN(ws1)) {
-        console.log('is NaN');
+        //console.log('is NaN');
     }
     else {
     ws3 = ws2 + ws1;
@@ -714,10 +717,11 @@ function calcWahooSpeed(ws) {
     //WD1 IS NOW TOTAL DISTANCE TRAVELED IN METERS
     wd1 = ws3 * tim.timTireCircum;
     var wd1Miles = wd1 * 0.000621371;
+
     //TOTAL DISTANCE TRAVELED
     tim.timDistanceTraveled = wd1Miles.toFixed(2);
 
-    console.log('timDistanceTraveled: ' + tim.timDistanceTraveled);
+    //console.log('timDistanceTraveled: ' + tim.timDistanceTraveled);
 
     $$('.tab-btn-dist').text(tim.timDistanceTraveled);
     $$('#header_btn1').text(tim.timDistanceTraveled + ' miles');
@@ -744,14 +748,13 @@ function calcWahooSpeed(ws) {
     var wtemp43 = wtemp42 / 60;
     var wtemp44 = wtemp43 / 60;
     var wtimeslice_mph = wd2Miles / wtemp44;
-    tim.timSpeed = Math.round(wtimeslice_mph * 100) / 100;
 
+    tim.timSpeed = Math.round(wtimeslice_mph * 100) / 100;
     if ((!tim.timSpeed)) {
         tim.timSpeed = 0;
-        // console.log(tim.timSpeed + '-' + tim.timCadence);
     }
 
-        var wstringSpd = null;
+    var wstringSpd = null;
     $('.tab-btn-s').each(function (index, obj) {
         wstringSpd += $(this).text(Math.round(tim.timSpeed * 10) / 10);
     });
