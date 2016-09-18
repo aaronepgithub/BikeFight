@@ -132,20 +132,25 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
         //Publish to UI
 
 
-        if ((!crankCadence) || crankCadence > 115 || isNaN(crankCadence)) {
-            tim.timCadence = 0;
-        }
-        else {
+        if (crankCadence > 0) {
           tim.timCadence = Math.round(crankCadence);
-        }
-        createAvgCadence.push(tim.timCadence);
-        tim.timAvgCAD = _.mean(createAvgCadence);
-        console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
+          createAvgCadence.push(tim.timCadence);
+          tim.timAvgCAD = _.mean(createAvgCadence);
+          console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
 
-        var stringCad = null;
-        $('.tab-btn-c').each(function (index, obj) {
-            stringCad += $(this).text(Math.round(tim.timAvgCAD));
-        });
+          var stringCad = null;
+          $('.tab-btn-c').each(function (index, obj) {
+              stringCad += $(this).text(Math.round(tim.timAvgCAD));
+          });
+        }
+
+        // if ((!crankCadence) || crankCadence > 115 || isNaN(crankCadence)) {
+        //     tim.timCadence = 0;
+        // }
+        // else {
+        //   tim.timCadence = Math.round(crankCadence);
+        // }
+
 
 
     }
