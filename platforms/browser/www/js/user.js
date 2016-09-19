@@ -358,6 +358,26 @@ function newTimer(count) {
 
     }
 
+    if (count === 155) {
+        myCenterAlert(lri_string, 2500);
+        var anotherstoredData = myApp.formGetData('my-form');
+        if (anotherstoredData.style !== "NO") {
+            TTS
+                .speak({
+                    text: lri_string,
+                    locale: 'en-GB',
+                    rate: 1.5
+                }, function() {
+                    console.log('success');
+                }, function(reason) {
+                    console.log(reason);
+                });
+
+        }
+
+    }
+
+
     if (count === 165) {
         get_round_data_group();
     }
@@ -422,8 +442,8 @@ function newTimer(count) {
     if (count === 0) {
       console.log('End of Round');
         $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
-        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgCAD + '</h1>');
-        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgHR + '</h1>');
+        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgCAD) + '</h1>');
+        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgHR) + '</h1>');
         $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
 
         //THESE ARE THE VALUES  CREATED FOR END OF ROUND

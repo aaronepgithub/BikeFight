@@ -1,5 +1,6 @@
 var database = firebase.database();
 var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
+var lastRoundIndex;
 
 //DATE FUNCTION
 var today = new Date();
@@ -57,7 +58,7 @@ function get_round_data() {
         var a = _.values(data);
         var a1 = _.orderBy(a, 'fb_RND', 'desc');
         var a2 = _.take(a1, 10);
-        //console.log('Round Data:  ' + JSON.stringify(a2));
+        //console.log('Round Data:  ' + JSON.stringify(a1));
 
         $$('#top_king').text(a1[0].fb_timName);
         $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
@@ -69,6 +70,17 @@ function get_round_data() {
         top_king_cad = a1[0].fb_CAD;
         top_king_hr = a1[0].fb_HR;
         ui_report200();
+
+
+        var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
+        lastRoundIndex = lri + 1;
+        if (lastRoundIndex >= 1) {
+        console.log('Your Last Round is # ' + lastRoundIndex++ + '  for the day');
+        lri_string = 'Your Last Round is # ' + lastRoundIndex++ + '  for the day';
+        }
+        else {
+            lri_string = 'Your Last Round is the worst posted today.';
+        }
 
         $$('.cls_top_kings').remove();
         $$('.cls_front_page').remove();

@@ -13,13 +13,13 @@ function ui_report10(rnd1, spd1, cad1, hr1) {
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">CAD</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgCAD + '</a></div>' +
-    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + cad1 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgCAD) + '</a></div>' +
+    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + Math.round(cad1) + '</b></a></div>' +
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">HR</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgHR + '</a></div>' +
-    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + hr1 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgHR) + '</a></div>' +
+    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + Math.round(hr1) + '</b></a></div>' +
     '       </div><br>'
   );
 }
@@ -39,13 +39,13 @@ function ui_report20(rnd1, spd1, cad1, hr1) {
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">CAD</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgCAD + '</a></div>' +
-    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +   cad1 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgCAD) + '</a></div>' +
+    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +   Math.round(cad1) + '</b></a></div>' +
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">HR</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgHR + '</a></div>' +
-    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  hr1 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgHR) + '</a></div>' +
+    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  Math.round(hr1) + '</b></a></div>' +
     '       </div><br>'
   );
 }
@@ -66,13 +66,13 @@ function ui_report200() {
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">CAD</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgCAD + '</a></div>' +
-    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +   top_king_cad + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgCAD) + '</a></div>' +
+    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +    Math.round(top_king_cad) + '</b></a></div>' +
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">HR</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgHR + '</a></div>' +
-    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  top_king_hr + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + Math.round(tim.timAvgHR) + '</a></div>' +
+    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  Math.round(top_king_hr) + '</b></a></div>' +
     '       </div><br>'
   );
 }
@@ -97,13 +97,13 @@ function ui_report1(cc1, cc2, cc3, cc4, cc5, cc6) {
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">CAD</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgCAD + '</a></div>' +
-    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + cc5 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-c button bg-black button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgCAD) + '</a></div>' +
+    '         <div class="col-30 button bg-black button-big button-fill button-raised text_border" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  Math.round(cc5) + '</b></a></div>' +
     '       </div>' +
     '        <hr><div class="row bg-black">' +
     '         <div class="col-20"><a href="#" class="button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 1em">HR</a></div>' +
-    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' + tim.timAvgHR + '</a></div>' +
-    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' + cc6 + '</b></a></div>' +
+    '         <div class="col-50"><a href="#" class="tab-btn-h button bg-black  button-big button-fill button-raised" style="font-weight: bold; font-size: 4em">' +  Math.round(tim.timAvgHR) + '</a></div>' +
+    '         <div class="col-30 button bg-black  button-big button-fill button-raised" style="font-weight: bold;text-align:center;font-size: 2.0em"><b class=" color-white">' +  Math.round(cc6) + '</b></a></div>' +
     '       </div><br>'
   );
 }
