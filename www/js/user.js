@@ -178,7 +178,7 @@ function publishAvg(timer_val) {
 
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-    populate_tim_avg_rnd_bubbles();
+    //populate_tim_avg_rnd_bubbles();
 
 }
 
@@ -236,7 +236,7 @@ function someCompleteFunction() {
     wheelRevsRound = 0;
     crankRevsRound = 0;
     timeElapsedRound = 0;
-    timeElapsedRoundWheel = 0; 
+    timeElapsedRoundWheel = 0;
     mFirstWheelRevolutions = 'a';
     mFirstCrankRevolutions = 'a';
     roundDistance = 0;
@@ -480,18 +480,18 @@ function bubbleMaker() {
     var vSpeed1 = Math.round(tim.timSpeed / 2);
     var vSpeed2 = 20 - vSpeed1;
     var vSpeed3 = '#rt_speed_bubbles';
-    populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
+    //populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
 
 
     var vHeartrate1 = Math.round(tim.timHR / 10);
     var vHeartrate2 = 20 - vHeartrate1;
     var vHeartrate3 = '#rt_hr_bubbles';
-    populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
+    //populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
 
     var vCadence1 = Math.round(tim.timCadence / 6);
     var vCadence2 = 20 - vCadence1;
     var vCadence3 = '#rt_cad_bubbles';
-    populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
+    //populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
 
     var vRound1 = (Math.round(tim.timAvgRND) / 5);
@@ -503,7 +503,7 @@ function bubbleMaker() {
     $('.cls_rt_round_val').each(function(index, obj) {
         stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
     });
-    populate_rt_bubbles(vRound1, vRound2, vRound3);
+    //populate_rt_bubbles(vRound1, vRound2, vRound3);
 
     function populate_rt_bubbles(x, y, z) {
         var a = '<i class="fa fa-circle fa-1x color-red"></i>';
@@ -521,22 +521,10 @@ function bubbleMaker() {
         e = c.concat(d);
         $$(z).html(e);
     }
-
-
 }
 
 function populate_timer_bubbles(x) {
-
-
   $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-
-
-    // var a = '<i class="fa fa-circle fa-2x color-white"></i> ';
-    // var b = '<i class="fa fa-circle fa-2x color-red"></i> ';
-    // var c = a.repeat(x);
-    // var d = b.repeat(y);
-    // var e = d.concat(c);
-    // $$(z).html(e);
 }
 
 function populate_round_bubbles(x, y, z) {

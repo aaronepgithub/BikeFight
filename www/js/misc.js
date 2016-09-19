@@ -24,10 +24,20 @@ var roundDistance = 0;
 var totalDistance = 0;
 
 
-
+function createApplicationWheel() {
+  mFirstWheelRevolutions = wheelRevolutions;
+  mLastWheelRevolutions = wheelRevolutions;
+  mLastWheelEventTime = lastWheelEventTime;
+  console.log('Init Wheel');
+  return;
+}
 
  function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
     var circumference = tim.timTireCircMeters;
+
+    var initialize = _.once(createApplicationWheel);
+
+
     //console.log('wheelRevolutions:  ' + wheelRevolutions + '  lastWheelEventTime:  ' + lastWheelEventTime);
     if (mFirstWheelRevolutions === 'a') {
           mFirstWheelRevolutions = wheelRevolutions;
@@ -35,7 +45,7 @@ var totalDistance = 0;
           mLastWheelEventTime = lastWheelEventTime;
           console.log('First Wheel Revolution this Round');
           return;}
-    if (mLastWheelEventTime == lastWheelEventTime){return;}
+    if (lastWheelEventTime < mLastWheelEventTime){return;}
 
     if (mLastWheelRevolutions > wheelRevolutions) {wheelRevolutions2 = wheelRevolutions + 255;}
         else {wheelRevolutions2 = wheelRevolutions; } //adjusted for array buffer
@@ -77,6 +87,8 @@ var totalDistance = 0;
         //$$('#addStuff').prepend('readCalc4:  ' + readCalc4  + '<br><hr>');
         console.log('tim.timSpeed:  ' + tim.timSpeed);
 
+        $$('#addStuff').prepend('tim.timAvgSPD:  ' + tim.timAvgSPD + '<br><hr>');
+        $$('#addStuff').prepend('tim.timSpeed:  ' + tim.timSpeed + '<br><hr>');
 
 
         //Publish to UI
@@ -102,9 +114,17 @@ var totalDistance = 0;
     mLastWheelEventTime = lastWheelEventTime;
 }
 
+function createApplicationCrank() {
+  mFirstCrankRevolutions = crankRevolutions;
+  mLastCrankRevolutions = crankRevolutions;
+  mLastCrankEventTime = lastCrankEventTime;
+  console.log('Init Crank');
+  return;
+}
+
 
 function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
-
+  var initializeCrank = _.once(createApplicationCrank);
   if (mFirstCrankRevolutions === 'a')
       {
         mFirstCrankRevolutions = crankRevolutions;
@@ -120,6 +140,8 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
     if (mLastCrankRevolutions >= 0) {
         var timeDifference = (lastCrankEventTime - mLastCrankEventTime) / 1000.0; // [s]
+        console.log('crankCadence timeDifference - Delta:  ' +  timeDifference);
+
 
         if (crankRevolutions < mLastCrankRevolutions) {
           crankRevolutions2 = crankRevolutions + 255;
@@ -129,20 +151,31 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
           crankRevolutions2 = crankRevolutions;
         }
 
-
         var crankCadenceReading = crankRevolutions2 - mLastCrankRevolutions;
+        console.log('crankCadenceReading - Delta:  ' +  crankCadenceReading);
+
+
         var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
         tim.timCadence = crankCadence;
         console.log(' tim.timCadence:  ' +  tim.timCadence);
 
 
+
         crankRevsRound = crankRevsRound + crankCadenceReading;
+        console.log('crankRevsRound:  ' +  crankRevsRound);
+
         timeElapsedRound = timeElapsedRound + timeDifference;
+        console.log('timeElapsedRound - Crank:  ' +  timeElapsedRound);
+
         tim.timAvgCAD = crankRevsRound / timeElapsedRound * 60;
         console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
-        //$$('#addStuff').prepend('tim.timAvgCAD:  ' + tim.timAvgCAD + '<br><hr>');
 
-        //$$('#addStuff').prepend('tim.timAvgCAD:  ' + tim.timAvgCAD  + '<br>');
+        $$('#addStuff').prepend('tim.timCadence:  ' + tim.timCadence + '<br><hr>');
+        $$('#addStuff').prepend('tim.timAvgCAD:  ' + tim.timAvgCAD + '<br><hr>');
+
+
+
+
 
         var stringCad = null;
         $('.tab-btn-c').each(function (index, obj) {
