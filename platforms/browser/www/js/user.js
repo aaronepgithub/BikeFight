@@ -54,6 +54,7 @@ var tim = {
     timHourBestRoundScore: 0,
     timRealTimeShare: 'On',
     timDistanceTraveled: 0,
+    timDistanceTraveledRound: 0,
     timCalculatedDuration: 0,
     timATSpeedScore: 0,
     timATCadenceScore: 0,
@@ -232,9 +233,13 @@ function someCallbackFunction() {
 
 function someCompleteFunction() {
     console.log('Round Complete, Restarting Timer');
-    createAvgSpeed = [];
-    createAvgCadence = [];
-    createAvgHeartRate = [];
+    wheelRevsRound = 0;
+    crankRevsRound = 0;
+    timeElapsedRound = 0;
+    timeElapsedRoundWheel = 0; 
+    mFirstWheelRevolutions = 'a';
+    mFirstCrankRevolutions = 'a';
+    roundDistance = 0;
     timer.start(299000);
 }
 //END TOCK
