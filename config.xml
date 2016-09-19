@@ -33,7 +33,7 @@
       </config-file>
     </platform>
     <preference name="DisallowOverscroll" value="true" />
-    <plugin name="cordova-plugin-ble-central" spec="1.1.1" />
+    <plugin name="cordova-plugin-ble-central"  />
     <plugin name="cordova-plugin-console" spec="1.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="1.0.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />

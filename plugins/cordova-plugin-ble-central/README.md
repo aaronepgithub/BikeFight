@@ -38,6 +38,7 @@ See the [examples](https://github.com/don/cordova-plugin-ble-central/tree/master
 Edit config.xml to install the plugin for [PhoneGap Build](http://build.phonegap.com).
 
     <gap:plugin name="cordova-plugin-ble-central" source="npm" />
+    <preference name="phonegap-version" value="cli-6.1.0" />
 
 ### PhoneGap Developer App
 
@@ -141,7 +142,7 @@ Advertising information format varies depending on your platform. See [Advertisi
 
 Scan and discover BLE peripherals, specifying scan options.
 
-    ble.startScan(services, options, success, failure);
+    ble.startScanWithOptions(services, options, success, failure);
 
 ### Description
 
@@ -696,7 +697,8 @@ You can read more about typed arrays in these articles on [MDN](https://develope
 
 UUIDs are always strings and not numbers. Some 16-bit UUIDs, such as '2220' look like integers, but they're not. (The integer 2220 is 0x8AC in hex.) This isn't a problem with 128 bit UUIDs since they look like strings 82b9e6e1-593a-456f-be9b-9215160ebcac. All 16-bit UUIDs should also be passed to methods as strings.
 
-# Background Notifications on iOS
+<a name="background-notifications-on-ios">
+# Background Scanning and Notifications on iOS
 
 Android applications will continue to receive notification while the application is in the background.
 
@@ -715,6 +717,8 @@ Add a new section to config.xml
             </array>
         </config-file>
     </platform>
+    
+See [ble-background](https://github.com/don/ble-background) example project for more details.
     
 # Testing the Plugin
 
