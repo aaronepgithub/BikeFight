@@ -365,6 +365,7 @@ function newTimer(count) {
 
     if (count === 155) {
         myCenterAlert(lri_string, 2500);
+         $$('#addStuff').prepend(lri_string + '<br><hr>');
         var anotherstoredData = myApp.formGetData('my-form');
         if (anotherstoredData.style !== "NO") {
             TTS
