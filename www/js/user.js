@@ -251,11 +251,11 @@ function newTimer(count) {
         publishAvg();
     }
 
-    var remdr17 = count % 17;
-    if (remdr17 === 0) {
-      populate_tim_avg_rnd_bubbles();
-      //populate_last_rnd_bubbles();
-    }
+    // var remdr17 = count % 17;
+    // if (remdr17 === 0) {
+    //   populate_tim_avg_rnd_bubbles();
+    //   //populate_last_rnd_bubbles();
+    // }
 
 
 
@@ -266,9 +266,9 @@ function newTimer(count) {
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
     }
 
-    if (count === 290) {
-        populate_last_rnd_bubbles();
-    }
+    // if (count === 290) {
+    //     populate_last_rnd_bubbles();
+    // }
 
 
     if (count === 280) {
@@ -304,20 +304,20 @@ function newTimer(count) {
         }, 5000);
 
 
-        var storedData = myApp.formGetData('my-form');
-        if (storedData.style !== "NO") {
-            TTS
-                .speak({
-                    text: spkr0,
-                    locale: 'en-GB',
-                    rate: 1.5
-                }, function() {
-                    console.log('success');
-                }, function(reason) {
-                    console.log(reason);
-                });
-
-        }
+        // var storedData = myApp.formGetData('my-form');
+        // if (storedData.style !== "NO") {
+        //     TTS
+        //         .speak({
+        //             text: spkr0,
+        //             locale: 'en-GB',
+        //             rate: 1.5
+        //         }, function() {
+        //             console.log('success');
+        //         }, function(reason) {
+        //             console.log(reason);
+        //         });
+        //
+        // }
 
 
     }
@@ -361,20 +361,20 @@ function newTimer(count) {
         myCenterAlert(lri_string, 2500);
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
          //$$('#addStuff').prepend(lri_string + '<br><hr>');
-        var anotherstoredData = myApp.formGetData('my-form');
-        if (anotherstoredData.style !== "NO") {
-            TTS
-                .speak({
-                    text: lri_string,
-                    locale: 'en-GB',
-                    rate: 1.5
-                }, function() {
-                    console.log('success');
-                }, function(reason) {
-                    console.log(reason);
-                });
-
-        }
+        // var anotherstoredData = myApp.formGetData('my-form');
+        // if (anotherstoredData.style !== "NO") {
+        //     TTS
+        //         .speak({
+        //             text: lri_string,
+        //             locale: 'en-GB',
+        //             rate: 1.5
+        //         }, function() {
+        //             console.log('success');
+        //         }, function(reason) {
+        //             console.log(reason);
+        //         });
+        //
+        // }
 
     }
 
