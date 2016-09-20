@@ -31,9 +31,6 @@
         "cordova-custom-config": {
             "PACKAGE_NAME": "com.aaronep.yowa4"
         },
-        "cordova-plugin-tts": {
-            "PACKAGE_NAME": "com.aaronep.yowa5"
-        },
         "cordova-plugin-ble-central": {
             "PACKAGE_NAME": "com.aaronep.bikefight"
         }
@@ -46,14 +43,6 @@
             "pluginId": "cordova-plugin-statusbar",
             "clobbers": [
                 "window.StatusBar"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-tts/www/tts.js",
-            "id": "cordova-plugin-tts.tts",
-            "pluginId": "cordova-plugin-tts",
-            "clobbers": [
-                "TTS"
             ]
         },
         {
@@ -80,7 +69,6 @@
         "cordova-plugin-statusbar": "1.0.1",
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-custom-config": "2.0.3",
-        "cordova-plugin-tts": "0.2.3",
         "cordova-plugin-ble-central": "1.1.2"
     }
 }

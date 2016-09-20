@@ -22,9 +22,6 @@
         "cordova-custom-config": {
             "PACKAGE_NAME": "com.aaronep.yowa4"
         },
-        "cordova-plugin-tts": {
-            "PACKAGE_NAME": "com.aaronep.yowa5"
-        },
         "cordova-plugin-ble-central": {
             "PACKAGE_NAME": "com.aaronep.bikefight"
         }
