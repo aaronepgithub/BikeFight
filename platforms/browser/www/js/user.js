@@ -120,14 +120,14 @@ function rounds_end(lr, ls, lc, lh) {
 
     $$('#my_last_rnd').html(
         '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
         '<div class="chip-label color-black">' + tim.timName + '</div>' +
         '</div>'
     );
 
     $$('#my_last_rnd2').html(
         '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
         '<div class="chip-label color-black">' + tim.timName + '</div>' +
         '</div>'
     );
@@ -137,7 +137,7 @@ function rounds_end(lr, ls, lc, lh) {
         stringChip += $(this).text("MY BEST:   " + a1);
     });
 
-
+    //populate_last_rnd_bubbles();
 }
 //END OF ROUNDS END
 
@@ -146,14 +146,7 @@ function publishAvg() {
 
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-    $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
-    var stringRND = null;
-    $('.cls_rt_round_val').each(function(index, obj) {
-        stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
-    });
-
     //populate_tim_avg_rnd_bubbles();
-    //populate_last_rnd_bubbles();
 
 }
 
@@ -246,15 +239,9 @@ function newTimer(count) {
       calculate_duration();
     }
 
-    var remdr7 = count % 7;
-    if (remdr7 === 0) {
+    var remdr10 = count % 10;
+    if (remdr10 === 0) {
         publishAvg();
-    }
-
-    var remdr17 = count % 17;
-    if (remdr17 === 0) {
-      populate_tim_avg_rnd_bubbles();
-      //populate_last_rnd_bubbles();
     }
 
 
@@ -265,11 +252,6 @@ function newTimer(count) {
         round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
     }
-
-    if (count === 290) {
-        populate_last_rnd_bubbles();
-    }
-
 
     if (count === 280) {
         get_round_data();
@@ -404,9 +386,9 @@ function newTimer(count) {
     //     }, 5000);
     // }
 
-    if (count === 90) {
-        get_round_data();
-    }
+    // if (count === 65) {
+    //     get_round_data();
+    // }
 
 
     if (count === 60) {
@@ -441,10 +423,10 @@ function newTimer(count) {
     }
 
     if (count === 0) {
-        // $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
-        // $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgCAD) + '</h1>');
-        // $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgHR) + '</h1>');
-        // $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
+        $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
+        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgCAD) + '</h1>');
+        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgHR) + '</h1>');
+        $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
 
         //THESE ARE THE VALUES  CREATED FOR END OF ROUND
         tim.timLastHR = tim.timAvgHR;
@@ -452,12 +434,6 @@ function newTimer(count) {
         tim.timLastSPD = tim.timAvgSPD;
         tim.timLastRND = tim.timAvgRND;
         tim.timNumberofRounds = tim.timNumberofRounds + 1;
-
-        $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timLastSPD + '</h1>');
-        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastCAD) + '</h1>');
-        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
-        $$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
-
         //****ALL POST ROUND PROCESSING
         rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         //****
@@ -477,133 +453,56 @@ function newTimer(count) {
 
 function bubbleMaker() {
 
-    //SPEED BUBBLES
-    if (tim.timSpeed >= 0 && tim.timSpeed <=20){
-      var vSpeed01 = Math.round(tim.timSpeed / 2);
-      var vSpeed02 = 20 - vSpeed01;
-      var vSpeed03 = '#rt_speed_bubbles';
-      populate_rt_bubbles4(vSpeed01, vSpeed02, vSpeed03);
-    }
-    if (tim.timSpeed > 20 && tim.timSpeed <=40){
-      var vSpeed21 = Math.round(tim.timSpeed / 2);
-      var vSpeed22 = 20 - vSpeed21;
-      var vSpeed23 = '#rt_speed_bubbles';
-      populate_rt_bubbles8(vSpeed21, vSpeed22, vSpeed23);
-    }
-    if (tim.timSpeed > 40 && tim.timSpeed <=60){
-      var vSpeed41 = Math.round(tim.timSpeed / 2);
-      var vSpeed42 = 20 - vSpeed41;
-      var vSpeed43 = '#rt_speed_bubbles';
-      populate_rt_bubbles12(vSpeed41, vSpeed42, vSpeed43);
-    }
-    if (tim.timSpeed > 60 && tim.timSpeed <=80){
-      var vSpeed61 = Math.round(tim.timSpeed / 2);
-      var vSpeed62 = 20 - vSpeed61;
-      var vSpeed63 = '#rt_speed_bubbles';
-      populate_rt_bubbles16(vSpeed61, vSpeed62, vSpeed63);
-    }
-    if (tim.timSpeed > 80) {
-      var vSpeed811 = Math.round(tim.timSpeed / 2);
-      var vSpeed821 = 20 - vSpeed811;
-      var vSpeed831 = '#rt_speed_bubbles';
-      populate_rt_bubbles20(vSpeed811, vSpeed821, vSpeed831);
-    }
-    //SPEED BUBBLES
+    if (tim.timSpeed > 40) {tim.timSpeed = 40;}
+    var vSpeed1 = Math.round(tim.timSpeed / 2);
+    var vSpeed2 = 20 - vSpeed1;
+    var vSpeed3 = '#rt_speed_bubbles';
+    populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
 
 
+    if (tim.timHR  > 200) {tim.timHR  = 200;}
+    var vHeartrate1 = Math.round(tim.timHR / 10);
+    var vHeartrate2 = 20 - vHeartrate1;
+    var vHeartrate3 = '#rt_hr_bubbles';
+    populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
 
-  } //END BUBBLE MAKER
+    if (tim.timCadence > 120) {tim.timCadence = 120;}
+    var vCadence1 = Math.round(tim.timCadence / 6);
+    var vCadence2 = 20 - vCadence1;
+    var vCadence3 = '#rt_cad_bubbles';
+    populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
 
+    if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
+    var vRound1 = (Math.round(tim.timAvgRND) / 5);
+    var vRound2 = 20 - vRound1;
+    var vRound3 = '#rt_round_bubbles';
+    $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
 
+    var stringRND = null;
+    $('.cls_rt_round_val').each(function(index, obj) {
+        stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
+    });
+    populate_rt_bubbles(vRound1, vRound2, vRound3);
 
-    // if (tim.timHR  > 200) {tim.timHR  = 200;}
-    // var vHeartrate1 = Math.round(tim.timHR / 10);
-    // var vHeartrate2 = 20 - vHeartrate1;
-    // var vHeartrate3 = '#rt_hr_bubbles';
-    // populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
-    //
-    // if (tim.timCadence > 120) {tim.timCadence = 120;}
-    // var vCadence1 = Math.round(tim.timCadence / 6);
-    // var vCadence2 = 20 - vCadence1;
-    // var vCadence3 = '#rt_cad_bubbles';
-    // populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
-    //
-    //
-    // if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
-    // var vRound1 = (Math.round(tim.timAvgRND) / 5);
-    // var vRound2 = 20 - vRound1;
-    // var vRound3 = '#rt_round_bubbles';
-    // $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
-    //
-    // var stringRND = null;
-    // $('.cls_rt_round_val').each(function(index, obj) {
-    //     stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
-    // });
-    //populate_rt_bubbles(vRound1, vRound2, vRound3);
-
-    function populate_rt_bubbles4(x, y, z) {
+    function populate_rt_bubbles(x, y, z) {
         var a = '<i class="fa fa-circle fa-1x color-red"></i>';
         var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-        var c = a.repeat(4);
-        var d = b.repeat(16);
-        var e = c.concat(d);
-        $$(z).html(e);
+        var c = a.repeat(Math.ceil(Math.round(x)));
+        // var d = b.repeat(Math.ceil(Math.round(y)));
+        var d = 20 - Number(x);
+        var dd = Number(d) + Number(x);
+        //console.log('x + d: ' + dd);
+          if (dd <= 20) {
+            var e = b.repeat(Math.ceil(Math.round(d)));
+            var f = c.concat(e);
+            $$(z).html(f);
+          }
+          else {
+            return;
+          }
     }
-    function populate_rt_bubbles8(x, y, z) {
-        var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-        var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-        var c = a.repeat(8);
-        var d = b.repeat(12);
-        var e = c.concat(d);
-        $$(z).html(e);
-    }
-    function populate_rt_bubbles12(x, y, z) {
-        var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-        var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-        var c = a.repeat(12);
-        var d = b.repeat(8);
-        var e = c.concat(d);
-        $$(z).html(e);
-    }
-    function populate_rt_bubbles16(x, y, z) {
-        var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-        var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-        var c = a.repeat(16);
-        var d = b.repeat(4);
-        var e = c.concat(d);
-        $$(z).html(e);
-    }
-    function populate_rt_bubbles20(x, y, z) {
-        var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-        var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-        var c = a.repeat(20);
-        //var d = b.repeat(0);
-        //var e = c.concat(d);
-        $$(z).html(c);
-    }
-
-
-
-
-    // function populate_rt_bubbles(x, y, z) {
-    //     var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-    //     var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-    //     var c = a.repeat(Math.ceil(Math.round(x)));
-    //     // var d = b.repeat(Math.ceil(Math.round(y)));
-    //     var d = 20 - Number(x);
-    //     var dd = Number(d) + Number(x);
-    //     //console.log('x + d: ' + dd);
-    //       if (dd <= 20) {
-    //         var e = b.repeat(Math.ceil(Math.round(d)));
-    //         var f = c.concat(e);
-    //         $$(z).html(f);
-    //       }
-    //       else {
-    //         return;
-    //       }
-    // }
-
+}
 
 function populate_timer_bubbles(x) {
   $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
