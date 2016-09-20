@@ -5,8 +5,6 @@ var mLastCrankRevolutions = 0;
 var mLastCrankEventTime = 0;
 var nTotalDistance = 0;
 var RoundWheelRevolutions = 0;
-var createAvgSpeed = [];
-var createAvgCadence = [];
 var createAvgHeartRate = [];
 var meanCadence;
 var meanSpeed;
@@ -33,12 +31,11 @@ function createApplicationWheel() {
 }
 
  function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
+   console.log('wheelRevolutions:  ' + wheelRevolutions + '  lastWheelEventTime:  ' + lastWheelEventTime + '  tim.timTireCircMeters:  ' + tim.timTireCircMeters);
     var circumference = tim.timTireCircMeters;
 
     var initialize = _.once(createApplicationWheel);
 
-
-    //console.log('wheelRevolutions:  ' + wheelRevolutions + '  lastWheelEventTime:  ' + lastWheelEventTime);
     if (mFirstWheelRevolutions === 'a') {
           mFirstWheelRevolutions = wheelRevolutions;
           mLastWheelRevolutions = wheelRevolutions;
@@ -50,9 +47,15 @@ function createApplicationWheel() {
     if (mLastWheelRevolutions > wheelRevolutions) {wheelRevolutions2 = wheelRevolutions + 255;}
         else {wheelRevolutions2 = wheelRevolutions; } //adjusted for array buffer
 
-    if (mLastWheelRevolutions >= 0 && wheelRevolutions2 >= 0 ) {
-        wheelRevsRound = wheelRevsRound + wheelRevolutions2 - mLastWheelRevolutions;
+    if (mLastWheelRevolutions >= 0 && wheelRevolutions2 >= 0) {
+
         elapWheelRevsReading = wheelRevolutions2 - mLastWheelRevolutions;
+        if(elapWheelRevsReading > 10) {
+          mLastWheelRevolutions = wheelRevolutions;
+          return;
+        }
+        wheelRevsRound = wheelRevsRound + wheelRevolutions2 - mLastWheelRevolutions;
+
         console.log('wheelRevsRound:  ' + wheelRevsRound);
         console.log('wheelRevsReading:  ' + elapWheelRevsReading);
 
@@ -124,6 +127,7 @@ function createApplicationCrank() {
 
 
 function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
+  console.log('crankRevolutions:  ' + crankRevolutions + '  lastCrankEventTime:  ' + lastCrankEventTime);
   var initializeCrank = _.once(createApplicationCrank);
   if (mFirstCrankRevolutions === 'a')
       {
@@ -134,7 +138,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
       return;
     }
 
-      //console.log('crankRevolutions:  ' + crankRevolutions + '  lastCrankEventTime:  ' + lastCrankEventTime);
+
       if (mLastCrankEventTime == lastCrankEventTime)
       {return;}
 
@@ -154,10 +158,15 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
         var crankCadenceReading = crankRevolutions2 - mLastCrankRevolutions;
         console.log('crankCadenceReading - Delta:  ' +  crankCadenceReading);
 
+        if (crankCadenceReading > 5) {
+          mLastCrankRevolutions = crankRevolutions;
+          return;
+        }
+
 
         var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
         tim.timCadence = crankCadence;
-        console.log(' tim.timCadence:  ' +  tim.timCadence);
+        console.log('tim.timCadence:  ' +  tim.timCadence);
 
 
 

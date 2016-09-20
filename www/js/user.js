@@ -75,18 +75,18 @@ var tim = {
     timStartTime: 0
 };
 
-var arrCAD = [];
-var arrCADt = [];
-var arrSPD = [];
-var arrSPDt = [];
+// var arrCAD = [];
+// var arrCADt = [];
+// var arrSPD = [];
+// var arrSPDt = [];
 // calcCadence2(currCAD,currCADt);
 // calcSpeed2(currSPD, currSPDt);
 
 var cntdown = 300;
-var arrTimerHR = new Array(cntdown);
-var arrTimerSPD = new Array(cntdown);
-var arrTimerCAD = new Array(cntdown);
-var arrTimerRND = new Array(cntdown);
+// var arrTimerHR = new Array(cntdown);
+// var arrTimerSPD = new Array(cntdown);
+// var arrTimerCAD = new Array(cntdown);
+// var arrTimerRND = new Array(cntdown);
 var objScores = {};
 
 
@@ -178,7 +178,7 @@ function publishAvg(timer_val) {
 
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-    //populate_tim_avg_rnd_bubbles();
+    populate_tim_avg_rnd_bubbles();
 
 }
 
@@ -240,6 +240,7 @@ function someCompleteFunction() {
     mFirstWheelRevolutions = 'a';
     mFirstCrankRevolutions = 'a';
     roundDistance = 0;
+    createAvgHeartRate = [];
     timer.start(299000);
 }
 //END TOCK
@@ -256,17 +257,17 @@ function newTimer(count) {
     calculate_duration();
 
     global_timer = 300 - count;
-    arrTimerHR.push(tim.timHR);
-    arrTimerHR.shift();
-    arrTimerSPD.push(tim.timSpeed);
-    arrTimerSPD.shift();
-    arrTimerCAD.push(tim.timCadence);
-    arrTimerCAD.shift();
-    arrTimerRND.push(tim.timAvgRND);
-    arrTimerRND.shift();
+    // arrTimerHR.push(tim.timHR);
+    // arrTimerHR.shift();
+    // arrTimerSPD.push(tim.timSpeed);
+    // arrTimerSPD.shift();
+    // arrTimerCAD.push(tim.timCadence);
+    // arrTimerCAD.shift();
+    // arrTimerRND.push(tim.timAvgRND);
+    // arrTimerRND.shift();
 
-    var remdr5 = count % 5;
-    if (remdr5 === 0) {
+    var remdr2 = count % 2;
+    if (remdr2 === 0) {
         bubbleMaker();
     }
 
@@ -339,7 +340,7 @@ function newTimer(count) {
 
     if (count === 245) {
         get_top_fighters();
-                $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+        $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
         //myCenterAlert('4 Minutes Remain', 500);
     }
@@ -477,23 +478,27 @@ function newTimer(count) {
 
 function bubbleMaker() {
 
+    if (tim.timSpeed > 40) {tim.timSpeed = 40;}
     var vSpeed1 = Math.round(tim.timSpeed / 2);
     var vSpeed2 = 20 - vSpeed1;
     var vSpeed3 = '#rt_speed_bubbles';
-    //populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
+    populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
 
 
+    if (tim.timHR  > 200) {tim.timHR  = 200;}
     var vHeartrate1 = Math.round(tim.timHR / 10);
     var vHeartrate2 = 20 - vHeartrate1;
     var vHeartrate3 = '#rt_hr_bubbles';
-    //populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
+    populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
 
+    if (tim.timCadence > 120) {tim.timCadence = 120;}
     var vCadence1 = Math.round(tim.timCadence / 6);
     var vCadence2 = 20 - vCadence1;
     var vCadence3 = '#rt_cad_bubbles';
-    //populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
+    populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
 
+    if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
     var vRound1 = (Math.round(tim.timAvgRND) / 5);
     var vRound2 = 20 - vRound1;
     var vRound3 = '#rt_round_bubbles';
@@ -503,23 +508,24 @@ function bubbleMaker() {
     $('.cls_rt_round_val').each(function(index, obj) {
         stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
     });
-    //populate_rt_bubbles(vRound1, vRound2, vRound3);
+    populate_rt_bubbles(vRound1, vRound2, vRound3);
 
     function populate_rt_bubbles(x, y, z) {
         var a = '<i class="fa fa-circle fa-1x color-red"></i>';
         var b = '<i class="fa fa-circle fa-1x color-white"></i>';
         var c = a.repeat(Math.ceil(Math.round(x)));
-        var d = b.repeat(Math.ceil(Math.round(y)));
-        var e;
-
-        if (Math.round(x + y) > 19.50) {
-            e = c.concat(d);
-        }
-        if (Math.round(x + y) < 19.51) {
-            e = c.concat(d + 1);
-        }
-        e = c.concat(d);
-        $$(z).html(e);
+        // var d = b.repeat(Math.ceil(Math.round(y)));
+        var d = 20 - Number(x);
+        var dd = Number(d) + Number(x);
+        //console.log('x + d: ' + dd);
+          if (dd <= 20) {
+            var e = b.repeat(Math.ceil(Math.round(d)));
+            var f = c.concat(e);
+            $$(z).html(f);
+          }
+          else {
+            return;
+          }
     }
 }
 
@@ -531,22 +537,22 @@ function populate_round_bubbles(x, y, z) {
     var a = '<i class="fa fa-circle fa-2x color-red"></i> ';
     var b = '<i class="fa fa-circle fa-2x color-white"></i> ';
     var c = a.repeat(x);
-    var d = b.repeat(y);
-    var e;
-    if (Math.round(x + y) > 11.50) {
-        e = c.concat(d);
-    }
-    if (Math.round(x + y) < 11.51) {
-        e = c.concat(d + 1);
-    }
-    // console.log('x: ' + x);
-    // console.log('y: ' + y);
-    e = c.concat(d);
-    $$(z).html(e);
+    var d = 12 - Number(x);
+    var dd = Number(d) + Number(x);
+    //console.log('x + d: ' + dd);
+      if (dd <= 20) {
+        var e = b.repeat(Math.ceil(Math.round(d)));
+        var f = c.concat(e);
+        $$(z).html(f);
+      }
+      else {
+        return;
+      }
 }
 
 
 function populate_last_rnd_bubbles() {
+    if (tim.timLastRND > 100) {tim.timLastRND= 100;}
     var val1 = Math.round((tim.timLastRND / 4) / 2);
     var val2 = Math.round(12 - val1);
     if (val1 + val2 < 12) {
@@ -559,6 +565,7 @@ function populate_last_rnd_bubbles() {
 
 function populate_tim_avg_rnd_bubbles() {
     //EVERY SECOND
+    if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
     var val1 = Math.round((tim.timAvgRND / 4) / 2);
     var val2 = Math.round(12 - val1);
     if (val1 + val2 < 12) {

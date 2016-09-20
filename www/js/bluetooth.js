@@ -198,6 +198,7 @@ var appII = {
             //   });
             myCenterAlert('HR Sensor has Disconnected', 1000);
             mainView.router.loadPage("#bluetooth");
+            $$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
         }
     },
 

@@ -108,81 +108,7 @@ function startup() {
     updateTim();
     }
 
-// //START TOCK
-//     var timer = new Tock({
-//     countdown: true,
-//     interval: 1000,
-//     callback: someCallbackFunction,
-//     complete: someCompleteFunction
-//   });
-//
-//     function someCallbackFunction () {
-//     console.log('someCallbackFunction');
-//     var current_time = timer.msToTime(timer.lap());
-//     var ct = Math.round(timer.lap()/1000);
-//     //$('#clock').val(ct);
-//     newTimer(ct);
-//     publishAvg(ct);
-//     }
-//     function someCompleteFunction () {
-//       console.log('someCompleteFunction');
-//       timer.start(300000);
-//     }
-//     //END TOCK
 
-  // $('#start').on('click', function() {
-  //     timer.start(10000);
-  // });
-  //
-  // $('#stop').on('click', function() {
-  //     timer.stop();
-  // });
-  //
-  // $('#reset').on('click', function() {
-  //     timer.reset();
-  // });
-
-  //END TOCK
-
-
-    // $$('.press_plus').on('click', function () {
-    //   var storedData = myApp.formGetData('my-form');
-    //     tim.timName = storedData.name;
-    //     tim.timTeam = storedData.team;
-    //     tim.timGroup = storedData.group;
-    //     tim.timStyle  = storedData.style;
-    //     tim.timTire = storedData.tire;
-    //     console.log('Speed Dial Play - Update timObject');
-    // });
-
-
-    // $$('.press_play').on('click', function () {
-    //   $$('#tire').val(tim.timTire);
-    //   $$('#group').val(tim.timGroup);
-    //   $$('#style').val(tim.timStyle);
-    //   $$('#team').val(tim.timTeam);
-    // });
-
-  //   $$('.press_envelope').on('click', function () {
-  //   msg_Get_fb();
-  //   msg_Get_fb_group();
-  // });
-    //console.log('timObject:  ' + JSON.stringify(tim));
-
-
-//function update_settings_onstart() {
-  //console.log('update_settings_onstart');
-  // if (tim.timTire === '700X23') { tim.timTireCircum = 2.10; }
-  // if (tim.timTire === '700X25') { tim.timTireCircum = 2.11; }
-  // if (tim.timTire === '700X28') { tim.timTireCircum = 2.14; }
-  // if (tim.timTire === '700X30') { tim.timTireCircum = 2.15; }
-  // if (tim.timTire === '700X32') { tim.timTireCircum = 2.17; }
-  // if (tim.timTire === '700X38') { tim.timTireCircum = 2.18; }
-  // if (tim.timTire === '700X40' || tim.timTire === '700X42' || tim.timTire === '700X44') { tim.timTireCircum = 2.22; }
-
-  //updateUserDataTim();
-  //remove_FB_users();
-//}
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function () {
@@ -192,25 +118,13 @@ $$(document).on('deviceready', function () {
 
     });
 
-    // $$('#settings_link').on('click', function () {
-    //     console.log('clicked settings ');
-    //});
+    $$('.cls_update_tim').on('click', function () {
+        console.log('update form data');
+        var storedData10 = myApp.formGetData('my-form');
+        console.log('Startup Stored Data1:  ' + JSON.stringify(storedData10));
+        updateTim();
+    });
 
-    // $$('#messaging_link').on('click', function () {
-    //     console.log('clicked messaging_link ');
-    //     msg_Get_fb();
-    //     msg_Get_fb_group();
-    // });
-
-
-    // $$('#fb_clear').on('click', function (e) {
-    //     console.log('clicked fb_clear ');
-    //     remove_FB_users();
-    // });
-
-    // $$('#frm_Submit').on('click', function (e) {
-    //     // console.log('clicked frm_Submit ');
-    // });
 
     // $$('#update').on('click', function (e) {
     //     console.log('clicked update');
