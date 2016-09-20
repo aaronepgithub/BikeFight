@@ -48,7 +48,6 @@ function round_post(r1, r2, r3, r4) {
             fb_HR: r4
         });
     }
-    $$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
 function get_round_data() {
@@ -77,10 +76,10 @@ function get_round_data() {
         lastRoundIndex = lri + 1;
         if (lastRoundIndex >= 1) {
         console.log('Your Last Round is # ' + lastRoundIndex++ + '  for the day');
-        lri_string = '2 Minutes Remain.  Your Last Round is Number ' + lastRoundIndex++ + '  for the day';
+        lri_string = 'Your Last Round is # ' + lastRoundIndex++ + '  for the day';
         }
         else {
-            lri_string = '2 Minutes Remain.  Your Last Round is the worst posted today.';
+            lri_string = 'Your Last Round is the worst posted today.';
         }
 
         $$('.cls_top_kings').remove();
@@ -104,7 +103,6 @@ function get_round_data() {
                 '</div>'
             );
         }); //END FOR EACH
-          $$('#RTJ').html('ROUND DATA UPDATED');
     });
 }
 
@@ -139,7 +137,6 @@ function get_round_data_group() {
 
 
         }); //END FOR EACH
-        $$('#RTJ').html('GROUP DATA UPDATED');
     });
 }
 //END GROUP LEADERBOARD
@@ -176,7 +173,6 @@ function get_top_fighters() {
             );
         });
     });
-    $$('#RTJ').html('TOP 30 FIGHTERS UPDATED');
 }
 
 
