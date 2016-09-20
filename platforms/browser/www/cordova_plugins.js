@@ -23,6 +23,14 @@ module.exports = [
         "merges": [
             "ble"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-tts/www/tts.js",
+        "id": "cordova-plugin-tts.tts",
+        "pluginId": "cordova-plugin-tts",
+        "clobbers": [
+            "TTS"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -34,7 +42,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-custom-config": "2.0.3",
-    "cordova-plugin-ble-central": "1.1.2"
+    "cordova-plugin-ble-central": "1.1.2",
+    "cordova-plugin-tts": "0.2.3"
 }
 // BOTTOM OF METADATA
 });

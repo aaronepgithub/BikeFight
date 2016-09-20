@@ -48,6 +48,7 @@ function round_post(r1, r2, r3, r4) {
             fb_HR: r4
         });
     }
+    $$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
 function get_round_data() {
@@ -75,8 +76,8 @@ function get_round_data() {
         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
         lastRoundIndex = lri + 1;
         if (lastRoundIndex >= 1) {
-        console.log('Your Last Round is # ' + lastRoundIndex++ + '  for the day');
-        lri_string = 'Your Last Round is # ' + lastRoundIndex++ + '  for the day';
+        console.log('Your Last Round is Ranked Number ' + lastRoundIndex++ + '  for the day');
+        lri_string = 'Your Last Round is Ranked Number ' + lastRoundIndex++ + '  for the day';
         }
         else {
             lri_string = 'Your Last Round is the worst posted today.';
@@ -104,6 +105,7 @@ function get_round_data() {
             );
         }); //END FOR EACH
     });
+    $$('#RTJ').html('ROUND DATA UPDATED');
 }
 
 //START GROUP LEADERBOARD
@@ -138,6 +140,7 @@ function get_round_data_group() {
 
         }); //END FOR EACH
     });
+      $$('#RTJ').html('GROUP DATA UPDATED');
 }
 //END GROUP LEADERBOARD
 

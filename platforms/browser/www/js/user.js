@@ -266,13 +266,13 @@ function newTimer(count) {
     // arrTimerRND.push(tim.timAvgRND);
     // arrTimerRND.shift();
 
-    var remdr2 = count % 2;
-    if (remdr2 === 0) {
+    var remdr5 = count % 5;
+    if (remdr5 === 0) {
         bubbleMaker();
     }
 
-    var remdr4 = count % 4;
-    if (remdr4 === 0) {
+    var remdr3 = count % 3;
+    if (remdr3 === 0) {
         publishAvg();
     }
 
@@ -280,27 +280,27 @@ function newTimer(count) {
 
 
 
-    if (count === 298) {
+    if (count === 295) {
         round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
     }
 
-    if (count === 296) {
+    if (count === 275) {
         get_round_data();
     }
 
-    if (count === 294) {
+    if (count === 245) {
         get_round_data_group();
     }
 
 
-    if (count === 280) {
+    if (count === 195) {
         get_top_fighters();
 
     }
 
 
-    if (count === 290) {
+    if (count === 260) {
         var spkr0 = 'A New Round Has Just Started.  ' +
             'The Champion is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
             'The leading score is ' + top_king_rnd + '. ' +
@@ -316,20 +316,20 @@ function newTimer(count) {
         }, 5000);
 
 
-        var storedData = myApp.formGetData('my-form');
-        if (storedData.style !== "NO") {
-            TTS
-                .speak({
-                    text: spkr0,
-                    locale: 'en-GB',
-                    rate: 1.5
-                }, function() {
-                    console.log('success');
-                }, function(reason) {
-                    console.log(reason);
-                });
-
-        }
+        // var storedData = myApp.formGetData('my-form');
+        // if (storedData.style !== "NO") {
+        //     TTS
+        //         .speak({
+        //             text: spkr0,
+        //             locale: 'en-GB',
+        //             rate: 1.5
+        //         }, function() {
+        //             console.log('success');
+        //         }, function(reason) {
+        //             console.log(reason);
+        //         });
+        //
+        // }
 
 
     }
@@ -338,18 +338,16 @@ function newTimer(count) {
 
 
 
-    if (count === 245) {
-        get_top_fighters();
+    if (count === 240) {
+        //get_top_fighters();
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
-        //myCenterAlert('4 Minutes Remain', 500);
+        myCenterAlert('4 Minutes Remain', 500);
     }
 
 
 
-    if (count === 185) {
-        get_round_data();
-    }
+
 
     if (count === 180) {
               $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
@@ -366,27 +364,22 @@ function newTimer(count) {
 
     if (count === 155) {
         myCenterAlert(lri_string, 2500);
-         $$('#addStuff').prepend(lri_string + '<br><hr>');
-        var anotherstoredData = myApp.formGetData('my-form');
-        if (anotherstoredData.style !== "NO") {
-            TTS
-                .speak({
-                    text: lri_string,
-                    locale: 'en-GB',
-                    rate: 1.5
-                }, function() {
-                    console.log('success');
-                }, function(reason) {
-                    console.log(reason);
-                });
+         //$$('#addStuff').prepend(lri_string + '<br><hr>');
+        //var anotherstoredData = myApp.formGetData('my-form');
+        // if (anotherstoredData.style !== "NO") {
+        //     TTS
+        //         .speak({
+        //             text: lri_string,
+        //             locale: 'en-GB',
+        //             rate: 1.5
+        //         }, function() {
+        //             console.log('success');
+        //         }, function(reason) {
+        //             console.log(reason);
+        //         });
+        //
+        // }
 
-        }
-
-    }
-
-
-    if (count === 165) {
-        get_round_data_group();
     }
 
     if (count === 150) {
@@ -394,8 +387,17 @@ function newTimer(count) {
     }
 
     if (count === 125) {
-        get_top_fighters();
+        get_round_data();
     }
+    // if (count === 165) {
+    //     get_round_data_group();
+    // }
+
+
+
+    // if (count === 125) {
+    //     get_top_fighters();
+    // }
 
 
     if (count === 120) {
@@ -410,9 +412,9 @@ function newTimer(count) {
         }, 5000);
     }
 
-    if (count === 65) {
-        get_round_data();
-    }
+    // if (count === 65) {
+    //     get_round_data();
+    // }
 
 
     if (count === 60) {
@@ -433,12 +435,12 @@ function newTimer(count) {
 
     }
 
-    if (count === 45) {
-        get_round_data_group();
-    }
+    // if (count === 45) {
+    //     get_round_data_group();
+    // }
 
     if (count === 30) {
-                          $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> ');
+        $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> ');
         myCenterAlert('30 Seconds Remain', 1000);
     }
 
@@ -448,10 +450,6 @@ function newTimer(count) {
 
     if (count === 0) {
       console.log('End of Round');
-        $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timAvgSPD + '</h1>');
-        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgCAD) + '</h1>');
-        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timAvgHR) + '</h1>');
-        $$('#publishLastRNDValue').text(Math.round(tim.timAvgRND));
 
         //THESE ARE THE VALUES  CREATED FOR END OF ROUND
         tim.timLastHR = tim.timAvgHR;
@@ -459,17 +457,20 @@ function newTimer(count) {
         tim.timLastSPD = tim.timAvgSPD;
         tim.timLastRND = tim.timAvgRND;
         tim.timNumberofRounds = tim.timNumberofRounds + 1;
+
+        $$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timLastSPD + '</h1>');
+        $$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastCAD) + '</h1>');
+        $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
+        $$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
+
         //****ALL POST ROUND PROCESSING
         rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         //****
         myCenterAlert('Round Complete', 1000);
 
     }
-    //END OF COUNT AT 1
+    //END OF COUNT AT 0
 
-    // if (count === 0) {
-    //   console.log('End of Round');
-    // }
 
 }
 //end of the New Timer function with count passed in.
