@@ -121,7 +121,7 @@ var totalDistance = 0;
 
 
 function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
-  console.log('crankRevolutions:  ' + crankRevolutions + '  lastCrankEventTime:  ' + lastCrankEventTime);
+  //console.log('crankRevolutions:  ' + crankRevolutions + '  lastCrankEventTime:  ' + lastCrankEventTime);
 
   if (mFirstCrankRevolutions === 'a')
       {
@@ -159,7 +159,10 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 
         var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
-        tim.timCadence = crankCadence;
+        if(crankCadence < 120) {
+          tim.timCadence = crankCadence;
+        }
+
         //console.log('tim.timCadence:  ' +  tim.timCadence);
 
 
