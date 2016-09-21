@@ -276,6 +276,21 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
+
+            //TTS - AFTER MODAL IS CLOSED
+                      if (storedData.style !== "NO") {
+                 TTS
+                     .speak({
+                         text: 'Get Moving.  A new round just started.',
+                         locale: 'en-GB',
+                         rate: 1.5
+                     }, function() {
+                         console.log('TTS SUCCESS');
+                     }, function(reason) {
+                         console.log('TTS FAILURE:  ' + reason);
+                     });
+             } //TTS - AFTER MODAL IS CLOSED
+
         }, 5000);
     }
 
