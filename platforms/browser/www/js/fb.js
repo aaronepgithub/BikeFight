@@ -77,10 +77,10 @@ function get_round_data() {
         lastRoundIndex = lri + 1;
         if (lastRoundIndex >= 1) {
         console.log('Your Last Round is Ranked Number ' + lastRoundIndex++ + '  for the day');
-        lri_string = 'Your Last Round is Ranked Number ' + lastRoundIndex++ + '  for the day';
+        lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex++ +'</span>' +  '  for the day';
         }
         else {
-            lri_string = 'Your Last Round is the worst posted today.';
+            lri_string = 'Your Last Round is the Worst Today.';
         }
 
         $$('.cls_top_kings').remove();
@@ -104,6 +104,9 @@ function get_round_data() {
                 '</div>'
             );
         }); //END FOR EACH
+
+
+
     });
     $$('#RTJ').html('ROUND DATA UPDATED');
 }

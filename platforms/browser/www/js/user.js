@@ -120,7 +120,7 @@ function rounds_end(lr, ls, lc, lh) {
 
     $$('#my_last_rnd').html(
         '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
+        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
         '<div class="chip-label color-black">' + tim.timName + '</div>' +
         '</div>'
     );
@@ -128,7 +128,7 @@ function rounds_end(lr, ls, lc, lh) {
     $$('#my_last_rnd2').html(
         '<div class="cls_top6 chip bg-white">' +
         '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
-        '<div class="chip-label color-black">' + tim.timName + '</div>' +
+        '<div class="chip-label color-black">' + tim.timLastRND + '</div>' +
         '</div>'
     );
 
@@ -143,41 +143,17 @@ function rounds_end(lr, ls, lc, lh) {
 
 
 function publishAvg(timer_val) {
-    // var val1 = Math.round(timer_val / 50);
-    // var val2 = Math.round(7 - val1);
-    // var val3 = '.cls_timer_bubbles';
-    // populate_timer_bubbles(val1, val2, val3);
-
-
-    // var sumHR = 0;
-    // var sumSPD = 0;
-    // var sumCAD = 0;
-    // var sumRND = 0;
-    //
-    // arrTimerSPD.map(function(item) {
-    //     sumSPD += item;
-    // });
-    //
-    // arrTimerHR.map(function(item1) {
-    //     sumHR += item1;
-    // });
-    //
-    // arrTimerCAD.map(function(item2) {
-    //     sumCAD += item2;
-    // });
-    //
-    // arrTimerRND.map(function(item3) {
-    //     sumRND += item3;
-    // });
-
-    // tim.timAvgHR = Math.round(sumHR / cntdown);
-    // tim.timAvgCAD = Math.round(sumCAD / cntdown);
-    // tim.timAvgSPD = Math.round(sumSPD / cntdown * 10) / 10;
-    // tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
-    // $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-
     tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
+
+    $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
+
+    var stringRND = null;
+    $('.cls_rt_round_val').each(function(index, obj) {
+        stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
+    });
+
+
     populate_tim_avg_rnd_bubbles();
 
 }
@@ -256,18 +232,9 @@ function newTimer(count) {
     });
     calculate_duration();
 
-    global_timer = 300 - count;
-    // arrTimerHR.push(tim.timHR);
-    // arrTimerHR.shift();
-    // arrTimerSPD.push(tim.timSpeed);
-    // arrTimerSPD.shift();
-    // arrTimerCAD.push(tim.timCadence);
-    // arrTimerCAD.shift();
-    // arrTimerRND.push(tim.timAvgRND);
-    // arrTimerRND.shift();
 
-    var remdr5 = count % 5;
-    if (remdr5 === 0) {
+    var remdr4 = count % 4;
+    if (remdr4 === 0) {
         bubbleMaker();
     }
 
@@ -283,29 +250,26 @@ function newTimer(count) {
     if (count === 295) {
         round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+        $$('#my_last_rnd').html(
+            '<div class="cls_top6 chip bg-white">' +
+            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+            '<div class="chip-label color-black">' + tim.timName + '</div>' +
+            '</div>'
+        );
+
+        $$('#my_last_rnd2').html(
+            '<div class="cls_top6 chip bg-white">' +
+            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+            '<div class="chip-label color-black">' + tim.timName + '</div>' +
+            '</div>'
+        );
     }
 
-    if (count === 275) {
+    if (count === 285) {
         get_round_data();
     }
 
-    if (count === 245) {
-        get_round_data_group();
-    }
-
-
-    if (count === 195) {
-        get_top_fighters();
-
-    }
-
-
-    if (count === 260) {
-        var spkr0 = 'A New Round Has Just Started.  ' +
-            'The Champion is ' + top_king_name + ' from Team ' + top_king_team + '. ' +
-            'The leading score is ' + top_king_rnd + '. ' +
-            ' Your last round score was ' + tim.timLastRND + ' .';
-
+    if (count === 280) {
         myApp.modal({
             title: '<div>A New Round Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
                 '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
@@ -314,35 +278,30 @@ function newTimer(count) {
         setTimeout(function() {
             myApp.closeModal();
         }, 5000);
+    }
 
+    if (count === 245) {
+        get_round_data_group();
+    }
 
-        // var storedData = myApp.formGetData('my-form');
-        // if (storedData.style !== "NO") {
-        //     TTS
-        //         .speak({
-        //             text: spkr0,
-        //             locale: 'en-GB',
-        //             rate: 1.5
-        //         }, function() {
-        //             console.log('success');
-        //         }, function(reason) {
-        //             console.log(reason);
-        //         });
-        //
-        // }
-
+    if (count === 195) {
+        get_top_fighters();
 
     }
-    //END TTS
-
-
-
 
     if (count === 240) {
         //get_top_fighters();
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
         //var tempCalc = Math.round(tim.timAvgRND) - Math.round(top_king_rnd);
-        myCenterAlert('4 Minutes Remain', 500);
+        //myCenterAlert('4 Minutes Remain', 500);
+        myApp.modal({
+            title: '<div>4 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+                'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
     }
 
 
@@ -362,28 +321,17 @@ function newTimer(count) {
 
     }
 
-    if (count === 155) {
-        myCenterAlert(lri_string, 2500);
-         //$$('#addStuff').prepend(lri_string + '<br><hr>');
-        //var anotherstoredData = myApp.formGetData('my-form');
-        // if (anotherstoredData.style !== "NO") {
-        //     TTS
-        //         .speak({
-        //             text: lri_string,
-        //             locale: 'en-GB',
-        //             rate: 1.5
-        //         }, function() {
-        //             console.log('success');
-        //         }, function(reason) {
-        //             console.log(reason);
-        //         });
-        //
-        // }
-
-    }
 
     if (count === 150) {
         myCenterAlert('Halfway', 1000);
+        myApp.modal({
+            title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
+                'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+                '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
     }
 
     if (count === 125) {
@@ -425,7 +373,7 @@ function newTimer(count) {
             ' You have a current score of ' + tim.timAvgRND + ' .';
 
         myApp.modal({
-            title: '<div>1 Minute To Go.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+            title: '<div>1 Minute Remains.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
                 '</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
                 'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
         });
@@ -466,7 +414,14 @@ function newTimer(count) {
         //****ALL POST ROUND PROCESSING
         rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         //****
-        myCenterAlert('Round Complete', 1000);
+        //myCenterAlert('Round Complete', 1000);
+        myApp.modal({
+            title: '<div>Round Complete.<hr>  Your round score was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + tim.timLastRND +
+                '</span> and your average speed was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + tim.timLastSPD + '</span></div><hr>'
+        });
+        setTimeout(function() {
+            myApp.closeModal();
+        }, 5000);
 
     }
     //END OF COUNT AT 0
@@ -503,12 +458,12 @@ function bubbleMaker() {
     var vRound1 = (Math.round(tim.timAvgRND) / 5);
     var vRound2 = 20 - vRound1;
     var vRound3 = '#rt_round_bubbles';
-    $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
-
-    var stringRND = null;
-    $('.cls_rt_round_val').each(function(index, obj) {
-        stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
-    });
+    // $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
+    //
+    // var stringRND = null;
+    // $('.cls_rt_round_val').each(function(index, obj) {
+    //     stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
+    // });
     populate_rt_bubbles(vRound1, vRound2, vRound3);
 
     function populate_rt_bubbles(x, y, z) {

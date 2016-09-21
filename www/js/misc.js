@@ -90,7 +90,7 @@ var totalDistance = 0;
         // $$('#addStuff').prepend('tim.timAvgSPD:  ' + tim.timAvgSPD + '<br><hr>');
         // $$('#addStuff').prepend('tim.timSpeed:  ' + tim.timSpeed + '<br><hr>');
         $$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10)/10 + '<br>');
-        $$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10)/10 + '<br><hr>');
+        $$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10)/10 + '<br>');
 
 
 
@@ -174,7 +174,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
         //console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
 
       $$('#RT3').html('CAD NOW:  ' + Math.round(tim.timCadence * 10)/10 + '<br>');
-      $$('#RT4').html('CAD AVG:   ' + Math.round(tim.timAvgCAD * 10)/10 + '<br><hr>');
+      $$('#RT4').html('CAD AVG:   ' + Math.round(tim.timAvgCAD * 10)/10 + '<br>');
 
 
         // $$('#addStuff').prepend('tim.timCadence:  ' + tim.timCadence + '<br><hr>');
@@ -208,7 +208,7 @@ function onHRMeasurementReceived(hrMeasurement) {
   });
 
 $$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR * 10)/10 + '<br>');
-$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR * 10)/10 + '<br><hr>');
+$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR * 10)/10 + '<br>');
 }
 
 
