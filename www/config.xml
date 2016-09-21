@@ -37,7 +37,6 @@
     <plugin name="cordova-plugin-console" spec="1.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="1.0.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
-      <plugin name="cordova-plugin-tts" spec="0.2.3" />
     <preference name="phonegap-version" value="cli-6.3.0" />
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
