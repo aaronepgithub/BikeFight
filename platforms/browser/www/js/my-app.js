@@ -126,10 +126,25 @@ $$(document).on('deviceready', function () {
     });
 
 
-    // $$('#update').on('click', function (e) {
-    //     console.log('clicked update');
-    //     requestUserData();
-    // });
+    $$('.my_simulator').on('click', function (e) {
+        console.log('clicked simulator');
+        myCenterAlert('Simulator');
+
+        var measHR = 100; var measSPD = 1; var measCAD = 1;
+        onWheelMeasurementReceived(measSPD, _.now());
+        onCrankMeasurementReceived(measCAD, _.now());
+        onHRMeasurementReceived(120);
+
+        function test() {
+          measHR = _.random(80, 200);
+          measCAD = measCAD + _.random(1.5, 2.5);
+          measSPD = measSPD + _.random(5.5, 10.5);
+          onWheelMeasurementReceived(measSPD, _.now());
+          onCrankMeasurementReceived(measCAD, _.now());
+          onHRMeasurementReceived(measHR);
+        }
+        var refreshId = setInterval(test, 1000);
+    });
     //
     // $$('#get_active_riders').on('click', function (e) {
     //     console.log('clicked update');

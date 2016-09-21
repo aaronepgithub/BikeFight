@@ -69,7 +69,7 @@ var totalDistance = 0;
         var rC3 = rC1 / rC2; //revs per second
         var rC4 = rC3 * circumference * 0.000621371 * 60 * 60; //mph per round
         if(rC4<50) {
-          tim.timAvgSPD = rC4;
+          tim.timAvgSPD = Math.round(rC4 * 10) / 10;
           }
 
         //$$('#addStuff').prepend('rC4:  ' + rC4  + '<br><hr>');
@@ -82,7 +82,7 @@ var totalDistance = 0;
         var readCalc4 = readCalc3 * circumference * 0.000621371 * 60 * 60; //mph per reading
 
         if(readCalc4<50) {
-            tim.timSpeed =  readCalc4; //mph per reading
+            tim.timSpeed =  Math.round(readCalc4 * 10) / 10; //mph per reading
           }
         //$$('#addStuff').prepend('readCalc4:  ' + readCalc4  + '<br><hr>');
         //console.log('tim.timSpeed:  ' + tim.timSpeed);
@@ -91,6 +91,12 @@ var totalDistance = 0;
         // $$('#addStuff').prepend('tim.timSpeed:  ' + tim.timSpeed + '<br><hr>');
         $$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10)/10 + '<br>');
         $$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10)/10 + '<br>');
+        createAvgRoundScore.push(Math.round(tim.timAvgSPD*0.65));
+        tim.timAvgRND = Math.round(_.mean(createAvgRoundScore)*4);
+        $$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
+
+
+
 
 
 
@@ -159,9 +165,10 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 
         var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
-        if(crankCadence < 120) {
-          tim.timCadence = crankCadence;
+        if(crankCadence < 125) {
+          tim.timCadence = Math.round(crankCadence);
         }
+        else {tim.timCadence = 120;}
 
         //console.log('tim.timCadence:  ' +  tim.timCadence);
 
@@ -173,11 +180,20 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
         timeElapsedRound = timeElapsedRound + timeDifference;
         //console.log('timeElapsedRound - Crank:  ' +  timeElapsedRound);
 
-        tim.timAvgCAD = crankRevsRound / timeElapsedRound * 60;
+        if (Math.round(crankRevsRound / timeElapsedRound * 60) < 125) {
+          tim.timAvgCAD = Math.round(crankRevsRound / timeElapsedRound * 60);
+        }
+
+        else {return;}
+
+        // tim.timAvgCAD = Math.round(crankRevsRound / timeElapsedRound * 60);
         //console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
 
-      $$('#RT3').html('CAD NOW:  ' + Math.round(tim.timCadence * 10)/10 + '<br>');
-      $$('#RT4').html('CAD AVG:   ' + Math.round(tim.timAvgCAD * 10)/10 + '<br>');
+      $$('#RT3').html('CAD NOW:  ' + tim.timCadence + '<br>');
+      $$('#RT4').html('CAD AVG:   ' + tim.timAvgCAD + '<br>');
+      createAvgRoundScore.push(Math.round(tim.timAvgCAD/4));
+      tim.timAvgRND = Math.round(_.mean(createAvgRoundScore)*4);
+            $$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
 
 
         // $$('#addStuff').prepend('tim.timCadence:  ' + tim.timCadence + '<br><hr>');
@@ -202,16 +218,19 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 
 function onHRMeasurementReceived(hrMeasurement) {
-  tim.timHR = hrMeasurement;
+  tim.timHR = Math.round(hrMeasurement);
   createAvgHeartRate.push(Math.round(tim.timHR));
-  tim.timAvgHR = _.mean(createAvgHeartRate);
+  tim.timAvgHR = Math.round(_.mean(createAvgHeartRate));
   var string = null;
   $('.tab-btn-h').each(function (index, obj) {
       string += $(this).text(Math.round(tim.timAvgHR));
   });
 
-$$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR * 10)/10 + '<br>');
-$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR * 10)/10 + '<br>');
+    $$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR) + '<br>');
+    $$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR) + '<br>');
+    createAvgRoundScore.push(Math.round(tim.timAvgHR/7));
+    tim.timAvgRND = Math.round(_.mean(createAvgRoundScore)*4);
+    $$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
 }
 
 

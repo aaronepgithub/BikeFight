@@ -152,7 +152,7 @@ function get_round_data_group() {
 
 function get_top_fighters() {
     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-        // console.log('Round Data:  ' + JSON.stringify(a));
+        console.log('Get Top Fighters');
         var a = _.values(data);
         var a1 = _.orderBy(a, 'fb_RND', 'desc');
         var a2 = _.take(a1, 30);

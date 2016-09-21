@@ -88,6 +88,7 @@ var cntdown = 300;
 // var arrTimerCAD = new Array(cntdown);
 // var arrTimerRND = new Array(cntdown);
 var objScores = {};
+var createAvgRoundScore = [];
 
 
 function rounds_end(lr, ls, lc, lh) {
@@ -127,8 +128,8 @@ function rounds_end(lr, ls, lc, lh) {
 
     $$('#my_last_rnd2').html(
         '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(lr) + '</div>' +
-        '<div class="chip-label color-black">' + tim.timLastRND + '</div>' +
+        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+        '<div class="chip-label color-black">' +  tim.timName + '</div>' +
         '</div>'
     );
 
@@ -143,17 +144,14 @@ function rounds_end(lr, ls, lc, lh) {
 
 
 function publishAvg(timer_val) {
-    tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 4;
+    //tim.timAvgRND = Math.round(((tim.timAvgSPD) + (tim.timAvgHR / 7) + (tim.timAvgCAD / 4)) / 3 * 100) / 100 * 3;
     $$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-
     $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
 
     var stringRND = null;
     $('.cls_rt_round_val').each(function(index, obj) {
         stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
     });
-
-
     populate_tim_avg_rnd_bubbles();
 
 }
@@ -217,6 +215,7 @@ function someCompleteFunction() {
     mFirstCrankRevolutions = 'a';
     roundDistance = 0;
     createAvgHeartRate = [];
+    createAvgRoundScore = [];
     timer.start(299000);
 }
 //END TOCK
@@ -323,7 +322,7 @@ function newTimer(count) {
 
 
     if (count === 150) {
-        myCenterAlert('Halfway', 1000);
+        //myCenterAlert('Halfway', 1000);
         myApp.modal({
             title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
                 'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
@@ -454,7 +453,7 @@ function bubbleMaker() {
     populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
 
-    if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
+    if (tim.timAvgRND > 99) {tim.timAvgRND = 99;}
     var vRound1 = (Math.round(tim.timAvgRND) / 5);
     var vRound2 = 20 - vRound1;
     var vRound3 = '#rt_round_bubbles';
@@ -508,7 +507,7 @@ function populate_round_bubbles(x, y, z) {
 
 
 function populate_last_rnd_bubbles() {
-    if (tim.timLastRND > 100) {tim.timLastRND= 100;}
+    if (tim.timLastRND > 99) {tim.timLastRND= 99;}
     var val1 = Math.round((tim.timLastRND / 4) / 2);
     var val2 = Math.round(12 - val1);
     if (val1 + val2 < 12) {
@@ -521,7 +520,7 @@ function populate_last_rnd_bubbles() {
 
 function populate_tim_avg_rnd_bubbles() {
     //EVERY SECOND
-    if (tim.timAvgRND > 100) {tim.timAvgRND = 100;}
+    if (tim.timAvgRND > 99) {tim.timAvgRND = 99;}
     var val1 = Math.round((tim.timAvgRND / 4) / 2);
     var val2 = Math.round(12 - val1);
     if (val1 + val2 < 12) {
