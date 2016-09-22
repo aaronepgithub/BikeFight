@@ -286,7 +286,7 @@ function newTimer(count) {
                       if (storedDataTTS.style !== "NO") {
                  TTS
                      .speak({
-                         text: 'Get Moving.  A new round just started.',
+                         text: 'Get Moving.  A new round just started.  Your last round had a score of ' + Math.round(tim.timLastRND),
                          locale: 'en-GB',
                          rate: 1.5
                      }, function() {

@@ -1,6 +1,7 @@
 var database = firebase.database();
 var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 var lastRoundIndex;
+var lastRoundIndexSpeak;
 
 //DATE FUNCTION
 var today = new Date();
@@ -75,12 +76,15 @@ function get_round_data() {
 
         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
         lastRoundIndex = lri + 1;
-        if (lastRoundIndex >= 1) {
-        console.log('Your Last Round is Ranked Number ' + lastRoundIndex++ + '  for the day');
-        lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex++ +'</span>' +  '  for the day';
+        if (lastRoundIndex >= 0) {
+          lastRoundIndex++;
+        console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+        lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
+        lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
         }
         else {
             lri_string = 'Your Last Round is the Worst Today.';
+            lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
         }
 
         $$('.cls_top_kings').remove();
