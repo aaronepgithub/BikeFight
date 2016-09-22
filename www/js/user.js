@@ -357,6 +357,35 @@ function newTimer(count) {
 
     }
 
+
+if (count === 137) {
+  if (tim.timNumberofRounds > 1) {
+    //TTS
+    var storedDataTTS2 = myApp.formGetData('my-form');
+    tim.timName = storedDataTTS2.name;
+    tim.timTeam = storedDataTTS2.team;
+    tim.timStyle  = storedDataTTS2.style;
+              if (storedDataTTS2.style !== "NO") {
+         TTS
+             .speak({
+                 text: lastRoundIndexSpeak,
+                 locale: 'en-GB',
+                 rate: 1.5
+             }, function() {
+                 console.log('TTS2 SUCCESS');
+             }, function(reason) {
+                 console.log('TTS2 FAILURE:  ' + reason);
+             });
+     } //TTS  
+  }
+}
+
+
+
+
+
+
+
     if (count === 125) {
         get_round_data();
     }
