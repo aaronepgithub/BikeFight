@@ -136,9 +136,9 @@ $$(document).on('deviceready', function () {
         onHRMeasurementReceived(120);
 
         function test() {
-          measHR = _.random(80, 200);
-          measCAD = measCAD + _.random(1.5, 2.5);
-          measSPD = measSPD + _.random(5.5, 10.5);
+          measHR = _.random(70, 190);
+          measCAD = measCAD + _.random(0.5, 2.5);
+          measSPD = measSPD + _.random(0.5, 10.5);
           onWheelMeasurementReceived(measSPD, _.now());
           onCrankMeasurementReceived(measCAD, _.now());
           onHRMeasurementReceived(measHR);
@@ -158,14 +158,14 @@ $$(document).on('deviceready', function () {
     //     }, 5000);
     // });
 
-    // $$('#header_btn1').on('click', function (e) {
-    //     //console.log('clicked hdr1');
-    //     mainView.router.loadPage("#page5");
-    // });
-    //     $$('#header_btn2').on('click', function (e) {
-    //     //console.log('clicked hdr2');
-    //     mainView.router.loadPage("#page10");
-    // });
+    $$('#header_btn1').on('click', function (e) {
+        //console.log('clicked hdr1');
+        mainView.router.loadPage("#bluetooth");
+    });
+        $$('#header_btn2').on('click', function (e) {
+        //console.log('clicked hdr2');
+        mainView.router.loadPage("#champs");
+    });
 
     // $$('#msg_Submit').on('click', function (e) {
     //     console.log('Sending Message');

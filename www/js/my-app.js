@@ -158,14 +158,14 @@ $$(document).on('deviceready', function () {
     //     }, 5000);
     // });
 
-    // $$('#header_btn1').on('click', function (e) {
-    //     //console.log('clicked hdr1');
-    //     mainView.router.loadPage("#page5");
-    // });
-    //     $$('#header_btn2').on('click', function (e) {
-    //     //console.log('clicked hdr2');
-    //     mainView.router.loadPage("#page10");
-    // });
+    $$('#header_btn1').on('click', function (e) {
+        //console.log('clicked hdr1');
+        mainView.router.loadPage("#bluetooth");
+    });
+        $$('#header_btn2').on('click', function (e) {
+        //console.log('clicked hdr2');
+        mainView.router.loadPage("#champs");
+    });
 
     // $$('#msg_Submit').on('click', function (e) {
     //     console.log('Sending Message');

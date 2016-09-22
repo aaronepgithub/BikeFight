@@ -156,14 +156,13 @@ function publishAvg(timer_val) {
 
 }
 
-function calculate_duration() {
-    var x = _.now() - tim.timStartTime;
-    var y = x / 1000;
-    var z = new Date(y * 1000).toISOString().substr(11, 8);
-    $$('#header_btn2').text(z);
-    tim.timCalculatedDuration = z;
-    //tim.timCalculatedDurationMS = y;
-}
+// function calculate_duration() {
+//     var x = _.now() - tim.timStartTime;
+//     var y = x / 1000;
+//     var z = new Date(y * 1000).toISOString().substr(11, 8);
+//     $$('#header_btn2').text(z);
+//     tim.timCalculatedDuration = z;
+// }
 
 
 var global_timer;
@@ -228,8 +227,24 @@ function newTimer(count) {
     var stringTimer = null;
     $('.timer_btn_cls').each(function(index, obj) {
         stringTimer += $(this).text(count + ' SECONDS REMAIN');
+
+        // var x = _.now() - tim.timStartTime;
+        // var y = x / 1000;
+        // var z = new Date(y * 1000).toISOString().substr(11, 8);
+        // $$('#header_btn2').text(z);
+        // tim.timCalculatedDuration = z;
+
+        var calcTotalSeconds = 300 * tim.timNumberofRounds + (300-count);
+        var date = new Date(null);
+        var tmr1 = date.setSeconds(calcTotalSeconds); // specify value for SECONDS here
+        var tmr2 = date.toISOString().substr(11, 8);
+
+
+        $$('#header_btn2').text(tmr2);
+        tim.timCalculatedDuration = tmr2;
+
     });
-    calculate_duration();
+    //calculate_duration();
 
 
     var remdr4 = count % 4;
@@ -276,6 +291,26 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
+            console.log('TTS Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+            $$('#RTJ').html('TTS, 280, CALC DURATION:  ' + tim.timCalculatedDuration);
+            //TTS - AFTER MODAL IS CLOSED
+            var storedDataTTS = myApp.formGetData('my-form');
+            tim.timName = storedDataTTS.name;
+            tim.timTeam = storedDataTTS.team;
+            tim.timStyle  = storedDataTTS.style;
+                      if (storedDataTTS.style !== "NO") {
+                 TTS
+                     .speak({
+                         text: 'Get Moving.  A new round just started.  Your last round had a score of ' + Math.round(tim.timLastRND),
+                         locale: 'en-GB',
+                         rate: 1.5
+                     }, function() {
+                         console.log('TTS SUCCESS');
+                     }, function(reason) {
+                         console.log('TTS FAILURE:  ' + reason);
+                     });
+             } //TTS - AFTER MODAL IS CLOSED
+
         }, 5000);
     }
 
@@ -321,8 +356,13 @@ function newTimer(count) {
     }
 
 
-    if (count === 150) {
+    if (count === 147) {
         //myCenterAlert('Halfway', 1000);
+
+          if (tim.timNumberofRounds > 1) {
+            lastRoundIndexSpeak = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+            console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
+
         myApp.modal({
             title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
                 'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
@@ -332,6 +372,37 @@ function newTimer(count) {
             myApp.closeModal();
         }, 5000);
     }
+
+    }
+
+
+if (count === 137) {
+  if (tim.timNumberofRounds > 1) {
+    //TTS
+    var storedDataTTS2 = myApp.formGetData('my-form');
+    tim.timName = storedDataTTS2.name;
+    tim.timTeam = storedDataTTS2.team;
+    tim.timStyle  = storedDataTTS2.style;
+              if (storedDataTTS2.style !== "NO") {
+         TTS
+             .speak({
+                 text: lastRoundIndexSpeak,
+                 locale: 'en-GB',
+                 rate: 1.5
+             }, function() {
+                 console.log('TTS2 SUCCESS');
+             }, function(reason) {
+                 console.log('TTS2 FAILURE:  ' + reason);
+             });
+     } //TTS
+  }
+}
+
+
+
+
+
+
 
     if (count === 125) {
         get_round_data();

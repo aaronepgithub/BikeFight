@@ -77,8 +77,8 @@ function get_round_data() {
 
         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
         lastRoundIndex = lri + 1;
-        if (lastRoundIndex >= 1) {
-          lastRoundIndex++;
+        if (lastRoundIndex >= 0) {
+          //lastRoundIndex++;
         console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
         lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
         lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
@@ -160,7 +160,7 @@ function get_top_fighters() {
         console.log('Get Top Fighters');
         var a = _.values(data);
         var a1 = _.orderBy(a, 'fb_RND', 'desc');
-        var a2 = _.take(a1, 30);
+        var a2 = _.take(a1, 50);
         //console.log('Round Data:  ' + JSON.stringify(a2));
         top_king_name = a1[0].fb_timName;
         top_king_team = a1[0].fb_timTeam;
@@ -170,18 +170,20 @@ function get_top_fighters() {
         top_king_hr = a1[0].fb_HR;
 
         $$('.cls_champs_page').remove();
-
+        var a2_counter = 1;
         _.forEach(a2, function(value, key) {
 
             e1 = value.fb_timName;
             e3 = value.fb_RND;
+            e5 = value.fb_timTeam;
 
             $$('#champs_page').append(
                 '<div class="chip cls_champs_page bg-white">' +
                 '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
-                '<div class="chip-label color-black">' + e1 + '</div>' +
+                '<div class="chip-label color-black"> #: ' + a2_counter + ' | ' + e1 + ' from ' + e5 + '</div>' +
                 '</div>'
             );
+            a2_counter++;
         });
     });
 }
