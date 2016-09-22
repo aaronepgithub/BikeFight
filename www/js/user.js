@@ -279,7 +279,11 @@ function newTimer(count) {
             console.log('TTS Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
             $$('#RTJ').html('TTS, 280, CALC DURATION:  ' + tim.timCalculatedDuration);
             //TTS - AFTER MODAL IS CLOSED
-                      if (storedData.style !== "NO") {
+            var storedDataTTS = myApp.formGetData('my-form');
+            tim.timName = storedDataTTS.name;
+            tim.timTeam = storedDataTTS.team;
+            tim.timStyle  = storedDataTTS.style;
+                      if (storedDataTTS.style !== "NO") {
                  TTS
                      .speak({
                          text: 'Get Moving.  A new round just started.',
