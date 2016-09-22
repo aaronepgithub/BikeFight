@@ -276,7 +276,7 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
-            console.log('TTS');
+            console.log('TTS Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
             //TTS - AFTER MODAL IS CLOSED
                       if (storedData.style !== "NO") {
                  TTS
