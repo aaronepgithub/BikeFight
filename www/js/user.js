@@ -341,8 +341,10 @@ function newTimer(count) {
     }
 
 
-    if (count === 150) {
+    if (count === 147) {
         //myCenterAlert('Halfway', 1000);
+
+          if (tim.timNumberofRounds > 1) {
         myApp.modal({
             title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
                 'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
@@ -351,6 +353,8 @@ function newTimer(count) {
         setTimeout(function() {
             myApp.closeModal();
         }, 5000);
+    }
+
     }
 
     if (count === 125) {
