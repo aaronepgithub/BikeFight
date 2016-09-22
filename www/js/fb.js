@@ -2,6 +2,7 @@ var database = firebase.database();
 var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 var lastRoundIndex;
 var lastRoundIndexSpeak;
+var lastRoundIndexSpeakTeam;
 
 //DATE FUNCTION
 var today = new Date();

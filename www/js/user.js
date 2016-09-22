@@ -345,6 +345,9 @@ function newTimer(count) {
         //myCenterAlert('Halfway', 1000);
 
           if (tim.timNumberofRounds > 1) {
+            lastRoundIndexSpeak = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+            console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
+            
         myApp.modal({
             title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
                 'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
@@ -376,7 +379,7 @@ if (count === 137) {
              }, function(reason) {
                  console.log('TTS2 FAILURE:  ' + reason);
              });
-     } //TTS  
+     } //TTS
   }
 }
 
