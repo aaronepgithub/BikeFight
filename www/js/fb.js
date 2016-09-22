@@ -76,7 +76,7 @@ function get_round_data() {
 
         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
         lastRoundIndex = lri + 1;
-        if (lastRoundIndex >= 0) {
+        if (lastRoundIndex >= 1) {
           lastRoundIndex++;
         console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
         lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
