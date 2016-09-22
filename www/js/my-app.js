@@ -136,9 +136,9 @@ $$(document).on('deviceready', function () {
         onHRMeasurementReceived(120);
 
         function test() {
-          measHR = _.random(80, 200);
-          measCAD = measCAD + _.random(1.5, 2.5);
-          measSPD = measSPD + _.random(5.5, 10.5);
+          measHR = _.random(70, 190);
+          measCAD = measCAD + _.random(0.5, 2.5);
+          measSPD = measSPD + _.random(0.5, 10.5);
           onWheelMeasurementReceived(measSPD, _.now());
           onCrankMeasurementReceived(measCAD, _.now());
           onHRMeasurementReceived(measHR);
