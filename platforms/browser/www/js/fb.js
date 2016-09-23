@@ -2,6 +2,7 @@ var database = firebase.database();
 var top_king_name, top_king_rnd, top_king_spd, top_king_hr, top_king_cad, top_king_team;
 var lastRoundIndex;
 var lastRoundIndexSpeak;
+var lastRoundIndexSpeak2;
 var lastRoundIndexSpeakTeam;
 
 //DATE FUNCTION
@@ -78,10 +79,10 @@ function get_round_data() {
         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
         lastRoundIndex = lri + 1;
         if (lastRoundIndex >= 0) {
-          //lastRoundIndex++;
-        console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-        lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
-        lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+            console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+            lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
+            lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+            lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
         }
         else {
             lri_string = 'Your Last Round is the Worst Today.';
@@ -124,7 +125,7 @@ function get_round_data_group() {
         var a = _.values(data);
         var a0 = _.filter(a, {
             'fb_timGroup': tim.timGroup
-        });
+          });
         var a1 = _.orderBy(a0, 'fb_RND', 'desc');
         var a2 = _.take(a1, 10);
         //console.log('Group Round Data:  ' + JSON.stringify(a2));

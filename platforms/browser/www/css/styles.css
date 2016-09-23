@@ -96,3 +96,14 @@
 .report_margin {
   margin:1px;
 }
+
+.cls_center {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.cls_center_avg {
+  text-align: center;
+  font-size: 2em;
+}

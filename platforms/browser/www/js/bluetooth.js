@@ -191,11 +191,11 @@ var appII = {
         function onDisconnectHR(reason_HR) {
             console.log('onDisconnect HR');
             console.log(reason_HR);
-            //   tim.timHR = 0;
-            //   var string = null;
-            //   $('.tab-btn-h').each(function(index, obj) {
-            //       string += $(this).text('0');
-            //   });
+              tim.timHR = 0;
+              var string = null;
+              $('.tab-btn-h').each(function(index, obj) {
+                  string += $(this).text('0');
+              });
             myCenterAlert('HR Sensor has Disconnected', 1000);
             mainView.router.loadPage("#bluetooth");
             $$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
