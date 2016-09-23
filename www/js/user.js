@@ -6,7 +6,6 @@ var tim = {
     timTire: '700X25',
     timTireSize: '700X25',
     timTireCircum: 2.11,
-    //CM VERSION
     timTireCircMeters: 2.105,
     timEvent: "timEvent",
     timHR: 0,
@@ -234,7 +233,9 @@ function newTimer(count) {
         // $$('#header_btn2').text(z);
         // tim.timCalculatedDuration = z;
 
-        var calcTotalSeconds = 300 * tim.timNumberofRounds + (300-count);
+        var secondsInRound = 299 - count;
+        var secondsAllRounds = tim.timNumberofRounds * 300;
+        var calcTotalSeconds = secondsInRound + secondsAllRounds;
         var date = new Date(null);
         var tmr1 = date.setSeconds(calcTotalSeconds); // specify value for SECONDS here
         var tmr2 = date.toISOString().substr(11, 8);
@@ -360,7 +361,7 @@ function newTimer(count) {
         //myCenterAlert('Halfway', 1000);
 
           if (tim.timNumberofRounds > 1) {
-            lastRoundIndexSpeak = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+
             console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
 
         myApp.modal({
@@ -376,7 +377,7 @@ function newTimer(count) {
     }
 
 
-if (count === 137) {
+if (count === 190) {
   if (tim.timNumberofRounds > 1) {
     //TTS
     var storedDataTTS2 = myApp.formGetData('my-form');
@@ -386,13 +387,35 @@ if (count === 137) {
               if (storedDataTTS2.style !== "NO") {
          TTS
              .speak({
-                 text: lastRoundIndexSpeak,
+                 text: lastRoundIndexSpeak2,
                  locale: 'en-GB',
                  rate: 1.5
              }, function() {
                  console.log('TTS2 SUCCESS');
              }, function(reason) {
                  console.log('TTS2 FAILURE:  ' + reason);
+             });
+     } //TTS
+  }
+}
+
+if (count === 107) {
+  if (tim.timNumberofRounds > 1) {
+    //TTS
+    var storedDataTTS3 = myApp.formGetData('my-form');
+    tim.timName = storedDataTTS3.name;
+    tim.timTeam = storedDataTTS3.team;
+    tim.timStyle  = storedDataTTS3.style;
+              if (storedDataTTS3.style !== "NO") {
+         TTS
+             .speak({
+                 text: lastRoundIndexSpeak,
+                 locale: 'en-GB',
+                 rate: 1.5
+             }, function() {
+                 console.log('TTS3 SUCCESS');
+             }, function(reason) {
+                 console.log('TTS3 FAILURE:  ' + reason);
              });
      } //TTS
   }
@@ -481,9 +504,6 @@ if (count === 137) {
         $$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
         $$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
 
-        //****ALL POST ROUND PROCESSING
-        rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-        //****
         //myCenterAlert('Round Complete', 1000);
         myApp.modal({
             title: '<div>Round Complete.<hr>  Your round score was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + tim.timLastRND +
@@ -491,7 +511,13 @@ if (count === 137) {
         });
         setTimeout(function() {
             myApp.closeModal();
-        }, 5000);
+            //****ALL POST ROUND PROCESSING
+            rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+            //****
+        }, 3000);
+
+
+
 
     }
     //END OF COUNT AT 0
