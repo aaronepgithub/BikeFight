@@ -6,6 +6,48 @@
 //ble.disconnect(device_id, app.onError, app.onError);
 
 var arrSensors = [];
+var i_clkId1; var i_clkId2; var i_clkId3; var i_clkId4; var i_clkId5;
+
+function reconnectBluetooth() {
+
+  if( i_clkId1 ) {
+    //appII.connectHR(i_clkId1);
+        var recon1 = _.delay(function(hrLog) {
+          appII.connectHR(i_clkId1);
+            console.log(hrLog);
+          }, 1000, 'reconnect HR');
+    }
+
+    if( i_clkId2 ) {
+      //appII.connectCSC(i_clkId2);
+      var recon2 = _.delay(function(hrLog) {
+        appII.connectCSC(i_clkId2);
+          console.log(hrLog);
+        }, 2000, 'reconnect CSC');
+      }
+
+      if( i_clkId3 ) {
+        // appII.connectWAS(i_clkId3);
+        var recon3 = _.delay(function(hrLog) {
+          appII.connectWAS(i_clkId3);
+            console.log(hrLog);
+          }, 3000, 'reconnect WAS');
+        }
+
+        if( i_clkId4 ) {
+          //appII.connectWAC(i_clkId4);
+          var recon4 = _.delay(function(hrLog) {
+            appII.connectWAC(i_clkId4);
+              console.log(hrLog);
+            }, 4000, 'reconnect WAC');
+          }
+
+}
+//appII.connectHR(i_clkId1);
+//appII.connectCSC(i_clkId2);
+//appII.connectWAS(i_clkId3);
+//appII.connectWAC(i_clkId4);
+
 
 var btService = {
     serviceHR: '180d',
@@ -46,21 +88,16 @@ var appII = {
         var dataHR = new Uint8Array(bufferHR);
         var currHR = dataHR[1];
         onHRMeasurementReceived(currHR);
-
-        // tim.timHR = dataHR[1];
-        //
-        // var string = null;
-        // $('.tab-btn-h').each(function (index, obj) {
-        //     string += $(this).text(currHR);
-        // });
-
-
     },
     //END ONDATA-HR
 
     //START ONERROR-HR
     onErrorHR: function () {
         console.log('appII.onErrorHR');
+        myApp.alert('Reconnect?', 'HR Sensor Error', function () {
+            console.log('attempting reconnect...');
+            appII.connectHR(i_clkId1);
+        });
     },
     //END ONERROR-HR
 
@@ -89,7 +126,7 @@ var appII = {
                         console.log(i_clkItmRSSI);
 
                         console.log("II Starting the: " + i_clkName + '  ID:  ' + i_clkIdHR);
-
+                        i_clkId1 = i_clkIdHR;
                         appII.connectHR(i_clkIdHR);
                     });
 
@@ -125,25 +162,6 @@ var appII = {
                         '      </li></div>'
                     );
 
-
-                    //myApp.modal({title:  arrSensors[0]});
-                    //TIMEOUT & CLOSE MODAL
-                    //console.log(arrSensors[0]);
-
-                    //HTML MODAL
-                    // {
-                    //   var str_mod =
-                      // '<div card style="font-weight:bold">' +
-                      // Math.round(tim.timLastRND) + '     |  LAST RND<br>' +
-                      // Math.round(tim.timLastSPD) + '     |  LAST SPD<br>' +
-                      // Math.round(tim.timLastCAD) + '     |  LAST CAD<br>' +
-                      // Math.round(tim.timLastHR)  + '     |  LAST HR</div>'
-                      // ;
-                    //   myApp.modal({title: str_mod});
-                    //   setTimeout(function() {
-                    //     myApp.closeModal();
-                    //   }, 5000);
-                    // }
 
 
 
@@ -196,14 +214,20 @@ var appII = {
               $('.tab-btn-h').each(function(index, obj) {
                   string += $(this).text('0');
               });
-            myCenterAlert('HR Sensor has Disconnected', 1000);
-            mainView.router.loadPage("#bluetooth");
-            $$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+            // myCenterAlert('HR Sensor has Disconnected', 1000);
+            // mainView.router.loadPage("#bluetooth");
+            //$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+
+
+            appII.connectHR(i_clkId1);
+            myApp.alert('Reconnect?', 'HR Sensor Disconnected', function () {
+                console.log('attempting reconnect...');
+                appII.connectHR(i_clkId1);
+            });
+
+
         }
     },
-
-
-
 
 
     //CSC CONNECT
@@ -244,8 +268,17 @@ var appII = {
                 stringCad += $(this).text(tim.timCadence);
             });
 
-            myCenterAlert('Speed/Cadence Sensor has Disconnected', 1000);
+            //myCenterAlert('Speed/Cadence Sensor has Disconnected', 1000);
+            // mainView.router.loadPage("#bluetooth");
+
+            // console.log('attempting reconnect...');
+            // appII.connectCSC(i_clkId2);
+
             mainView.router.loadPage("#bluetooth");
+            myApp.alert('Reconnect?', 'SPD/CAD Sensor Disconnected', function () {
+                console.log('attempting reconnect...');
+                appII.connectCSC(i_clkId2);
+            });
         }
     },
 
@@ -281,12 +314,15 @@ var appII = {
 
                         if (wacIII >= 0) {
                             console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectWAC');
+                            i_clkId4 = i_clkId;
                             appII.connectWAC(i_clkId);
                         } else if (wasIII >= 0) {
                             console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectWAS');
+                            i_clkId3 = i_clkId;
                             appII.connectWAS(i_clkId);
                         } else {
                             console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectCSC');
+                            i_clkId2 = i_clkId;
                             appII.connectCSC(i_clkId);
                         }
 
@@ -364,8 +400,17 @@ var appII = {
 
         function onDisconnectWAS() {
             console.log('onDisconnect WAS');
-            myCenterAlert('Wahoo Speed Sensor has Disconnected', 1000);
+            // myCenterAlert('Wahoo Speed Sensor has Disconnected', 1000);
+            // mainView.router.loadPage("#bluetooth");
+            //
+            // console.log('Reconnect WAS...');
+            // appII.connectWAS(i_clkId3);
+
             mainView.router.loadPage("#bluetooth");
+            myApp.alert('Reconnect?', 'SPEED Sensor Disconnected', function () {
+                console.log('attempting reconnect SPD...');
+                appII.connectWAS(i_clkId3);
+            });
         }
     },
 
@@ -391,8 +436,16 @@ var appII = {
 
         function onDisconnectWAC() {
             console.log('onDisconnect WAC');
-            myCenterAlert('Wahoo Cadence Sensor has Disconnected', 1000);
+            // myCenterAlert('Wahoo Cadence Sensor has Disconnected', 1000);
+            // mainView.router.loadPage("#bluetooth");
+            // console.log('Reconnect WAC');
+            // appII.connectWAC(i_clkId4);
+
             mainView.router.loadPage("#bluetooth");
+            myApp.alert('Reconnect?', 'CADENCE Sensor Disconnected', function () {
+                console.log('attempting reconnect CAD...');
+                appII.connectWAC(i_clkId4);
+            });
         }
     },
 
@@ -412,7 +465,11 @@ var appII = {
 
     //START ONERROR-CSC
     onErrorCSC: function () {
-        console.log('onErrorCSC');
+      mainView.router.loadPage("#bluetooth");
+      myApp.alert('Reconnect?', 'CADENCE Sensor Error', function () {
+          console.log('attempting reconnect error CSC...');
+          appII.connectCSC(i_clkId2);
+      });
     },
     //END ONERROR-CSC
 
@@ -460,6 +517,11 @@ var appII = {
     //START ONERROR-WAC
     onErrorWAC: function () {
         console.log('onErrorWAC');
+        mainView.router.loadPage("#bluetooth");
+        myApp.alert('Reconnect?', 'CADENCE Sensor Error', function () {
+            console.log('attempting reconnect error WAC...');
+            appII.connectWAC(i_clkId4);
+        });
     },
     //END ONERROR-WAC
 
@@ -480,6 +542,11 @@ var appII = {
     //START ONERROR-WAS
     onErrorWAS: function () {
         console.log('onErrorWAS');
+        mainView.router.loadPage("#bluetooth");
+        myApp.alert('Reconnect?', 'SPEED Sensor Error', function () {
+            console.log('attempting reconnect error WAS...');
+            appII.connectWAS(i_clkId3);
+        });
     }
     //END ONERROR-WAS
 

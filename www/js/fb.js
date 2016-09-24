@@ -25,6 +25,7 @@ var pubYear = yyyy;
 
 
 function round_post(r1, r2, r3, r4) {
+   console.log('Fctn round_post');
     if (r1 !== 0) {
 
       var today2 = new Date();
@@ -158,7 +159,7 @@ function get_round_data_group() {
 
 function get_top_fighters() {
     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-        console.log('Get Top Fighters');
+        console.log('Fctn get_top_fighters');
         var a = _.values(data);
         var a1 = _.orderBy(a, 'fb_RND', 'desc');
         var a2 = _.take(a1, 50);

@@ -111,21 +111,40 @@ function rounds_end(lr, ls, lc, lh) {
     //ALL MY ROUNDS
     var xx = _.values(objScores);
     var yy = _.orderBy(xx, 'time', 'desc');
-    console.log('objScores, ordered by Time:  ' + JSON.stringify(yy));
+    //console.log('objScores, ordered by Time:  ' + JSON.stringify(yy));
+    $$('.cls_top7').remove();
+    $$('.cls_top6').remove();
+    var objCounter = 1;
+    _.forEach(yy, function(value, key) {
+        console.log('objScores value.rnd:  ' + value.rnd);
+        $$('#my_last_rnd2').append(
+            '<div class="cls_top7 chip bg-white">' +
+            '<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
+            '<div class="chip-label color-black">' + '#' +  objCounter + '</div>' +
+            '</div>'
+        );
+        $$('#my_last_rnd').append(
+            '<div class="cls_top6 chip bg-white">' +
+            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+            '<div class="chip-label color-black">' + '#' +  objCounter + '</div>' +
+            '</div>'
+        );
+        objCounter++;
+      });
 
-    $$('#my_last_rnd').html(
-        '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-        '<div class="chip-label color-black">' + tim.timName + '</div>' +
-        '</div>'
-    );
+    // $$('#my_last_rnd').html(
+    //     '<div class="cls_top6 chip bg-white">' +
+    //     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+    //     '<div class="chip-label color-black">' + tim.timName + '</div>' +
+    //     '</div>'
+    // );
 
-    $$('#my_last_rnd2').html(
-        '<div class="cls_top6 chip bg-white">' +
-        '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-        '<div class="chip-label color-black">' +  tim.timName + '</div>' +
-        '</div>'
-    );
+    // $$('#my_last_rnd2').html(
+    //     '<div class="cls_top6 chip bg-white">' +
+    //     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+    //     '<div class="chip-label color-black">' +  tim.timName + '</div>' +
+    //     '</div>'
+    // );
 
     var stringChip = null;
     $('.best_round_chip').each(function(index, obj) {
@@ -247,19 +266,19 @@ function newTimer(count) {
     if (count === 295) {
         round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
         $$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-        $$('#my_last_rnd').html(
-            '<div class="cls_top6 chip bg-white">' +
-            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-            '<div class="chip-label color-black">' + tim.timName + '</div>' +
-            '</div>'
-        );
-
-        $$('#my_last_rnd2').html(
-            '<div class="cls_top6 chip bg-white">' +
-            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-            '<div class="chip-label color-black">' + tim.timName + '</div>' +
-            '</div>'
-        );
+        // $$('#my_last_rnd').html(
+        //     '<div class="cls_top6 chip bg-white">' +
+        //     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+        //     '<div class="chip-label color-black">' + tim.timName + '</div>' +
+        //     '</div>'
+        // );
+        //
+        // $$('#my_last_rnd2').html(
+        //     '<div class="cls_top6 chip bg-white">' +
+        //     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+        //     '<div class="chip-label color-black">' + tim.timName + '</div>' +
+        //     '</div>'
+        // );
     }
 
     if (count === 285) {
@@ -315,6 +334,27 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
+            if (tim.timNumberofRounds >= 0) {
+              //TTS
+              console.log('TTS Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+              $$('#RTJ').html('TTS, 240, CALC DURATION:  ' + tim.timCalculatedDuration);
+              var storedDataTTS240 = myApp.formGetData('my-form');
+              tim.timName = storedDataTTS240.name;
+              tim.timTeam = storedDataTTS240.team;
+              tim.timStyle  = storedDataTTS240.style;
+                        if (storedDataTTS240.style !== "NO") {
+                   TTS
+                       .speak({
+                           text: 'Four Minutes Remain',
+                           locale: 'en-GB',
+                           rate: 1.5
+                       }, function() {
+                           console.log('TTS240 SUCCESS');
+                       }, function(reason) {
+                           console.log('TTS240 FAILURE:  ' + reason);
+                       });
+               } //TTS
+            }
         }, 5000);
     }
 
@@ -351,8 +391,10 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
-            if (tim.timNumberofRounds > 1) {
+            if (tim.timNumberofRounds > 0) {
               //TTS
+              console.log('TTS Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+              $$('#RTJ').html('TTS, 180, CALC DURATION:  ' + tim.timCalculatedDuration);
               var storedDataTTS2 = myApp.formGetData('my-form');
               tim.timName = storedDataTTS2.name;
               tim.timTeam = storedDataTTS2.team;
@@ -376,7 +418,7 @@ function newTimer(count) {
 
 
     if (count === 151) {
-          if (tim.timNumberofRounds > 1) {
+          if (tim.timNumberofRounds > 0) {
             console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
         myApp.modal({
             title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
@@ -405,8 +447,10 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
-            if (tim.timNumberofRounds > 1) {
+            if (tim.timNumberofRounds >= 1) {
               //TTS
+              console.log('TTS Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+              $$('#RTJ').html('TTS, 120, CALC DURATION:  ' + tim.timCalculatedDuration);
               var storedDataTTS3 = myApp.formGetData('my-form');
               tim.timName = storedDataTTS3.name;
               tim.timTeam = storedDataTTS3.team;
@@ -440,6 +484,27 @@ function newTimer(count) {
         });
         setTimeout(function() {
             myApp.closeModal();
+            if (tim.timNumberofRounds >= 0) {
+              //TTS
+              console.log('TTS Count:  60, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+              $$('#RTJ').html('TTS, 60, CALC DURATION:  ' + tim.timCalculatedDuration);
+              var storedDataTTS11 = myApp.formGetData('my-form');
+              tim.timName = storedDataTTS11.name;
+              tim.timTeam = storedDataTTS11.team;
+              tim.timStyle  = storedDataTTS11.style;
+                        if (storedDataTTS11.style !== "NO") {
+                   TTS
+                       .speak({
+                           text: 'One Minute Remains',
+                           locale: 'en-GB',
+                           rate: 1.5
+                       }, function() {
+                           console.log('TTS11 SUCCESS');
+                       }, function(reason) {
+                           console.log('TTS11 FAILURE:  ' + reason);
+                       });
+               } //TTS
+            }
         }, 5000);
 
     }
@@ -455,8 +520,9 @@ function newTimer(count) {
         myCenterAlert('5 Seconds Remain', 1000);
     }
 
-    if (count === 1) {
-      console.log('Count at 1');
+    if (count === 0) {
+      console.log('Count at 0');
+      myCenterAlert('Round is Complete', 1000);
     }
     //END OF COUNT AT 1
 
