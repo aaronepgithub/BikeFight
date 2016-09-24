@@ -197,8 +197,8 @@ function get_combo() {
 
             var xx1 = _.values(data);
             var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
-            console.log('Combo Data:  ' + JSON.stringify(xx2));
-            console.log('END OF COMBO JSON');
+            //console.log('Combo Data:  ' + JSON.stringify(xx2));
+
             //GET TOP CHAMP
             $$('#top_king').text(xx2[0].fb_timName);
             $$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
@@ -216,7 +216,7 @@ function get_combo() {
             var lri = _.findIndex(xx2, function(o) { return o.fb_RND <= tim.timLastRND; });
             lastRoundIndex = lri + 1;
             if (lastRoundIndex >= 0) {
-                console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+                //console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
                 lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
                 lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
                 lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
@@ -243,7 +243,7 @@ function get_combo() {
 
 //COMPLETE LIST
             if(counter1<51){
-              console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
+              //console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
               $$('#champs_page').append(
                   '<div class="chip cls_champs_page bg-white">' +
                   '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
