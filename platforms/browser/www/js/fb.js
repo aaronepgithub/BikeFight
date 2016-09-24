@@ -11,10 +11,10 @@ var dd = today.getDate();
 var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
 if (dd < 10) {
-    dd = '0' + dd;
+		dd = '0' + dd;
 }
 if (mm < 10) {
-    mm = '0' + mm;
+		mm = '0' + mm;
 }
 var pubFullDate = yyyy + mm + dd;
 var pubFullTime = _.now();
@@ -25,34 +25,34 @@ var pubYear = yyyy;
 
 
 function round_post(r1, r2, r3, r4) {
-   console.log('Fctn round_post');
-    if (r1 !== 0) {
+		console.log('Fctn round_post');
+		if (r1 !== 0) {
 
-      var today2 = new Date();
-      var dd2 = today.getDate();
-      var mm2 = today.getMonth() + 1; //January is 0!
-      var yyyy2 = today.getFullYear();
-      if (dd2 < 10) {
-          dd2 = '0' + dd2;
-      }
-      if (mm2 < 10) {
-          mm2 = '0' + mm2;
-      }
-      var pubFullDate2 = yyyy2 + mm2 + dd2;
+				var today2 = new Date();
+				var dd2 = today.getDate();
+				var mm2 = today.getMonth() + 1; //January is 0!
+				var yyyy2 = today.getFullYear();
+				if (dd2 < 10) {
+						dd2 = '0' + dd2;
+				}
+				if (mm2 < 10) {
+						mm2 = '0' + mm2;
+				}
+				var pubFullDate2 = yyyy2 + mm2 + dd2;
 
-        firebase.database().ref('rounds/' + pubFullDate2 + '/').push({
-            fb_timName: tim.timName,
-            fb_timGroup: tim.timGroup,
-            fb_RND: r1,
-            fb_timTeam: tim.timTeam,
-            fb_Date: pubFullDate,
-            fb_DateNow: Date.now(),
-            fb_SPD: r2,
-            fb_CAD: r3,
-            fb_HR: r4
-        });
-    }
-    $$('#RTJ').html('FIGHTER DATA POSTED');
+				firebase.database().ref('rounds/' + pubFullDate2 + '/').push({
+						fb_timName: tim.timName,
+						fb_timGroup: tim.timGroup,
+						fb_RND: r1,
+						fb_timTeam: tim.timTeam,
+						fb_Date: pubFullDate,
+						fb_DateNow: Date.now(),
+						fb_SPD: r2,
+						fb_CAD: r3,
+						fb_HR: r4
+				});
+		}
+		$$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
 // function get_round_data() {
@@ -192,119 +192,122 @@ function round_post(r1, r2, r3, r4) {
 
 //START GETCOMBO GETJSON
 function get_combo() {
-  console.log('Fctn get_combo');
-    $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+		console.log('Fctn get_combo');
+		$$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
 
-            var xx1 = _.values(data);
-            var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
-            //console.log('Combo Data:  ' + JSON.stringify(xx2));
+				var xx1 = _.values(data);
+				var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
+				//console.log('Combo Data:  ' + JSON.stringify(xx2));
 
-            //GET TOP CHAMP
-            $$('#top_king').text(xx2[0].fb_timName);
-            $$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
-            $$('#me_vs_king_title2').text('THE CHAMP:  ' + xx2[0].fb_timName.toUpperCase() + ' (' + xx2[0].fb_RND + ') ');
-            top_king_name = xx2[0].fb_timName;
-            top_king_team = xx2[0].fb_timTeam;
-            top_king_rnd = xx2[0].fb_RND;
-            top_king_spd = xx2[0].fb_SPD;
-            top_king_cad = xx2[0].fb_CAD;
-            top_king_hr = xx2[0].fb_HR;
-            ui_report200();
-            //GET TOP CHAMP
+				//GET TOP CHAMP
+				$$('#top_king').text(xx2[0].fb_timName);
+				$$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
+				$$('#me_vs_king_title2').text('THE CHAMP:  ' + xx2[0].fb_timName.toUpperCase() + ' (' + xx2[0].fb_RND + ') ');
+				top_king_name = xx2[0].fb_timName;
+				top_king_team = xx2[0].fb_timTeam;
+				top_king_rnd = xx2[0].fb_RND;
+				top_king_spd = xx2[0].fb_SPD;
+				top_king_cad = xx2[0].fb_CAD;
+				top_king_hr = xx2[0].fb_HR;
+				ui_report200();
+				//GET TOP CHAMP
 
-            //PREPARE SPEAK STR
-            var lri = _.findIndex(xx2, function(o) { return o.fb_RND <= tim.timLastRND; });
-            lastRoundIndex = lri + 1;
-            if (lastRoundIndex >= 0) {
-                //console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-                lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
-                lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
-                lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
-            }
-            else {
-                lri_string = 'Your Last Round is the Worst Today.';
-                lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
-            }
+				//PREPARE SPEAK STR
+				var lri = _.findIndex(xx2, function(o) {
+						return o.fb_RND <= tim.timLastRND;
+				});
+				lastRoundIndex = lri + 1;
+				if (lastRoundIndex >= 0) {
+						//console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+						lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex + '</span>' + '  for the day';
+						lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+						lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+				} else {
+						lri_string = 'Your Last Round is the Worst Today.';
+						lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
+				}
 
-            $$('.cls_top_kings').remove();
-            $$('.cls_front_page').remove();
-            //END PREPARE SPEAK STR
-
-
-        var counter1=0; var counter2=0;var counter3=0;
-
-        $$('.cls_champs_page').remove();
-        //COMBO FOR EACH
-        _.forEach(xx2, function(value, key) {
-            xxx1 = value.fb_timName;
-            xxx2 = value.fb_RND;
-            xxx3 = value.fb_timGroup;
-            xxx5 = value.fb_timTeam;
-
-//COMPLETE LIST
-            if(counter1<51){
-              //console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
-              $$('#champs_page').append(
-                  '<div class="chip cls_champs_page bg-white">' +
-                  '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
-                  '<div class="chip-label color-black"> #: ' + counter1 + ' | ' + xxx1 + ' from ' + xxx5 + '</div>' +
-                  '</div>'
-              );
-              counter1++;
-            }
+				$$('.cls_top_kings').remove();
+				$$('.cls_front_page').remove();
+				//END PREPARE SPEAK STR
 
 
+				var counter1 = 0;
+				var counter2 = 0;
+				var counter3 = 0;
 
+				$$('.cls_champs_page').remove();
+				//COMBO FOR EACH
+				_.forEach(xx2, function(value, key) {
+						xxx1 = value.fb_timName;
+						xxx2 = value.fb_RND;
+						xxx3 = value.fb_timGroup;
+						xxx5 = value.fb_timTeam;
 
-            //END COMPLETE LIST
-
-
-            if(xxx3 === tim.timGroup) {
-
-              $$('#top_king_group').text(xxx1[0].fb_timName);
-              $$('.cls_top_kings_group').remove();
-              $$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
-
-                if(counter2<11){
-                  //ONLY IN MY GROUP
-                    //console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
-                    $$('#top_kings_group').append(
-                        '<div class="cls_top_kings_group chip bg-white">' +
-                        '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
-                        '<div class="chip-label color-black">' + xxx1 + '</div>' +
-                        '</div>'
-                    );
+						//COMPLETE LIST
+						if (counter1 < 51) {
+								//console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
+								$$('#champs_page').append(
+										'<div class="chip cls_champs_page bg-white">' +
+										'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+										'<div class="chip-label color-black"> #: ' + counter1 + ' | ' + xxx1 + ' from ' + xxx5 + '</div>' +
+										'</div>'
+								);
+								counter1++;
+						}
 
 
 
 
-                    counter2++;
-                  }
-                } //END GROUP
+						//END COMPLETE LIST
 
 
-            if(counter3<11){
-              //TOP TEN
-                      $$('#top_kings').append(
-                          '<div class="cls_top_kings chip bg-white">' +
-                          '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
-                          '<div class="chip-label color-black">' + xxx1 + '</div>' +
-                          '</div>'
-                      );
+						if (xxx3 === tim.timGroup) {
 
-                      $$('#front_page').append(
-                          '<div class="chip bg-white">' +
-                          '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
-                          '<div class="chip-label color-black">' + xxx1 + '</div>' +
-                          '</div>'
-                      );
-                    counter3++;
-                  }
+								$$('#top_king_group').text(xxx1[0].fb_timName);
+								$$('.cls_top_kings_group').remove();
+								$$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
 
-        }); //END FOR EACH
+								if (counter2 < 11) {
+										//ONLY IN MY GROUP
+										//console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
+										$$('#top_kings_group').append(
+												'<div class="cls_top_kings_group chip bg-white">' +
+												'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+												'<div class="chip-label color-black">' + xxx1 + '</div>' +
+												'</div>'
+										);
 
-    });
-    $$('#RTJ').html('DATA UPDATED AT:  ' + tim.timCalculatedDuration);
+
+
+
+										counter2++;
+								}
+						} //END GROUP
+
+
+						if (counter3 < 11) {
+								//TOP TEN
+								$$('#top_kings').append(
+										'<div class="cls_top_kings chip bg-white">' +
+										'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+										'<div class="chip-label color-black">' + xxx1 + '</div>' +
+										'</div>'
+								);
+
+								$$('#front_page').append(
+										'<div class="chip bg-white">' +
+										'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+										'<div class="chip-label color-black">' + xxx1 + '</div>' +
+										'</div>'
+								);
+								counter3++;
+						}
+
+				}); //END FOR EACH
+
+		});
+		$$('#RTJ').html('DATA UPDATED AT:  ' + tim.timCalculatedDuration);
 }
 //END GETCOMBO GETJSON
 
@@ -372,7 +375,6 @@ function get_combo() {
 //          rptChips_count2++;
 //            }
 //          });
-
 
 
 
@@ -955,76 +957,76 @@ function get_combo() {
 //     });
 
 
-    // firebase.database().ref('dailyscore/' + pubFullDate + '/' + tim.timName).set({
-    //     // fb_pubYear: pubYear,
-    //     // fb_pubMonth: pubMonth,
-    //     // fb_pubDay: pubDay,
-    //     fb_pubFullDate: pubFullDate,
-    //     fb_timName: tim.timName,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timBestRND: tim.timTodayBestRoundScore,
-    //     fb_timBestHR: tim.timTodayBestHR,
-    //     fb_timBestCAD: tim.timTodayBestCAD,
-    //     fb_timBestSPD: tim.timTodayBestSPD
-    // });
+// firebase.database().ref('dailyscore/' + pubFullDate + '/' + tim.timName).set({
+//     // fb_pubYear: pubYear,
+//     // fb_pubMonth: pubMonth,
+//     // fb_pubDay: pubDay,
+//     fb_pubFullDate: pubFullDate,
+//     fb_timName: tim.timName,
+//     fb_timTeam: tim.timTeam,
+//     fb_timTeam: tim.timTeam,
+//     fb_timBestRND: tim.timTodayBestRoundScore,
+//     fb_timBestHR: tim.timTodayBestHR,
+//     fb_timBestCAD: tim.timTodayBestCAD,
+//     fb_timBestSPD: tim.timTodayBestSPD
+// });
 
 
-    // firebase.database().ref('monthlyscore/' + pubMonth + '/' + tim.timName).set({
-    //     // fb_pubYear: pubYear,
-    //     // fb_pubMonth: pubMonth,
-    //     // fb_pubDay: pubDay,
-    //     fb_pubFullDate: xxx,
-    //     fb_timName: tim.timName,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timBestRND: xx,
-    //     fb_timBestHR: z,
-    //     fb_timBestCAD: y,
-    //     fb_timBestSPD: x
-    // });
+// firebase.database().ref('monthlyscore/' + pubMonth + '/' + tim.timName).set({
+//     // fb_pubYear: pubYear,
+//     // fb_pubMonth: pubMonth,
+//     // fb_pubDay: pubDay,
+//     fb_pubFullDate: xxx,
+//     fb_timName: tim.timName,
+//     fb_timTeam: tim.timTeam,
+//     fb_timTeam: tim.timTeam,
+//     fb_timBestRND: xx,
+//     fb_timBestHR: z,
+//     fb_timBestCAD: y,
+//     fb_timBestSPD: x
+// });
 
-    // firebase.database().ref('yearlyscore/' + pubYear + '/' + tim.timName).set({
-    //     // fb_pubYear: pubYear,
-    //     // fb_pubMonth: pubMonth,
-    //     // fb_pubDay: pubDay,
-    //     fb_pubFullDate: xxx,
-    //     fb_timName: tim.timName,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timBestRND: xx,
-    //     fb_timBestHR: z,
-    //     fb_timBestCAD: y,
-    //     fb_timBestSPD: x
-    // });
+// firebase.database().ref('yearlyscore/' + pubYear + '/' + tim.timName).set({
+//     // fb_pubYear: pubYear,
+//     // fb_pubMonth: pubMonth,
+//     // fb_pubDay: pubDay,
+//     fb_pubFullDate: xxx,
+//     fb_timName: tim.timName,
+//     fb_timTeam: tim.timTeam,
+//     fb_timTeam: tim.timTeam,
+//     fb_timBestRND: xx,
+//     fb_timBestHR: z,
+//     fb_timBestCAD: y,
+//     fb_timBestSPD: x
+// });
 
-    // firebase.database().ref('bikeshopscore/' + tim.timTeam + '/' + tim.timName).set({
-    //     // fb_pubYear: pubYear,
-    //     // fb_pubMonth: pubMonth,
-    //     // fb_pubDay: pubDay,
-    //     fb_pubFullDate: xxx,
-    //     fb_timName: tim.timName,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timBestRND: xx,
-    //     fb_timBestHR: z,
-    //     fb_timBestCAD: y,
-    //     fb_timBestSPD: x
-    // });
-    //
-    // firebase.database().ref('teamscore/' + tim.timTeam + '/' + tim.timName).set({
-    //     // fb_pubYear: pubYear,
-    //     // fb_pubMonth: pubMonth,
-    //     // fb_pubDay: pubDay,
-    //     fb_pubFullDate: xxx,
-    //     fb_timName: tim.timName,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timTeam: tim.timTeam,
-    //     fb_timBestRND: xx,
-    //     fb_timBestHR: z,
-    //     fb_timBestCAD: y,
-    //     fb_timBestSPD: x
-    // });
+// firebase.database().ref('bikeshopscore/' + tim.timTeam + '/' + tim.timName).set({
+//     // fb_pubYear: pubYear,
+//     // fb_pubMonth: pubMonth,
+//     // fb_pubDay: pubDay,
+//     fb_pubFullDate: xxx,
+//     fb_timName: tim.timName,
+//     fb_timTeam: tim.timTeam,
+//     fb_timTeam: tim.timTeam,
+//     fb_timBestRND: xx,
+//     fb_timBestHR: z,
+//     fb_timBestCAD: y,
+//     fb_timBestSPD: x
+// });
+//
+// firebase.database().ref('teamscore/' + tim.timTeam + '/' + tim.timName).set({
+//     // fb_pubYear: pubYear,
+//     // fb_pubMonth: pubMonth,
+//     // fb_pubDay: pubDay,
+//     fb_pubFullDate: xxx,
+//     fb_timName: tim.timName,
+//     fb_timTeam: tim.timTeam,
+//     fb_timTeam: tim.timTeam,
+//     fb_timBestRND: xx,
+//     fb_timBestHR: z,
+//     fb_timBestCAD: y,
+//     fb_timBestSPD: x
+// });
 
 
 //}
@@ -1033,44 +1035,44 @@ function get_combo() {
 //NOT USED - MAYBE USED FOR RT IN THE FUTURE?
 // function setScoreFB() {
 //     console.log('setScoreFB - Not Used, Remove');
-    //DATE FUNCTION
-    // var today = new Date();
-    // var dd = today.getDate();
-    // var mm = today.getMonth() + 1; //January is 0!
-    // var yyyy = today.getFullYear();
-    // if (dd < 10) {
-    //     dd = '0' + dd;
-    // }
-    // if (mm < 10) {
-    //     mm = '0' + mm;
-    // }
-    // var pubFullDate = yyyy + mm + dd;
-    // var pubMonth = mm;
-    // var pubDay = dd;
-    // var pubYear = yyyy;
-    // console.log(pubFullDate + pubMonth + pubDay + pubYear);
-    // if (tim.timRealTimeShare == 'On' || tim.timRealTimeShare == 'RealTime') {
-    //     firebase.database().ref('score/users/' + tim.timName).set({
-    //         fb_pubYear: pubYear,
-    //         fb_pubMonth: pubMonth,
-    //         fb_pubDay: pubDay,
-    //         fb_pubFullDate: pubFullDate,
-    //         fb_timName: tim.timName,
-    //         fb_timTeam: tim.timTeam,
-    //         fb_timGroup: tim.timGroup,
-    //         fb_timStyle: tim.timStyle,
-    //         fb_timAvgSPD: tim.timAvgSPD,
-    //         fb_timAvgHR: tim.timAvgHR,
-    //         fb_timAvgCAD: tim.timAvgCAD,
-    //         fb_timAvgRND: tim.timAvgRND,
-    //         timLastHR: tim.timLastHR,
-    //         timLastCAD: tim.timLastCAD,
-    //         timLastSPD: tim.timLastSPD,
-    //         timLastRND: tim.timLastRND
-    //     });
-    // } else {
-    //     return;
-    // }
+//DATE FUNCTION
+// var today = new Date();
+// var dd = today.getDate();
+// var mm = today.getMonth() + 1; //January is 0!
+// var yyyy = today.getFullYear();
+// if (dd < 10) {
+//     dd = '0' + dd;
+// }
+// if (mm < 10) {
+//     mm = '0' + mm;
+// }
+// var pubFullDate = yyyy + mm + dd;
+// var pubMonth = mm;
+// var pubDay = dd;
+// var pubYear = yyyy;
+// console.log(pubFullDate + pubMonth + pubDay + pubYear);
+// if (tim.timRealTimeShare == 'On' || tim.timRealTimeShare == 'RealTime') {
+//     firebase.database().ref('score/users/' + tim.timName).set({
+//         fb_pubYear: pubYear,
+//         fb_pubMonth: pubMonth,
+//         fb_pubDay: pubDay,
+//         fb_pubFullDate: pubFullDate,
+//         fb_timName: tim.timName,
+//         fb_timTeam: tim.timTeam,
+//         fb_timGroup: tim.timGroup,
+//         fb_timStyle: tim.timStyle,
+//         fb_timAvgSPD: tim.timAvgSPD,
+//         fb_timAvgHR: tim.timAvgHR,
+//         fb_timAvgCAD: tim.timAvgCAD,
+//         fb_timAvgRND: tim.timAvgRND,
+//         timLastHR: tim.timLastHR,
+//         timLastCAD: tim.timLastCAD,
+//         timLastSPD: tim.timLastSPD,
+//         timLastRND: tim.timLastRND
+//     });
+// } else {
+//     return;
+// }
 //}
 
 // function updateUserDataTim() {
@@ -1098,19 +1100,19 @@ function get_combo() {
 // }
 
 //function displayFB(v1, v2, v3, v4) {
-    //console.log('displayFB'); //LIST OF ACTIVE RIDERS
-    // $$('#fbUl').append(
-    //
-    //     '        <li class = "fb-item-li">' +
-    //     '          <a href="#" class="item-link item-content">' +
-    //     '              <div class="item-media"><i class="fa fa-database"></i></div>' +
-    //     '              <div class="item-inner"> ' +
-    //     '              <div class="item-title-row"> ' +
-    //     '                  <div class="item-title">' + v1 + '</div></div> ' +
-    //     '              </div> ' +
-    //     '          </a> ' +
-    //     '      </li>'
-    // );
+//console.log('displayFB'); //LIST OF ACTIVE RIDERS
+// $$('#fbUl').append(
+//
+//     '        <li class = "fb-item-li">' +
+//     '          <a href="#" class="item-link item-content">' +
+//     '              <div class="item-media"><i class="fa fa-database"></i></div>' +
+//     '              <div class="item-inner"> ' +
+//     '              <div class="item-title-row"> ' +
+//     '                  <div class="item-title">' + v1 + '</div></div> ' +
+//     '              </div> ' +
+//     '          </a> ' +
+//     '      </li>'
+// );
 //}
 
 // function requestUserData() {

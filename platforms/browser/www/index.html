@@ -1,911 +1,828 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
-    <meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline' 'unsafe-eval'">
-
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <title>BikeFight1</title>
-
-
-    <link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
-    <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-    <div class="statusbar-overlay"></div>
-    <!-- Views -->
-    <div class="views">
-        <!-- View -->
-        <div class="view view-main">
-
-  <div class="pages navbar-fixed theme-black">
-
-<div class="popup popup-about">
-    <div class="page-content bg-black color-white">
-        <div id="shoppage_popup"></div>
-    </div>
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline' 'unsafe-eval'">
+		<!-- Required meta tags-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<title>BikeFight1</title>
+		<link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
+		<link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
+		<link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div class="statusbar-overlay"></div>
+		<!-- Views -->
+		<div class="views">
+			<!-- View -->
+			<div class="view view-main">
+				<div class="pages navbar-fixed theme-black">
+					<div class="popup popup-about">
+						<div class="page-content bg-black color-white">
+							<div id="shoppage_popup"></div>
+						</div>
+					</div>
+					<!--POPUP SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="shop_page_popup" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div id="shoppage_popup2"></div>
+						</div>
+					</div>
+					<!-- POPUP SHOP_PAGE - END:    ***********************************************-->
+					<!--ZEN SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="zen_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="card">
+								<div class="card-header"> <img src="http://www.zenbikes.com/merchant/4160/images/site/ZEN_logo.png" style="width:240px;"> </div>
+								<div class="card-content">
+									<div class="card-content-inner">134 W 24th Street<br>New York, NY 10011<br>zenbikes.info@gmail.com
+										<div>1-212-929-2453</div>
+									</div>
+								</div>
+							</div> <br>
+							<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/wrench-stem-1110-14-nth.jpg" style="width:100%;"> </div>
+							<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/back_to_school_2000x667.gif" style="width:100%;"> </div>
+							<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/spec_mtn1100txl_13_h.jpg" style="width:100%;"> </div><br><br><br>
+						</div>
+					</div>
+					<!-- ZEN SHOP_PAGE - END:    ***********************************************-->
+					<!--otb SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="otb_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="card">
+								<div class="card-header">
+								<h2>Off the Bridge Coffee</h2> </div>
+								<div class="card-content">
+									<div class="card-content-inner">105 Canal St, New York, NY 10002
+										<div>(212) 775-8599</div>
+										<div>
+										<h4>Hours</h4></div>
+										<div>M-F 8AM-8PM</div>
+										<div>SAT 10AM-7PM</div>
+										<div>SUN 10AM-6PM</div>
+									</div>
+								</div>
+							</div> <br><br><br>
+						</div>
+					</div>
+					<!-- otb SHOP_PAGE - END:    ***********************************************-->
+					<!--ev SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="ev_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="card">
+								<!-- <div class="card-header">
+									<h2>EVEPC</h2>
+								</div> -->
+								<div class="card-content">
+									<div class="card-content-inner">
+										<h3>Eric Vigil<hr> Elite Performance Cycling</h3>
+										<h4>www.eliteperformancecycling.com</h4>
+										<h4>PH: 9176763368</h4>
+									</div>
+								</div>
+							</div>
+							<br><br><br>
+						</div>
+					</div>
+					<!-- ev SHOP_PAGE - END:    ***********************************************-->
+					<!--square SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="square_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="card">
+								<div class="card-header">
+								<h2>SQUARE PIZZA</h2> </div>
+								<div class="card-content">
+									<div class="card-content-inner">201 Clinton St, New York, NY 10002
+										<div>(646) 678-4294</div>
+										<div></div>
+										<div>M-S 11AM-9PM</div>
+										<div>SUN 11AM-8PM</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+								<h2>Popular Items</h2> </div>
+								<div class="card-content">
+									<div class="card-content-inner"> Basic Cheese Pizza<br> Mozzarella cheese and homemade marinara sauce. <br><br> Garlic Knots<br><br> Pepperoni Pizza<br> Shredded mozzarella cheese, homemade marinara sauce and pepperoni. </div>
+								</div>
+							</div> <br><br><br>
+						</div>
+					</div>
+					<!-- square SHOP_PAGE - END:    ***********************************************-->
+					<!--super SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="super_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="card">
+								<div class="card-header">
+									<h2>Superiority Burger</h2>
+								</div>
+								<div class="card-content">
+									<div class="card-content-inner">
+										430 E. 9TH STREET - NEW YORK, NY 10009<br> (212) 256-1192
+										<hr> http://www.superiorityburger.com/
+										<hr> OPEN WEDNESDAY-MONDAY FROM 11:30AM-10PM<br> CLOSED TUESDAY
+									</div>
+								</div>
+							</div>
+							<br><br><br>
+						</div>
+					</div>
+					<!-- super SHOP_PAGE - END:    ***********************************************-->
+					<!--solo SHOP_PAGE - START:    ***********************************************-->
+					<div data-page="solo_page" class="page cached layout-dark">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">
+									<p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div id="shoppage_popup2"></div>
+						</div>
+					</div>
+					<!-- solo SHOP_PAGE - END:    ***********************************************-->
+					<!-- About Popup -->
+					<div class="bg-black color-white popup popup-about">
+						<div class="bg-black color-white content-block">
+							<p>About</p>
+							<p><a href="#" class="close-popup">Close popup</a></p>
+							<p>Lorem ipsum dolor ...</p>
+						</div>
+					</div>
+					<!-- About Popup -->
+					<!-- Learn More Popup -->
+					<div class="bg-black popup popup-learn" style="background-color:black">
+						<div class="bg-black content-block">
+							<div class="buttons-row bg-black color-white">
+								<a href="#" class="close-popup button button-fill color-red">Back</a>
+							</div>
+							<!-- <div class="content-block-title bg-black color-white">The Basics.</div> -->
+							<!-- Inset content block -->
+							<!-- <div class="content-block inset bg-black color-white"> -->
+							<div class="content-block-inner bg-black color-white">
+								<h3>The Basics</h3>
+								<p>Connect Bluetooth Sensors for Heartrate, Speed, and Cadence.</p>
+								<p>Enter a username and select a Team that fits your riding style.</p>
+								<p>Press Start and ride fast.</p>
+								<p>Each Round is 5 minutes and the judges will give you a score at the end of each round.</p>
+								<p>The Champ is the person with the highest round score. It's good to be the champ.</p>
+								<p>Scores reset each day.</p>
+								<p>No data is saved after the day ends.</p>
+								<p>No users are tracked, the application does not use any GPS.</p>
+								<br><br><br>
+							</div>
+						</div>
+					</div>
+					<!--PAGE BT - START:    ***********************************************-->
+					<div data-page="bluetooth" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">Back</a>
+								<a href="#user" class="close-popup button button-fill color-red">Next</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<p class="buttons-row">
+									<a href="#" class="button tab-link color-white">MPH</a>
+									<a href="#" class="button tab-link color-white">BPM</a>
+									<a href="#" class="button tab-link color-white">RPM</a>
+								</p>
+								<div class="row">
+									<a href="#" class="button tab-link color-white tab-btn-s">00.0</a>
+									<a href="#" class="button tab-link color-white tab-btn-h">000</a>
+									<a href="#" class="button tab-link color-white tab-btn-c">000</a>
+								</div>
+							</div>
+							<hr><div class="content-block cls_disconnect_message"></div>
+							<div class="list-block media-list">
+								<ul id="ble_results_ul" class="color-white class_ble_results_ul">
+								</ul>
+								<ul id="ble_results_ul_csc" class="color-white class_ble_results_ul_csc">
+								</ul>
+							</div>
+							<div class="content-block">
+								<p class="buttons-row" style="margin:7px">
+									<a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR</a>
+									<a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<!--PAGE BT - END  ***********************************************-->
+					<!--PAGE USER - START  ***********************************************-->
+					<div data-page="user" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="cls_update_tim close-popup button button-fill color-red">Back</a>
+								<a href="#champs" class="close-popup button button-fill color-red">Next</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<div class="list-block layout-dark" style="margin-top: 20px">
+									<!-- Form has additional "store-data" class to enable form storage on this form -->
+									<form id="my-form" class="list-block store-data" style="margin-top: 5px">
+										<ul>
+											<hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">Name (* Required)</div>
+														<div class="item-input" style="margin:1;">
+															<input id='f7name' type="text" name="name" placeholder="Name">
+														</div>
+													</div>
+												</div>
+											</li>
+											<hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">Team</div>
+														<div class="item-input" style="margin:1;">
+															<select name="team" style="background-color:black;color:white">
+																<option>Solo</option><option>Zen Bikes</option><option>Off the Bridge</option><option>Square Pizza</option><option>EVEPC</option>
+															</select>
+															<!--<input id="team" type="text" name="team" placeholder="Team Name">-->
+														</div>
+													</div>
+												</div>
+											</li>
+											<hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">Group<br>(* Required, Create One and Invite Others)</div>
+														<div class="item-input" style="margin:1;">
+															<input id="group" type="text" name="group" placeholder="Riding Group">
+														</div>
+													</div>
+												</div>
+											</li>
+											<hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">Audio Notifications</div>
+														<div class="item-input" style="margin:1;">
+															<select name="style" style="background-color:black;color:white">
+																<option>YES</option><option>NO</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</li>
+											<hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">Tire Size<br>(* Required for Speed and Distance)</div>
+														<div class="item-input" style="margin:1;">
+															<select name="tire" style="background-color:black;color:white">
+																<option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
+																<option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</li>
+											<hr>
+										</ul>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--PAGE USER - END  ***********************************************-->
+					<!--Teams - START  ***********************************************-->
+					<div data-page="teams" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="back close-popup button button-fill color-red">Back</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white" style="margin-top:0px"><br>
+							<div class="content-block bg-black" style="margin:10px;">
+								<!-- LOGOS GO HERE -->
+								<div class="card-header" >
+									<a href="#zen_page"><img src="Zen Bikes.png" style="width:240px;"></a>
+								</div>
+								<div>
+									<p>They say that they are not Dicks and I am starting to believe them.  Good teamwork and the riders come from around the world.  Watch out for the young kid from Brazil.</p>
+									<p>Team HQ:  134 W 24th St, New York, NY 10011</p>
+								</div><hr>
+								<br><div class="card-header" >
+									<a href="#otb_page"><img src="Off the Bridge.png" style="width:240px;"></a>
+								</div>
+								<p>Best place for coffee and a tune up.  The owner has done his fair share of riding on everything from mountain to BMX.  This team can do it all.</p>
+								<p>Team HQ:  105 Canal St, New York, NY 10002</p><hr>
+								<br><div class="card-header" >
+									<a href="#ev_page"><img src="EVEPC.png" style="width:240px;"></a>
+								</div>
+								<p>All about speed.  One of the best coaches in the city and this team rides fast.</p>
+								<p>Team Info:  http://www.eliteperformancecycling.com/</p><hr>
+								<br><div class="card-header" >
+									<a href="#square_page"><img src="Square Pizza.png" style="width:240px;"></a>
+								</div>
+								<p>This team is run by the Mayor of the the Lower East Side but comes straight from the Bronx - and they ride like it.  This Father/Son duo knows how to win.</p>
+								<p>Team HQ:  105 Canal St, New York, NY 10002</p><hr>
+								<br><div class="card-header" >
+									<a href="#super_page"><img src="Superiority Burger.jpg" style="width:240px;"></a>
+								</div>
+								<p>Not sure how the vegans keep up but they find a way.  It has to be the food!</p>
+								<p>430 E 9th St, New York, NY 10009</p><hr>
+							</div>
+						</div>
+					</div>
+					<!--Teams - END  ***********************************************-->
+					<!--champs - START  ***********************************************-->
+					<div data-page="champs" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">Back</a>
+								<a href="#bluetooth" class="close-popup button button-fill color-red">Next</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:35px">TOP FIGHTERS</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="champs_page" class="content-block">
+												<div class="cls_champs_page" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+					</div>
+					<!--champs - END  ***********************************************-->
+					<!--PAGE INDEX - START:    ***********************************************-->
+					<div data-page="index" class="page navbar-fixed">
+						<div class="navbar" style="margin-top:20px">
+							<div class="navbar-inner">
+								<h1 class="color-white" style="margin-top:20px;font-size:2em;font-weight:bold;text-align:center;padding-left:15px">BIKE FIGHT</h1>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block">
+								<div class="content-block-inner" style="margin:1px;padding:1px;"><h2 style="margin:1px;padding:1px;">Presented by</h2></div>
+								<div class="card-header" >
+									<img src="http://www.zenbikes.com/merchant/4160/images/site/ZEN_logo.png" style="width:240px;">
+								</div>
+								<br><div style="margin-bottom:35px">TOP ACTIVE FIGHTERS</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="front_page" class="content-block">
+												<div class="cls_front_page cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+									<div class="buttons-row bg-black color-white" style="padding: 10px;margin-top:45px">
+										<a href="#" data-popup=".popup-learn" class="open-popup button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Learn More</a>
+										<a href="#main" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Get Started</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--PAGE INDEX - END  ***********************************************-->
+					<!--MAIN  ***********************************************-->
+					<div data-page="main" class="page cached">
+						<!-- Top Navbar-->
+						<div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
+							<div class="buttons-row bg-black color-white" style="padding: 10px;">
+								<a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Distance</a>
+								<a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Duration</a>
+							</div>
+						</div>
+						<div class="page-content">
+							<!-- swiper-init to initialize swiper automatically -->
+							<div class="swiper-container swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
+								data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
+								<div class="swiper-wrapper">
+									<!-- #1  Settings -->
+									<div class="swiper-slide bg-black">
+										<div class="card bg-black" style="margin-top:0px">
+											<div class="card-header color-white bg-black no-border">
+												<h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
+											</div>
+											<hr>
+											<div class="card-content bg-black">
+												<div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
+													<div class="content-block" style="margin:0px">
+														<div class="list-block inset">
+															<ul>
+																<li>
+																	<!-- <a href="#" class="item-link item-content"> -->
+																	<a href="#bluetooth" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Bluetooth</div>
+																			<!-- <div class="item-after">Label</div> -->
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a href="#user" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">User Settings</div>
+																			<!-- <div class="item-after">Label</div> -->
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a id="id_world_champs" href="#champs" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">World Champs</div>
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a id="id_team_owners" href="#teams" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-bank fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Team Owners</div>
+																		</div>
+																	</a>
+																</li>
+															</ul>
+															<div class="buttons-row bg-black color-white" style="padding: 10px;">
+																<a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div><hr>
+										</div>
+									</div>
+									<!-- #1  hSwipe -->
+									<div class="swiper-slide">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-content-inner row bg-black color-white smaller_content_padding">
+													<div class="col-50 color-white">SPEED
+														<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+															<div id="rt_speed_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+															</div>
+														</div>
+													<div id="rt_speed_val" class="tab-btn-s color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+												</div>
+											</div>
+											<div class="col-50 color-white">CADENCE
+												<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+													<div id="rt_cad_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+													</div>
+												</div>
+												<div id="rt_cad_val" class="tab-btn-c color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="card">
+									<div class="card-content">
+										<div class="card-content-inner row bg-black color-white smaller_content_padding">
+											<div class="col-50 color-white">HEARTRATE
+												<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+													<div id="rt_hr_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+													</div>
+												</div>
+											<div id="rt_hr_val" class="tab-btn-h color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+										</div>
+									</div>
+									<div class="col-50 color-white bg-black">ROUND
+										<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+											<div id="rt_round_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
+											</div>
+										</div>
+										<div id="rt_round_val" class="tab-btn-round color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div id="timer_btn2" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles4" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+					</div>
+					<!-- #2  hSwipe -->
+					<div class="swiper-slide">
+						<div class="card">
+							<!-- <div class="card-content">
+									<div class="card-content-inner bg-black color-white" style="padding-top:0px;padding-bottom:0px;">
+											<div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
+										<div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
+									<i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+								</div>
+							</div> -->
+						</div>
+						<!-- <hr> -->
+						<div class="card">
+							<div class="card-header color-white bg-black">
+								<h5 id="me_vs_king_title2" class="report_margin" style="padding-top:0px;padding-bottom:0px">THE CHAMP</h5>
+							</div>
+							<div class="card-content">
+								<div class="card-content-inner row bg-black color-white">
+									<div class="col-50 color-white">ROUND SCORE
+										<div class="row" style="padding-top: 8px; padding-bottom: 15px;">
+											<div id="round_score_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    </div>
+										</div>
+									<div id="tim_avg_rnd_btn" class="color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+								</div>
+							</div>
+							<div class="col-50 color-white">LAST ROUND
+								<div class="row" style="padding-top: 8px; padding-bottom: 15px;">
+									<div id="pub_last_round_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        </div>
+								</div>
+								<div id="publishLastRNDValue" class="color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+							</div>
+							<div style="margin-top: 10px;" class="chip color-white bg-white">
+								<div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
+								<div class="chip-label color-black">
+									<h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">MY BEST: 00</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="card-content">
+					<div class="card-content-inner bg-black color-white" style="padding-top:0px;padding-bottom:0px;">
+						<div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
+						<i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+					</div>
+				</div>
+			</div>
+			<!-- #3  hSwipe -->
+			<!-- ME VS. CURRENT ROUND BEST -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME (CURRENT) vs. MY BEST</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="ui_report10"></div>
+						</div>
+					</div>
+				</div>
+				<hr><div id="timer_btn29" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles2" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+			</div>
+			<!-- #4  hSwipe -->
+			<!-- ME VS. MY LAST ROUND  -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. MY LAST ROUND</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="ui_report20"></div>
+						</div>
+					</div>
+				</div>
+				<hr><div id="timer_btn20" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles3" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+			</div>
+			<!-- #200  hSwipe -->
+			<!-- ME VS. THE KING  -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div class="card-header color-white bg-black no-border">
+						<h5 id="me_vs_king_title" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. THE CHAMP</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="ui_report200"></div>
+						</div>
+					</div>
+				</div>
+				<hr><div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+			</div>
+			<!-- START OF KING OF THE RING SWIPE -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP:</h5></div>
+					<div id="top_king" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
+					<hr>
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<!-- <div id="ui_report30_div"> -->
+							<div id="top_kings">
+								<div class="cls_top_kings chip bg-white">
+									<div class="chip-media bg-red">30</div>
+									<div class="chip-label color-black">Rako</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="card bg-black" style="margin-top:0px">
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="my_last_rnd">
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr><div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+			</div>
+			<!-- END OF KING OF THE RING SWIPE -->
+			<!-- START OF GROUP KING OF THE RING SWIPE -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div><h5 id="riding_group_title" class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">CHAMP OF MY RIDING GROUP:</h5></div>
+					<div id="top_king_group" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
+					<hr>
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="top_kings_group">
+								<div class="cls_top_kings_group chip bg-white">
+									<div class="chip-media bg-red">30</div>
+									<div class="chip-label color-black">Hanyo</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="card bg-black" style="margin-top:0px">
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div id="my_last_rnd2">
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr><div id="timer_btn301" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles301" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+			</div>
+			<!-- END OF GROUP KING OF THE RING SWIPE -->
+			<!-- DELETE ME SLIDE START -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">REAL-TIME UPDATES   (RT/AVG)</h5></div>
+					<hr><div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rtspd1"><i class="fa fa-dashboard"></i></div>
+								<div class="col-auto cls_center cls_rtspd2">10</div>
+								<div class="col-auto cls_center_avg cls_rtspd3 tab-btn-s">15</div>
+							</div>
+							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rtcad1"><i class="fa fa-spinner"></i></div>
+								<div class="col-auto cls_center cls_rtcad2">10</div>
+								<div class="col-auto cls_center_avg cls_rtcad3 tab-btn-c">15</div>
+							</div>
+							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rthr1"><i class="fa fa-heartbeat"></i></div>
+								<div class="col-auto cls_center cls_rthr2">10</div>
+								<div class="col-auto cls_center_avg cls_rthr3 tab-btn-h">15</div>
+							</div>
+							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rtrnd1"><i class="fa fa-bullseye"></i></div>
+								<div class="col-auto cls_center cls_rtrnd2 bg-red" style = "font-size 3.5em">10</div>
+								<!-- <div class="col-auto cls_center cls_rtrnd3 tab-btn-round">15</div> -->
+							</div>
+							<!-- <div id="RT1" class="card-header">
+							</div>
+							<div id="RT2" class="card-footer">
+							</div>
+							<div id="RT3" class="card-header">
+							</div>
+							<div id="RT4" class="card-footer">
+							</div>
+							<div id="RT5" class="card-header">
+							</div>
+							<div id="RT6" class="card-footer">
+							</div>
+							<div id="RT7" class="card-header">
+							</div> -->
+							<div id="RTJ" class="card-header">
+							</div>
+						</div>
+						<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+					</div></div></div>
+					<!-- DELETE ME SLIDE END -->
+				</div>
+				<!-- SWIPER WRAPPER -->
+				<div class="swiper-pagination">
+					<br>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE CONENT -->
+	</div>
+	<!--SWIPER PAGE END  ***********************************************-->
+	<!--FRAMEWORK7 CLOSE TAGS  ******************-->
+	<!--Pages Div Close-->
 </div>
-
-<!--POPUP SHOP_PAGE - START:    ***********************************************-->
-<div data-page="shop_page_popup" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div id="shoppage_popup2"></div>
-    </div>
+<!--View Div Close-->
 </div>
-<!-- POPUP SHOP_PAGE - END:    ***********************************************-->
-
-
-<!--ZEN SHOP_PAGE - START:    ***********************************************-->
-<div data-page="zen_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="card">
-    <div class="card-header"> <img src="http://www.zenbikes.com/merchant/4160/images/site/ZEN_logo.png" style="width:240px;"> </div>
-    <div class="card-content">
-        <div class="card-content-inner">134 W 24th Street<br>New York, NY 10011<br>zenbikes.info@gmail.com
-            <div>1-212-929-2453</div>
-        </div>
-    </div>
-</div> <br>
-<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/wrench-stem-1110-14-nth.jpg" style="width:100%;"> </div>
-<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/back_to_school_2000x667.gif" style="width:100%;"> </div>
-<div> <img src="http://www.zenbikes.com/merchant/4160/images/site/spec_mtn1100txl_13_h.jpg" style="width:100%;"> </div><br><br><br>
-    </div>
+<!--Views Div Close-->
 </div>
-<!-- ZEN SHOP_PAGE - END:    ***********************************************-->
-<!--otb SHOP_PAGE - START:    ***********************************************-->
-<div data-page="otb_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="card">
-            <div class="card-header">
-                <h2>Off the Bridge Coffee</h2> </div>
-            <div class="card-content">
-                <div class="card-content-inner">105 Canal St, New York, NY 10002
-                    <div>(212) 775-8599</div>
-                    <div>
-                        <h4>Hours</h4></div>
-                    <div>M-F 8AM-8PM</div>
-                    <div>SAT 10AM-7PM</div>
-                    <div>SUN 10AM-6PM</div>
-                </div>
-            </div>
-        </div> <br><br><br>
-    </div>
-</div>
-<!-- otb SHOP_PAGE - END:    ***********************************************-->
-<!--ev SHOP_PAGE - START:    ***********************************************-->
-<div data-page="ev_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="card">
-
-            <!-- <div class="card-header">
-<h2>EVEPC</h2>
-</div> -->
-
-            <div class="card-content">
-                <div class="card-content-inner">
-                    <h3>Eric Vigil<hr> Elite Performance Cycling</h3>
-                    <h4>www.eliteperformancecycling.com</h4>
-                    <h4>PH: 9176763368</h4>
-                </div>
-            </div>
-
-        </div>
-
-        <br><br><br>
-    </div>
-</div>
-<!-- ev SHOP_PAGE - END:    ***********************************************-->
-<!--square SHOP_PAGE - START:    ***********************************************-->
-<div data-page="square_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="card">
-            <div class="card-header">
-                <h2>SQUARE PIZZA</h2> </div>
-            <div class="card-content">
-                <div class="card-content-inner">201 Clinton St, New York, NY 10002
-                    <div>(646) 678-4294</div>
-                    <div></div>
-                    <div>M-S 11AM-9PM</div>
-                    <div>SUN 11AM-8PM</div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2>Popular Items</h2> </div>
-            <div class="card-content">
-                <div class="card-content-inner"> Basic Cheese Pizza<br> Mozzarella cheese and homemade marinara sauce. <br><br> Garlic Knots<br><br> Pepperoni Pizza<br> Shredded mozzarella cheese, homemade marinara sauce and pepperoni. </div>
-            </div>
-        </div> <br><br><br>
-    </div>
-</div>
-<!-- square SHOP_PAGE - END:    ***********************************************-->
-<!--super SHOP_PAGE - START:    ***********************************************-->
-<div data-page="super_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="card">
-            <div class="card-header">
-                <h2>Superiority Burger</h2>
-            </div>
-            <div class="card-content">
-                <div class="card-content-inner">
-                    430 E. 9TH STREET - NEW YORK, NY 10009<br> (212) 256-1192
-                    <hr> http://www.superiorityburger.com/
-                    <hr> OPEN WEDNESDAY-MONDAY FROM 11:30AM-10PM<br> CLOSED TUESDAY
-                </div>
-            </div>
-        </div>
-        <br><br><br>
-    </div>
-</div>
-<!-- super SHOP_PAGE - END:    ***********************************************-->
-<!--solo SHOP_PAGE - START:    ***********************************************-->
-<div data-page="solo_page" class="page cached layout-dark">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="center">
-                <p><a href="#" class="back button button-fill button-raised color-red">Back</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div id="shoppage_popup2"></div>
-    </div>
-</div>
-<!-- solo SHOP_PAGE - END:    ***********************************************-->
-
-<!-- About Popup -->
-<div class="bg-black color-white popup popup-about">
-  <div class="bg-black color-white content-block">
-    <p>About</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
-  </div>
-</div>
-<!-- About Popup -->
-
-<!-- Learn More Popup -->
-<div class="bg-black popup popup-learn" style="background-color:black">
-  <div class="bg-black content-block">
-    <div class="buttons-row bg-black color-white">
-<a href="#" class="close-popup button button-fill color-red">Back</a>
-  </div>
-
-  <div class="content-block-title bg-black color-white">The Basics.</div>
-  <!-- Inset content block -->
-  <!-- <div class="content-block inset bg-black color-white"> -->
-    <div class="content-block-inner bg-black color-white">
-    <p>Connect Bluetooth Sensors for Heartrate, Speed, and Cadence.</p>
-    <p>Enter a username and select a Team.</p>
-    <p>Press Start and ride fast.</p>
-    <p>Each Round is 5 minutes and the judges will give you a score at the end of each round.</p>
-    <p>The Champ is the person with the highest round score. It's good to be the champ.</p>
-    <p>Scores reset each day and no data is saved and no users are tracked.</p>
-
-    <br><br><br>
-</div>
-
-  </div>
-</div>
-
-
-
-<!--PAGE BT - START:    ***********************************************-->
-<div data-page="bluetooth" class="page cached navbar-fixed">
-    <div class="navbar" style="margin-top:5px">
-  <div class="buttons-row" style="margin:7px">
-    <a href="#main" class="close-popup button button-fill color-red">Back</a>
-      <a href="#user" class="close-popup button button-fill color-red">Next</a>
-</div>
-    </div>
-    <div class="page-content bg-black color-white">
-        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
-            <p class="buttons-row">
-                <a href="#" class="button tab-link color-white">MPH</a>
-                <a href="#" class="button tab-link color-white">BPM</a>
-                <a href="#" class="button tab-link color-white">RPM</a>
-            </p>
-            <div class="row">
-                <a href="#" class="button tab-link color-white tab-btn-s">00.0</a>
-                <a href="#" class="button tab-link color-white tab-btn-h">000</a>
-                <a href="#" class="button tab-link color-white tab-btn-c">000</a>
-            </div>
-        </div>
-        <hr><div class="content-block cls_disconnect_message"></div>
-        <div class="list-block media-list">
-            <ul id="ble_results_ul" class="color-white class_ble_results_ul">
-            </ul>
-            <ul id="ble_results_ul_csc" class="color-white class_ble_results_ul_csc">
-            </ul>
-        </div>
-        <div class="content-block">
-            <p class="buttons-row" style="margin:7px">
-                <a id="scanHR" href="#" class="button button-big button-fill button-raised color-red">HR</a>
-                <a id="scanCSC" href="#" class="button button-big button-fill button-raised color-red">SPD/CAD</a>
-            </p>
-        </div>
-
-    </div>
-</div>
-<!--PAGE BT - END  ***********************************************-->
-
-<!--PAGE USER - START  ***********************************************-->
-<div data-page="user" class="page cached navbar-fixed">
-    <div class="navbar" style="margin-top:5px">
-        <div class="buttons-row" style="margin:7px">
-            <a href="#main" class="cls_update_tim close-popup button button-fill color-red">Back</a>
-            <a href="#champs" class="close-popup button button-fill color-red">Next</a>
-        </div>
-    </div>
-    <div class="page-content bg-black color-white">
-        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
-
-            <div class="list-block layout-dark" style="margin-top: 20px">
-                <!-- Form has additional "store-data" class to enable form storage on this form -->
-                <form id="my-form" class="list-block store-data" style="margin-top: 5px">
-                    <ul>
-                        <hr>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner" style="padding:0;margin:0;">
-                                    <div class="item-title label" style="background-color:black;color:white">Name (* Required)</div>
-                                    <div class="item-input" style="margin:1;">
-
-                                        <input id='f7name' type="text" name="name" placeholder="Name">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <hr>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner" style="padding:0;margin:0;">
-                                    <div class="item-title label" style="background-color:black;color:white">Team</div>
-                                    <div class="item-input" style="margin:1;">
-                                        <select name="team" style="background-color:black;color:white">
-                        <option>Solo</option><option>Zen Bikes</option><option>Off the Bridge</option><option>Square Pizza</option><option>EVEPC</option>
-                      </select>
-                                        <!--<input id="team" type="text" name="team" placeholder="Team Name">-->
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <hr>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner" style="padding:0;margin:0;">
-                                    <div class="item-title label" style="background-color:black;color:white">Group<br>(* Required, Create One and Invite Others)</div>
-                                    <div class="item-input" style="margin:1;">
-                                        <input id="group" type="text" name="group" placeholder="Riding Group">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <hr>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner" style="padding:0;margin:0;">
-                                    <div class="item-title label" style="background-color:black;color:white">Audio Notifications</div>
-                                    <div class="item-input" style="margin:1;">
-                                        <select name="style" style="background-color:black;color:white">
-                        <option>YES</option><option>NO</option>
-                      </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <hr>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner" style="padding:0;margin:0;">
-                                    <div class="item-title label" style="background-color:black;color:white">Tire Size<br>(* Required for Speed and Distance)</div>
-                                    <div class="item-input" style="margin:1;">
-                                        <select name="tire" style="background-color:black;color:white">
-                        <option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
-                        <option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
-
-                      </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <hr>
-                    </ul>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--PAGE USER - END  ***********************************************-->
-
-
-<!--Teams - START  ***********************************************-->
-<div data-page="teams" class="page cached navbar-fixed">
-    <div class="navbar" style="margin-top:5px">
-  <div class="buttons-row" style="margin:7px">
-    <a href="#main" class="back close-popup button button-fill color-red">Back</a>
-</div>
-    </div>
-    <div class="page-content bg-black color-white" style="margin-top:0px"><br>
-        <div class="content-block bg-black" style="margin:10px;">
-          <!-- LOGOS GO HERE -->
-          <div class="card-header" >
-              <a href="#zen_page"><img src="Zen Bikes.png" style="width:240px;"></a>
-          </div>
-          <div>
-          <p>They say that they are not Dicks and I am starting to believe them.  Good teamwork and the riders come from around the world.  Watch out for the young kid from Brazil.</p>
-          <p>Team HQ:  134 W 24th St, New York, NY 10011</p>
-        </div><hr>
-
-          <br><div class="card-header" >
-              <a href="#otb_page"><img src="Off the Bridge.png" style="width:240px;"></a>
-          </div>
-          <p>Best place for coffee and a tune up.  The owner has done his fair share of riding on everything from mountain to BMX.  This team can do it all.</p>
-          <p>Team HQ:  105 Canal St, New York, NY 10002</p><hr>
-          <br><div class="card-header" >
-              <a href="#ev_page"><img src="EVEPC.png" style="width:240px;"></a>
-          </div>
-          <p>All about speed.  One of the best coaches in the city and this team rides fast.</p>
-          <p>Team Info:  http://www.eliteperformancecycling.com/</p><hr>
-          <br><div class="card-header" >
-              <a href="#square_page"><img src="Square Pizza.png" style="width:240px;"></a>
-          </div>
-          <p>This team is run by the Mayor of the the Lower East Side but comes straight from the Bronx - and they ride like it.  This Father/Son duo knows how to win.</p>
-          <p>Team HQ:  105 Canal St, New York, NY 10002</p><hr>
-          <br><div class="card-header" >
-              <a href="#super_page"><img src="Superiority Burger.jpg" style="width:240px;"></a>
-          </div>
-          <p>Not sure how the vegans keep up but they find a way.  It has to be the food!</p>
-          <p>430 E 9th St, New York, NY 10009</p><hr>
-        </div>
-    </div>
-</div>
-<!--Teams - END  ***********************************************-->
-
-
-<!--champs - START  ***********************************************-->
-<div data-page="champs" class="page cached navbar-fixed">
-    <div class="navbar" style="margin-top:5px">
-  <div class="buttons-row" style="margin:7px">
-    <a href="#main" class="close-popup button button-fill color-red">Back</a>
-      <a href="#bluetooth" class="close-popup button button-fill color-red">Next</a>
-</div>
-    </div>
-    <div class="page-content bg-black color-white">
-        <div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
-          <br><div style="margin-bottom:35px">TOP FIGHTERS</div>
-          <div class="card bg-black" style="margin-top:5px">
-            <div class="card-content bg-black">
-              <div class="card-content-inner small_content_inner color-white bg-black">
-                  <div id="champs_page" class="content-block">
-                      <div class="cls_champs_page" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
-                  </div>
-              </div>
-          </div>
-        </div>
-<br><hr><br><div style="margin-bottom:5px"></div>
-<div class="card-content bg-black">
-</div><br><br>
-        </div>
-    </div>
-</div>
-<!--champs - END  ***********************************************-->
-<!--PAGE INDEX - START:    ***********************************************-->
-<div data-page="index" class="page navbar-fixed">
-    <div class="navbar" style="margin-top:20px">
-        <div class="navbar-inner">
-            <h1 class="color-white" style="margin-top:20px;font-size:2em;font-weight:bold;text-align:center;padding-left:15px">BIKE FIGHT</h1>
-        </div>
-    </div>
-
-
-    <div class="page-content bg-black color-white">
-      <div class="content-block">
-    <div class="content-block-inner" style="margin:1px;padding:1px;"><h2 style="margin:1px;padding:1px;">Presented by</h2></div>
-    <div class="card-header" >
-        <img src="http://www.zenbikes.com/merchant/4160/images/site/ZEN_logo.png" style="width:240px;">
-    </div>
-    <br><div style="margin-bottom:35px">TOP ACTIVE FIGHTERS</div>
-    <div class="card bg-black" style="margin-top:5px">
-      <div class="card-content bg-black">
-        <div class="card-content-inner small_content_inner color-white bg-black">
-            <div id="front_page" class="content-block">
-                <div class="cls_front_page cls_bullseye" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
-            </div>
-        </div>
-    </div>
-    <div class="buttons-row bg-black color-white" style="padding: 10px;margin-top:45px">
-      <a href="#" data-popup=".popup-learn" class="open-popup button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Learn More</a>
-        <a href="#main" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Get Started</a>
-    </div>
-  </div>
-  </div>
-    </div>
-</div>
-<!--PAGE INDEX - END  ***********************************************-->
-
-
-<!--MAIN  ***********************************************-->
-<div data-page="main" class="page cached">
-    <!-- Top Navbar-->
-    <div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
-        <div class="buttons-row bg-black color-white" style="padding: 10px;">
-            <a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Distance</a>
-            <a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Duration</a>
-        </div>
-    </div>
-
-<div class="page-content">
-
-<!-- swiper-init to initialize swiper automatically -->
-<div class="swiper-container swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
-    data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
-    <div class="swiper-wrapper">
-
-
-      <!-- #1  Settings -->
-  <div class="swiper-slide bg-black">
-      <div class="card bg-black" style="margin-top:0px">
-          <div class="card-header color-white bg-black no-border">
-              <h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
-          </div>
-          <hr>
-
-          <div class="card-content bg-black">
-              <div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
-                  <div class="content-block" style="margin:0px">
-
-                    <div class="list-block inset">
-                      <ul>
-                        <li>
-                          <!-- <a href="#" class="item-link item-content"> -->
-                            <a href="#bluetooth" class="item-link item-content">
-                            <div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
-                            <div class="item-inner">
-                              <div class="item-title">Bluetooth</div>
-                              <!-- <div class="item-after">Label</div> -->
-                            </div>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#user" class="item-link item-content">
-                            <div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
-                            <div class="item-inner">
-                              <div class="item-title">User Settings</div>
-                              <!-- <div class="item-after">Label</div> -->
-                            </div>
-                          </a>
-                        </li>
-                        <li>
-                          <a id="id_world_champs" href="#champs" class="item-link item-content">
-                            <div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
-                            <div class="item-inner">
-                              <div class="item-title">World Champs</div>
-                              </div>
-                          </a>
-                        </li>
-                        <li>
-                          <a id="id_team_owners" href="#teams" class="item-link item-content">
-                            <div class="item-media"><i class="fa fa-bank fa-2x"></i></div>
-                            <div class="item-inner">
-                              <div class="item-title">Team Owners</div>
-                              </div>
-                          </a>
-                        </li>
-                      </ul>
-                      <div class="buttons-row bg-black color-white" style="padding: 10px;">
-                          <a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-          </div><hr>
-      </div>
-  </div>
-
-<!-- #1  hSwipe -->
-<div class="swiper-slide">
-    <div class="card">
-        <div class="card-content">
-            <div class="card-content-inner row bg-black color-white smaller_content_padding">
-                <div class="col-50 color-white">SPEED
-                    <div class="row" style="padding-top: 8px; padding-bottom: 1px;">
-                        <div id="rt_speed_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
-                        </div>
-                    </div>
-                    <div id="rt_speed_val" class="tab-btn-s color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
-                    </div>
-                </div>
-                <div class="col-50 color-white">CADENCE
-                    <div class="row" style="padding-top: 8px; padding-bottom: 1px;">
-                        <div id="rt_cad_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
-                        </div>
-                    </div>
-                    <div id="rt_cad_val" class="tab-btn-c color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-content-inner row bg-black color-white smaller_content_padding">
-
-                <div class="col-50 color-white">HEARTRATE
-                    <div class="row" style="padding-top: 1px; padding-bottom: 1px;">
-                        <div id="rt_hr_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
-                        </div>
-                    </div>
-                    <div id="rt_hr_val" class="tab-btn-h color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
-                    </div>
-                </div>
-                <div class="col-50 color-white bg-black">ROUND
-                    <div class="row" style="padding-top: 1px; padding-bottom: 1px;">
-                        <div id="rt_round_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
-                        </div>
-                    </div>
-                    <div id="rt_round_val" class="tab-btn-round color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div id="timer_btn2" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-    <div id="timer_btn_bubbles4" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-</div>
-
-<!-- #2  hSwipe -->
-<div class="swiper-slide">
-    <div class="card">
-        <!-- <div class="card-content">
-            <div class="card-content-inner bg-black color-white" style="padding-top:0px;padding-bottom:0px;">
-                <div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
-               <div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
-    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
-        </div> -->
-    </div>
-    <!-- <hr> -->
-    <div class="card">
-
-      <div class="card-header color-white bg-black">
-          <h5 id="me_vs_king_title2" class="report_margin" style="padding-top:0px;padding-bottom:0px">THE CHAMP</h5>
-      </div>
-
-
-        <div class="card-content">
-            <div class="card-content-inner row bg-black color-white">
-                <div class="col-50 color-white">ROUND SCORE
-                    <div class="row" style="padding-top: 8px; padding-bottom: 15px;">
-                        <div id="round_score_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    </div>
-                    </div>
-                    <div id="tim_avg_rnd_btn" class="color-white bg-red" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
-                    </div>
-                </div>
-                <div class="col-50 color-white">LAST ROUND
-                <div class="row" style="padding-top: 8px; padding-bottom: 15px;">
-                    <div id="pub_last_round_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>        </div>
-                </div>
-                    <div id="publishLastRNDValue" class="color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-                </div>
-                <div style="margin-top: 10px;" class="chip color-white bg-white">
-                    <div class="chip-media bg-white"><i class="fa fa-bullseye fa-2x color-red bg-white"></i></div>
-                    <div class="chip-label color-black">
-                        <h2 id="timTodayBestRoundScore" class="best_round_chip bg-white color-black">MY BEST: 00</h2>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="card-content">
-        <div class="card-content-inner bg-black color-white" style="padding-top:0px;padding-bottom:0px;">
-            <div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
-           <div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
-<i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-</div>
-    </div>
-</div>
-
-    <!-- #3  hSwipe -->
-    <!-- ME VS. CURRENT ROUND BEST -->
-    <div class="swiper-slide bg-black">
-        <div class="card bg-black" style="margin-top:0px">
-            <div class="card-header color-white bg-black no-border">
-                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME (CURRENT) vs. MY BEST</h5>
-            </div>
-            <div class="card-content bg-black">
-                <div class="card-content-inner small_content_inner color-white bg-black">
-                    <div id="ui_report10"></div>
-                </div>
-            </div>
-        </div>
-        <hr><div id="timer_btn29" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-<div id="timer_btn_bubbles2" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
-
-    <!-- #4  hSwipe -->
-    <!-- ME VS. MY LAST ROUND  -->
-    <div class="swiper-slide bg-black">
-        <div class="card bg-black" style="margin-top:0px">
-            <div class="card-header color-white bg-black no-border">
-                <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. MY LAST ROUND</h5>
-            </div>
-            <div class="card-content bg-black">
-                <div class="card-content-inner small_content_inner color-white bg-black">
-                    <div id="ui_report20"></div>
-                </div>
-            </div>
-        </div>
-        <hr><div id="timer_btn20" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-        <div id="timer_btn_bubbles3" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
-
-    <!-- #200  hSwipe -->
-    <!-- ME VS. THE KING  -->
-    <div class="swiper-slide bg-black">
-        <div class="card bg-black" style="margin-top:0px">
-            <div class="card-header color-white bg-black no-border">
-                <h5 id="me_vs_king_title" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. THE CHAMP</h5>
-            </div>
-            <div class="card-content bg-black">
-                <div class="card-content-inner small_content_inner color-white bg-black">
-                    <div id="ui_report200"></div>
-                </div>
-            </div>
-        </div>
-        <hr><div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-        <div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
-
-
-
-    <!-- START OF KING OF THE RING SWIPE -->
-    <div class="swiper-slide bg-black">
-<div class="card bg-black" style="margin-top:0px">
-
-  <div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP:</h5></div>
-    <div id="top_king" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
-
-
-    <hr>
-    <div class="card-header color-white bg-black no-border">
-        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
-    </div>
-    <div class="card-content bg-black">
-        <div class="card-content-inner small_content_inner color-white bg-black">
-            <!-- <div id="ui_report30_div"> -->
-            <div id="top_kings">
-                <div class="cls_top_kings chip bg-white">
-                    <div class="chip-media bg-red">30</div>
-                    <div class="chip-label color-black">Rako</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<hr>
-<div class="card bg-black" style="margin-top:0px">
-    <div class="card-header color-white bg-black no-border">
-        <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
-    </div>
-    <div class="card-content bg-black">
-        <div class="card-content-inner small_content_inner color-white bg-black">
-            <div id="my_last_rnd">
-            </div>
-        </div>
-    </div>
-</div>
-        <hr><div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-        <div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-    </div>
-    <!-- END OF KING OF THE RING SWIPE -->
-
-        <!-- START OF GROUP KING OF THE RING SWIPE -->
-        <div class="swiper-slide bg-black">
-    <div class="card bg-black" style="margin-top:0px">
-      <div><h5 id="riding_group_title" class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">CHAMP OF MY RIDING GROUP:</h5></div>
-        <div id="top_king_group" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
-        <hr>
-        <div class="card-header color-white bg-black no-border">
-            <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
-        </div>
-        <div class="card-content bg-black">
-            <div class="card-content-inner small_content_inner color-white bg-black">
-                <div id="top_kings_group">
-                    <div class="cls_top_kings_group chip bg-white">
-                        <div class="chip-media bg-red">30</div>
-                        <div class="chip-label color-black">Hanyo</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="card bg-black" style="margin-top:0px">
-        <div class="card-header color-white bg-black no-border">
-            <h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
-        </div>
-        <div class="card-content bg-black">
-            <div class="card-content-inner small_content_inner color-white bg-black">
-                <div id="my_last_rnd2">
-                </div>
-            </div>
-        </div>
-    </div>
-            <hr><div id="timer_btn301" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-            <div id="timer_btn_bubbles301" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-        </div>
-            <!-- END OF GROUP KING OF THE RING SWIPE -->
-
-    <!-- DELETE ME SLIDE START -->
-    <div class="swiper-slide bg-black">
-<div class="card bg-black" style="margin-top:0px">
-  <div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">REAL-TIME UPDATES   (RT/AVG)</h5></div>
-
-  <hr><div class="card-content bg-black">
-      <div class="card-content-inner small_content_inner color-white bg-black">
-
-<div class="row cls_rts">
-  <div class="col-auto cls_center cls_rtspd1"><i class="fa fa-dashboard"></i></div>
-  <div class="col-auto cls_center cls_rtspd2">10</div>
-  <div class="col-auto cls_center_avg cls_rtspd3 tab-btn-s">15</div>
-</div>
-<div class="row cls_rts">
-  <div class="col-auto cls_center cls_rtcad1"><i class="fa fa-spinner"></i></div>
-  <div class="col-auto cls_center cls_rtcad2">10</div>
-  <div class="col-auto cls_center_avg cls_rtcad3 tab-btn-c">15</div>
-</div>
-<div class="row cls_rts">
-  <div class="col-auto cls_center cls_rthr1"><i class="fa fa-heartbeat"></i></div>
-  <div class="col-auto cls_center cls_rthr2">10</div>
-  <div class="col-auto cls_center_avg cls_rthr3 tab-btn-h">15</div>
-</div>
-<div class="row cls_rts">
-  <div class="col-auto cls_center cls_rtrnd1"><i class="fa fa-bullseye"></i></div>
-  <div class="col-auto cls_center cls_rtrnd2 bg-red" style = "font-size 3.5em">10</div>
-  <!-- <div class="col-auto cls_center cls_rtrnd3 tab-btn-round">15</div> -->
-</div>
-
-
-        <!-- <div id="RT1" class="card-header">
-        </div>
-        <div id="RT2" class="card-footer">
-        </div>
-        <div id="RT3" class="card-header">
-        </div>
-        <div id="RT4" class="card-footer">
-        </div>
-        <div id="RT5" class="card-header">
-        </div>
-        <div id="RT6" class="card-footer">
-        </div>
-        <div id="RT7" class="card-header">
-        </div> -->
-        <div id="RTJ" class="card-header">
-        </div>
-  </div>
-
-  <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-  <div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-
-
-  </div></div></div>
-        <!-- DELETE ME SLIDE END -->
-
-
-
-    </div>
-    <!-- SWIPER WRAPPER -->
-
-            <div class="swiper-pagination">
-                <br>
-            </div>
-        </div>
-    </div>
-
-    <!-- END PAGE CONENT -->
-</div>
-<!--SWIPER PAGE END  ***********************************************-->
-
-                <!--FRAMEWORK7 CLOSE TAGS  ******************-->
-                <!--Pages Div Close-->
-            </div>
-            <!--View Div Close-->
-        </div>
-        <!--Views Div Close-->
-    </div>
-
-    <!--END FRAMEWORK7 CLOSE TAGS  **************-->
-
-    <!--INLINE JS START  ***********************************************-->
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script>
-              // Initialize Firebase
-              var config = {
-                  apiKey: "AIzaSyAkdjVhl4h3F2TMCADtx6DGMBCCpjyy1n4",
-                  authDomain: "project-5844362817932994168.firebaseapp.com",
-                  databaseURL: "https://project-5844362817932994168.firebaseio.com",
-                  storageBucket: "",
-              };
-              firebase.initializeApp(config);
-          </script>
-
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
-    <script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="lib/lodash.js"></script>
-    <script type="text/javascript" src="lib/tock.min.js"></script>
-    <!-- <script type="text/javascript" src="lib/underscore-min.js"></script> -->
-    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-
-
-    <script type="text/javascript" src="js/my-app.js"></script>
-    <script type="text/javascript" src="js/fb.js"></script>
-    <script type="text/javascript" src="js/user.js"></script>
-    <script type="text/javascript" src="js/misc.js"></script>
-    <script type="text/javascript" src="js/bluetooth.js"></script>
-    <script type="text/javascript" src="js/templates.js"></script>
-
-
-    <!--INLINE JS END  ***********************************************-->
-
+<!--END FRAMEWORK7 CLOSE TAGS  **************-->
+<!--INLINE JS START  ***********************************************-->
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyAkdjVhl4h3F2TMCADtx6DGMBCCpjyy1n4",
+			authDomain: "project-5844362817932994168.firebaseapp.com",
+			databaseURL: "https://project-5844362817932994168.firebaseio.com",
+			storageBucket: "",
+		};
+		firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="lib/lodash.js"></script>
+<script type="text/javascript" src="lib/tock.min.js"></script>
+<!-- <script type="text/javascript" src="lib/underscore-min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="js/my-app.js"></script>
+<script type="text/javascript" src="js/fb.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
+<script type="text/javascript" src="js/misc.js"></script>
+<script type="text/javascript" src="js/bluetooth.js"></script>
+<script type="text/javascript" src="js/templates.js"></script>
+<!--INLINE JS END  ***********************************************-->
 </body>
-
 </html>
