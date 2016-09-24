@@ -219,7 +219,7 @@ var appII = {
             //$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 
 
-            appII.connectHR(i_clkId1);
+            //appII.connectHR(i_clkId1);
             myApp.alert('Reconnect?', 'HR Sensor Disconnected', function () {
                 console.log('attempting reconnect...');
                 appII.connectHR(i_clkId1);

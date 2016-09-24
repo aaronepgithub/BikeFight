@@ -125,7 +125,7 @@ function rounds_end(lr, ls, lc, lh) {
         );
         $$('#my_last_rnd').append(
             '<div class="cls_top6 chip bg-white">' +
-            '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+            '<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
             '<div class="chip-label color-black">' + '#' +  objCounter + '</div>' +
             '</div>'
         );
