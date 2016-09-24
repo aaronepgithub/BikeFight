@@ -55,140 +55,258 @@ function round_post(r1, r2, r3, r4) {
     $$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
-function get_round_data() {
-    console.log('Fctn get_round_data');
-
-    $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-        // console.log('Round Data:  ' + JSON.stringify(a));
-        var a = _.values(data);
-        var a1 = _.orderBy(a, 'fb_RND', 'desc');
-        var a2 = _.take(a1, 10);
-        //console.log('Round Data:  ' + JSON.stringify(a1));
-
-        $$('#top_king').text(a1[0].fb_timName);
-        $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
-        $$('#me_vs_king_title2').text('THE CHAMP:  ' + a1[0].fb_timName.toUpperCase() + ' (' + a1[0].fb_RND + ') ');
-        top_king_name = a1[0].fb_timName;
-        top_king_team = a1[0].fb_timTeam;
-        top_king_rnd = a1[0].fb_RND;
-        top_king_spd = a1[0].fb_SPD;
-        top_king_cad = a1[0].fb_CAD;
-        top_king_hr = a1[0].fb_HR;
-        ui_report200();
-
-
-        var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
-        lastRoundIndex = lri + 1;
-        if (lastRoundIndex >= 0) {
-            console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-            lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
-            lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
-            lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
-        }
-        else {
-            lri_string = 'Your Last Round is the Worst Today.';
-            lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
-        }
-
-        $$('.cls_top_kings').remove();
-        $$('.cls_front_page').remove();
-
-        _.forEach(a2, function(value, key) {
-            e1 = value.fb_timName;
-            e3 = value.fb_RND;
-            //console.log(e1 + ' - '  + e3);
-            $$('#top_kings').append(
-                '<div class="cls_top_kings chip bg-white">' +
-                '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
-                '<div class="chip-label color-black">' + e1 + '</div>' +
-                '</div>'
-            );
-
-            $$('#front_page').append(
-                '<div class="chip bg-white">' +
-                '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
-                '<div class="chip-label color-black">' + e1 + '</div>' +
-                '</div>'
-            );
-        }); //END FOR EACH
-
-
-
-    });
-    $$('#RTJ').html('ROUND DATA UPDATED');
-}
+// function get_round_data() {
+//     console.log('Fctn get_round_data');
+//
+//     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+//         // console.log('Round Data:  ' + JSON.stringify(a));
+//         var a = _.values(data);
+//         var a1 = _.orderBy(a, 'fb_RND', 'desc');
+//         var a2 = _.take(a1, 10);
+//         //console.log('Round Data:  ' + JSON.stringify(a1));
+//
+//         $$('#top_king').text(a1[0].fb_timName);
+//         $$('#me_vs_king_title').text('ME VS.  ' + a1[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
+//         $$('#me_vs_king_title2').text('THE CHAMP:  ' + a1[0].fb_timName.toUpperCase() + ' (' + a1[0].fb_RND + ') ');
+//         top_king_name = a1[0].fb_timName;
+//         top_king_team = a1[0].fb_timTeam;
+//         top_king_rnd = a1[0].fb_RND;
+//         top_king_spd = a1[0].fb_SPD;
+//         top_king_cad = a1[0].fb_CAD;
+//         top_king_hr = a1[0].fb_HR;
+//         ui_report200();
+//
+//
+//         var lri = _.findIndex(a1, function(o) { return o.fb_RND <= tim.timLastRND; });
+//         lastRoundIndex = lri + 1;
+//         if (lastRoundIndex >= 0) {
+//             console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+//             lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
+//             lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+//             lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+//         }
+//         else {
+//             lri_string = 'Your Last Round is the Worst Today.';
+//             lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
+//         }
+//
+//         $$('.cls_top_kings').remove();
+//         $$('.cls_front_page').remove();
+//
+//         _.forEach(a2, function(value, key) {
+//             e1 = value.fb_timName;
+//             e3 = value.fb_RND;
+//             //console.log(e1 + ' - '  + e3);
+//             $$('#top_kings').append(
+//                 '<div class="cls_top_kings chip bg-white">' +
+//                 '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
+//                 '<div class="chip-label color-black">' + e1 + '</div>' +
+//                 '</div>'
+//             );
+//
+//             $$('#front_page').append(
+//                 '<div class="chip bg-white">' +
+//                 '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
+//                 '<div class="chip-label color-black">' + e1 + '</div>' +
+//                 '</div>'
+//             );
+//         }); //END FOR EACH
+//
+//
+//
+//     });
+//     $$('#RTJ').html('ROUND DATA UPDATED');
+// }
 
 //START GROUP LEADERBOARD
-function get_round_data_group() {
-  console.log('Fctn get_round_data_group');
-    $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-        // console.log('Round Data:  ' + JSON.stringify(a));
-        var a = _.values(data);
-        var a0 = _.filter(a, {
-            'fb_timGroup': tim.timGroup
-          });
-        var a1 = _.orderBy(a0, 'fb_RND', 'desc');
-        var a2 = _.take(a1, 10);
-        //console.log('Group Round Data:  ' + JSON.stringify(a2));
-
-        $$('#top_king_group').text(a1[0].fb_timName);
-        $$('.cls_top_kings_group').remove();
-        $$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
-
-
-        _.forEach(a2, function(value, key) {
-            e1 = value.fb_timName;
-            e3 = value.fb_RND;
-            //console.log(e1 + ' - '  + e3);
-            $$('#top_kings_group').append(
-                '<div class="cls_top_kings_group chip bg-white">' +
-                '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
-                '<div class="chip-label color-black">' + e1 + '</div>' +
-                '</div>'
-            );
-
-
-        }); //END FOR EACH
-    });
-      $$('#RTJ').html('GROUP DATA UPDATED');
-}
+// function get_round_data_group() {
+//   console.log('Fctn get_round_data_group');
+//     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+//         // console.log('Round Data:  ' + JSON.stringify(a));
+//         var a = _.values(data);
+//         var a0 = _.filter(a, {
+//             'fb_timGroup': tim.timGroup
+//           });
+//         var a1 = _.orderBy(a0, 'fb_RND', 'desc');
+//         var a2 = _.take(a1, 10);
+//         //console.log('Group Round Data:  ' + JSON.stringify(a2));
+//
+//         $$('#top_king_group').text(a1[0].fb_timName);
+//         $$('.cls_top_kings_group').remove();
+//         $$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
+//
+//
+//         _.forEach(a2, function(value, key) {
+//             e1 = value.fb_timName;
+//             e3 = value.fb_RND;
+//             //console.log(e1 + ' - '  + e3);
+//             $$('#top_kings_group').append(
+//                 '<div class="cls_top_kings_group chip bg-white">' +
+//                 '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
+//                 '<div class="chip-label color-black">' + e1 + '</div>' +
+//                 '</div>'
+//             );
+//
+//
+//         }); //END FOR EACH
+//     });
+//       $$('#RTJ').html('GROUP DATA UPDATED');
+// }
 //END GROUP LEADERBOARD
 
 
 
 
-function get_top_fighters() {
+// function get_top_fighters() {
+//     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+//         console.log('Fctn get_top_fighters');
+//         var a = _.values(data);
+//         var a1 = _.orderBy(a, 'fb_RND', 'desc');
+//         var a2 = _.take(a1, 50);
+//         //console.log('Round Data:  ' + JSON.stringify(a2));
+//         top_king_name = a1[0].fb_timName;
+//         top_king_team = a1[0].fb_timTeam;
+//         top_king_rnd = a1[0].fb_RND;
+//         top_king_spd = a1[0].fb_SPD;
+//         top_king_cad = a1[0].fb_CAD;
+//         top_king_hr = a1[0].fb_HR;
+//
+//         $$('.cls_champs_page').remove();
+//         var a2_counter = 1;
+//         _.forEach(a2, function(value, key) {
+//
+//             e1 = value.fb_timName;
+//             e3 = value.fb_RND;
+//             e5 = value.fb_timTeam;
+//
+//             $$('#champs_page').append(
+//                 '<div class="chip cls_champs_page bg-white">' +
+//                 '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
+//                 '<div class="chip-label color-black"> #: ' + a2_counter + ' | ' + e1 + ' from ' + e5 + '</div>' +
+//                 '</div>'
+//             );
+//             a2_counter++;
+//         });
+//     });
+// }
+
+//START GETCOMBO GETJSON
+function get_combo() {
+  console.log('Fctn get_combo');
     $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-        console.log('Fctn get_top_fighters');
-        var a = _.values(data);
-        var a1 = _.orderBy(a, 'fb_RND', 'desc');
-        var a2 = _.take(a1, 50);
-        //console.log('Round Data:  ' + JSON.stringify(a2));
-        top_king_name = a1[0].fb_timName;
-        top_king_team = a1[0].fb_timTeam;
-        top_king_rnd = a1[0].fb_RND;
-        top_king_spd = a1[0].fb_SPD;
-        top_king_cad = a1[0].fb_CAD;
-        top_king_hr = a1[0].fb_HR;
+
+            var xx1 = _.values(data);
+            var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
+            console.log('Combo Data:  ' + JSON.stringify(xx2));
+            console.log('END OF COMBO JSON');
+            //GET TOP CHAMP
+            $$('#top_king').text(xx2[0].fb_timName);
+            $$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
+            $$('#me_vs_king_title2').text('THE CHAMP:  ' + xx2[0].fb_timName.toUpperCase() + ' (' + xx2[0].fb_RND + ') ');
+            top_king_name = xx2[0].fb_timName;
+            top_king_team = xx2[0].fb_timTeam;
+            top_king_rnd = xx2[0].fb_RND;
+            top_king_spd = xx2[0].fb_SPD;
+            top_king_cad = xx2[0].fb_CAD;
+            top_king_hr = xx2[0].fb_HR;
+            ui_report200();
+            //GET TOP CHAMP
+
+            //PREPARE SPEAK STR
+            var lri = _.findIndex(xx2, function(o) { return o.fb_RND <= tim.timLastRND; });
+            lastRoundIndex = lri + 1;
+            if (lastRoundIndex >= 0) {
+                console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
+                lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex +'</span>' +  '  for the day';
+                lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+                lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+            }
+            else {
+                lri_string = 'Your Last Round is the Worst Today.';
+                lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
+            }
+
+            $$('.cls_top_kings').remove();
+            $$('.cls_front_page').remove();
+            //END PREPARE SPEAK STR
+
+
+        var counter1=0; var counter2=0;var counter3=0;
 
         $$('.cls_champs_page').remove();
-        var a2_counter = 1;
-        _.forEach(a2, function(value, key) {
+        //COMBO FOR EACH
+        _.forEach(xx2, function(value, key) {
+            xxx1 = value.fb_timName;
+            xxx2 = value.fb_RND;
+            xxx3 = value.fb_timGroup;
+            xxx5 = value.fb_timTeam;
 
-            e1 = value.fb_timName;
-            e3 = value.fb_RND;
-            e5 = value.fb_timTeam;
+//COMPLETE LIST
+            if(counter1<51){
+              console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
+              $$('#champs_page').append(
+                  '<div class="chip cls_champs_page bg-white">' +
+                  '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+                  '<div class="chip-label color-black"> #: ' + counter1 + ' | ' + xxx1 + ' from ' + xxx5 + '</div>' +
+                  '</div>'
+              );
+              counter1++;
+            }
 
-            $$('#champs_page').append(
-                '<div class="chip cls_champs_page bg-white">' +
-                '<div class="chip-media bg-red">' + Math.round(e3) + '</div>' +
-                '<div class="chip-label color-black"> #: ' + a2_counter + ' | ' + e1 + ' from ' + e5 + '</div>' +
-                '</div>'
-            );
-            a2_counter++;
-        });
+
+
+
+            //END COMPLETE LIST
+
+
+            if(xxx3 === tim.timGroup) {
+
+              $$('#top_king_group').text(xxx1[0].fb_timName);
+              $$('.cls_top_kings_group').remove();
+              $$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
+
+                if(counter2<11){
+                  //ONLY IN MY GROUP
+                    //console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
+                    $$('#top_kings_group').append(
+                        '<div class="cls_top_kings_group chip bg-white">' +
+                        '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+                        '<div class="chip-label color-black">' + xxx1 + '</div>' +
+                        '</div>'
+                    );
+
+
+
+
+                    counter2++;
+                  }
+                } //END GROUP
+
+
+            if(counter3<11){
+              //TOP TEN
+                      $$('#top_kings').append(
+                          '<div class="cls_top_kings chip bg-white">' +
+                          '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+                          '<div class="chip-label color-black">' + xxx1 + '</div>' +
+                          '</div>'
+                      );
+
+                      $$('#front_page').append(
+                          '<div class="chip bg-white">' +
+                          '<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
+                          '<div class="chip-label color-black">' + xxx1 + '</div>' +
+                          '</div>'
+                      );
+                    counter3++;
+                  }
+
+        }); //END FOR EACH
+
     });
+    $$('#RTJ').html('DATA UPDATED AT:  ' + tim.timCalculatedDuration);
 }
+//END GETCOMBO GETJSON
 
 
 

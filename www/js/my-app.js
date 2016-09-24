@@ -102,7 +102,8 @@ function startup() {
     var storedData = myApp.formGetData('my-form');
     console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
     //console.log(tim.timName);
-    get_round_data();
+    //get_round_data();
+    get_combo();
     ui_report10(0, 0, 0, 0);
     ui_report20(0, 0, 0, 0);
     updateTim();

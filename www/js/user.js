@@ -282,7 +282,8 @@ function newTimer(count) {
     }
 
     if (count === 285) {
-        get_round_data();
+        //get_round_data();
+        get_combo();
     }
 
     if (count === 280) {
@@ -317,12 +318,11 @@ function newTimer(count) {
     }
 
     if (count === 245) {
-        get_round_data_group();
+        //get_round_data_group();
     }
 
     if (count === 195) {
-        get_top_fighters();
-
+        //get_top_fighters();
     }
 
     if (count === 240) {
@@ -434,7 +434,7 @@ function newTimer(count) {
 
 
     if (count === 125) {
-        get_round_data();
+        get_combo();
     }
 
 
