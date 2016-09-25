@@ -95,10 +95,13 @@ var appII = {
 	//START ONERROR-HR
 	onErrorHR: function() {
 		console.log('appII.onErrorHR');
-		myApp.alert('Reconnect?', 'HR Sensor Error', function() {
-			console.log('attempting reconnect...');
-			appII.connectHR(i_clkId1);
-		});
+		myCenterAlert('HR Sensor Error', 1000);
+		mainView.router.loadPage("#bluetooth");
+		$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+		// myApp.alert('Reconnect?', 'HR Sensor Error', function() {
+		// console.log('attempting reconnect...');
+		// appII.connectHR(i_clkId1);
+		// });
 	},
 	//END ONERROR-HR
 
@@ -220,16 +223,16 @@ var appII = {
 			$('.tab-btn-h').each(function(index, obj) {
 				string += $(this).text('0');
 			});
-			// myCenterAlert('HR Sensor has Disconnected', 1000);
-			// mainView.router.loadPage("#bluetooth");
-			//$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+			myCenterAlert('HR Sensor has Disconnected', 1000);
+			mainView.router.loadPage("#bluetooth");
+			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 
 
 			//appII.connectHR(i_clkId1);
-			myApp.alert('Reconnect?', 'HR Sensor Disconnected', function() {
-				console.log('attempting reconnect...');
-				appII.connectHR(i_clkId1);
-			});
+			// myApp.alert('Reconnect?', 'HR Sensor Disconnected', function() {
+			// 	console.log('attempting reconnect...');
+			// 	appII.connectHR(i_clkId1);
+			// });
 
 
 		}
@@ -274,17 +277,15 @@ var appII = {
 				stringCad += $(this).text(tim.timCadence);
 			});
 
-			//myCenterAlert('Speed/Cadence Sensor has Disconnected', 1000);
-			// mainView.router.loadPage("#bluetooth");
-
-			// console.log('attempting reconnect...');
-			// appII.connectCSC(i_clkId2);
-
+			myCenterAlert('SPD/CAD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
-			myApp.alert('Reconnect?', 'SPD/CAD Sensor Disconnected', function() {
-				console.log('attempting reconnect...');
-				appII.connectCSC(i_clkId2);
-			});
+			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+
+			// mainView.router.loadPage("#bluetooth");
+			// myApp.alert('Reconnect?', 'SPD/CAD Sensor Disconnected', function() {
+			// 	console.log('attempting reconnect...');
+			// 	appII.connectCSC(i_clkId2);
+			// });
 		}
 	},
 
@@ -410,17 +411,15 @@ var appII = {
 
 		function onDisconnectWAS() {
 			console.log('onDisconnect WAS');
-			// myCenterAlert('Wahoo Speed Sensor has Disconnected', 1000);
-			// mainView.router.loadPage("#bluetooth");
-			//
-			// console.log('Reconnect WAS...');
-			// appII.connectWAS(i_clkId3);
-
+			myCenterAlert('SPD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
-			myApp.alert('Reconnect?', 'SPEED Sensor Disconnected', function() {
-				console.log('attempting reconnect SPD...');
-				appII.connectWAS(i_clkId3);
-			});
+			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+
+			// mainView.router.loadPage("#bluetooth");
+			// myApp.alert('Reconnect?', 'SPEED Sensor Disconnected', function() {
+			// 	console.log('attempting reconnect SPD...');
+			// 	appII.connectWAS(i_clkId3);
+			// });
 		}
 	},
 
@@ -446,16 +445,9 @@ var appII = {
 
 		function onDisconnectWAC() {
 			console.log('onDisconnect WAC');
-			// myCenterAlert('Wahoo Cadence Sensor has Disconnected', 1000);
-			// mainView.router.loadPage("#bluetooth");
-			// console.log('Reconnect WAC');
-			// appII.connectWAC(i_clkId4);
-
+			myCenterAlert('CAD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
-			myApp.alert('Reconnect?', 'CADENCE Sensor Disconnected', function() {
-				console.log('attempting reconnect CAD...');
-				appII.connectWAC(i_clkId4);
-			});
+			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 		}
 	},
 
