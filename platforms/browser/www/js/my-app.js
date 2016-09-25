@@ -1,3 +1,4 @@
+// jshint unused:true
 // Initialize app
 var myApp = new Framework7({
 	material: true,
@@ -23,15 +24,6 @@ function myCenterAlert(msg, tiout) {
 		myApp.closeModal();
 	}, tiout);
 }
-
-//NOTIFICATION - NON-MODAL
-// function myNotification(msg) {
-// 	$$('.notification-single').on('click', function () {
-//     myApp.addNotification({
-//         message: 'Simple message'
-//     });
-// });
-// }
 
 //CENTER ALERT WITH OK BUTTON AND CALLBACK
 function myCenterAlertOK(title, message) {
