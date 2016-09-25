@@ -12,45 +12,68 @@ var i_clkId3;
 var i_clkId4;
 //var i_clkId5;
 
-// function reconnectBluetooth() {
+function reconnectBluetooth() {
 
-// 	if (i_clkId1) {
-// 		//appII.connectHR(i_clkId1);
-// 		var recon1 = _.delay(function(hrLog) {
-// 			appII.connectHR(i_clkId1);
-// 			console.log(hrLog);
-// 		}, 1000, 'reconnect HR');
-// 	}
+	if (i_clkId1) {
+		//appII.connectHR(i_clkId1);
+		var recon1 = _.delay(function(hrLog) {
+			appII.connectHR(i_clkId1);
+			console.log(hrLog);
+		}, 1000, 'reconnect HR');
+	}
 
-// 	if (i_clkId2) {
-// 		//appII.connectCSC(i_clkId2);
-// 		var recon2 = _.delay(function(hrLog) {
-// 			appII.connectCSC(i_clkId2);
-// 			console.log(hrLog);
-// 		}, 2000, 'reconnect CSC');
-// 	}
+	if (i_clkId2) {
+		//appII.connectCSC(i_clkId2);
+		var recon2 = _.delay(function(hrLog) {
+			appII.connectCSC(i_clkId2);
+			console.log(hrLog);
+		}, 2000, 'reconnect CSC');
+	}
 
-// 	if (i_clkId3) {
-// 		// appII.connectWAS(i_clkId3);
-// 		var recon3 = _.delay(function(hrLog) {
-// 			appII.connectWAS(i_clkId3);
-// 			console.log(hrLog);
-// 		}, 3000, 'reconnect WAS');
-// 	}
+	if (i_clkId3) {
+		// appII.connectWAS(i_clkId3);
+		var recon3 = _.delay(function(hrLog) {
+			appII.connectWAS(i_clkId3);
+			console.log(hrLog);
+		}, 3000, 'reconnect WAS');
+	}
 
-// 	if (i_clkId4) {
-// 		//appII.connectWAC(i_clkId4);
-// 		var recon4 = _.delay(function(hrLog) {
-// 			appII.connectWAC(i_clkId4);
-// 			console.log(hrLog);
-// 		}, 4000, 'reconnect WAC');
-// 	}
+	if (i_clkId4) {
+		//appII.connectWAC(i_clkId4);
+		var recon4 = _.delay(function(hrLog) {
+			appII.connectWAC(i_clkId4);
+			console.log(hrLog);
+		}, 4000, 'reconnect WAC');
+	}
 
-// }
-//appII.connectHR(i_clkId1);
-//appII.connectCSC(i_clkId2);
-//appII.connectWAS(i_clkId3);
-//appII.connectWAC(i_clkId4);
+}
+appII.connectHR(i_clkId1);
+appII.connectCSC(i_clkId2);
+appII.connectWAS(i_clkId3);
+appII.connectWAC(i_clkId4);
+
+var buttons = [
+        {
+            text: 'RECONNECT',
+            onClick: function () {
+                // myApp.alert('Button1 clicked');
+                reconnectBluetooth();
+            }
+        },
+        // {
+        //     text: 'Button2',
+        //     onClick: function () {
+        //         myApp.alert('Button2 clicked');
+        //     }
+        // },
+        // {
+        //     text: 'Cancel',
+        //     color: 'red',
+        //     onClick: function () {
+        //         myApp.alert('Cancel clicked');
+        //     }
+        // },
+    ];
 
 
 var btService = {
@@ -218,6 +241,10 @@ var appII = {
 		function onDisconnectHR(reason_HR) {
 			console.log('onDisconnect HR');
 			console.log(reason_HR);
+
+			//TEST ACTIONSHEET
+			myApp.actions(buttons);
+			
 			tim.timHR = 0;
 			var string = null;
 			$('.tab-btn-h').each(function(index, obj) {
