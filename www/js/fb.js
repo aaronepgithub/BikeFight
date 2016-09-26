@@ -246,9 +246,11 @@ function get_combo() {
 						xxx2 = value.fb_RND;
 						xxx3 = value.fb_timGroup;
 						xxx5 = value.fb_timTeam;
+						// console.log('counter1: ' + counter1);console.log('counter2: ' + counter2);console.log('counter3: ' + counter3);
+						// console.log('xxx1: ' + xxx1);console.log('xxx2: ' + xxx2);console.log('xxx3: ' + xxx3);console.log('xxx5: ' + xxx5);	
 
 						//COMPLETE LIST
-						if (counter1 < 51) {
+						if (counter1 < 100) {
 								//console.log('CHAMPS PAGE:  ' + xxx1 + ' | ' + xxx2);
 								$$('#champs_page').append(
 										'<div class="chip cls_champs_page bg-white">' +
@@ -256,8 +258,8 @@ function get_combo() {
 										'<div class="chip-label color-black"> #: ' + counter1 + ' | ' + xxx1 + ' from ' + xxx5 + '</div>' +
 										'</div>'
 								);
-								counter1++;
 						}
+						counter1++;
 
 
 
@@ -271,7 +273,7 @@ function get_combo() {
 								// $$('.cls_top_kings_group').remove();
 								$$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
 
-								if (counter2 < 11) {
+								if (counter2 < 10) {
 										//ONLY IN MY GROUP
 										//console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
 										$$('#top_kings_group').append(
@@ -280,16 +282,13 @@ function get_combo() {
 												'<div class="chip-label color-black">' + xxx1 + '</div>' +
 												'</div>'
 										);
-
-
-
-
-										counter2++;
+										
 								}
+								counter2++;
 						} //END GROUP
 
 
-						if (counter3 < 11) {
+						if (counter3 < 10) {
 								//TOP TEN
 								$$('#top_kings').append(
 										'<div class="cls_top_kings chip bg-white">' +
@@ -304,8 +303,8 @@ function get_combo() {
 										'<div class="chip-label color-black">' + xxx1 + '</div>' +
 										'</div>'
 								);
-								counter3++;
 						}
+						counter3++;
 
 				}); //END FOR EACH
 
