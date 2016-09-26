@@ -228,6 +228,7 @@ function get_combo() {
 				}
 
 				$$('.cls_top_kings').remove();
+				$$('.cls_top_kings_group').remove();
 				$$('.cls_front_page').remove();
 				$$('.my_last_rnd_rank').text('# ' + lastRoundIndex);
 				$$('.my_last_rnd').text(tim.timLastRND);
@@ -267,12 +268,12 @@ function get_combo() {
 						if (xxx3 === tim.timGroup) {
 
 								$$('#top_king_group').text(xxx1[0].fb_timName);
-								$$('.cls_top_kings_group').remove();
+								// $$('.cls_top_kings_group').remove();
 								$$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
 
 								if (counter2 < 11) {
 										//ONLY IN MY GROUP
-										//console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
+										console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
 										$$('#top_kings_group').append(
 												'<div class="cls_top_kings_group chip bg-white">' +
 												'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
