@@ -273,7 +273,7 @@ function get_combo() {
 
 								if (counter2 < 11) {
 										//ONLY IN MY GROUP
-										console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
+										//console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
 										$$('#top_kings_group').append(
 												'<div class="cls_top_kings_group chip bg-white">' +
 												'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
