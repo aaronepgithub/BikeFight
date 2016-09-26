@@ -141,12 +141,14 @@ function rounds_end(lr, ls, lc, lh) {
 		//     '</div>'
 		// );
 
-		// $$('#my_last_rnd2').html(
-		//     '<div class="cls_top6 chip bg-white">' +
-		//     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-		//     '<div class="chip-label color-black">' +  tim.timName + '</div>' +
-		//     '</div>'
+		// $$('.my_last_rnd_rank').text('# ' + lastRoundIndex
+		//     // '<div class="cls_top6 chip bg-white">' +
+		//     // '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
+		//     // '<div class="chip-label color-black">' +  tim.timName + '</div>' +
+		//     // '</div>'
 		// );
+		$$('.my_last_rnd').text(tim.timLastRND
+		);
 
 		var stringChip = null;
 		$('.best_round_chip').each(function(index, obj) {

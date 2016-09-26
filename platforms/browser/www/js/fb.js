@@ -229,6 +229,8 @@ function get_combo() {
 
 				$$('.cls_top_kings').remove();
 				$$('.cls_front_page').remove();
+				$$('.my_last_rnd_rank').text('# ' + lastRoundIndex);
+				$$('.my_last_rnd').text(tim.timLastRND);
 				//END PREPARE SPEAK STR
 
 
