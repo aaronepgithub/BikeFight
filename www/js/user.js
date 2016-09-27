@@ -102,6 +102,7 @@ function rounds_end(lr, ls, lc, lh) {
 		var x = _.values(objScores);
 		var y = _.orderBy(x, 'rnd', 'desc');
 		var a1 = y[0].rnd;
+		tim.timBestRoundDay = y[0].rnd;
 		var a2 = y[0].spd;
 		var a3 = y[0].cad;
 		var a4 = y[0].hr;
@@ -119,6 +120,8 @@ function rounds_end(lr, ls, lc, lh) {
 		var objCounter = 1;
 		_.forEach(yy, function(value, key) {
 				console.log('objScores value.rnd:  ' + value.rnd);
+				if(objCounter<6) {
+
 				$$('#my_last_rnd2').append(
 						'<div class="cls_top7 chip bg-white">' +
 						'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
@@ -131,6 +134,8 @@ function rounds_end(lr, ls, lc, lh) {
 						'<div class="chip-label color-black">' + '#' + objCounter + '</div>' +
 						'</div>'
 				);
+
+				}
 				objCounter++;
 		});
 
@@ -194,6 +199,8 @@ $$('#start_btn').on('click', function(e) {
 				tim.timStartTime = _.now();
 				timer.start(300000);
 		}
+		//Start FB Listener
+		listenGroupScorePost();
 
 
 });
@@ -255,12 +262,17 @@ function newTimer(count) {
 
 		var remdr4 = count % 4;
 		if (remdr4 === 0) {
-				bubbleMaker();
+				bubbleMaker();				
 		}
 
 		var remdr3 = count % 3;
 		if (remdr3 === 0) {
 				publishAvg();
+		}
+
+		var remdr11 = count % 11;
+		if (remdr11 === 0) {
+				groupScorePost(/tim.timBestRoundDay);
 		}
 
 

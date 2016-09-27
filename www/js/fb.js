@@ -55,6 +55,26 @@ function round_post(r1, r2, r3, r4) {
 		$$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
+function groupScorePost(score) {
+  firebase.database().ref('group-score/users/'+tim.timName+'/').set({
+    rider: tim.timName,
+    score: tim.timLastRND,
+    pubDate: pubFullDate,
+    group: tim.timGroup
+  });
+  console.log('groupScorePost');
+}
+
+function listenGroupScorePost() {
+// Listen for adds
+	var statusRef = firebase.database().ref('group-score');
+	statusRef.on('value', function(snapshot) {
+	console.log(JSON.stringify(snapshot.val()));
+  });
+
+}
+
+
 // function get_round_data() {
 //     console.log('Fctn get_round_data');
 //
