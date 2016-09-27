@@ -55,10 +55,10 @@ function round_post(r1, r2, r3, r4) {
 		$$('#RTJ').html('FIGHTER DATA POSTED');
 }
 
-function groupScorePost(score) {
+function groupScorePost() {
   firebase.database().ref('group-score/users/'+tim.timName+'/').set({
     rider: tim.timName,
-    score: tim.timLastRND,
+    score: tim.timBestRoundDay,
     pubDate: pubFullDate,
     group: tim.timGroup
   });
@@ -69,7 +69,7 @@ function listenGroupScorePost() {
 // Listen for adds
 	var statusRef = firebase.database().ref('group-score');
 	statusRef.on('value', function(snapshot) {
-	console.log(JSON.stringify(snapshot.val()));
+	console.log('new Group Score Post' + JSON.stringify(snapshot.val()));
   });
 
 }

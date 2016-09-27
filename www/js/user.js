@@ -272,7 +272,7 @@ function newTimer(count) {
 
 		var remdr11 = count % 11;
 		if (remdr11 === 0) {
-				groupScorePost(/tim.timBestRoundDay);
+		groupScorePost();
 		}
 
 
