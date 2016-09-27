@@ -390,7 +390,7 @@
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
 								<a href="#main" class="close-popup button button-fill color-red">Back</a>
-								<a href="#bluetooth" class="close-popup button button-fill color-red">Next</a>
+								<a href="#myrounds" class="close-popup button button-fill color-red">ME</a>
 							</div>
 						</div>
 						<div class="page-content bg-black color-white">
@@ -412,6 +412,37 @@
 						</div>
 					</div>
 					<!--champs - END  ***********************************************-->
+
+
+					<!--myrounds - START  ***********************************************-->
+					<div data-page="myrounds" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">Back</a>
+								<a href="#champs" class="close-popup button button-fill color-red">ALL</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:35px">MY ROUNDS</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="myrounds_page" class="content-block">
+												<div class="cls_myrounds_page" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+					</div>
+					<!--myrounds - END  ***********************************************-->
+
+
 					<!--PAGE INDEX - START:    ***********************************************-->
 					<div data-page="index" class="page navbar-fixed">
 						<div class="navbar" style="margin-top:20px">
@@ -798,10 +829,13 @@
 							<br>
 							<div class="row cls_rts">
 								<h5>LAST ROUND RANKING</h5>
-								<!-- <div class="col-auto cls_center cls_rtrnd1"><i class="fa fa-bullseye"></i></div> -->
-								<!-- <div class="col-auto cls_center_rank my_last_rnd bg-red">00</div> -->
-								<div class="col-40 cls_center_rank my_last_rnd_rank tab-btn-round"># 00</div>
-							</div><hr><br>
+								<div class="col-50 cls_center_rank my_last_rnd_rank tab-btn-round"># 00</div>
+							</div>
+							<div class="row cls_rts">
+								<h5>MY AVERAGE ROUND</h5>
+								<div id = "my_average_round_score" class="col-40 cls_center_rank">00</div>
+							</div>
+							<hr><br>
 						</div>
 						<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
 						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>

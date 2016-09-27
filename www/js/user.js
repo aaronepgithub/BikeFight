@@ -92,6 +92,7 @@ function rounds_end(lr, ls, lc, lh) {
 				hr: lh,
 				date: pubFullDate,
 				time: pubFullTime,
+				duration: tim.timCalculatedDuration,
 				name: tim.timName,
 				group: tim.timGroup,
 				team: tim.timTeam,
@@ -118,26 +119,42 @@ function rounds_end(lr, ls, lc, lh) {
 		$$('.cls_top7').remove();
 		$$('.cls_top6').remove();
 		var objCounter = 1;
+		$$('.cls_myrounds_page').remove();
 		_.forEach(yy, function(value, key) {
 				console.log('objScores value.rnd:  ' + value.rnd);
 				if(objCounter<6) {
 
-				$$('#my_last_rnd2').append(
-						'<div class="cls_top7 chip bg-white">' +
-						'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
-						'<div class="chip-label color-black">' + '#' + objCounter + '</div>' +
-						'</div>'
-				);
-				$$('#my_last_rnd').append(
-						'<div class="cls_top6 chip bg-white">' +
-						'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
-						'<div class="chip-label color-black">' + '#' + objCounter + '</div>' +
-						'</div>'
-				);
+					$$('#my_last_rnd2').append(
+							'<div class="cls_top7 chip bg-white">' +
+							'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
+							'<div class="chip-label color-black">' + '#' + objCounter + '</div>' +
+							'</div>'
+					);
+					$$('#my_last_rnd').append(
+							'<div class="cls_top6 chip bg-white">' +
+							'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
+							'<div class="chip-label color-black">' + '#' + objCounter + '</div>' +
+							'</div>'
+					);
 
 				}
+				
+
+				$$('#myrounds_page').append(
+					'<div class="chip cls_myrounds_page bg-white">' +
+					'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
+					'<div class="chip-label color-black"> #: ' + objCounter + ' | ' + value.duration + ' </div>' +
+					'</div>'
+				);
+
 				objCounter++;
+
+
+
 		});
+
+		console.log('My Average Round:  ' +  _.meanBy(x, 'rnd'));
+		$$('#my_average_round_score').text(Math.round(_.meanBy(x, 'rnd')));
 
 		// $$('#my_last_rnd').html(
 		//     '<div class="cls_top6 chip bg-white">' +

@@ -97,7 +97,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				$$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10) / 10 + '<br>');
 				$$('.cls_rtspd2').text(Math.round(tim.timSpeed * 10) / 10);
 				$$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10) / 10 + '<br>');
-				createAvgRoundScore.push(Math.round(tim.timAvgSPD * 0.65));
+				createAvgRoundScore.push(Math.round(tim.timAvgSPD / 2)); //speed of 40, score of 80
 				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
 				$$('.cls_rtrnd2').text(tim.timAvgRND);
 
@@ -194,8 +194,8 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				$$('#RT3').html('CAD NOW:  ' + tim.timCadence + '<br>');
 				$$('.cls_rtcad2').text(tim.timCadence);
 				$$('#RT4').html('CAD AVG:   ' + tim.timAvgCAD + '<br>');
-				createAvgRoundScore.push(Math.round(tim.timAvgCAD / 4));
-				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
+				createAvgRoundScore.push(Math.round(tim.timAvgCAD / 6)); 
+				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4); //cadence of 120, score of 80
 				$$('.cls_rtrnd2').text(tim.timAvgRND);
 
 
@@ -232,7 +232,7 @@ function onHRMeasurementReceived(hrMeasurement) {
 		$$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR) + '<br>');
 		$$('.cls_rthr2').text(tim.timHR);
 		$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR) + '<br>');
-		createAvgRoundScore.push(Math.round(tim.timAvgHR / 7));
+		createAvgRoundScore.push(Math.round(tim.timAvgHR / 9)); //hr of 180, score of 80
 		tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
 		$$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
 		$$('.cls_rtrnd2').text(tim.timAvgRND);

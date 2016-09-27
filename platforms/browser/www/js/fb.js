@@ -210,6 +210,7 @@ function listenGroupScorePost() {
 //     });
 // }
 
+var dataSize;
 //START GETCOMBO GETJSON
 function get_combo() {
 		console.log('Fctn get_combo');
@@ -217,6 +218,8 @@ function get_combo() {
 
 				var xx1 = _.values(data);
 				var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
+				dataSize = _.size(xx2);
+				console.log('Size-Number of Values:  ' + dataSize);
 				//console.log('Combo Data:  ' + JSON.stringify(xx2));
 
 				//GET TOP CHAMP
@@ -239,8 +242,8 @@ function get_combo() {
 				lastRoundIndex = lri + 1;
 				if (lastRoundIndex >= 0) {
 						//console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-						lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex + '</span>' + '  for the day';
-						lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day';
+						lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex + 'out of ' +  dataSize  + ' </span>' + '  for the day';
+						lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  out of ' +  dataSize  + ' for the day';
 						lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
 				} else {
 						lri_string = 'Your Last Round is the Worst Today.';
@@ -250,7 +253,7 @@ function get_combo() {
 				$$('.cls_top_kings').remove();
 				$$('.cls_top_kings_group').remove();
 				$$('.cls_front_page').remove();
-				$$('.my_last_rnd_rank').text('# ' + lastRoundIndex);
+				$$('.my_last_rnd_rank').text(lastRoundIndex + '/' + dataSize);
 				$$('.my_last_rnd').text(tim.timLastRND);
 				//END PREPARE SPEAK STR
 

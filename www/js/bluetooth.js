@@ -10,6 +10,21 @@ var i_clkId1;
 var i_clkId2;
 var i_clkId3;
 var i_clkId4;
+
+function msgBluetoothDisconnect() {
+	if (storedDataTTS.style !== "NO") {
+		TTS
+				.speak({
+						text: 'Bluetooth Sensors have Disconnected',
+						locale: 'en-GB',
+						rate: 1.5
+				}, function() {
+						console.log('TTS BT Disconnect SUCCESS');
+				}, function(reason) {
+						console.log('TTS FAILURE:  ' + reason);
+				});
+	}
+}
 //var i_clkId5;
 
 // function reconnectBluetooth() {
@@ -227,6 +242,8 @@ var appII = {
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 
+			msgBluetoothDisconnect();
+
 
 			//appII.connectHR(i_clkId1);
 			// myApp.alert('Reconnect?', 'HR Sensor Disconnected', function() {
@@ -280,6 +297,8 @@ var appII = {
 			myCenterAlert('SPD/CAD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+
+			msgBluetoothDisconnect();	
 
 			// mainView.router.loadPage("#bluetooth");
 			// myApp.alert('Reconnect?', 'SPD/CAD Sensor Disconnected', function() {
@@ -415,6 +434,7 @@ var appII = {
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 
+			msgBluetoothDisconnect();
 			// mainView.router.loadPage("#bluetooth");
 			// myApp.alert('Reconnect?', 'SPEED Sensor Disconnected', function() {
 			// 	console.log('attempting reconnect SPD...');
@@ -448,6 +468,9 @@ var appII = {
 			myCenterAlert('CAD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+			
+			msgBluetoothDisconnect();
+
 		}
 	},
 
