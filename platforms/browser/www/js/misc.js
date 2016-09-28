@@ -237,7 +237,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 }
 
 
-var tempHR3 = 1;
+var tempHR3 = 0;
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
 
