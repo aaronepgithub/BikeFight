@@ -110,6 +110,10 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 
 
 
+// RESET EVER 15
+var timCadence15;
+var arrCadenceValue15 = [];
+var arrCadenceTime15 = [];
 
 function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 		//console.log('crankRevolutions:  ' + crankRevolutions + '  lastCrankEventTime:  ' + lastCrankEventTime);
@@ -146,18 +150,33 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				}
 
 
-			//*** REDO
+			
 				var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
-				if (crankCadence < 125) {
+				if (crankCadence < 181) {
 						tim.timCadence = Math.round(crankCadence);
 				} else {
 						tim.timCadence = 120;
 				}
 
+
+
 				crankRevsRound = crankRevsRound + crankCadenceReading;
 				timeElapsedRound = timeElapsedRound + timeDifference;
 
-				if (Math.round(crankRevsRound / timeElapsedRound * 60) < 125) {
+//*******TODO
+				//15 SEC CAD READING
+				arrCadenceValue15.push(crankRevsRound);
+				arrCadenceTime15.push(timeElapsedRound);
+				// var cvFirst = 
+				// var ctFirst = 
+				// var cvLast = 
+				// var ctLast =
+				//TODO  LAST - FIRST AND THEN CRANKS / TIME * 60 
+				// tim.timCadence15 = Math.round();
+				//END CAD15
+
+				//ROUND READING
+				if (Math.round(crankRevsRound / timeElapsedRound * 60) < 181) {
 						tim.timAvgCAD = Math.round(crankRevsRound / timeElapsedRound * 60);
 				} else {
 						return;

@@ -128,9 +128,9 @@ $$('.my_simulator').on('click', function(e) {
 	onHRMeasurementReceived(150);
 
 	function test() {
-		measHR  =   _.random(130, 170);
-		measCAD =  measCAD +  _.random(1.5, 1.6);
-		measSPD =  measSPD + _.random(4.5, 6.5);
+		measHR  =   _.random(140, 160);
+		measCAD =  measCAD +  _.random(1.3, 1.7);
+		measSPD =  measSPD + _.random(4.0, 6.5);
 		onWheelMeasurementReceived(measSPD, _.now());
 		onCrankMeasurementReceived(measCAD, _.now());
 		onHRMeasurementReceived(measHR);
