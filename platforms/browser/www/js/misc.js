@@ -94,15 +94,15 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 
 				// $$('#addStuff').prepend('tim.timAvgSPD:  ' + tim.timAvgSPD + '<br><hr>');
 				// $$('#addStuff').prepend('tim.timSpeed:  ' + tim.timSpeed + '<br><hr>');
-				$$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10) / 10 + '<br>');
+				// $$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10) / 10 + '<br>');
 				$$('.cls_rtspd2').text(Math.round(tim.timSpeed * 10) / 10);
-				$$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10) / 10 + '<br>');
+				// $$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10) / 10 + '<br>');
 
 				var wstringSpd = null;
 				$('.tab-btn-s').each(function(index, obj) {
 						wstringSpd += $(this).text(Math.round(tim.timAvgSPD * 10) / 10);
 				});
-				
+
 
 				// createAvgRoundScore.push(Math.round(tim.timAvgSPD / 2)); //speed of 40, score of 80
 				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
@@ -213,7 +213,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				});
 
 
-				// createAvgRoundScore.push(Math.round(tim.timAvgCAD / 6)); 
+				// createAvgRoundScore.push(Math.round(tim.timAvgCAD / 6));
 				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4); //cadence of 120, score of 80
 				// $$('.cls_rtrnd2').text(tim.timAvgRND);
 
@@ -237,7 +237,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 }
 
 
-var tempHR3;
+var tempHR3 = 1;
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
 
@@ -248,10 +248,10 @@ function onHRMeasurementReceived(hrMeasurement) {
 				string += $(this).text(Math.round(tim.timAvgHR));
 		});
 
-		$$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR) + '<br>');
+		// $$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR) + '<br>');
 		$$('.cls_rthr2').text(tim.timHR);
-		$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR) + '<br>');
-		
+		// $$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR) + '<br>');
+
 		//CREATE THE ROUND SCORE
 
 		var tempHR1 = tim.timAvgHR - 100;
@@ -259,10 +259,7 @@ function onHRMeasurementReceived(hrMeasurement) {
 		if (tempHR2 > 0 && tempHR2 <25) {
 			tempHR3 = tempHR2;
 		}
-
-
 		// $$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
-		
 }
 
 
