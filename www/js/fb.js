@@ -69,7 +69,7 @@ function listenGroupScorePost() {
 // Listen for adds
 	var statusRef = firebase.database().ref('group-score');
 	statusRef.on('value', function(snapshot) {
-	console.log('new Group Score Post' + JSON.stringify(snapshot.val()));
+	//console.log('new Group Score Post' + JSON.stringify(snapshot.val()));
   });
 
 }
@@ -242,9 +242,9 @@ function get_combo() {
 				lastRoundIndex = lri + 1;
 				if (lastRoundIndex >= 0) {
 						//console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-						lri_string = 'Your Last Round is Ranked Number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + lastRoundIndex + 'out of ' +  dataSize  + ' </span>' + '  for the day';
-						lastRoundIndexSpeak = 'Your Last Round is Ranked Number ' + lastRoundIndex + '  out of ' +  dataSize  + ' for the day';
-						lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team;
+						lri_string = 'Your Last Round is Ranked Number  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">  ' + lastRoundIndex + '  out of  ' +  dataSize  + '  </span> ' + '   for the day';
+						lastRoundIndexSpeak = 'Your Last Round had a score of ' + tim.timLastRND + ' and is Ranked Number  ' + lastRoundIndex + '  out of  ' +  dataSize  + '  for the day';
+						lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a score of ' + top_king_rnd;
 				} else {
 						lri_string = 'Your Last Round is the Worst Today.';
 						lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';

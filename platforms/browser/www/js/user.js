@@ -284,12 +284,45 @@ function newTimer(count) {
 
 		var remdr3 = count % 3;
 		if (remdr3 === 0) {
+
+			//CALC AVG RND
+
+				//CREATE THE ROUND SCORE SPD
+				var tempSPD1 = tim.timAvgSPD;  //ASSUME MAX OF 35, RANGE FROM 15 TO 35
+				var tempSPD2 = Math.round((tempSPD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+				var tempSPD3;
+				if (tempSPD2 > 0 && tempSPD2 <60) {
+					tempSPD3 = tempSPD2 * 2;
+					createAvgRoundScore.push(tempSPD3);
+					// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+					// $$('.cls_rtrnd2').text(tim.timAvgRND);
+					}
+				//END CREATE ROUND SCORE SPD
+				//CREATE THE ROUND SCORE CAD
+				var tempCAD1 = tim.timAvgCAD - 60;  //ASSUME MAX OF 120, RANGE FROM 120 TO 60
+				var tempCAD2 = Math.round((tempCAD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+				var tempCAD3;
+				if (tempCAD2 > 0 && tempCAD2 <60) {
+					tempCAD3 = tempCAD2 * 2;
+					createAvgRoundScore.push(tempCAD3);
+					// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+					// $$('.cls_rtrnd2').text(tim.timAvgRND);
+				}
+				//CREATE THE ROUND SCORE CAD
+
+				//console.log('arr createAvgRoundScore in user.js, every 3 seconds:  ' + JSON.stringify(createAvgRoundScore));
+				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+				if (_.isNaN(tim.timAvgRND)) {tim.timAvgRND = 0;}
+
+				$$('.cls_rtrnd2').text(tim.timAvgRND);
+
 				publishAvg();
 		}
 
 		var remdr11 = count % 11;
 		if (remdr11 === 0) {
 		groupScorePost();
+		
 		}
 
 

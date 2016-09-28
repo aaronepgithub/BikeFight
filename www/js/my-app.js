@@ -1,4 +1,3 @@
-// jshint unused:true
 // Initialize app
 var myApp = new Framework7({
 	material: true,
@@ -160,17 +159,17 @@ $$('.my_simulator').on('click', function(e) {
 	console.log('clicked simulator');
 	myCenterAlert('Simulator');
 
-	var measHR = 100;
+	var measHR = 1;
 	var measSPD = 1;
 	var measCAD = 1;
 	onWheelMeasurementReceived(measSPD, _.now());
 	onCrankMeasurementReceived(measCAD, _.now());
-	onHRMeasurementReceived(120);
+	onHRMeasurementReceived(150);
 
 	function test() {
-		measHR = _.random(50, 150);
-		measCAD = measCAD + _.random(0.5, 2.1);
-		measSPD = measSPD + _.random(0.5, 5.5);
+		measHR  =   _.random(150, 160);
+		measCAD =  measCAD +  _.random(1.5, 1.6);
+		measSPD =  measSPD + _.random(4.5, 6.5);
 		onWheelMeasurementReceived(measSPD, _.now());
 		onCrankMeasurementReceived(measCAD, _.now());
 		onHRMeasurementReceived(measHR);

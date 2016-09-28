@@ -97,13 +97,28 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				$$('#RT1').html('SPD NOW:  ' + Math.round(tim.timSpeed * 10) / 10 + '<br>');
 				$$('.cls_rtspd2').text(Math.round(tim.timSpeed * 10) / 10);
 				$$('#RT2').html('SPD AVG:   ' + Math.round(tim.timAvgSPD * 10) / 10 + '<br>');
-				createAvgRoundScore.push(Math.round(tim.timAvgSPD / 2)); //speed of 40, score of 80
-				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
-				$$('.cls_rtrnd2').text(tim.timAvgRND);
 
+				var wstringSpd = null;
+				$('.tab-btn-s').each(function(index, obj) {
+						wstringSpd += $(this).text(Math.round(tim.timAvgSPD * 10) / 10);
+				});
+				
 
+				// createAvgRoundScore.push(Math.round(tim.timAvgSPD / 2)); //speed of 40, score of 80
+				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
+				// $$('.cls_rtrnd2').text(tim.timAvgRND);
 
-
+				// //CREATE THE ROUND SCORE SPD
+				// var tempSPD1 = tim.timAvgSPD;  //ASSUME MAX OF 35, RANGE FROM 15 TO 35
+				// var tempSPD2 = Math.round((tempSPD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+				// var tempSPD3;
+				// if (tempSPD2 > 0 && tempSPD2 <60) {
+				// 	tempSPD3 = tempSPD2 * 2;
+				// 	createAvgRoundScore.push(tempSPD3);
+				// 	tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+				// 	$$('.cls_rtrnd2').text(tim.timAvgRND);
+				// 	}
+				// //END CREATE ROUND SCORE SPD
 
 
 				//Publish to UI
@@ -114,10 +129,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				$$('#header_btn1').text(tim.timDistanceTraveled + ' miles');
 				//console.log('tim.timDistanceTraveled:  ' + tim.timDistanceTraveled);
 
-				var wstringSpd = null;
-				$('.tab-btn-s').each(function(index, obj) {
-						wstringSpd += $(this).text(Math.round(tim.timAvgSPD * 10) / 10);
-				});
+
 		} else {
 				//console.log('Bad wheelRevolutions Number:  ' + wheelRevolutions);
 		}
@@ -194,22 +206,28 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				$$('#RT3').html('CAD NOW:  ' + tim.timCadence + '<br>');
 				$$('.cls_rtcad2').text(tim.timCadence);
 				$$('#RT4').html('CAD AVG:   ' + tim.timAvgCAD + '<br>');
-				createAvgRoundScore.push(Math.round(tim.timAvgCAD / 6)); 
-				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4); //cadence of 120, score of 80
-				$$('.cls_rtrnd2').text(tim.timAvgRND);
-
-
-				// $$('#addStuff').prepend('tim.timCadence:  ' + tim.timCadence + '<br><hr>');
-				// $$('#addStuff').prepend('tim.timAvgCAD:  ' + tim.timAvgCAD + '<br><hr>');
-
-
-
-
 
 				var stringCad = null;
 				$('.tab-btn-c').each(function(index, obj) {
-						stringCad += $(this).text(Math.round(tim.timAvgCAD));
+					stringCad += $(this).text(Math.round(tim.timAvgCAD));
 				});
+
+
+				// createAvgRoundScore.push(Math.round(tim.timAvgCAD / 6)); 
+				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4); //cadence of 120, score of 80
+				// $$('.cls_rtrnd2').text(tim.timAvgRND);
+
+				// //CREATE THE ROUND SCORE CAD
+				// var tempCAD1 = tim.timAvgCAD - 60;  //ASSUME MAX OF 120, RANGE FROM 120 TO 60
+				// var tempCAD2 = Math.round((tempCAD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+				// var tempCAD3;
+				// if (tempCAD2 > 0 && tempCAD2 <60) {
+				// 	tempCAD3 = tempCAD2 * 2;
+				// 	createAvgRoundScore.push(tempCAD3);
+				// 	tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+				// 	$$('.cls_rtrnd2').text(tim.timAvgRND);
+				// }
+				// //CREATE THE ROUND SCORE CAD
 
 		}
 
@@ -219,9 +237,10 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 }
 
 
-
+var tempHR3;
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
+
 		createAvgHeartRate.push(Math.round(tim.timHR));
 		tim.timAvgHR = Math.round(_.mean(createAvgHeartRate));
 		var string = null;
@@ -232,10 +251,18 @@ function onHRMeasurementReceived(hrMeasurement) {
 		$$('#RT5').html('HR NOW:  ' + Math.round(tim.timHR) + '<br>');
 		$$('.cls_rthr2').text(tim.timHR);
 		$$('#RT6').html('HR AVG:   ' + Math.round(tim.timAvgHR) + '<br>');
-		createAvgRoundScore.push(Math.round(tim.timAvgHR / 9)); //hr of 180, score of 80
-		tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 4);
-		$$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
-		$$('.cls_rtrnd2').text(tim.timAvgRND);
+		
+		//CREATE THE ROUND SCORE
+
+		var tempHR1 = tim.timAvgHR - 100;
+		var tempHR2 = Math.round(tempHR1 / 5 * 100) / 100; //MAX VAL OF 20 BASED ON MAX HR OF 200 2 DECIMAL PLACES
+		if (tempHR2 > 0 && tempHR2 <25) {
+			tempHR3 = tempHR2;
+		}
+
+
+		// $$('#RT7').html('RND AVG:   ' + tim.timAvgRND + '<br>');
+		
 }
 
 
