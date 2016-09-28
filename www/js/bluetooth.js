@@ -12,7 +12,7 @@ var i_clkId3;
 var i_clkId4;
 
 function msgBluetoothDisconnect() {
-	if (storedDataTTS.style !== "NO") {
+	if (tim.timStyle !== "NO") {
 		TTS
 				.speak({
 						text: 'Bluetooth Sensors have Disconnected',
@@ -113,10 +113,6 @@ var appII = {
 		myCenterAlert('HR Sensor Error', 1000);
 		mainView.router.loadPage("#bluetooth");
 		$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
-		// myApp.alert('Reconnect?', 'HR Sensor Error', function() {
-		// console.log('attempting reconnect...');
-		// appII.connectHR(i_clkId1);
-		// });
 	},
 	//END ONERROR-HR
 

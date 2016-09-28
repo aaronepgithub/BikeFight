@@ -2,7 +2,7 @@ var tim = {
 		timName: 'Required',
 		timTeam: 'Solo',
 		timGroup: 'None',
-		timStyle: 'Road',
+		timStyle: 'NO',
 		timTire: '700X25',
 		timTireSize: '700X25',
 		timTireCircum: 2.11,
@@ -75,9 +75,6 @@ var tim = {
 };
 
 
-// var cntdown = 300;
-// var global_stuff;
-
 var objScores = {};
 var createAvgRoundScore = [];
 
@@ -148,29 +145,14 @@ function rounds_end(lr, ls, lc, lh) {
 				);
 
 				objCounter++;
-
-
-
 		});
 
 		console.log('My Average Round:  ' +  _.meanBy(x, 'rnd'));
+
+		//FOR ENTIRE RIDE
 		$$('#my_average_round_score').text(Math.round(_.meanBy(x, 'rnd')));
 
-		// $$('#my_last_rnd').html(
-		//     '<div class="cls_top6 chip bg-white">' +
-		//     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-		//     '<div class="chip-label color-black">' + tim.timName + '</div>' +
-		//     '</div>'
-		// );
-
-		// $$('.my_last_rnd_rank').text('# ' + lastRoundIndex
-		//     // '<div class="cls_top6 chip bg-white">' +
-		//     // '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-		//     // '<div class="chip-label color-black">' +  tim.timName + '</div>' +
-		//     // '</div>'
-		// );
-		$$('.my_last_rnd').text(tim.timLastRND
-		);
+		$$('.my_last_rnd').text(tim.timLastRND);
 
 		var stringChip = null;
 		$('.best_round_chip').each(function(index, obj) {
@@ -184,22 +166,36 @@ function rounds_end(lr, ls, lc, lh) {
 
 function publishAvg() {
 
-		$$('#tim_avg_rnd_btn').text(Math.round(tim.timAvgRND));
-		$$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
+	//PUB AVG RND/SPD/HR/CAD
+	var stringSpd = null;
+	$('.tab-btn-s').each(function(index, obj) {
+		stringSpd += $(this).text(Math.round(tim.timAvgSPD * 10) / 10);
+	});
 
-		var stringRND = null;
-		$('.cls_rt_round_val').each(function(index, obj) {
-				stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
-		});
-		populate_tim_avg_rnd_bubbles();
+	var stringHr = null;
+	$('.tab-btn-h').each(function(index, obj) {
+		stringHr += $(this).text(Math.round(tim.timAvgHR));
+	});
+
+	var stringCad = null;
+	$('.tab-btn-c').each(function(index, obj) {
+		stringCad += $(this).text(Math.round(tim.timAvgCAD));
+	});
+
+	var stringRound = null;
+	$('.tab-btn-round').each(function(index, obj) {
+		stringRound += $(this).text(Math.round(tim.timAvgRND));
+	});
+
+	//PUB BUBBLES
+	populate_tim_avg_rnd_bubbles();
 
 }
 
 
-// var global_timer;
 
-
-$$('#start_btn').on('click', function(e) {
+//START BUTTON
+$$('#start_btn').on('click', function() {
 		var storedData = myApp.formGetData('my-form');
 		// if ( storedData === undefined) {
 		if (!storedData) {
@@ -208,7 +204,7 @@ $$('#start_btn').on('click', function(e) {
 		} else {
 				$$(this).hide();
 				$$("#start_btn").prop("disabled", true);
-				console.log(JSON.stringify(storedData));
+				//console.log(JSON.stringify(storedData));
 				updateTim();
 
 				var mySwiper = $$('.swiper-container')[0].swiper;
@@ -218,28 +214,27 @@ $$('#start_btn').on('click', function(e) {
 		}
 		//Start FB Listener
 		listenGroupScorePost();
-
-
 });
-//END OF START BUTTON PRESS
+
 
 
 //START TOCK
 var timer = new Tock({
 		countdown: true,
 		interval: 1000,
-		callback: someCallbackFunction,
-		complete: someCompleteFunction
+		callback: aCallbackFunction,
+		complete: aCompleteFunction
 });
 
-function someCallbackFunction() {
+function aCallbackFunction() {
 		var ct = Math.round(timer.lap() / 1000);
 		newTimer(ct);
 }
 
-function someCompleteFunction() {
+function aCompleteFunction() {
 		console.log('Round Complete, Restarting Timer');
 		publishEndofRound();
+		//RESET ROUND VARS
 		wheelRevsRound = 0;
 		crankRevsRound = 0;
 		timeElapsedRound = 0;
@@ -263,12 +258,12 @@ function newTimer(count) {
 				stringTimer += $(this).text(count + ' SECONDS REMAIN');
 		});
 
+
+		//1 SECOND - DURATION
 		var remdr1 = count % 1;
 		if (remdr1 === 0) {
-				//console.log('rmdr1');
 				var secondsInRound = 300 - count;
 				var secondsAllRounds = tim.timNumberofRounds * 300;
-				//console.log('secondsInRound:  ' + secondsInRound + '  tim.timNumberofRounds:   '+ tim.timNumberofRounds);
 				var calcTotalSeconds = secondsInRound + secondsAllRounds;
 				var date = new Date(null);
 				var tmr1 = date.setSeconds(calcTotalSeconds); // specify value for SECONDS here
@@ -277,54 +272,56 @@ function newTimer(count) {
 				tim.timCalculatedDuration = tmr2;
 		}
 
-		var remdr4 = count % 4;
-		if (remdr4 === 0) {
-				bubbleMaker();				
+
+		//5 SECONDS  PAINT BUBBLES
+		var remdr5 = count % 5;
+		if (remdr5 === 0) {
+			bubbleMaker();				
 		}
 
-		var remdr3 = count % 3;
-		if (remdr3 === 0) {
+
+
+		//15 SEC. CALC AND DISPLAY EVERY 
+		var remdr15 = count % 15;
+		if (remdr15 === 0) {
 
 			//CALC AVG RND
-
-				//CREATE THE ROUND SCORE SPD
-				var tempSPD1 = tim.timAvgSPD;  //ASSUME MAX OF 35, RANGE FROM 15 TO 35
-				var tempSPD2 = Math.round((tempSPD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
-				var tempSPD3;
-				if (tempSPD2 > 0 && tempSPD2 <60) {
-					tempSPD3 = tempSPD2 * 2;
-					createAvgRoundScore.push(tempSPD3);
-					// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-					// $$('.cls_rtrnd2').text(tim.timAvgRND);
-					}
-				//END CREATE ROUND SCORE SPD
-				//CREATE THE ROUND SCORE CAD
-				var tempCAD1 = tim.timAvgCAD - 60;  //ASSUME MAX OF 120, RANGE FROM 120 TO 60
-				var tempCAD2 = Math.round((tempCAD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
-				var tempCAD3;
-				if (tempCAD2 > 0 && tempCAD2 <60) {
-					tempCAD3 = tempCAD2 * 2;
-					createAvgRoundScore.push(tempCAD3);
-					// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-					// $$('.cls_rtrnd2').text(tim.timAvgRND);
+			//CREATE THE ROUND SCORE SPD
+			var tempSPD1 = tim.timAvgSPD;  //ASSUME MAX OF 35, RANGE FROM 15 TO 35
+			var tempSPD2 = Math.round((tempSPD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+			var tempSPD3;
+			if (tempSPD2 > 0 && tempSPD2 <60) {
+				tempSPD3 = tempSPD2 * 2;
+				createAvgRoundScore.push(tempSPD3);
+				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+				// $$('.cls_rtrnd2').text(tim.timAvgRND);
 				}
-				//CREATE THE ROUND SCORE CAD
+			//END CREATE ROUND SCORE SPD
+			//CREATE THE ROUND SCORE CAD
+			var tempCAD1 = tim.timAvgCAD - 60;  //ASSUME MAX OF 120, RANGE FROM 120 TO 60
+			var tempCAD2 = Math.round((tempCAD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
+			var tempCAD3;
+			if (tempCAD2 > 0 && tempCAD2 <60) {
+				tempCAD3 = tempCAD2 * 2;
+				createAvgRoundScore.push(tempCAD3);
+				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+				// $$('.cls_rtrnd2').text(tim.timAvgRND);
+			}
+			//CREATE THE ROUND SCORE CAD
+			tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
+			if (_.isNaN(tim.timAvgRND)) {
+				tim.timAvgRND = 0;
+			}
+			publishAvg();
 
-				//console.log('arr createAvgRoundScore in user.js, every 3 seconds:  ' + JSON.stringify(createAvgRoundScore));
-				tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-				if (_.isNaN(tim.timAvgRND)) {tim.timAvgRND = 0;}
-
-				$$('.cls_rtrnd2').text(tim.timAvgRND);
-
-				publishAvg();
 		}
 
-		var remdr11 = count % 11;
-		if (remdr11 === 0) {
-		groupScorePost();
-		
-		}
 
+
+		// var remdr25 = count % 25;
+		// if (remdr25 === 0) {
+		// groupScorePost();
+		// }
 
 
 
@@ -332,23 +329,9 @@ function newTimer(count) {
 		if (count === 295) {
 				round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-				// $$('#my_last_rnd').html(
-				//     '<div class="cls_top6 chip bg-white">' +
-				//     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-				//     '<div class="chip-label color-black">' + tim.timName + '</div>' +
-				//     '</div>'
-				// );
-				//
-				// $$('#my_last_rnd2').html(
-				//     '<div class="cls_top6 chip bg-white">' +
-				//     '<div class="chip-media bg-red">' + Math.round(tim.timLastRND) + '</div>' +
-				//     '<div class="chip-label color-black">' + tim.timName + '</div>' +
-				//     '</div>'
-				// );
 		}
 
 		if (count === 285) {
-				//get_round_data();
 				get_combo();
 		}
 
@@ -360,7 +343,8 @@ function newTimer(count) {
 				});
 				setTimeout(function() {
 						myApp.closeModal();
-						console.log('TTS Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						console.log('TTS280 Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						//
 						$$('#RTJ').html('TTS, 280, CALC DURATION:  ' + tim.timCalculatedDuration);
 						//TTS - AFTER MODAL IS CLOSED
 						var storedDataTTS = myApp.formGetData('my-form');
@@ -369,26 +353,18 @@ function newTimer(count) {
 						tim.timStyle = storedDataTTS.style;
 						if (storedDataTTS.style !== "NO") {
 								TTS
-										.speak({
-												text: 'Get Moving.  A new round just started.  Your last round had a score of ' + Math.round(tim.timLastRND),
-												locale: 'en-GB',
-												rate: 1.5
-										}, function() {
-												console.log('TTS SUCCESS');
-										}, function(reason) {
-												console.log('TTS FAILURE:  ' + reason);
-										});
+									.speak({
+											text: 'Get Moving.  A new round just started.  Your last round had a score of ' + Math.round(tim.timLastRND),
+											locale: 'en-GB',
+											rate: 1.5
+									}, function() {
+											console.log('TTS280 SUCCESS');
+									}, function(reason) {
+											console.log('TTS280 FAILURE:  ' + reason);
+									});
 						} //TTS - AFTER MODAL IS CLOSED
 
 				}, 5000);
-		}
-
-		if (count === 245) {
-				//get_round_data_group();
-		}
-
-		if (count === 195) {
-				//get_top_fighters();
 		}
 
 		if (count === 240) {
@@ -401,49 +377,21 @@ function newTimer(count) {
 				setTimeout(function() {
 						myApp.closeModal();
 						if (tim.timNumberofRounds >= 0) {
-								//TTS
-								console.log('TTS Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								$$('#RTJ').html('TTS, 240, CALC DURATION:  ' + tim.timCalculatedDuration);
-								var storedDataTTS240 = myApp.formGetData('my-form');
-								tim.timName = storedDataTTS240.name;
-								tim.timTeam = storedDataTTS240.team;
-								tim.timStyle = storedDataTTS240.style;
-								if (storedDataTTS240.style !== "NO") {
+								console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								if (tim.timStyle !== "NO") {
 										TTS
-												.speak({
-														text: 'Four Minutes Remain',
-														locale: 'en-GB',
-														rate: 1.5
-												}, function() {
-														console.log('TTS240 SUCCESS');
-												}, function(reason) {
-														console.log('TTS240 FAILURE:  ' + reason);
-												});
+											.speak({
+													text: 'Four Minutes Remain',
+													locale: 'en-GB',
+													rate: 1.5
+											}, function() {
+													console.log('TTS240 SUCCESS');
+											}, function(reason) {
+													console.log('TTS240 FAILURE:  ' + reason);
+											});
 								} //TTS
 						}
 				}, 5000);
-		}
-
-		if (count === 190) {
-				// if (tim.timNumberofRounds > 1) {
-				//   //TTS
-				//   var storedDataTTS2 = myApp.formGetData('my-form');
-				//   tim.timName = storedDataTTS2.name;
-				//   tim.timTeam = storedDataTTS2.team;
-				//   tim.timStyle  = storedDataTTS2.style;
-				//             if (storedDataTTS2.style !== "NO") {
-				//        TTS
-				//            .speak({
-				//                text: lastRoundIndexSpeak2,
-				//                locale: 'en-GB',
-				//                rate: 1.5
-				//            }, function() {
-				//                console.log('TTS2 SUCCESS');
-				//            }, function(reason) {
-				//                console.log('TTS2 FAILURE:  ' + reason);
-				//            });
-				//    } //TTS
-				// }
 		}
 
 
@@ -459,23 +407,18 @@ function newTimer(count) {
 						myApp.closeModal();
 						if (tim.timNumberofRounds > 0) {
 								//TTS
-								console.log('TTS Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								$$('#RTJ').html('TTS, 180, CALC DURATION:  ' + tim.timCalculatedDuration);
-								var storedDataTTS2 = myApp.formGetData('my-form');
-								tim.timName = storedDataTTS2.name;
-								tim.timTeam = storedDataTTS2.team;
-								tim.timStyle = storedDataTTS2.style;
-								if (storedDataTTS2.style !== "NO") {
+								console.log('TTS180 Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								if (tim.timStyle !== "NO") {
 										TTS
-												.speak({
-														text: lastRoundIndexSpeak2,
-														locale: 'en-GB',
-														rate: 1.5
-												}, function() {
-														console.log('TTS2 SUCCESS');
-												}, function(reason) {
-														console.log('TTS2 FAILURE:  ' + reason);
-												});
+											.speak({
+													text: lastRoundIndexSpeak2,
+													locale: 'en-GB',
+													rate: 1.5
+											}, function() {
+													console.log('TTS180 SUCCESS');
+											}, function(reason) {
+													console.log('TTS180 FAILURE:  ' + reason);
+											});
 								} //TTS
 						}
 				}, 5000);
@@ -483,7 +426,7 @@ function newTimer(count) {
 		}
 
 
-		if (count === 151) {
+		if (count === 150) {
 				if (tim.timNumberofRounds > 0) {
 						console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
 						myApp.modal({
@@ -495,7 +438,6 @@ function newTimer(count) {
 								myApp.closeModal();
 						}, 5000);
 				}
-
 		}
 
 
@@ -514,30 +456,22 @@ function newTimer(count) {
 				setTimeout(function() {
 						myApp.closeModal();
 						if (tim.timNumberofRounds >= 1) {
-								//TTS
-								console.log('TTS Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								$$('#RTJ').html('TTS, 120, CALC DURATION:  ' + tim.timCalculatedDuration);
-								var storedDataTTS3 = myApp.formGetData('my-form');
-								tim.timName = storedDataTTS3.name;
-								tim.timTeam = storedDataTTS3.team;
-								tim.timStyle = storedDataTTS3.style;
-								if (storedDataTTS3.style !== "NO") {
+								console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								if (tim.timStyle !== "NO") {
 										TTS
-												.speak({
-														text: lastRoundIndexSpeak,
-														locale: 'en-GB',
-														rate: 1.5
-												}, function() {
-														console.log('TTS3 SUCCESS');
-												}, function(reason) {
-														console.log('TTS3 FAILURE:  ' + reason);
-												});
+											.speak({
+													text: lastRoundIndexSpeak,
+													locale: 'en-GB',
+													rate: 1.5
+											}, function() {
+													console.log('TTS120 SUCCESS');
+											}, function(reason) {
+													console.log('TTS120 FAILURE:  ' + reason);
+											});
 								} //TTS
 						}
 				}, 5000);
 		}
-
-
 
 
 		if (count === 60) {
@@ -552,22 +486,17 @@ function newTimer(count) {
 						myApp.closeModal();
 						if (tim.timNumberofRounds >= 0) {
 								//TTS
-								console.log('TTS Count:  60, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								$$('#RTJ').html('TTS, 60, CALC DURATION:  ' + tim.timCalculatedDuration);
-								var storedDataTTS11 = myApp.formGetData('my-form');
-								tim.timName = storedDataTTS11.name;
-								tim.timTeam = storedDataTTS11.team;
-								tim.timStyle = storedDataTTS11.style;
-								if (storedDataTTS11.style !== "NO") {
+								console.log('TTS60 Count:  60, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								if (tim.timStyle !== "NO") {
 										TTS
 												.speak({
 														text: 'One Minute Remains',
 														locale: 'en-GB',
 														rate: 1.5
 												}, function() {
-														console.log('TTS11 SUCCESS');
+														console.log('TTS60 SUCCESS');
 												}, function(reason) {
-														console.log('TTS11 FAILURE:  ' + reason);
+														console.log('TTS60 FAILURE:  ' + reason);
 												});
 								} //TTS
 						}
@@ -590,26 +519,28 @@ function newTimer(count) {
 				console.log('Count at 0');
 				myCenterAlert('Round is Complete', 1000);
 		}
-		//END OF COUNT AT 1
+		
 
 }
 //end of the New Timer function with count passed in.
 
 //SWIPER P1 BUBBLES
 function publishEndofRound() {
-		console.log('tim.publishEndofRound');
+		console.log('Fctn publishEndofRound');
 		//THESE ARE THE VALUES  CREATED FOR END OF ROUND
 		tim.timLastHR = tim.timAvgHR;
 		tim.timLastCAD = tim.timAvgCAD;
 		tim.timLastSPD = tim.timAvgSPD;
 		tim.timLastRND = tim.timAvgRND;
+		
 		tim.timNumberofRounds = tim.timNumberofRounds + 1;
+
 		$$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timLastSPD + '</h1>');
 		$$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastCAD) + '</h1>');
 		$$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
 		$$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
-		console.log('tim.timNumberofRounds:  ' + tim.timNumberofRounds);
-		console.log('tim.timLastRND:  ' + tim.timLastRND);
+		
+
 		rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 
 		// myApp.modal({
@@ -625,7 +556,8 @@ function publishEndofRound() {
 function bubbleMaker() {
 
 		if (tim.timSpeed > 40) {
-				tim.timSpeed = 40;
+				// tim.timSpeed = 40;
+				return;
 		}
 		var vSpeed1 = Math.round(tim.timSpeed / 2);
 		var vSpeed2 = 20 - vSpeed1;
@@ -634,7 +566,7 @@ function bubbleMaker() {
 
 
 		if (tim.timHR > 200) {
-				tim.timHR = 200;
+				return;
 		}
 		var vHeartrate1 = Math.round(tim.timHR / 10);
 		var vHeartrate2 = 20 - vHeartrate1;
@@ -642,7 +574,7 @@ function bubbleMaker() {
 		populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
 
 		if (tim.timCadence > 120) {
-				tim.timCadence = 120;
+				return;
 		}
 		var vCadence1 = Math.round(tim.timCadence / 6);
 		var vCadence2 = 20 - vCadence1;
@@ -651,40 +583,33 @@ function bubbleMaker() {
 
 
 		if (tim.timAvgRND > 99) {
-				tim.timAvgRND = 99;
+				return;
 		}
 		var vRound1 = (Math.round(tim.timAvgRND) / 5);
 		var vRound2 = 20 - vRound1;
 		var vRound3 = '#rt_round_bubbles';
-		// $$('#rt_round_val').text(Math.round(tim.timAvgRND * 10) / 10);
-		//
-		// var stringRND = null;
-		// $('.cls_rt_round_val').each(function(index, obj) {
-		//     stringRND += $(this).text(Math.round(tim.timAvgRND * 10) / 10);
-		// });
+
 		populate_rt_bubbles(vRound1, vRound2, vRound3);
 
 		function populate_rt_bubbles(x, y, z) {
-				var a = '<i class="fa fa-circle fa-1x color-red"></i>';
-				var b = '<i class="fa fa-circle fa-1x color-white"></i>';
-				var c = a.repeat(Math.ceil(Math.round(x)));
-				// var d = b.repeat(Math.ceil(Math.round(y)));
-				var d = 20 - Number(x);
-				var dd = Number(d) + Number(x);
-				//console.log('x + d: ' + dd);
-				if (dd <= 20) {
-						var e = b.repeat(Math.ceil(Math.round(d)));
-						var f = c.concat(e);
-						$$(z).html(f);
-				} else {
-						return;
-				}
+			var a = '<i class="fa fa-circle fa-1x color-red"></i>';
+			var b = '<i class="fa fa-circle fa-1x color-white"></i>';
+			var c = a.repeat(Math.ceil(Math.round(x)));
+			// var d = b.repeat(Math.ceil(Math.round(y)));
+			var d = 20 - Number(x);
+			var dd = Number(d) + Number(x);
+			//console.log('x + d: ' + dd);
+			if (dd <= 20) {
+					var e = b.repeat(Math.ceil(Math.round(d)));
+					var f = c.concat(e);
+					$$(z).html(f);
+			} else {
+					return;
+			}
 		}
 }
 
-// function populate_timer_bubbles(x) {
-// 		$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-// }
+
 
 function populate_round_bubbles(x, y, z) {
 		var a = '<i class="fa fa-circle fa-2x color-red"></i> ';
@@ -718,7 +643,7 @@ function populate_last_rnd_bubbles() {
 }
 
 function populate_tim_avg_rnd_bubbles() {
-		//EVERY SECOND
+		//EVERY 15 SECONDS
 		if (tim.timAvgRND > 99) {
 				tim.timAvgRND = 99;
 		}
