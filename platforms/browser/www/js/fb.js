@@ -139,7 +139,6 @@ function get_combo() {
 					console.log('round_speed_rank:  ' + (round_speed_rank++));
 
 
-				//TODO - OLD - GET RID OF
 				//GET TOP CHAMP
 				$$('#top_king').text(xx2[0].fb_timName);
 				$$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
