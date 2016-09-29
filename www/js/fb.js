@@ -101,10 +101,9 @@ function totals_post() {
 						fb_timLastSPD: tim.timLastSPD
 				});
 
-		
+
 		console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
 }
-
 
 
 var dataSize;
@@ -116,45 +115,30 @@ function get_combo() {
 				var xx1 = _.values(data);
 				var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
 				dataSize = _.size(xx2);
-				console.log('Size-Number of Values:  ' + dataSize);
+				//console.log('Size-Number of Values:  ' + dataSize);
 				//console.log('Combo Data:  ' + JSON.stringify(xx2));
 				var xx_effort = _.orderBy(xx1, 'a_scoreRoundLast', 'desc');
 				var xx_speed = _.orderBy(xx1, 'a_speedRoundLast', 'desc');
 
-				console.log('Round Effort:  ' + JSON.stringify(xx_effort));
-				console.log('Round Speed:  ' + JSON.stringify(xx_speed));
+				// console.log('Round Effort:  ' + JSON.stringify(xx_effort));
+				// console.log('Round Speed:  ' + JSON.stringify(xx_speed));
 
-				//GET TOP EFFORT (HR) ROUND
-				// top_effort_round = _.maxBy(xx1, 'fb_scoreHRRound');
-				// console.log('top_effort_round  ' + top_effort_round);
 
-					//FIND RANK OF TOP EFFORT/ROUND
-					// var round_effort_rank = _.findIndex(xx_effort,function(o) {
-					// 	return o.a_scoreRoundLast <= scoreHRRoundLast;
-					// 	});
-
+					//FIND RANK OF MY LAST ROUND'S EFFORT
 					var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
 
-						
-					$$('.cls_effort_round_rank').text(round_effort_rank + '/' + dataSize);
-					console.log('round_effort_rank:  ' + round_effort_rank);
+
+					$$('.cls_effort_round_rank').text(round_effort_rank+1 + '/' + dataSize);
+					console.log('round_effort_rank:  ' + (round_effort_rank++));
 
 
-				//GET TOP SPEED ROUND
-				// top_speed_round = _.maxBy(xx1, 'fb_SPD');
-				// console.log('top_speed_round  ' + top_speed_round);
-
-					// FIND RANK OF TOP SPEED/ROUND
-					// var round_speed_rank = _.findIndex(xx_speed,function(o) {
-					// 	return o.a_speedRoundLast <= tim.timLastSPD;
-					// 	});
-
+					// FIND RANK OF LAST ROUND'S SPEED
 					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
-						
-					$$('.cls_avg_speed_round_rank').text(round_speed_rank + '/' + dataSize);
-					console.log('round_speed_rank:  ' + round_speed_rank);
 
-				
+					$$('.cls_avg_speed_round_rank').text(round_speed_rank+1 + '/' + dataSize);
+					console.log('round_speed_rank:  ' + (round_speed_rank++));
+
+
 				//TODO - OLD - GET RID OF
 				//GET TOP CHAMP
 				$$('#top_king').text(xx2[0].fb_timName);
@@ -204,7 +188,7 @@ function get_combo() {
 						xxx3 = value.fb_timGroup;
 						xxx5 = value.fb_timTeam;
 						// console.log('counter1: ' + counter1);console.log('counter2: ' + counter2);console.log('counter3: ' + counter3);
-						// console.log('xxx1: ' + xxx1);console.log('xxx2: ' + xxx2);console.log('xxx3: ' + xxx3);console.log('xxx5: ' + xxx5);	
+						// console.log('xxx1: ' + xxx1);console.log('xxx2: ' + xxx2);console.log('xxx3: ' + xxx3);console.log('xxx5: ' + xxx5);
 
 						//COMPLETE LIST
 						if (counter1 < 100) {
@@ -235,7 +219,7 @@ function get_combo() {
 												'<div class="chip-label color-black">' + xxx1 + '</div>' +
 												'</div>'
 										);
-										
+
 								}
 								counter2++;
 						} //END GROUP
@@ -296,9 +280,9 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 
 		var xTotals1 = _.values(data);
 		var xTotals2 = _.orderBy(xTotals1, 'a_scoreHRTotal', 'desc');
-		console.log('xTotals2:  ' + JSON.stringify(xTotals2));
+		//console.log('xTotals2:  ' + JSON.stringify(xTotals2));
 		var xTotals3 = _.orderBy(xTotals1, 'a_speedTotal', 'desc');
-		console.log('xTotals3:  ' + JSON.stringify(xTotals3));
+		//console.log('xTotals3:  ' + JSON.stringify(xTotals3));
 
 		dataSizeLeaders = _.size(xTotals2);
 		console.log('Size of Totals:  ' + dataSizeLeaders);
@@ -307,18 +291,18 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 		var total_effort_rank = _.findIndex(xTotals2,function(o) {
 			return o.a_scoreHRTotal <= scoreHRTotal;
 			});
-		
-		$$('.cls_effort_total_rank').text(total_effort_rank + '/' + dataSizeLeaders);
-		console.log('total_effort_rank_plus1:  ' + total_effort_rank );
+
+		$$('.cls_effort_total_rank').text(total_effort_rank+1 + '/' + dataSizeLeaders);
+		console.log('total_effort_rank:  ' + (total_effort_rank++) );
 
 
 		//FIND RANK OF TOP TOTAL SPEED
 		var total_speed_rank = _.findIndex(xTotals3,function(o) {
 			return o.a_speedTotal <= tim.timAvgSPDtotal;
 			});
-		
-		$$('.cls_avg_speed_total_rank').text(total_speed_rank + '/' + dataSizeLeaders);
-		console.log('total_speed_rank_plus1:  ' + total_speed_rank );
+
+		$$('.cls_avg_speed_total_rank').text( total_speed_rank+1 + '/' + dataSizeLeaders);
+		console.log('total_speed_rank:  ' + (total_speed_rank++) );
 
 		postToTempScoreLeaderboard(xTotals2);
 
@@ -333,7 +317,7 @@ function postToTempScoreLeaderboard(tempLdr) {
 	//COMBO FOR EACH
 	_.forEach(tempLdr, function(value, key) {
 			l1 = value.fb_timName;
-			l2 = value.a_scoreHRTotal;
+			l2 = Math.round(value.a_scoreHRTotal);
 
 				$$('#temp_score_leaders').append(
 				'<div class="chip cls_temp_leaders bg-white">' +
@@ -343,5 +327,3 @@ function postToTempScoreLeaderboard(tempLdr) {
 				);
 		});
 }
-
-

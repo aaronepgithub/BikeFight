@@ -88,7 +88,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				var rC3 = rC1 / rC2; //revs per second
 				var rC4 = rC3 * circumference * 0.000621371 * 60 * 60; //mph per round
 				tim.timAvgSPD = Math.round(rC4 * 10) / 10;
-				
+
 
 				//CALC TOTAL AVG SPD/SESSION
 				var rCT1 = wheelRevsRoundTotal;
@@ -174,7 +174,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				}
 
 
-			
+
 				var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
 				// if (crankCadence < 181) {
 				// 		tim.timCadence = Math.round(crankCadence);
@@ -198,7 +198,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				arrCadenceTime15.push(timeDifference);
 				var cv = _.sum(arrCadenceValue15);
 				var ct = _.sum(arrCadenceTime15);
-				
+
 				tim.timCadence = Math.round(cv / ct * 60);
 
 				if(ct > 15) {
@@ -233,7 +233,7 @@ var scoreHRTotal = 0;
 var scoreHRRound = 0;
 var scoreHRRoundLast = 0;
 
-var tempHR3 = 0;  //USED FOR OLD ROUND SCORE
+//var tempHR3 = 0;  //USED FOR OLD ROUND SCORE
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
 
@@ -259,26 +259,23 @@ function onHRMeasurementReceived(hrMeasurement) {
 
 		//OLD
 		//CREATE THE ROUND SCORE
-		var tempHR1 = tim.timAvgHR - 100;
-		var tempHR2 = Math.round(tempHR1 / 5 * 100) / 100; //MAX VAL OF 20 BASED ON MAX HR OF 200 2 DECIMAL PLACES
-		if (tempHR2 > 0 && tempHR2 <25) {
-			tempHR3 = tempHR2;
-		}		
+		// var tempHR1 = tim.timAvgHR - 100;
+		// var tempHR2 = Math.round(tempHR1 / 5 * 100) / 100; //MAX VAL OF 20 BASED ON MAX HR OF 200 2 DECIMAL PLACES
+		// if (tempHR2 > 0 && tempHR2 <25) {
+		// 	tempHR3 = tempHR2;
+		// }
 }
 
 function getScoreHR() {
 	scoreHRTotal = Math.round(tim.timAvgHRtotal / maxHRTotal * 100 * 10) / 10;
 	scoreHRRound = Math.round(tim.timAvgHR / maxHRTotal * 100 * 10) / 10;
 	scoreHRRoundLast = Math.round(tim.timLastHR / maxHRTotal * 100 * 10) / 10;
+	tim.timAvgRND = scoreHRRound;
 	//console.log('scoreHRTotal:  ' + scoreHRTotal);
 
 	$$('.cls_effort_total').text(scoreHRTotal);
 	$$('.cls_effort_round').text(scoreHRRound);
 	$$('.cls_effort_round_last').text(scoreHRRoundLast);
-	
+
 
 }
-
-
-
-

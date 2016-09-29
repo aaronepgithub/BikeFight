@@ -122,7 +122,7 @@ function rounds_end(lr, ls, lc, lh) {
 					);
 
 				}
-				
+
 
 				$$('#myrounds_page').append(
 					'<div class="chip cls_myrounds_page bg-white">' +
@@ -263,52 +263,10 @@ function newTimer(count) {
 		//5 SECONDS  PAINT BUBBLES
 		var remdr5 = count % 5;
 		if (remdr5 === 0) {
-			bubbleMaker();				
-		}
-
-
-
-		//15 SEC. CALC AND DISPLAY EVERY 
-		var remdr15 = count % 15;
-		if (remdr15 === 0) {
-
-			//CALC AVG RND
-			//CREATE THE ROUND SCORE SPD
-			var tempSPD1 = tim.timAvgSPD;  //ASSUME MAX OF 35, RANGE FROM 15 TO 35
-			var tempSPD2 = Math.round((tempSPD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
-			var tempSPD3;
-			if (tempSPD2 > 0 && tempSPD2 <60) {
-				tempSPD3 = tempSPD2 * 2;
-				createAvgRoundScore.push(tempSPD3);
-				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-				// $$('.cls_rtrnd2').text(tim.timAvgRND);
-				}
-			//END CREATE ROUND SCORE SPD
-			//CREATE THE ROUND SCORE CAD
-			var tempCAD1 = tim.timAvgCAD - 60;  //ASSUME MAX OF 120, RANGE FROM 120 TO 60
-			var tempCAD2 = Math.round((tempCAD1 + tempHR3) * 100) / 100; //MAX VAL OF 20 BASED ON MAX CAD OF 120 2 DECIMAL PLACES
-			var tempCAD3;
-			if (tempCAD2 > 0 && tempCAD2 <60) {
-				tempCAD3 = tempCAD2 * 2;
-				createAvgRoundScore.push(tempCAD3);
-				// tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-				// $$('.cls_rtrnd2').text(tim.timAvgRND);
-			}
-			//CREATE THE ROUND SCORE CAD
-			tim.timAvgRND = Math.round(_.mean(createAvgRoundScore) * 10) / 10;  //1 DECIMAL PLACE
-			if (_.isNaN(tim.timAvgRND)) {
-				tim.timAvgRND = 0;
-			}
 			publishAvg();
-
+			bubbleMaker();
 		}
 
-
-
-		// var remdr25 = count % 25;
-		// if (remdr25 === 0) {
-		// groupScorePost();
-		// }
 
 
 
@@ -318,7 +276,7 @@ function newTimer(count) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
 		}
 
-		if (count === 290) {
+		if (count === 290  || count === 140) {
 				totals_post();
 		}
 
@@ -330,6 +288,21 @@ function newTimer(count) {
 				getTotals();
 		}
 
+		if (count === 185) {
+				get_combo();
+		}
+
+		if (count === 180) {
+				getTotals();
+		}
+
+		if (count === 85) {
+				get_combo();
+		}
+
+		if (count === 80) {
+				getTotals();
+		}
 
 
 		if (count === 275) {
@@ -438,13 +411,7 @@ function newTimer(count) {
 		// }
 
 
-		if (count === 130) {
-				get_combo();
-		}
 
-		if (count === 125) {
-				getTotals();
-		}
 
 
 		if (count === 120) {
@@ -520,7 +487,7 @@ function newTimer(count) {
 				console.log('Count at 0');
 				myCenterAlert('Round is Complete', 1000);
 		}
-		
+
 
 }
 //end of the New Timer function with count passed in.
@@ -533,14 +500,14 @@ function publishEndofRound() {
 		tim.timLastCAD = tim.timAvgCAD;
 		tim.timLastSPD = tim.timAvgSPD;
 		tim.timLastRND = tim.timAvgRND;
-		
+
 		tim.timNumberofRounds = tim.timNumberofRounds + 1;
 
 		$$('#publishLastSPDValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + tim.timLastSPD + '</h1>');
 		$$('#publishLastCADValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastCAD) + '</h1>');
 		$$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
 		$$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
-		
+
 
 		rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 
