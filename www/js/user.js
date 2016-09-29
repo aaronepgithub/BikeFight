@@ -55,22 +55,6 @@ var tim = {
 		timDistanceTraveled: 0,
 		timDistanceTraveledRound: 0,
 		timCalculatedDuration: 0,
-		timATSpeedScore: 0,
-		timATCadenceScore: 0,
-		timATHeartrateScore: 0,
-		timATRoundScore: 0,
-		timATRoundScoreDate: 0,
-		timATRoundScoreTime: 0,
-		timBestRoundFullDate: 0,
-		timBestRoundYear: 0,
-		timBestRoundMonth: 0,
-		timBestRoundDay: 0,
-		fb_BestRND: 0,
-		fb_BestSPD: 0,
-		fb_BestCAD: 0,
-		fb_BestHR: 0,
-		fb_BestNAME: '...',
-		fb_BestSHOP: '...',
 		timStartTime: 0,
 		timAvgSPDtotal: 0,
 		timAvgCADtotal: 0,
@@ -343,6 +327,12 @@ function newTimer(count) {
 		}
 
 		if (count === 280) {
+				getTotals();
+		}
+
+
+
+		if (count === 275) {
 				myApp.modal({
 						title: '<div>A New Round Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
 								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
@@ -350,9 +340,9 @@ function newTimer(count) {
 				});
 				setTimeout(function() {
 						myApp.closeModal();
-						console.log('TTS280 Count:  280, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						console.log('TTS275 Count:  275, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 						//
-						$$('#RTJ').html('TTS, 280, CALC DURATION:  ' + tim.timCalculatedDuration);
+						$$('#RTJ').html('TTS, 275, CALC DURATION:  ' + tim.timCalculatedDuration);
 						//TTS - AFTER MODAL IS CLOSED
 						var storedDataTTS = myApp.formGetData('my-form');
 						tim.timName = storedDataTTS.name;
@@ -433,19 +423,19 @@ function newTimer(count) {
 		}
 
 
-		if (count === 150) {
-				if (tim.timNumberofRounds > 0) {
-						console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
-						myApp.modal({
-								title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
-										'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-										'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>'
-						});
-						setTimeout(function() {
-								myApp.closeModal();
-						}, 5000);
-				}
-		}
+		// if (count === 150) {
+		// 		if (tim.timNumberofRounds > 0) {
+		// 				console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
+		// 				myApp.modal({
+		// 						title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
+		// 								'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+		// 								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>'
+		// 				});
+		// 				setTimeout(function() {
+		// 						myApp.closeModal();
+		// 				}, 5000);
+		// 		}
+		// }
 
 
 		if (count === 125) {
@@ -562,7 +552,7 @@ function publishEndofRound() {
 
 function bubbleMaker() {
 
-		if (tim.timSpeed > 40) {
+		if (tim.timSpeed > 35) {
 				// tim.timSpeed = 40;
 				return;
 		}
@@ -572,7 +562,7 @@ function bubbleMaker() {
 		populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
 
 
-		if (tim.timHR > 200) {
+		if (tim.timHR > 195) {
 				return;
 		}
 		var vHeartrate1 = Math.round(tim.timHR / 10);
@@ -580,7 +570,7 @@ function bubbleMaker() {
 		var vHeartrate3 = '#rt_hr_bubbles';
 		populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
 
-		if (tim.timCadence > 120) {
+		if (tim.timCadence > 115) {
 				return;
 		}
 		var vCadence1 = Math.round(tim.timCadence / 6);
@@ -589,7 +579,7 @@ function bubbleMaker() {
 		populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
 
 
-		if (tim.timAvgRND > 99) {
+		if (tim.timAvgRND > 95) {
 				return;
 		}
 		var vRound1 = (Math.round(tim.timAvgRND) / 5);

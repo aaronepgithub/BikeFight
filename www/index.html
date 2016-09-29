@@ -539,6 +539,10 @@
 															<div class="buttons-row bg-black color-white" style="padding: 10px;">
 																<a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
 															</div>
+															<!-- SIMULATOR START -->
+															<div class="buttons-row bg-black color-white" style="padding: 10px;">
+																<a id="sim" href="#" class="my_simulator button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Simulate</a>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -799,48 +803,111 @@
 					<!-- RT/AVG ME SLIDE END -->
 					<!-- RANK SLIDE START -->
 					<div class="swiper-slide bg-black">
-				<div class="card bg-black" style="margin-top:0px">
-					<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">VS. EVERYONE</h5></div>
-					<hr><div class="card-content bg-black">
-						<div class="card-content-inner small_content_inner color-white bg-black">
-<!-- 							<div class="row cls_rts">
-								<h5>CURRENT ROUND</h5> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd1"><i class="fa fa-bullseye"></i></div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd2 bg-red">00</div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd3 bg-red tab-btn-round">00</div> -->
-								<!-- <div class="col-auto cls_center_rank my_last_rnd bg-red">00</div> -->
-							<!-- </div> -->
-							<div class="row cls_rts">
-								<h5>CURRENT ROUND</h5>
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd1"><i class="fa fa-bullseye"></i></div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd2 bg-red">00</div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd3 bg-red tab-btn-round">00</div> -->
-								<div class="col-40 cls_center_rank cls_rtrnd2 bg-red tab-btn-round">00</div>
-								<!-- <div class="col-40 cls_center_rank my_last_rnd bg-red">00</div> -->
+						<div class="card bg-black" style="margin-top:0px">
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">VS. EVERYONE</h5></div>
+							<hr><div class="card-content bg-black">
+							<div class="card-content-inner small_content_inner color-white bg-black">
+								<div class="row cls_rts">
+									<h5>CURRENT ROUND</h5>
+									<div class="col-40 cls_center_rank cls_rtrnd2 bg-red tab-btn-round">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>LAST ROUND</h5>
+									<div class="col-40 cls_center_rank my_last_rnd bg-red">00</div>
+								</div>
+								<br>
+								<div class="row cls_rts">
+									<h5>LAST ROUND RANKING</h5>
+									<div class="col-50 cls_center_rank my_last_rnd_rank tab-btn-round"># 00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>MY AVERAGE ROUND</h5>
+									<div id = "my_average_round_score" class="col-40 cls_center_rank">00</div>
+								</div>
+								<hr><br>
 							</div>
-							<div class="row cls_rts">
-								<h5>LAST ROUND</h5>
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd1"><i class="fa fa-bullseye"></i></div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd2 bg-red">00</div> -->
-								<!-- <div class="col-auto cls_center_rank cls_rtrnd3 bg-red tab-btn-round">00</div> -->
-								<!-- <div class="col-40 cls_center_rank cls_rtrnd3 bg-red tab-btn-round">00</div> -->
-								<div class="col-40 cls_center_rank my_last_rnd bg-red">00</div>
+							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
 							</div>
-							<br>
-							<div class="row cls_rts">
-								<h5>LAST ROUND RANKING</h5>
-								<div class="col-50 cls_center_rank my_last_rnd_rank tab-btn-round"># 00</div>
-							</div>
-							<div class="row cls_rts">
-								<h5>MY AVERAGE ROUND</h5>
-								<div id = "my_average_round_score" class="col-40 cls_center_rank">00</div>
-							</div>
-							<hr><br>
 						</div>
-						<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
-					</div></div></div>
+					</div>
 					<!-- RANK SLIDE END -->
+					<!-- EFFORT LEADERBOARD SLIDE START -->
+					<div class="swiper-slide bg-black">
+						<div class="card bg-black" style="margin-top:0px">
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator cls_maxHR" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE LEADERS</h5></div>
+							<hr><div class="card-content bg-black">
+							<div class="card-content-inner small_content_inner color-white bg-black">
+								<div class="row cls_rts">
+									<h5>EFFORT SCORE TOTAL</h5>
+									<div class="col-40 cls_effort_total bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>EFFORT SCORE RANK</h5>
+									<div class="col-40 cls_effort_total_rank bg-black cls_center_score">00</div>
+								</div>
+								<hr><br>
+								<div class="row cls_rts">
+									<h5>EFFORT SCORE ROUND (CURRENT)</h5>
+									<div class="col-40 cls_effort_round bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>EFFORT SCORE LAST ROUND</h5>
+									<div class="col-40 cls_effort_round_last bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>EFFORT SCORE/ LAST ROUND'S RANK</h5>
+									<div class="col-40 cls_effort_round_rank bg-black cls_center_score">00</div>
+								</div>
+								<br>
+								<hr><br>
+							</div>
+							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+							</div>
+						</div>
+					</div>
+					<!-- EFFORT LEADERBOARD SLIDE END -->
+
+					<!-- SPEED LEADERBOARD SLIDE START -->
+					<div class="swiper-slide bg-black">
+						<div class="card bg-black" style="margin-top:0px">
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">SPEED LEADERS</h5></div>
+							<hr><div class="card-content bg-black">
+							<div class="card-content-inner small_content_inner color-white bg-black">
+								<div class="row cls_rts">
+									<h5>AVG SPEED/TOTAL</h5>
+									<div class="col-40 cls_avg_speed_total bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>AVG SPEED/TOTAL RANK</h5>
+									<div class="col-40 cls_avg_speed_total_rank bg-black cls_center_score">00</div>
+								</div>
+								<hr><br>
+								<div class="row cls_rts">
+									<h5>AVG SPEED/ROUND ROUND</h5>
+									<div class="col-40 cls_avg_speed_round bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>AVG SPEED/ROUND LAST ROUND</h5>
+									<div class="col-40 cls_avg_speed_round_last bg-red cls_center_score">00</div>
+								</div>
+								<div class="row cls_rts">
+									<h5>AVG SPEED/ LAST ROUND'S RANK</h5>
+									<div class="col-40 cls_avg_speed_round_rank bg-black cls_center_score">00</div>
+								</div>
+								<br>
+								<hr><br>
+							</div>
+							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+							</div>
+						</div>
+					</div>
+					<!-- SPEED LEADERBOARD SLIDE END -->
+
+
+
 				</div>
 				<!-- SWIPER WRAPPER -->
 				<div class="swiper-pagination">

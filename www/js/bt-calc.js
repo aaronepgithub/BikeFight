@@ -56,20 +56,22 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 						mLastWheelRevolutions = wheelRevolutions;
 						return;
 				}
+				//ROUND
 				wheelRevsRound = wheelRevsRound + wheelRevolutions2 - mLastWheelRevolutions;
-				
 				//TOTAL
-				wheelRevsRoundTotal = wheelRevsRoundTotal + wheelRevsRound;
+				wheelRevsRoundTotal = wheelRevsRoundTotal + wheelRevolutions2 - mLastWheelRevolutions;
 
 				// console.log('wheelRevsRound:  ' + wheelRevsRound);
 				// console.log('wheelRevsReading:  ' + elapWheelRevsReading);
 
-
-				timeElapsedRoundWheel = timeElapsedRoundWheel + lastWheelEventTime - mLastWheelEventTime; //time elapsed in round
+				//READING
 				timeElapsedReadingWheel = lastWheelEventTime - mLastWheelEventTime; //time elapsed in reading
-
+				//ROUND
+				timeElapsedRoundWheel = timeElapsedRoundWheel + lastWheelEventTime - mLastWheelEventTime; //time elapsed in round
 				//TOTAL
-				timeElapsedRoundWheelTotal = timeElapsedRoundWheelTotal + timeElapsedRoundWheel;
+				timeElapsedRoundWheelTotal = timeElapsedRoundWheelTotal +  lastWheelEventTime - mLastWheelEventTime;
+
+
 				// console.log('timeElapsedRoundWheel:  ' + timeElapsedRoundWheel);
 				// console.log('timeElapsedReadingWheel:  ' + timeElapsedReadingWheel);
 
@@ -85,9 +87,8 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				var rC2 = timeElapsedRoundWheel / 1000; //second
 				var rC3 = rC1 / rC2; //revs per second
 				var rC4 = rC3 * circumference * 0.000621371 * 60 * 60; //mph per round
-				if (rC4 < 50) {
-						tim.timAvgSPD = Math.round(rC4 * 10) / 10;
-				}
+				tim.timAvgSPD = Math.round(rC4 * 10) / 10;
+				
 
 				//CALC TOTAL AVG SPD/SESSION
 				var rCT1 = wheelRevsRoundTotal;
@@ -95,6 +96,10 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				var rCT3 = rCT1 / rCT2; //revs per second
 				var rCT4 = rCT3 * circumference * 0.000621371 * 60 * 60; //mph per round
 				tim.timAvgSPDtotal = Math.round(rCT4 * 10) / 10;
+
+				$$('.cls_avg_speed_total').text(tim.timAvgSPDtotal);
+				$$('.cls_avg_speed_round').text(tim.timAvgSPD);
+				$$('.cls_avg_speed_round_last').text(tim.timLastSPD);
 
 				// console.log('tim.timAvgSPDtotal:  ' + tim.timAvgSPDtotal);
 				// console.log('tim.timAvgSPD:  ' + tim.timAvgSPD);
@@ -223,19 +228,31 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 
 var arrAvgHRTotal = [];
+var maxHRTotal = 0;
+var scoreHRTotal = 0;
+var scoreHRRound = 0;
+var scoreHRRoundLast = 0;
+
 var tempHR3 = 0;  //USED FOR OLD ROUND SCORE
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
 		createAvgHeartRate.push(Math.round(tim.timHR));
-		tim.timAvgHR = Math.round(_.mean(createAvgHeartRate));
+		tim.timAvgHR = Math.round(_.mean(createAvgHeartRate)); //reset every round
 
 		arrAvgHRTotal.push(Math.round(tim.timHR));
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
+		maxHRTotal = _.max(arrAvgHRTotal);
+		//console.log('tim.maxHRTotal:  ' + maxHRTotal);
 		// console.log('tim.timAvgHRtotal:  ' + tim.timAvgHRtotal);
 		// console.log('tim.timAvgHR:  ' + tim.timAvgHR);
+		getScoreHR();
 
 		//POPULATE UI WITH HR
 		$$('.cls_rthr2').text(tim.timHR);
+
+		//POPULATE MAX HR
+		$$('.cls_maxHR').html('EFFORT SCORE LEADERS (MAX HR: ' + maxHRTotal + ')');
+
 
 
 		//OLD
@@ -246,5 +263,20 @@ function onHRMeasurementReceived(hrMeasurement) {
 			tempHR3 = tempHR2;
 		}		
 }
+
+function getScoreHR() {
+	scoreHRTotal = Math.round(tim.timAvgHRtotal / maxHRTotal * 100 * 10) / 10;
+	scoreHRRound = Math.round(tim.timAvgHR / maxHRTotal * 100 * 10) / 10;
+	scoreHRRoundLast = Math.round(tim.timLastHR / maxHRTotal * 100 * 10) / 10;
+	//console.log('scoreHRTotal:  ' + scoreHRTotal);
+
+	$$('.cls_effort_total').text(scoreHRTotal);
+	$$('.cls_effort_round').text(scoreHRRound);
+	$$('.cls_effort_round_last').text(scoreHRRoundLast);
+	
+
+}
+
+
 
 
