@@ -438,8 +438,12 @@ function newTimer(count) {
 		// }
 
 
-		if (count === 125) {
+		if (count === 130) {
 				get_combo();
+		}
+
+		if (count === 125) {
+				getTotals();
 		}
 
 

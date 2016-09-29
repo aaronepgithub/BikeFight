@@ -134,7 +134,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 
 
 
-// RESET EVER 15
+// RESET EVERY 15
 var timCadence15;
 var arrCadenceValue15 = [];
 var arrCadenceTime15 = [];
@@ -236,13 +236,15 @@ var scoreHRRoundLast = 0;
 var tempHR3 = 0;  //USED FOR OLD ROUND SCORE
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
+
 		createAvgHeartRate.push(Math.round(tim.timHR));
 		tim.timAvgHR = Math.round(_.mean(createAvgHeartRate)); //reset every round
 
 		arrAvgHRTotal.push(Math.round(tim.timHR));
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
+
 		maxHRTotal = _.max(arrAvgHRTotal);
-		//console.log('tim.maxHRTotal:  ' + maxHRTotal);
+		// console.log('tim.maxHRTotal:  ' + maxHRTotal);
 		// console.log('tim.timAvgHRtotal:  ' + tim.timAvgHRtotal);
 		// console.log('tim.timAvgHR:  ' + tim.timAvgHR);
 		getScoreHR();
