@@ -71,7 +71,10 @@ var tim = {
 		fb_BestHR: 0,
 		fb_BestNAME: '...',
 		fb_BestSHOP: '...',
-		timStartTime: 0
+		timStartTime: 0,
+		timAvgSPDtotal: 0,
+		timAvgCADtotal: 0,
+		timAvgHRtotal: 0
 };
 
 
@@ -329,6 +332,10 @@ function newTimer(count) {
 		if (count === 295) {
 				round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+		}
+
+		if (count === 290) {
+				totals_post();
 		}
 
 		if (count === 285) {

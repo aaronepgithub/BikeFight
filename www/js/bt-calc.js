@@ -20,6 +20,12 @@ var timeElapsedRoundWheel = 0;
 var roundDistance = 0;
 var totalDistance = 0;
 
+//NEW TOTALS - RIDE
+var wheelRevsRoundTotal = 0;
+var timeElapsedRoundWheelTotal = 0;
+var crankRevsRoundTotal = 0;
+var timeElapsedRoundTotal = 0;
+
 
 
 function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
@@ -51,6 +57,9 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 						return;
 				}
 				wheelRevsRound = wheelRevsRound + wheelRevolutions2 - mLastWheelRevolutions;
+				
+				//TOTAL
+				wheelRevsRoundTotal = wheelRevsRoundTotal + wheelRevsRound;
 
 				// console.log('wheelRevsRound:  ' + wheelRevsRound);
 				// console.log('wheelRevsReading:  ' + elapWheelRevsReading);
@@ -58,6 +67,9 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 
 				timeElapsedRoundWheel = timeElapsedRoundWheel + lastWheelEventTime - mLastWheelEventTime; //time elapsed in round
 				timeElapsedReadingWheel = lastWheelEventTime - mLastWheelEventTime; //time elapsed in reading
+
+				//TOTAL
+				timeElapsedRoundWheelTotal = timeElapsedRoundWheelTotal + timeElapsedRoundWheel;
 				// console.log('timeElapsedRoundWheel:  ' + timeElapsedRoundWheel);
 				// console.log('timeElapsedReadingWheel:  ' + timeElapsedReadingWheel);
 
@@ -77,8 +89,15 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 						tim.timAvgSPD = Math.round(rC4 * 10) / 10;
 				}
 
-				//$$('#addStuff').prepend('rC4:  ' + rC4  + '<br><hr>');
-				//console.log('tim.timAvgSPD:  ' + tim.timAvgSPD);
+				//CALC TOTAL AVG SPD/SESSION
+				var rCT1 = wheelRevsRoundTotal;
+				var rCT2 = timeElapsedRoundWheelTotal / 1000; //second
+				var rCT3 = rCT1 / rCT2; //revs per second
+				var rCT4 = rCT3 * circumference * 0.000621371 * 60 * 60; //mph per round
+				tim.timAvgSPDtotal = Math.round(rCT4 * 10) / 10;
+
+				// console.log('tim.timAvgSPDtotal:  ' + tim.timAvgSPDtotal);
+				// console.log('tim.timAvgSPD:  ' + tim.timAvgSPD);
 
 				//CALC AVG SPD/READING
 				var readCalc1 = elapWheelRevsReading;
@@ -152,28 +171,36 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 			
 				var crankCadence = crankCadenceReading * 60.0 / timeDifference; //[min]
-				if (crankCadence < 181) {
-						tim.timCadence = Math.round(crankCadence);
-				} else {
-						tim.timCadence = 120;
-				}
+				// if (crankCadence < 181) {
+				// 		tim.timCadence = Math.round(crankCadence);
+				// } else {
+				// 		tim.timCadence = 120;
+				// }
 
 
 
 				crankRevsRound = crankRevsRound + crankCadenceReading;
 				timeElapsedRound = timeElapsedRound + timeDifference;
 
-//*******TODO
+				//TOTAL
+				crankRevsRoundTotal = crankRevsRoundTotal + crankRevsRound;
+				timeElapsedRoundTotal = timeElapsedRoundTotal + timeElapsedRound;
+				tim.timAvgCADtotal = Math.round(crankRevsRoundTotal / timeElapsedRoundTotal * 60);
+
+
 				//15 SEC CAD READING
-				arrCadenceValue15.push(crankRevsRound);
-				arrCadenceTime15.push(timeElapsedRound);
-				// var cvFirst = 
-				// var ctFirst = 
-				// var cvLast = 
-				// var ctLast =
-				//TODO  LAST - FIRST AND THEN CRANKS / TIME * 60 
-				// tim.timCadence15 = Math.round();
-				//END CAD15
+				arrCadenceValue15.push(crankCadenceReading);
+				arrCadenceTime15.push(timeDifference);
+				var cv = _.sum(arrCadenceValue15);
+				var ct = _.sum(arrCadenceTime15);
+				
+				tim.timCadence = Math.round(cv / ct * 60);
+
+				if(ct > 15) {
+					arrCadenceValue15 = [];
+					arrCadenceTime15 = [];
+				}
+
 
 				//ROUND READING
 				if (Math.round(crankRevsRound / timeElapsedRound * 60) < 181) {
@@ -181,6 +208,9 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				} else {
 						return;
 				}
+
+				// console.log('tim.timAvgCADtotal:  ' + tim.timAvgCADtotal);
+				// console.log('tim.timAvgCAD:  ' + tim.timAvgCAD);
 
 
 				//POPULATE UI WITH CAD
@@ -192,11 +222,17 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 }
 
 
+var arrAvgHRTotal = [];
 var tempHR3 = 0;  //USED FOR OLD ROUND SCORE
 function onHRMeasurementReceived(hrMeasurement) {
 		tim.timHR = Math.round(hrMeasurement);
 		createAvgHeartRate.push(Math.round(tim.timHR));
 		tim.timAvgHR = Math.round(_.mean(createAvgHeartRate));
+
+		arrAvgHRTotal.push(Math.round(tim.timHR));
+		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
+		// console.log('tim.timAvgHRtotal:  ' + tim.timAvgHRtotal);
+		// console.log('tim.timAvgHR:  ' + tim.timAvgHR);
 
 		//POPULATE UI WITH HR
 		$$('.cls_rthr2').text(tim.timHR);
