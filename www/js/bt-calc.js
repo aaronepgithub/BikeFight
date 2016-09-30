@@ -244,7 +244,7 @@ function onHRMeasurementReceived(hrMeasurement) {
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
 
 		if (_.max(arrAvgHRTotal) >= 130) {
-			maxHRTotal = _.max(arrAvgHRTotal) * 1.15;
+			maxHRTotal = Math.round(_.max(arrAvgHRTotal) * 1.15);
 		} else {
 			maxHRTotal = 150;
 		}
