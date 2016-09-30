@@ -68,6 +68,7 @@ function round_post(r1, r2, r3, r4) {
 
 function totals_post() {
 		console.log('Fctn totals_post');
+		if (scoreHRTotal !== 0) {
 
 				var today2 = new Date();
 				var dd2 = today.getDate();
@@ -103,6 +104,7 @@ function totals_post() {
 
 
 		console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
+	}
 }
 
 

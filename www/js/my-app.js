@@ -40,6 +40,7 @@ function updateTim() {
 	tim.timGroup = storedData.group;
 	tim.timStyle = storedData.style;
 	tim.timTire = storedData.tire;
+	tim.timMaxHR = storedData.maxhrinput;
 
 	if (tim.timTire === '700X23') {
 		tim.timTireCircum = 2.10;
@@ -128,9 +129,9 @@ $$('.my_simulator').on('click', function(e) {
 	onHRMeasurementReceived(150);
 
 	function test() {
-		measHR  =   _.random(80, 160);
-		measCAD =  measCAD +  _.random(0.1, 2.9);
-		measSPD =  measSPD + _.random(1.0, 9.5);
+		measHR  =   _.random(80, 140);
+		measCAD =  measCAD +  _.random(0.1, 2.1);
+		measSPD =  measSPD + _.random(1.0, 4.5);
 		onWheelMeasurementReceived(measSPD, _.now());
 		onCrankMeasurementReceived(measCAD, _.now());
 		onHRMeasurementReceived(measHR);

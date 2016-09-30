@@ -58,7 +58,8 @@ var tim = {
 		timStartTime: 0,
 		timAvgSPDtotal: 0,
 		timAvgCADtotal: 0,
-		timAvgHRtotal: 0
+		timAvgHRtotal: 0,
+		timMaxHR: 0
 };
 
 
@@ -200,7 +201,7 @@ $$('#start_btn').on('click', function() {
 				timer.start(300000);
 		}
 		//Start FB Listener
-		listenGroupScorePost();
+		//listenGroupScorePost();
 });
 
 
@@ -524,40 +525,40 @@ function publishEndofRound() {
 function bubbleMaker() {
 
 		if (tim.timSpeed > 35) {
-				// tim.timSpeed = 40;
-				return;
+				console.log('timSpeed > 35');
 		}
 		var vSpeed1 = Math.round(tim.timSpeed / 2);
 		var vSpeed2 = 20 - vSpeed1;
 		var vSpeed3 = '#rt_speed_bubbles';
-		populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);
+		if (vSpeed1 < 20 ) {populate_rt_bubbles(vSpeed1, vSpeed2, vSpeed3);}
 
 
 		if (tim.timHR > 195) {
-				return;
+			console.log('tim.timHR > 195');	
 		}
 		var vHeartrate1 = Math.round(tim.timHR / 10);
 		var vHeartrate2 = 20 - vHeartrate1;
 		var vHeartrate3 = '#rt_hr_bubbles';
-		populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3);
+		if (vHeartrate1 < 20 )	{ populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3); }	
 
 		if (tim.timCadence > 115) {
-				return;
+				console.log('tim.timCadence > 115');
+
 		}
 		var vCadence1 = Math.round(tim.timCadence / 6);
 		var vCadence2 = 20 - vCadence1;
 		var vCadence3 = '#rt_cad_bubbles';
-		populate_rt_bubbles(vCadence1, vCadence2, vCadence3);
+		if ( vCadence1 < 20 ) { populate_rt_bubbles(vCadence1, vCadence2, vCadence3); } 
 
 
 		if (tim.timAvgRND > 95) {
-				return;
+				console.log('tim.timAvgRND > 95');
 		}
 		var vRound1 = (Math.round(tim.timAvgRND) / 5);
 		var vRound2 = 20 - vRound1;
 		var vRound3 = '#rt_round_bubbles';
 
-		populate_rt_bubbles(vRound1, vRound2, vRound3);
+		if (vRound1 < 20) { populate_rt_bubbles(vRound1, vRound2, vRound3); }
 
 		function populate_rt_bubbles(x, y, z) {
 			var a = '<i class="fa fa-circle fa-1x color-red"></i>';

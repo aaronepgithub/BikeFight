@@ -228,7 +228,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 
 var arrAvgHRTotal = [];
-var maxHRTotal = 0;
+var maxHRTotal = 200;
 var scoreHRTotal = 0;
 var scoreHRRound = 0;
 var scoreHRRoundLast = 0;
@@ -243,10 +243,8 @@ function onHRMeasurementReceived(hrMeasurement) {
 		arrAvgHRTotal.push(Math.round(tim.timHR));
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
 
-		if (_.max(arrAvgHRTotal) >= 130) {
-			maxHRTotal = Math.round(_.max(arrAvgHRTotal) * 1.15);
-		} else {
-			maxHRTotal = 150;
+		if (tim.timMaxHR > 159 && tim.timMaxHR < 211) {
+			maxHRTotal = tim.timMaxHR;
 		}
 
 		

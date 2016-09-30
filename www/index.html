@@ -213,11 +213,9 @@
 								<p>Connect Bluetooth Sensors for Heartrate, Speed, and Cadence.</p>
 								<p>Enter a username and select a Team that fits your riding style.</p>
 								<p>Press Start and ride fast.</p>
-								<p>Each Round is 5 minutes and the judges will give you an effort score at the end of each round.</p>
-								<p>The Champ is the person with the highest effort score. It's good to be the champ.</p>
-								<p>Scores reset each day.</p>
-								<p>No data is saved after the day ends.</p>
-								<p>No users are tracked, the application does not use any GPS.</p>
+								<p>Each Round is 5 minutes and the judges will give you an EFFORT SCORE during and at the end of each round.</p>
+								<p>The Champ is the person with the highest effort score for the round and the ride. It's good to be the champ.</p>
+								<p>Scores reset and data is removed at the end of the day, users are not tracked.</p>
 								<br><br><br>
 							</div>
 						</div>
@@ -330,14 +328,23 @@
 														<div class="item-input" style="margin:1;">
 															<select name="tire" style="background-color:black;color:white">
 																<option>700X25</option><option>700X23</option><option>700X28</option><option>700X32</option><option>700X38</option><option>700X42</option>
-																<option>CitiBike</option><option>Mountain</option><option>Fat Bike</option>
 															</select>
+														</div>
+													</div>
+												</div>
+											</li><hr>
+											<li>
+												<div class="item-content">
+													<div class="item-inner" style="padding:0;margin:0;">
+														<div class="item-title label" style="background-color:black;color:white">MAX HR<br>(* Used to Calculate Effort Score)</div>
+														<div class="item-input" style="margin:1;">
+															<input id="maxhrinput" type="text" name="maxhrinput" placeholder="200">
 														</div>
 													</div>
 												</div>
 											</li>
 											<hr>
-										</ul>
+										</ul><br>
 									</form>
 								</div>
 							</div>
@@ -554,7 +561,7 @@
 										<div class="card">
 											<div class="card-content">
 												<div class="card-content-inner row bg-black color-white smaller_content_padding">
-													<div class="col-50 color-white">SPEED
+													<div class="col-50 color-white">SPEED(AVG)
 														<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
 															<div id="rt_speed_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
 															</div>
@@ -562,7 +569,7 @@
 													<div id="rt_speed_val" class="tab-btn-s color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
 												</div>
 											</div>
-											<div class="col-50 color-white">CADENCE
+											<div class="col-50 color-white">CADENCE(AVG)
 												<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
 													<div id="rt_cad_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
 													</div>
@@ -576,7 +583,7 @@
 								<div class="card">
 									<div class="card-content">
 										<div class="card-content-inner row bg-black color-white smaller_content_padding">
-											<div class="col-50 color-white">HEARTRATE
+											<div class="col-50 color-white">HEARTRATE(AVG)
 												<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
 													<div id="rt_hr_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
 													</div>
@@ -584,7 +591,7 @@
 											<div id="rt_hr_val" class="tab-btn-h color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
 										</div>
 									</div>
-									<div class="col-50 color-white bg-black">EFFORT
+									<div class="col-50 color-white bg-black">EFFORT(ROUND)
 										<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
 											<div id="rt_round_bubbles" class="col-100"><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i><i class="fa fa-circle fa-1x"></i>
 											</div>
@@ -668,7 +675,7 @@
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
 					<div class="card-header color-white bg-black no-border">
-						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. MY LAST ROUND</h5>
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">ME (CURRENT) vs. MY LAST ROUND</h5>
 					</div>
 					<div class="card-content bg-black">
 						<div class="card-content-inner small_content_inner color-white bg-black">
@@ -684,7 +691,7 @@
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
 					<div class="card-header color-white bg-black no-border">
-						<h5 id="me_vs_king_title" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME vs. THE CHAMP</h5>
+						<h5 id="me_vs_king_title" class="report_margin" style="padding-top:0px;padding-bottom:0px">ME (CURRENT) vs. THE CHAMP</h5>
 					</div>
 					<div class="card-content bg-black">
 						<div class="card-content-inner small_content_inner color-white bg-black">
@@ -698,7 +705,7 @@
 			<!-- START OF KING OF THE RING SWIPE -->
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
-					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP:</h5></div>
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP (BEST ROUND):</h5></div>
 					<div id="top_king" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
 					<hr>
 					<div class="card-header color-white bg-black no-border">
@@ -771,7 +778,7 @@
 			<!-- RT/AVG SLIDE START -->
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
-					<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">REAL-TIME UPDATES   (RT/AVG)</h5></div>
+					<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">REAL-TIME & ROUND AVG</h5></div>
 					<hr><div class="card-content bg-black">
 						<div class="card-content-inner small_content_inner color-white bg-black">
 							<div class="row cls_rts">
@@ -835,7 +842,7 @@
 					<!-- EFFORT LEADERBOARD SLIDE START -->
 					<div class="swiper-slide bg-black">
 						<div class="card bg-black" style="margin-top:0px">
-							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator cls_maxHR" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE LEADERS</h5></div>
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator cls_maxHR" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE ANALYSIS</h5></div>
 							<hr><div class="card-content bg-black">
 							<div class="card-content-inner small_content_inner color-white bg-black">
 								<div class="row cls_rts">
@@ -872,7 +879,7 @@
 					<!-- SPEED LEADERBOARD SLIDE START -->
 					<div class="swiper-slide bg-black">
 						<div class="card bg-black" style="margin-top:0px">
-							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">SPEED LEADERS</h5></div>
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">SPEED ANALYSIS</h5></div>
 							<hr><div class="card-content bg-black">
 							<div class="card-content-inner small_content_inner color-white bg-black">
 								<div class="row cls_rts">
@@ -909,7 +916,7 @@
 					<!-- SCORE LEADERS START -->
 					<div class="swiper-slide bg-black">
 						<div class="card bg-black" style="margin-top:0px">
-							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">SCORE LEADERS/DAY</h5></div>
+							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE LEADERS/DAY</h5></div>
 							<hr><div class="card-content bg-black">
 							<div class="card-content-inner small_content_inner color-white bg-black">
 
