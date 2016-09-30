@@ -243,7 +243,13 @@ function onHRMeasurementReceived(hrMeasurement) {
 		arrAvgHRTotal.push(Math.round(tim.timHR));
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
 
-		maxHRTotal = _.max(arrAvgHRTotal);
+		if (_.max(arrAvgHRTotal) >= 130) {
+			maxHRTotal = _.max(arrAvgHRTotal) * 1.15;
+		} else {
+			maxHRTotal = 150;
+		}
+
+		
 		// console.log('tim.maxHRTotal:  ' + maxHRTotal);
 		// console.log('tim.timAvgHRtotal:  ' + tim.timAvgHRtotal);
 		// console.log('tim.timAvgHR:  ' + tim.timAvgHR);
@@ -256,14 +262,6 @@ function onHRMeasurementReceived(hrMeasurement) {
 		$$('.cls_maxHR').html('EFFORT SCORE LEADERS (MAX HR: ' + maxHRTotal + ')');
 
 
-
-		//OLD
-		//CREATE THE ROUND SCORE
-		// var tempHR1 = tim.timAvgHR - 100;
-		// var tempHR2 = Math.round(tempHR1 / 5 * 100) / 100; //MAX VAL OF 20 BASED ON MAX HR OF 200 2 DECIMAL PLACES
-		// if (tempHR2 > 0 && tempHR2 <25) {
-		// 	tempHR3 = tempHR2;
-		// }
 }
 
 function getScoreHR() {
