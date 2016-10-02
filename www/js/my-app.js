@@ -165,4 +165,9 @@ $$('.cls_green').on('click', function(e) {
 	mainView.router.loadPage("#dayleaders");
 });
 
+$$('.cls_notice').on('click', function(e) {
+	//console.log('clicked hdr2');
+	myCenterAlertOK('IMPORTANT NOTICE.', 'PLEASE USE THIS APPLICATION ONLY WHEN STOPPED AND IN A SAFE ENVIRONMENT.  THE RIDER WILL ASSUME ALL RESPONSIBILITY FOR ANY EVENTS THAT OCCUR WHILE USING THIS APPLICATION.');
+});
+
 

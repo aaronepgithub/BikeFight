@@ -67,6 +67,7 @@ function msgBluetoothDisconnect() {
 //appII.connectWAS(i_clkId3);
 //appII.connectWAC(i_clkId4);
 
+var wristFlag = 0;
 
 var btService = {
 	serviceHR: '180d',
@@ -75,6 +76,8 @@ var btService = {
 	measurementCSC: '2A5B',
 	servicePOW: '1818',
 	measurementPOW: '2A63',
+	serviceHRwrist: '55FF',
+	measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB',
 	hrid: 'E3:1F:3E:CA:1E:87'
 };
 
@@ -102,8 +105,17 @@ var appII = {
 	onDataHR: function(bufferHR) {
 		//console.log('appII.onDataHR');
 		var dataHR = new Uint8Array(bufferHR);
-		var currHR = dataHR[1];
-		onHRMeasurementReceived(currHR);
+		//console.log('dataHR:  ' + JSON.stringify(dataHR));
+		
+		if (wristFlag === 1) {
+			var currHRw = dataHR[3];
+			onHRMeasurementReceived(currHRw);
+		} else {
+			var currHR = dataHR[1];
+			onHRMeasurementReceived(currHR);
+		}
+
+		
 	},
 	//END ONDATA-HR
 
@@ -135,6 +147,8 @@ var appII = {
 				var i_clkName = $$(this).data('name');
 				var i_clkItmService = $$(this).data('service');
 				var i_clkItmRSSI = $$(this).data('rssi');
+
+				if (i_clkIdHR === "599AFE53-0015-4A30-5E76-3F7C79BA481A" ) {wristFlag = 1;}
 
 				console.log(i_service);
 				console.log(i_clkIdHR);
@@ -188,7 +202,8 @@ var appII = {
 		}
 
 
-		ble.startScan(['180d'], onScanII, scanFailureII);
+		ble.startScan(['180d', '55FF'], onScanII, scanFailureII);
+		//ble.startScan(['55FF'], onScanII, scanFailureII);
 		setTimeout(ble.stopScan, 5000,
 			function() {
 				console.log("Scan complete");
@@ -208,7 +223,11 @@ var appII = {
 		console.log('thisItemHR:  ' + thisItemHR);
 		console.log('Attempting Connect HR');
 		myCenterAlert('Connecting HR Sensor', 1000);
-		ble.connect(thisItemHR, onConnectHR, onDisconnectHR);
+		// ble.connect(thisItemHR, onConnectHR, onDisconnectHR);
+
+		if (wristFlag === 0) {ble.connect(thisItemHR, onConnectHR, onDisconnectHR);}
+		if (wristFlag === 1) {ble.connect(thisItemHR, onConnectHRwrist, onDisconnectHR);}
+		
 
 		function onConnectHR() {
 			console.log('HR onConnect');
@@ -216,6 +235,8 @@ var appII = {
 			btService = {
 				serviceHR: '180d',
 				measurementHR: '2a37',
+				serviceHRwrist: '55FF',
+				measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB',
 				serviceCSC: '1816',
 				measurementCSC: '2A5B',
 				servicePOW: '1818',
@@ -224,6 +245,25 @@ var appII = {
 			console.log('About to start HR Notification');
 			myCenterAlert('HR Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
 			ble.startNotification(thisItemHR, btService.serviceHR, btService.measurementHR, appII.onDataHR, appII.onErrorHR);
+		}
+
+				function onConnectHRwrist() {
+			console.log('HR onConnect');
+			wristFlag = 1;
+
+			btService = {
+				serviceHR: '180d',
+				measurementHR: '2a37',
+				serviceHRwrist: '55FF',
+				measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB',
+				serviceCSC: '1816',
+				measurementCSC: '2A5B',
+				servicePOW: '1818',
+				measurementPOW: '2A63'
+			};
+			console.log('About to start HR Notification');
+			myCenterAlert('HR Wrist Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
+			ble.startNotification(thisItemHR, btService.serviceHRwrist, btService.measurementHRwrist, appII.onDataHR, appII.onErrorHR);
 		}
 
 		function onDisconnectHR(reason_HR) {

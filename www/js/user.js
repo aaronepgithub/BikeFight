@@ -105,6 +105,8 @@ function rounds_end(lr, ls, lc, lh) {
 		$$('.cls_top6').remove();
 		var objCounter = 1;
 		$$('.cls_myrounds_page').remove();
+		$$('.cls_myrounds_page_speed').remove();
+		$$('.cls_myrounds_page_cadence').remove();
 		_.forEach(yy, function(value, key) {
 				console.log('objScores value.rnd:  ' + value.rnd);
 				if(objCounter<6) {
@@ -128,6 +130,20 @@ function rounds_end(lr, ls, lc, lh) {
 				$$('#myrounds_page').append(
 					'<div class="chip cls_myrounds_page bg-white">' +
 					'<div class="chip-media bg-red">' + Math.round(value.rnd) + '</div>' +
+					'<div class="chip-label color-black"> #: ' + objCounter + ' | ' + value.duration + ' </div>' +
+					'</div>'
+				);
+
+				$$('#myrounds_page_speed').append(
+					'<div class="chip cls_myrounds_page_speed bg-white">' +
+					'<div class="chip-media bg-red">' + Math.round(value.spd) + '</div>' +
+					'<div class="chip-label color-black"> #: ' + objCounter + ' | ' + value.duration + ' </div>' +
+					'</div>'
+				);
+
+				$$('#myrounds_page_cadence').append(
+					'<div class="chip cls_myrounds_page_cadence bg-white">' +
+					'<div class="chip-media bg-red">' + Math.round(value.cad) + '</div>' +
 					'<div class="chip-label color-black"> #: ' + objCounter + ' | ' + value.duration + ' </div>' +
 					'</div>'
 				);
