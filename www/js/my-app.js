@@ -150,5 +150,19 @@ $$('#header_btn2').on('click', function(e) {
 	mainView.router.loadPage("#champs");
 });
 
+$$('.cls_blue').on('click', function(e) {
+	//console.log('clicked hdr2');
+	mainView.router.loadPage("#champs");
+});
+
+$$('.cls_yellow').on('click', function(e) {
+	//console.log('clicked hdr2');
+	mainView.router.loadPage("#myrounds");
+});
+
+$$('.cls_green').on('click', function(e) {
+	//console.log('clicked hdr2');
+	mainView.router.loadPage("#dayleaders");
+});
 
 

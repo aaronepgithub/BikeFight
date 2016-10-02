@@ -349,10 +349,11 @@ function newTimer(count) {
 						myApp.closeModal();
 						if (tim.timNumberofRounds >= 0) {
 								console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								console.log(strFourMinutes);
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
-													text: 'Four Minutes Remain',
+													text: strFourMinutes,
 													locale: 'en-GB',
 													rate: 1.5
 											}, function() {
@@ -379,10 +380,11 @@ function newTimer(count) {
 						if (tim.timNumberofRounds > 0) {
 								//TTS
 								console.log('TTS180 Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								console.log(strThreeMinutes);
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
-													text: lastRoundIndexSpeak2,
+													text: strThreeMinutes,
 													locale: 'en-GB',
 													rate: 1.5
 											}, function() {
@@ -429,7 +431,7 @@ function newTimer(count) {
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
-													text: lastRoundIndexSpeak,
+													text: strTwoMinutes,
 													locale: 'en-GB',
 													rate: 1.5
 											}, function() {
@@ -459,7 +461,7 @@ function newTimer(count) {
 								if (tim.timStyle !== "NO") {
 										TTS
 												.speak({
-														text: 'One Minute Remains',
+														text: strOneMinute,
 														locale: 'en-GB',
 														rate: 1.5
 												}, function() {

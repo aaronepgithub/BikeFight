@@ -449,6 +449,63 @@
 					</div>
 					<!--myrounds - END  ***********************************************-->
 
+					<!--dayleaders - START  ***********************************************-->
+					<div data-page="dayleaders" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">BACK</a>
+								<a href="#speedleaders" class="close-popup button button-fill color-red">SPEED</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:35px">EFFORT LEADERS/DAY</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="dayleaders_page" class="content-block">
+												<div class="cls_temp_leaders" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+					</div>
+					<!--dayleaders - END  ***********************************************-->
+
+
+					<!--speedleaders - START  ***********************************************-->
+					<div data-page="speedleaders" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">BACK</a>
+								<a href="#dayleaders" class="close-popup button button-fill color-red">DAY</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:35px">SPEED LEADERS/DAY</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="speedleaders_page" class="content-block">
+												<div class="cls_temp_leaders_speed" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+					</div>
+					<!--dayleaders - END  ***********************************************-->
+
 
 					<!--PAGE INDEX - START:    ***********************************************-->
 					<div data-page="index" class="page navbar-fixed">
@@ -618,9 +675,15 @@
 						</div>
 						<!-- <hr> -->
 						<div class="card">
-							<div class="card-header color-white bg-black">
-								<h5 id="me_vs_king_title2" class="report_margin" style="padding-top:0px;padding-bottom:0px">THE CHAMP</h5>
-							</div>
+							<!-- <div class="card-header color-white bg-black"> -->
+								<!-- <h5 id="me_vs_king_title2" class="report_margin" style="padding-top:0px;padding-bottom:0px">THE CHAMP</h5> -->
+								<!-- </div> -->
+
+					<!-- <div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">BEST AVG SPEED/DAY:</h5></div> -->
+					<div id="me_vs_king_title2" class="bg-black color-white" style="color-white;margin-top:0px;font-size:1.5em;font-weight:bold"></div>
+
+
+							
 							<div class="card-content">
 								<div class="card-content-inner row bg-black color-white">
 									<div class="col-50 color-white">EFFORT SCORE
@@ -646,13 +709,13 @@
 					</div>
 				</div>
 				<hr>
-				<div class="card-content">
+<!-- 				<div class="card-content">
 					<div class="card-content-inner bg-black color-white" style="padding-top:0px;padding-bottom:0px;">
 						<div id="timer_btn" class="timer_btn_cls">300 SECOND ROUND</div>
 						<div id="timer_btn_bubbles" class="cls_timer_bubbles" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>
 						<i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- #3  hSwipe -->
 			<!-- ME VS. CURRENT ROUND BEST -->
@@ -667,8 +730,8 @@
 						</div>
 					</div>
 				</div>
-				<hr><div id="timer_btn29" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-				<div id="timer_btn_bubbles2" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+				<hr><!-- <div id="timer_btn29" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles2" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- #4  hSwipe -->
 			<!-- ME VS. MY LAST ROUND  -->
@@ -683,8 +746,9 @@
 						</div>
 					</div>
 				</div>
-				<hr><div id="timer_btn20" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-				<div id="timer_btn_bubbles3" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+				<hr>
+				<!-- <div id="timer_btn20" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles3" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- #200  hSwipe -->
 			<!-- ME VS. THE KING  -->
@@ -699,8 +763,9 @@
 						</div>
 					</div>
 				</div>
-				<hr><div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-				<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+				<hr>
+<!-- 				<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- START OF KING OF THE RING SWIPE -->
 			<div class="swiper-slide bg-black">
@@ -708,6 +773,7 @@
 					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP (BEST ROUND):</h5></div>
 					<div id="top_king" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
 					<hr>
+
 					<div class="card-header color-white bg-black no-border">
 						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
 					</div>
@@ -725,26 +791,45 @@
 				</div>
 				<hr>
 				<div class="card bg-black" style="margin-top:0px">
-					<div class="card-header color-white bg-black no-border">
+<!-- 					<div class="card-header color-white bg-black no-border">
 						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
-					</div>
+					</div> -->
 					<div class="card-content bg-black">
 						<div class="card-content-inner small_content_inner color-white bg-black">
-							<div id="my_last_rnd">
+<!-- 							<div id="my_last_rnd">
+							</div> -->
+							<div>
+
+							<div class="buttons-row bg-black color-white">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>	
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<hr><div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-				<div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+				<hr>
+
+				<!-- <div id="timer_btn30" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- END OF KING OF THE RING SWIPE -->
 			<!-- START OF GROUP KING OF THE RING SWIPE -->
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
-					<div><h5 id="riding_group_title" class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">CHAMP OF MY RIDING GROUP:</h5></div>
+					<!-- <div><h5 id="riding_group_title" class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">CHAMP OF MY RIDING GROUP:</h5></div><br> -->
+
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">BEST ROUND FROM MY GROUP</h5></div>
 					<div id="top_king_group" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
 					<hr>
+
+
+					<!-- <div id="top_king_group" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div><hr> -->
+					
 					<div class="card-header color-white bg-black no-border">
 						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
 					</div>
@@ -760,7 +845,7 @@
 					</div>
 				</div>
 				<hr>
-				<div class="card bg-black" style="margin-top:0px">
+<!-- 				<div class="card bg-black" style="margin-top:0px">
 					<div class="card-header color-white bg-black no-border">
 						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
 					</div>
@@ -770,9 +855,33 @@
 							</div>
 						</div>
 					</div>
+				</div> -->
+				<div class="card bg-black" style="margin-top:0px">
+<!-- 					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
+					</div> -->
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+<!-- 							<div id="my_last_rnd">
+							</div> -->
+							<div>
+
+							<div class="buttons-row bg-black color-white">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>	
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div>
+
+
+							</div>
+						</div>
+					</div>
 				</div>
-				<hr><div id="timer_btn301" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-				<div id="timer_btn_bubbles301" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+				<hr>
+				
+				<!-- <div id="timer_btn301" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+				<div id="timer_btn_bubbles301" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- END OF GROUP KING OF THE RING SWIPE -->
 			<!-- RT/AVG SLIDE START -->
@@ -804,8 +913,8 @@
 <!-- 							<div id="RTJ" class="card-header">
 							</div> -->
 						</div><hr>
-						<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+						<!-- <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 					</div></div></div>
 					<!-- RT/AVG ME SLIDE END -->
 					<!-- RANK SLIDE START -->
@@ -869,8 +978,8 @@
 
 								<hr>
 							</div>
-							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+							<!-- <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 							</div>
 						</div>
 					</div>
@@ -906,8 +1015,8 @@
 
 								<hr>
 							</div>
-							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+							<!-- <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 							</div>
 						</div>
 					</div>
@@ -916,19 +1025,63 @@
 					<!-- SCORE LEADERS START -->
 					<div class="swiper-slide bg-black">
 						<div class="card bg-black" style="margin-top:0px">
-							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE LEADERS/DAY</h5></div>
-							<hr><div class="card-content bg-black">
+<!-- 							<div><h5 id="riding_group_title" class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">EFFORT SCORE LEADERS/DAY</h5></div> -->
+
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP (BEST EFFORT/DAY):</h5></div>
+					<div id="top_effort_day" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
+					<hr>
+
+
+
+							<div class="card-content bg-black">
 							<div class="card-content-inner small_content_inner color-white bg-black">
 
 							<div id = "temp_score_leaders"></div>
 
 							</div>
-							<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+							<!-- <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
+
+							<hr><div class="buttons-row bg-black color-white">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>	
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div><hr>
+
 							</div>
 						</div>
 					</div>
 					<!-- SCORE LEADERS END -->
+					<!-- SPEED LEADERS START -->
+					<div class="swiper-slide bg-black">
+						<div class="card bg-black" style="margin-top:0px">
+
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">BEST AVG SPEED/DAY:</h5></div>
+					<div id="top_speed_day" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
+					<hr>
+
+							<div class="card-content bg-black">
+							<div class="card-content-inner small_content_inner color-white bg-black">
+
+							<div id = "temp_score_leaders_speed"></div>
+
+							</div>
+							<!-- <div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+							<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
+
+														<hr><div class="buttons-row bg-black color-white">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>	
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div><hr>
+
+
+							</div>
+						</div>
+					</div>
+					<!-- SPEED LEADERS END -->
 
 
 
