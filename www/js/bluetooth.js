@@ -25,6 +25,8 @@ function msgBluetoothDisconnect() {
 				});
 	}
 }
+
+
 //var i_clkId5;
 
 // function reconnectBluetooth() {
@@ -127,6 +129,21 @@ var appII = {
 		$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 	},
 	//END ONERROR-HR
+		onErrorHRwrist: function() {
+		console.log('appII.onErrorHR');
+					btService = {
+				serviceHRwrist: '55FF',
+				serviceHRwristAndroid: '000055FF-0000-1000-8000-00805F9B34FB',
+				measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB'
+			};
+
+		ble.startNotification(thisItemHR, btService.serviceHRwristAndroid, btService.measurementHRwrist, appII.onDataHR, appII.onErrorHR);
+
+
+		myCenterAlert('HR Sensor Error', 1000);
+		mainView.router.loadPage("#bluetooth");
+		$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
+	},
 
 
 	//HR SCAN
@@ -148,7 +165,7 @@ var appII = {
 				var i_clkItmService = $$(this).data('service');
 				var i_clkItmRSSI = $$(this).data('rssi');
 
-				if (i_clkIdHR === "599AFE53-0015-4A30-5E76-3F7C79BA481A" ) {wristFlag = 1;}
+				if (i_clkName === "MH08" ) {wristFlag = 1;}
 
 				console.log(i_service);
 				console.log(i_clkIdHR);
@@ -203,7 +220,7 @@ var appII = {
 
 
 		ble.startScan(['180d', '55FF'], onScanII, scanFailureII);
-		//ble.startScan(['55FF'], onScanII, scanFailureII);
+		//ble.startScan([], onScanII, scanFailureII);
 		setTimeout(ble.stopScan, 5000,
 			function() {
 				console.log("Scan complete");
@@ -226,7 +243,10 @@ var appII = {
 		// ble.connect(thisItemHR, onConnectHR, onDisconnectHR);
 
 		if (wristFlag === 0) {ble.connect(thisItemHR, onConnectHR, onDisconnectHR);}
-		if (wristFlag === 1) {ble.connect(thisItemHR, onConnectHRwrist, onDisconnectHR);}
+		if (wristFlag === 1) {
+			//wristStarted = 1;
+			ble.connect(thisItemHR, onConnectHRwrist, onDisconnectHR);
+		}
 		
 
 		function onConnectHR() {
@@ -255,15 +275,18 @@ var appII = {
 				serviceHR: '180d',
 				measurementHR: '2a37',
 				serviceHRwrist: '55FF',
+				serviceHRwristAndroid: '000055FF-0000-1000-8000-00805F9B34FB',
 				measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB',
 				serviceCSC: '1816',
 				measurementCSC: '2A5B',
 				servicePOW: '1818',
 				measurementPOW: '2A63'
 			};
-			console.log('About to start HR Notification');
+			console.log('About to start HR Wrist Notification');
 			myCenterAlert('HR Wrist Sensor Connected.  Connect another Sensor or Press the Back & Start Buttons', 3000);
-			ble.startNotification(thisItemHR, btService.serviceHRwrist, btService.measurementHRwrist, appII.onDataHR, appII.onErrorHR);
+			if(wristFlag === 1) {ble.startNotification(thisItemHR, btService.serviceHRwrist, btService.measurementHRwrist, appII.onDataHR, appII.onErrorHRwrist);
+				wristFlag++;
+			}
 		}
 
 		function onDisconnectHR(reason_HR) {
