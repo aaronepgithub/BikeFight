@@ -29,6 +29,7 @@ var pubYear = yyyy;
 //console.log(pubFullDate + pubMonth + pubDay + pubYear);
 
 var strFourMinutes = "Four Minutes Remain";
+var strFourMinutesAlert = "Four Minutes Remain";
 var strThreeMinutes = "Three Minutes Remain";
 var strTwoMinutes = "Two Minutes Remain";
 var strOneMinute = "One Minute is Remaining";
@@ -141,29 +142,29 @@ function get_combo() {
 					//FIND RANK OF MY LAST ROUND'S EFFORT
 					var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
 					rank1 = round_effort_rank+1;
-					console.log('Round Effort Rank1:  ' + rank1);
+					console.log('Round Effort, Rank1:  ' + rank1);
 
-					if (round_effort_rank > 0) { 
+					if (rank1 > 0) { 
 					$$('.cls_effort_round_rank').text(rank1 + '/' + dataSize);
-					console.log('Round Effort Rank1:  ' + rank1);
+					//console.log('Round Effort Rank1:  ' + rank1);
 					}
 
 
 					// FIND RANK OF LAST ROUND'S SPEED
 					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
 					rank2 = round_speed_rank+1;
-					console.log('Round Rank2:  ' + rank2);
+					console.log('Round Speed, Rank2:  ' + rank2);
 
 
-					if (round_speed_rank > 0) {
+					if (rank2 > 0) {
 					$$('.cls_avg_speed_round_rank').text(rank2 + '/' + dataSize);
-					console.log('Round Speed Rank2:  ' + rank2);
+					//console.log('Round Speed Rank2:  ' + rank2);
 					}
 
 				}
 
 
-				//GET TOP CHAMP
+				//GET TOP CHAMP aka KING
 				$$('#top_king').text(xx2[0].fb_timName);
 				$$('#me_vs_king_title2').text('Leading: ' +  xx2[0].fb_timName + " (" + xx2[0].fb_RND  + ")"    )  ;
 				$$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
@@ -177,18 +178,23 @@ function get_combo() {
 
 				ui_report200();
 
-				if (tim.timNumberofRounds > 0 ) {
-				strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
-				console.log(strFourMinutes);
-				}
+				// if (tim.timNumberofRounds > 0 ) {
+				// strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
+				// console.log(strFourMinutes);
+				// }
 
 
 				if (rank1 > 0) {
 					lri_string = 'Your Last Effort is Ranked Number  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">  ' + rank1 + '  out of  ' +  dataSize  + '  </span> ' + '   for the day';
 					lastRoundIndexSpeak = 'Your Last Effort had a score of ' + tim.timLastRND + ' and is Ranked Number  ' + rank1 + '  out of  ' +  dataSize  + '  for the day';
 					lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a Effort of ' + top_king_rnd;
-					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + 'Your last Effort was ' + tim.timLastRND;
-					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + 'Your last Effort was ' + tim.timLastRND;
+					
+					strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
+					strFourMinutesAlert = 'Four Minutes Remain.  Your last effort had a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + scoreHRRoundLast + '  </span> and was ranked  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank1 + ' out of ' + dataSize + '.  </span> Your average speed for past round was ranked number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank2 + '</span>';
+
+					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND;
+					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND;
+					console.log(strFourMinutes);
 					console.log(strThreeMinutes);
 					console.log(strOneMinute);
 				} 
@@ -313,7 +319,13 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			return o.a_scoreHRTotal <= scoreHRTotal;
 			});
 
-		rank3 = total_effort_rank+1;
+		
+			if (rank3 === 0) {
+				rank3 = 1;
+			} else {
+				rank3 = total_effort_rank+1;
+			}
+
 		$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
 		console.log('Total Effort Rank3:  ' + rank3 );
 

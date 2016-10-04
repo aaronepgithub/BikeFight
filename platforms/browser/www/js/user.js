@@ -68,7 +68,7 @@ var createAvgRoundScore = [];
 
 
 function rounds_end(lr, ls, lc, lh) {
-		console.log('rounds_end');
+		console.log('Fctn: rounds_end');
 		objScores[tim.timNumberofRounds] = {
 				ind: tim.timNumberofRounds,
 				rnd: lr,
@@ -108,7 +108,7 @@ function rounds_end(lr, ls, lc, lh) {
 		$$('.cls_myrounds_page_speed').remove();
 		$$('.cls_myrounds_page_cadence').remove();
 		_.forEach(yy, function(value, key) {
-				console.log('objScores value.rnd:  ' + value.rnd);
+				//console.log('objScores value.rnd:  ' + value.rnd);
 				if(objCounter<6) {
 
 					$$('#my_last_rnd2').append(
@@ -151,7 +151,7 @@ function rounds_end(lr, ls, lc, lh) {
 				objCounter++;
 		});
 
-		console.log('My Average Round:  ' +  _.meanBy(x, 'rnd'));
+		//console.log('My Average Round:  ' +  _.meanBy(x, 'rnd'));
 
 		//FOR ENTIRE RIDE
 		$$('#my_average_round_score').text(Math.round(_.meanBy(x, 'rnd')));
@@ -482,7 +482,7 @@ function newTimer(count) {
 
 		if (count === 0) {
 				console.log('Count at 0');
-				myCenterAlert('Round is Complete', 1000);
+				//myCenterAlert('Round is Complete', 1000);
 		}
 
 
@@ -505,23 +505,25 @@ function publishEndofRound() {
 		$$('#publishLastHRValue').html('<h1 style="font-size:1.5em; text-align:center; color:white;">' + Math.round(tim.timLastHR) + '</h1>');
 		$$('#publishLastRNDValue').text(Math.round(tim.timLastRND));
 
+		myApp.modal({
+	    	title: '<div>Round Complete.<hr>  Your round score was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + tim.timLastRND +
+		        '</span> and your average speed was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + tim.timLastSPD + '</span></div><hr>'
+		});
+		setTimeout(function() {
+		    myApp.closeModal();
+		}, 1000);
+
 
 		rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 
-		// myApp.modal({
-		//     title: '<div>Round Complete.<hr>  Your round score was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + tim.timLastRND +
-		//         '</span> and your average speed was <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + tim.timLastSPD + '</span></div><hr>'
-		// });
-		// setTimeout(function() {
-		//     myApp.closeModal();
-		// }, 3000);
+
 }
 
 
 function bubbleMaker() {
 
 		if (tim.timSpeed > 35) {
-				console.log('timSpeed > 35');
+				//console.log('timSpeed > 35');
 		}
 		var vSpeed1 = Math.round(tim.timSpeed / 2);
 		var vSpeed2 = 20 - vSpeed1;
@@ -530,7 +532,7 @@ function bubbleMaker() {
 
 
 		if (tim.timHR > 195) {
-			console.log('tim.timHR > 195');	
+			//console.log('tim.timHR > 195');	
 		}
 		var vHeartrate1 = Math.round(tim.timHR / 10);
 		var vHeartrate2 = 20 - vHeartrate1;
@@ -538,7 +540,7 @@ function bubbleMaker() {
 		if (vHeartrate1 < 20 )	{ populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3); }	
 
 		if (tim.timCadence > 115) {
-				console.log('tim.timCadence > 115');
+				//console.log('tim.timCadence > 115');
 
 		}
 		var vCadence1 = Math.round(tim.timCadence / 6);
@@ -548,7 +550,7 @@ function bubbleMaker() {
 
 
 		if (tim.timAvgRND > 95) {
-				console.log('tim.timAvgRND > 95');
+				//console.log('tim.timAvgRND > 95');
 		}
 		var vRound1 = (Math.round(tim.timAvgRND) / 5);
 		var vRound2 = 20 - vRound1;
