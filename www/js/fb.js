@@ -114,7 +114,7 @@ function totals_post() {
 
 
 		console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
-		
+
 	}
 }
 
@@ -124,54 +124,57 @@ var dataSize;
 function get_combo() {
 		console.log('Fctn get_combo');
 		$$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+			console.log('getJSON, rounds');
 
 				var xx1 = _.values(data);
 				var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
 				dataSize = _.size(xx2);
-				//console.log('Size-Number of Values:  ' + dataSize);
-				//console.log('Combo Data:  ' + JSON.stringify(xx2));
+				console.log('Round Data Size:  ' + dataSize);
+
 				var xx_effort = _.orderBy(xx1, 'a_scoreRoundLast', 'desc');
 				var xx_speed = _.orderBy(xx1, 'a_speedRoundLast', 'desc');
 
-				// console.log('Round Effort:  ' + JSON.stringify(xx_effort));
-				// console.log('Round Speed:  ' + JSON.stringify(xx_speed));
 
+				//GET RANKING
+				if (tim.timNumberofRounds > 0) {
 
-					if (tim.timNumberofRounds > 0) {
+					//FIND RANK OF MY LAST ROUND'S EFFORT
+					var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
+					rank1 = round_effort_rank+1;
+					console.log('Round Effort Rank1:  ' + rank1);
 
-						//FIND RANK OF MY LAST ROUND'S EFFORT
-						var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
-						rank1 = round_effort_rank+1;
-
-						if (round_effort_rank > 0) { 
-						$$('.cls_effort_round_rank').text(round_effort_rank+1 + '/' + dataSize);
-						console.log('round_effort_rank:  ' + (round_effort_rank++));
-						}
-
-
-						// FIND RANK OF LAST ROUND'S SPEED
-						var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
-						rank2 = round_speed_rank+1;
-
-						if (round_speed_rank > 0) {
-						$$('.cls_avg_speed_round_rank').text(round_speed_rank+1 + '/' + dataSize);
-						console.log('round_speed_rank:  ' + (round_speed_rank++));
-						}
-
+					if (round_effort_rank > 0) { 
+					$$('.cls_effort_round_rank').text(rank1 + '/' + dataSize);
+					console.log('Round Effort Rank1:  ' + rank1);
 					}
+
+
+					// FIND RANK OF LAST ROUND'S SPEED
+					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
+					rank2 = round_speed_rank+1;
+					console.log('Round Rank2:  ' + rank2);
+
+
+					if (round_speed_rank > 0) {
+					$$('.cls_avg_speed_round_rank').text(rank2 + '/' + dataSize);
+					console.log('Round Speed Rank2:  ' + rank2);
+					}
+
+				}
 
 
 				//GET TOP CHAMP
 				$$('#top_king').text(xx2[0].fb_timName);
 				$$('#me_vs_king_title2').text('Leading: ' +  xx2[0].fb_timName + " (" + xx2[0].fb_RND  + ")"    )  ;
 				$$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
-				//$$('#me_vs_king_title2').text('THE CHAMP:  ' + xx2[0].fb_timName.toUpperCase() + ' (' + xx2[0].fb_RND + ') ');
+
 				top_king_name = xx2[0].fb_timName;
 				top_king_team = xx2[0].fb_timTeam;
 				top_king_rnd = xx2[0].fb_RND;
 				top_king_spd = xx2[0].fb_SPD;
 				top_king_cad = xx2[0].fb_CAD;
 				top_king_hr = xx2[0].fb_HR;
+
 				ui_report200();
 
 				if (tim.timNumberofRounds > 0 ) {
@@ -180,30 +183,21 @@ function get_combo() {
 				}
 
 
-				//PREPARE SPEAK STR
-				var lri = _.findIndex(xx2, function(o) {
-						return o.fb_RND <= tim.timLastRND;
-				});
-				lastRoundIndex = lri + 1;
-				if (lastRoundIndex >= 0) {
-						//console.log('Your Last Round is Ranked Number ' + lastRoundIndex + '  for the day');
-						lri_string = 'Your Last Effort is Ranked Number  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">  ' + lastRoundIndex + '  out of  ' +  dataSize  + '  </span> ' + '   for the day';
-						lastRoundIndexSpeak = 'Your Last Effort had a score of ' + tim.timLastRND + ' and is Ranked Number  ' + lastRoundIndex + '  out of  ' +  dataSize  + '  for the day';
-						lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a Effort of ' + top_king_rnd;
-						strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd;
-						strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd;
-						console.log(strThreeMinutes);
-						console.log(strOneMinute);
-				} else {
-						lri_string = 'Your Last Round is the Worst Today.';
-						lastRoundIndexSpeak = 'Your Last Round is the Worst Today.  Very sad.';
-				}
+				if (rank1 > 0) {
+					lri_string = 'Your Last Effort is Ranked Number  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">  ' + rank1 + '  out of  ' +  dataSize  + '  </span> ' + '   for the day';
+					lastRoundIndexSpeak = 'Your Last Effort had a score of ' + tim.timLastRND + ' and is Ranked Number  ' + rank1 + '  out of  ' +  dataSize  + '  for the day';
+					lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a Effort of ' + top_king_rnd;
+					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + 'Your last Effort was ' + tim.timLastRND;
+					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + 'Your last Effort was ' + tim.timLastRND;
+					console.log(strThreeMinutes);
+					console.log(strOneMinute);
+				} 
 
 				$$('.cls_top_kings').remove();
 				$$('.cls_top_kings_group').remove();
 				$$('.cls_front_page').remove();
-				$$('.my_last_rnd_rank').text(lastRoundIndex + '/' + dataSize);
-				$$('.my_last_rnd').text(tim.timLastRND);
+				
+				
 				//END PREPARE SPEAK STR
 
 
@@ -218,8 +212,6 @@ function get_combo() {
 						xxx2 = value.fb_RND;
 						xxx3 = value.fb_timGroup;
 						xxx5 = value.fb_timTeam;
-						// console.log('counter1: ' + counter1);console.log('counter2: ' + counter2);console.log('counter3: ' + counter3);
-						// console.log('xxx1: ' + xxx1);console.log('xxx2: ' + xxx2);console.log('xxx3: ' + xxx3);console.log('xxx5: ' + xxx5);
 
 						//COMPLETE LIST
 						if (counter1 < 100) {
@@ -234,13 +226,10 @@ function get_combo() {
 						counter1++;
 						//END COMPLETE LIST
 
-
+						//START GROUP
 						if (xxx3 === tim.timGroup) {
 
 								if (counter2 < 1) {$$('#top_king_group').text(xxx1 + " (" + tim.timGroup + ")" );}
-								// $$('.cls_top_kings_group').remove();
-								//$$('#riding_group_title').text('THE CHAMP OF MY RIDING GROUP: ' + tim.timGroup.toUpperCase());
-
 								if (counter2 < 10) {
 										//ONLY IN MY GROUP
 										//console.log('Group10, # ' + xxx1 + ' | ' + xxx2 + ' | ' + xxx3) ;
@@ -250,14 +239,12 @@ function get_combo() {
 												'<div class="chip-label color-black">' + xxx1 + '</div>' +
 												'</div>'
 										);
-
 								}
 								counter2++;
 						} //END GROUP
 
-
+						//START TOP TEN
 						if (counter3 < 10) {
-								//TOP TEN
 								$$('#top_kings').append(
 										'<div class="cls_top_kings chip bg-white">' +
 										'<div class="chip-media bg-red">' + Math.round(xxx2) + '</div>' +
@@ -273,8 +260,10 @@ function get_combo() {
 								);
 						}
 						counter3++;
+						//END TOP TEN
 
 				}); //END FOR EACH
+				console.log('Round Data UI Complete');
 
 		});
 		console.log('DATA UPDATED AT:  ' + tim.timCalculatedDuration);
@@ -305,9 +294,10 @@ function listenGroupScorePost() {
 
 var dataSizeLeaders;
 function getTotals() {
+console.log('fctn:  getTotals');
 
 $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
-		console.log('getTotals');
+		console.log('getJSON, totals');
 
 		var xTotals1 = _.values(data);
 		var xTotals2 = _.orderBy(xTotals1, 'a_scoreHRTotal', 'desc');
@@ -324,8 +314,8 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			});
 
 		rank3 = total_effort_rank+1;
-		$$('.cls_effort_total_rank').text(total_effort_rank+1 + '/' + dataSizeLeaders);
-		console.log('total_effort_rank:  ' + (total_effort_rank++) );
+		$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
+		console.log('Total Effort Rank3:  ' + rank3 );
 
 
 		//FIND RANK OF TOP TOTAL SPEED
@@ -335,8 +325,8 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 
 		
 		rank4 = total_speed_rank+1;
-		$$('.cls_avg_speed_total_rank').text( total_speed_rank+1 + '/' + dataSizeLeaders);
-		console.log('total_speed_rank:  ' + (total_speed_rank++) );
+		$$('.cls_avg_speed_total_rank').text(rank4 + '/' + dataSizeLeaders);
+		console.log('Total Speed Rank4:  ' + rank4);
 
 
 		if (tim.timNumberofRounds > 0 ) {
@@ -344,8 +334,21 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			console.log(strTwoMinutes);
 			}
 
-		postToTempScoreLeaderboard(xTotals2);
-		postToTempSpeedLeaderboard(xTotals3);
+		// postToTempScoreLeaderboard(xTotals2);
+		// postToTempSpeedLeaderboard(xTotals3);
+
+		async.series([
+		  function(callback) {
+		  	console.log('Post to Score Leaderboard');
+		   postToTempScoreLeaderboard(xTotals2);
+		   callback(null, 'cb1');
+		  },
+		  function(callback) {
+		  	console.log('Post to Speed Leaderboard');
+		    postToTempSpeedLeaderboard(xTotals3);
+		    callback(null, 'cb2');
+		  }
+		]);
 
 	});
 
@@ -382,10 +385,8 @@ function postToTempScoreLeaderboard(tempLdr) {
 				);
 
 				temp1counter ++;
-
-
-
 		});
+
 }
 
 function postToTempSpeedLeaderboard(tempLdrSpeed) {

@@ -287,62 +287,36 @@ function newTimer(count) {
 
 
 
-		if (count === 290 || count === 240 || count === 180 || count === 120 || count === 60) {
-var users = [];
-async.series([
-  function(callback) {
-  	console.log('totals_post');
-    totals_post();
-    callback(null, 'one');
-  },
-  function(callback) {
-  	console.log('get_combo');
-   get_combo();
-   callback(null, 'one');
-  },
-  function(callback) {
-  	console.log('getTotals');
-    getTotals();
-    callback(null, 'one');
-  }
-]);
-		}
+		if (count === 280 || count === 250 || count === 190 || count === 130 || count === 70) {
+
+					async.series([
+					  function(callback) {
+					  	console.log('get_combo');
+					   get_combo();
+					   callback(null, 'one');
+					  },
+					  function(callback) {
+					  	console.log('getTotals');
+					    getTotals();
+					    callback(null, 'one');
+					  }
+					]);
+
+		}  //END OF ASYNC CALLS
+
+
 
 
 		if (count === 295) {
-				round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+			round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+			$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
 		}
 
-		// if (count === 290  || count === 140) {
-		// 	if (count === 140) {
-		// 		totals_post();
-		// }
+		if (count === 290) {
+			totals_post();
+		}
 
-		// if (count === 285) {
-		// 		get_combo();
-		// }
-
-		// if (count === 280) {
-		// 		getTotals();
-		// }
-
-		// if (count === 185) {
-		// 		get_combo();
-		// }
-
-		// if (count === 180) {
-		// 		getTotals();
-		// }
-
-		// if (count === 85) {
-		// 		get_combo();
-		// }
-
-		// if (count === 80) {
-		// 		getTotals();
-		// }
-
+		
 
 		if (count === 275) {
 				myApp.modal({
@@ -435,24 +409,6 @@ async.series([
 				}, 5000);
 
 		}
-
-
-		// if (count === 150) {
-		// 		if (tim.timNumberofRounds > 0) {
-		// 				console.log('The Champ is ' + top_king_name + '  from Team' + top_king_team);
-		// 				myApp.modal({
-		// 						title: '<div>Round is half-complete.<hr>' + lri_string + '</span></div><hr>' +
-		// 								'The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-		// 								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>'
-		// 				});
-		// 				setTimeout(function() {
-		// 						myApp.closeModal();
-		// 				}, 5000);
-		// 		}
-		// }
-
-
-
 
 
 		if (count === 120) {

@@ -97,6 +97,7 @@ $$('#scanCSC').on('click', function(e) {
 
 
 
+
 var item_counter = 1;
 var appII = {
 
