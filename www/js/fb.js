@@ -114,6 +114,7 @@ function totals_post() {
 
 
 		console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
+		
 	}
 }
 

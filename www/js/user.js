@@ -287,39 +287,61 @@ function newTimer(count) {
 
 
 
+		if (count === 290 || count === 240 || count === 180 || count === 120 || count === 60) {
+var users = [];
+async.series([
+  function(callback) {
+  	console.log('totals_post');
+    totals_post();
+    callback(null, 'one');
+  },
+  function(callback) {
+  	console.log('get_combo');
+   get_combo();
+   callback(null, 'one');
+  },
+  function(callback) {
+  	console.log('getTotals');
+    getTotals();
+    callback(null, 'one');
+  }
+]);
+		}
+
 
 		if (count === 295) {
 				round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
 		}
 
-		if (count === 290  || count === 140) {
-				totals_post();
-		}
+		// if (count === 290  || count === 140) {
+		// 	if (count === 140) {
+		// 		totals_post();
+		// }
 
-		if (count === 285) {
-				get_combo();
-		}
+		// if (count === 285) {
+		// 		get_combo();
+		// }
 
-		if (count === 280) {
-				getTotals();
-		}
+		// if (count === 280) {
+		// 		getTotals();
+		// }
 
-		if (count === 185) {
-				get_combo();
-		}
+		// if (count === 185) {
+		// 		get_combo();
+		// }
 
-		if (count === 180) {
-				getTotals();
-		}
+		// if (count === 180) {
+		// 		getTotals();
+		// }
 
-		if (count === 85) {
-				get_combo();
-		}
+		// if (count === 85) {
+		// 		get_combo();
+		// }
 
-		if (count === 80) {
-				getTotals();
-		}
+		// if (count === 80) {
+		// 		getTotals();
+		// }
 
 
 		if (count === 275) {

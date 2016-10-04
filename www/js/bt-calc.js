@@ -115,6 +115,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				}
 
 				$$('.cls_rtspd2').text(Math.round(tim.timSpeed * 10) / 10);
+				$$('.cls_rtspd20').text(Math.round(tim.timSpeed * 10) / 10);
 
 				//Publish to UI
 				tim.timDistanceTraveled = Math.round(totalDistance * 10) / 10; //total distance
@@ -220,6 +221,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 
 				//POPULATE UI WITH CAD
 				$$('.cls_rtcad2').text(tim.timCadence);
+				$$('.cls_rtcad20').text(tim.timCadence);
 		}
 
 		mLastCrankRevolutions = crankRevolutions;
@@ -255,6 +257,7 @@ function onHRMeasurementReceived(hrMeasurement) {
 
 		//POPULATE UI WITH HR
 		$$('.cls_rthr2').text(tim.timHR);
+		$$('.cls_rthr20').text(tim.timHR);
 
 		//POPULATE MAX HR
 		$$('.cls_maxHR').html('EFFORT SCORE LEADERS (MAX HR: ' + maxHRTotal + ')');
