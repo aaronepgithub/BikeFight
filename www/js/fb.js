@@ -144,22 +144,37 @@ function get_combo() {
 					rank1 = round_effort_rank+1;
 					console.log('Round Effort, Rank1:  ' + rank1);
 
-					if (rank1 > 0) { 
-					$$('.cls_effort_round_rank').text(rank1 + '/' + dataSize);
-					//console.log('Round Effort Rank1:  ' + rank1);
-					}
-
-
 					// FIND RANK OF LAST ROUND'S SPEED
 					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
 					rank2 = round_speed_rank+1;
 					console.log('Round Speed, Rank2:  ' + rank2);
 
 
-					if (rank2 > 0) {
-					$$('.cls_avg_speed_round_rank').text(rank2 + '/' + dataSize);
-					//console.log('Round Speed Rank2:  ' + rank2);
+
+					if (dataSize < 101) {
+						if (rank1 > 0 && rank1 < 100) { 
+						$$('.cls_effort_round_rank').text(rank1 + '/' + dataSize);
+						//console.log('Round Effort Rank1:  ' + rank1);
+						}
+
+						if (rank2 > 0) {
+						$$('.cls_avg_speed_round_rank').text(rank2 + '/' + dataSize);
+						//console.log('Round Speed Rank2:  ' + rank2);
+						}
 					}
+
+					if (dataSize > 100) {
+						if (rank1 > 0) { 
+						$$('.cls_effort_round_rank').text(rank1);
+						//console.log('Round Effort Rank1:  ' + rank1);
+						}
+
+						if (rank2 > 0) {
+						$$('.cls_avg_speed_round_rank').text(rank2);
+						//console.log('Round Speed Rank2:  ' + rank2);
+						}
+					}
+
 
 				}
 
@@ -326,7 +341,12 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 				rank3 = total_effort_rank+1;
 			}
 
-		$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
+		if (dataSizeLeaders > 99) {
+			$$('.cls_effort_total_rank').text(rank4);	
+		} else {
+			$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
+		}
+
 		console.log('Total Effort Rank3:  ' + rank3 );
 
 
@@ -336,8 +356,21 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			});
 
 		
-		rank4 = total_speed_rank+1;
-		$$('.cls_avg_speed_total_rank').text(rank4 + '/' + dataSizeLeaders);
+
+		if (rank4 === 0) {
+			rank4 = 1;
+			} else {
+				rank4 = total_speed_rank+1;
+		}
+
+		
+		if (dataSizeLeaders > 99) {
+			$$('.cls_avg_speed_total_rank').text(rank4);	
+		} else {
+			$$('.cls_avg_speed_total_rank').text(rank4 + '/' + dataSizeLeaders);
+		}
+
+
 		console.log('Total Speed Rank4:  ' + rank4);
 
 
