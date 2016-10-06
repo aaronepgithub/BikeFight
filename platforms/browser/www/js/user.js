@@ -151,11 +151,8 @@ function rounds_end(lr, ls, lc, lh) {
 				objCounter++;
 		});
 
-		//console.log('My Average Round:  ' +  _.meanBy(x, 'rnd'));
-
 		//FOR ENTIRE RIDE
 		$$('#my_average_round_score').text(Math.round(_.meanBy(x, 'rnd')));
-
 		$$('.my_last_rnd').text(tim.timLastRND);
 
 		var stringChip = null;
@@ -487,9 +484,8 @@ function newTimer(count) {
 
 
 }
-//end of the New Timer function with count passed in.
+//END OF NEW TIMER FUNCTION
 
-//SWIPER P1 BUBBLES
 function publishEndofRound() {
 		console.log('Fctn publishEndofRound');
 		//THESE ARE THE VALUES  CREATED FOR END OF ROUND
@@ -511,12 +507,9 @@ function publishEndofRound() {
 		});
 		setTimeout(function() {
 		    myApp.closeModal();
-		}, 1000);
-
+		}, 3000);
 
 		rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
-
-
 }
 
 

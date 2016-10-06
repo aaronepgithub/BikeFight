@@ -29,6 +29,7 @@ var pubYear = yyyy;
 //console.log(pubFullDate + pubMonth + pubDay + pubYear);
 
 var strFourMinutes = "Four Minutes Remain";
+var strFourMinutesAlert = "Four Minutes Remain";
 var strThreeMinutes = "Three Minutes Remain";
 var strTwoMinutes = "Two Minutes Remain";
 var strOneMinute = "One Minute is Remaining";
