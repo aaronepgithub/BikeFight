@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.aaronep.bikefight" version="5.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>BikeFight</name>
+<widget id="com.aaronep.virtualcrit" version="6.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>VirtualCrit</name>
     <description>
-        BikeFight
+        VirtualCrit
     </description>
-    <author email="yowa5@yowa.com" href="http://cordova.io">
+    <author email="aaronep@gmail.com" href="http://cordova.io">
         S.Onada
     </author>
     <content src="index.html" />
