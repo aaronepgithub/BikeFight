@@ -140,15 +140,15 @@ function get_combo() {
 				if (tim.timNumberofRounds > 0) {
 
 					//FIND RANK OF MY LAST ROUND'S EFFORT
-					// var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
-					var round_effort_rank = _.findIndex(xx_effort, ['fb_timName', tim.timName]);
-					rank1 = round_effort_rank+1;
+					var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
+
+					rank1 = round_effort_rank + 1;
 					console.log('Round Effort, Rank1:  ' + rank1);
 
 					// FIND RANK OF LAST ROUND'S SPEED
-					// var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
-					var round_speed_rank = _.findIndex(xx_speed, ['fb_timName', tim.timName]);
-					rank2 = round_speed_rank+1;
+					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
+
+					rank2 = round_speed_rank + 1;
 					console.log('Round Speed, Rank2:  ' + rank2);
 
 
@@ -215,10 +215,10 @@ function get_combo() {
 					lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a Effort of ' + top_king_rnd;
 
 					strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
-					strFourMinutesAlert = 'Four Minutes Remain.  Your last effort had a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + scoreHRRoundLast + '  </span> and was ranked  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank1 + ' out of ' + dataSize + '.  </span> Your average speed for past round was ranked number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank2 + '</span>';
+					strFourMinutesAlert = '<div>Four Minutes Remain.</div><hr><div>Your last effort had a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + scoreHRRoundLast + '  </span> and was ranked  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank1 + ' out of ' + dataSize + '.  </span></div><hr><div>Your average speed for past round was ranked number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank2 + '</span><div><hr>';
 
-					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was' + tim.timLastSPD;
-					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was' + tim.timLastSPD;
+					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was ' + tim.timLastSPD;
+					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was ' + tim.timLastSPD;
 					console.log(strFourMinutes);
 					console.log(strThreeMinutes);
 					console.log(strOneMinute);
