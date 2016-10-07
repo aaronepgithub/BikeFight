@@ -152,7 +152,7 @@ function get_combo() {
 
 
 					if (dataSize < 101) {
-						if (rank1 > 0 && rank1 < 100) { 
+						if (rank1 > 0 && rank1 < 100) {
 						$$('.cls_effort_round_rank').text(rank1 + '/' + dataSize);
 						//console.log('Round Effort Rank1:  ' + rank1);
 						}
@@ -164,7 +164,7 @@ function get_combo() {
 					}
 
 					if (dataSize > 100) {
-						if (rank1 > 0) { 
+						if (rank1 > 0) {
 						$$('.cls_effort_round_rank').text(rank1);
 						//console.log('Round Effort Rank1:  ' + rank1);
 						}
@@ -203,7 +203,7 @@ function get_combo() {
 					lri_string = 'Your Last Effort is Ranked Number  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">  ' + rank1 + '  out of  ' +  dataSize  + '  </span> ' + '   for the day';
 					lastRoundIndexSpeak = 'Your Last Effort had a score of ' + tim.timLastRND + ' and is Ranked Number  ' + rank1 + '  out of  ' +  dataSize  + '  for the day';
 					lastRoundIndexSpeak2 = 'The Champ is ' + top_king_name + '  from Team' + top_king_team + ' with a Effort of ' + top_king_rnd;
-					
+
 					strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
 					strFourMinutesAlert = 'Four Minutes Remain.  Your last effort had a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + scoreHRRoundLast + '  </span> and was ranked  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank1 + ' out of ' + dataSize + '.  </span> Your average speed for past round was ranked number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank2 + '</span>';
 
@@ -212,13 +212,13 @@ function get_combo() {
 					console.log(strFourMinutes);
 					console.log(strThreeMinutes);
 					console.log(strOneMinute);
-				} 
+				}
 
 				$$('.cls_top_kings').remove();
 				$$('.cls_top_kings_group').remove();
 				$$('.cls_front_page').remove();
-				
-				
+
+
 				//END PREPARE SPEAK STR
 
 
@@ -334,17 +334,17 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			return o.a_scoreHRTotal <= scoreHRTotal;
 			});
 
-		
-			if (rank3 === 0) {
-				rank3 = 1;
-			} else {
-				rank3 = total_effort_rank+1;
-			}
+			//TEST SORTED INDEX BY
+			var testSortedIndexBy = _.sortedIndexBy(xTotals2, { 'a_scoreHRTotal': scoreHRTotal }, 'a_scoreHRTotal');
 
-		if (dataSizeLeaders > 99) {
-			$$('.cls_effort_total_rank').text(rank4);	
-		} else {
-			$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
+		rank3 = total_effort_rank + 1;
+
+		if (rank3 > 0) {
+				if (dataSizeLeaders > 99) {
+					$$('.cls_effort_total_rank').text(rank4);
+				} else {
+					$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
+				}
 		}
 
 		console.log('Total Effort Rank3:  ' + rank3 );
@@ -355,19 +355,13 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			return o.a_speedTotal <= tim.timAvgSPDtotal;
 			});
 
-		
-
-		if (rank4 === 0) {
-			rank4 = 1;
-			} else {
-				rank4 = total_speed_rank+1;
-		}
-
-		
-		if (dataSizeLeaders > 99) {
-			$$('.cls_avg_speed_total_rank').text(rank4);	
-		} else {
-			$$('.cls_avg_speed_total_rank').text(rank4 + '/' + dataSizeLeaders);
+		rank4 = total_speed_rank + 1;
+		if (rank4 > 0) {
+				if (dataSizeLeaders > 99) {
+					$$('.cls_avg_speed_total_rank').text(rank4);
+				} else {
+					$$('.cls_avg_speed_total_rank').text(rank4 + '/' + dataSizeLeaders);
+				}
 		}
 
 
@@ -379,8 +373,6 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 			console.log(strTwoMinutes);
 			}
 
-		// postToTempScoreLeaderboard(xTotals2);
-		// postToTempSpeedLeaderboard(xTotals3);
 
 		async.series([
 		  function(callback) {
