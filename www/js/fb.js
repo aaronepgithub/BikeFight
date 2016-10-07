@@ -140,12 +140,14 @@ function get_combo() {
 				if (tim.timNumberofRounds > 0) {
 
 					//FIND RANK OF MY LAST ROUND'S EFFORT
-					var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
+					// var round_effort_rank = _.findIndex(xx_effort, ['a_scoreRoundLast', scoreHRRoundLast]);
+					var round_effort_rank = _.findIndex(xx_effort, ['fb_timName', tim.timName]);
 					rank1 = round_effort_rank+1;
 					console.log('Round Effort, Rank1:  ' + rank1);
 
 					// FIND RANK OF LAST ROUND'S SPEED
-					var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
+					// var round_speed_rank = _.findIndex(xx_speed, ['a_speedRoundLast', tim.timLastSPD]);
+					var round_speed_rank = _.findIndex(xx_speed, ['fb_timName', tim.timName]);
 					rank2 = round_speed_rank+1;
 					console.log('Round Speed, Rank2:  ' + rank2);
 
@@ -191,6 +193,14 @@ function get_combo() {
 				top_king_cad = xx2[0].fb_CAD;
 				top_king_hr = xx2[0].fb_HR;
 
+				//TOP SPEED CHAMP
+				top_speed_value = xx_speed[0].fb_SPD;
+				top_speed_name = xx_speed[0].fb_timName;
+				top_speed_team = xx_speed[0].fb_timTeam;
+
+				console.log('Speed Name and Value:  ' + top_speed_name + ' at ' + top_speed_value + ' mph');
+
+
 				ui_report200();
 
 				// if (tim.timNumberofRounds > 0 ) {
@@ -207,8 +217,8 @@ function get_combo() {
 					strFourMinutes = "Four Minutes Remain.  Your last effort had a score of " + scoreHRRoundLast + " and was ranked " + rank1 + " out of " + dataSize + ".  Your average speed for past round was ranked number " + rank2;
 					strFourMinutesAlert = 'Four Minutes Remain.  Your last effort had a score of <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + scoreHRRoundLast + '  </span> and was ranked  <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank1 + ' out of ' + dataSize + '.  </span> Your average speed for past round was ranked number <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + rank2 + '</span>';
 
-					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND;
-					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND;
+					strThreeMinutes = 'Three Minutes Remain.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was' + tim.timLastSPD;
+					strOneMinute =  'One Minute Remains.  The Champ is ' + top_king_name + ' from Team ' + top_king_team + ', with an Effort of ' + top_king_rnd + '.  Your last Effort was ' + tim.timLastRND + '.  The speed leader is ' + top_speed_name + ' at '  + top_speed_value  +  ' Miles Per Hour.   Your speed for the last effort was' + tim.timLastSPD;
 					console.log(strFourMinutes);
 					console.log(strThreeMinutes);
 					console.log(strOneMinute);
@@ -323,19 +333,35 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 		var xTotals1 = _.values(data);
 		var xTotals2 = _.orderBy(xTotals1, 'a_scoreHRTotal', 'desc');
 		//console.log('xTotals2:  ' + JSON.stringify(xTotals2));
+		var total_effort_leader = xTotals2[0].fb_timName;
+
 		var xTotals3 = _.orderBy(xTotals1, 'a_speedTotal', 'desc');
 		//console.log('xTotals3:  ' + JSON.stringify(xTotals3));
+		var total_speed_leader = xTotals3[0].fb_timName;
+
+		console.log('total_effort_leader ' + total_effort_leader);
+				console.log('total_speed_leader ' + total_speed_leader);
 
 		dataSizeLeaders = _.size(xTotals2);
 		console.log('Size of Totals:  ' + dataSizeLeaders);
 
-		//FIND RANK OF TOP TOTAL SCORES
-		var total_effort_rank = _.findIndex(xTotals2,function(o) {
-			return o.a_scoreHRTotal <= scoreHRTotal;
-			});
 
-			//TEST SORTED INDEX BY
-			var testSortedIndexBy = _.sortedIndexBy(xTotals2, { 'a_scoreHRTotal': scoreHRTotal }, 'a_scoreHRTotal');
+
+			// FIND INDEX BY NAME
+			var total_effort_rank = _.findIndex(xTotals2,function(o) {
+				return o.fb_timName === tim.timName;
+				});
+			// console.log('total_effort_rank:  ' + total_effort_rank);
+			// console.log('xTotals2:  ' + JSON.stringify(xTotals2));
+			// console.log('scoreHRTotal :  ' + scoreHRTotal);
+
+			var total_speed_rank = _.findIndex(xTotals3,function(o) {
+				return o.fb_timName === tim.timName;
+				});
+			// console.log('total_speed_rank:  ' + total_speed_rank);
+			// console.log('xTotals3:  ' + JSON.stringify(xTotals3));
+			// console.log('tim.timAvgSPDtotal :  ' + tim.timAvgSPDtotal);
+
 
 		rank3 = total_effort_rank + 1;
 
@@ -350,11 +376,6 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 		console.log('Total Effort Rank3:  ' + rank3 );
 
 
-		//FIND RANK OF TOP TOTAL SPEED
-		var total_speed_rank = _.findIndex(xTotals3,function(o) {
-			return o.a_speedTotal <= tim.timAvgSPDtotal;
-			});
-
 		rank4 = total_speed_rank + 1;
 		if (rank4 > 0) {
 				if (dataSizeLeaders > 99) {
@@ -364,12 +385,11 @@ $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFul
 				}
 		}
 
-
 		console.log('Total Speed Rank4:  ' + rank4);
 
 
 		if (tim.timNumberofRounds > 0 ) {
-			strTwoMinutes = "Two Minutes Remain.  Your total effort score for the day is " + scoreHRTotal + " and is ranked " + rank3 + " out of " + dataSizeLeaders + ".  Your average speed for today has a ranking of " + rank4;
+			strTwoMinutes = "Two Minutes Remain.  Your total effort score for the day is " + scoreHRTotal + " and is ranked " + rank3 + " out of " + dataSizeLeaders + ".  Your average speed for today has a ranking of " + rank4 + "The day's highest effort belongs to " + total_effort_leader + " .  The highest average speed for the day is from " + total_speed_leader;
 			console.log(strTwoMinutes);
 			}
 
