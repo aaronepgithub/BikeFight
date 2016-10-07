@@ -167,7 +167,6 @@ $$('.cls_green').on('click', function(e) {
 
 $$('.cls_notice').on('click', function(e) {
 	//console.log('clicked hdr2');
-	myCenterAlertOK('IMPORTANT NOTICE.', 'PLEASE USE THIS APPLICATION ONLY WHEN STOPPED AND IN A SAFE ENVIRONMENT.  THE RIDER WILL ASSUME ALL RESPONSIBILITY FOR ANY EVENTS THAT OCCUR WHILE USING THIS APPLICATION.');
+	myCenterAlertOK('IMPORTANT NOTICE.', '<div>PLEASE USE THIS APPLICATION ONLY WHEN STOPPED AND IN A SAFE ENVIRONMENT.  THE RIDER WILL ASSUME ALL RESPONSIBILITY FOR ANY EVENTS THAT OCCUR WHILE USING THIS APPLICATION. <div><hr>' +
+	'<div class= "button button-fill button-raised color-blue" style="color: white;margin-bottom:35px; font-size=.4em"><a style="color: white" href="#tandc">TERMS AND CONDITIONS</a><hr></div>');
 });
-
-
