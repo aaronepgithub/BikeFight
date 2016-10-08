@@ -95,6 +95,13 @@ $$('#scanCSC').on('click', function(e) {
 	myCenterAlert('Scanning for Speed/Cadence', 5000);
 });
 
+$$('#scanMIO').on('click', function(e) {
+	$$('.class_ble_results_li_csc_mio').remove();
+	console.log('click: scanMIO');
+	appII.allScanCSC_MIO();
+	myCenterAlert('Scanning for MIO', 5000);
+});
+
 
 
 
@@ -107,7 +114,7 @@ var appII = {
 		var dataHR = new Uint8Array(bufferHR);
 		//console.log('dataHR:  ' + JSON.stringify(dataHR));
 			var currHR = dataHR[1];
-			onHRMeasurementReceived(currHR);		
+			onHRMeasurementReceived(currHR);
 	},
 	//END ONDATA-HR
 
@@ -143,6 +150,27 @@ var appII = {
 				console.log(i_clkIdHR);
 				console.log(i_clkName);
 				console.log(i_clkItmRSSI);
+
+				// var veloI = i_clkName.toString().search("VELO");
+				// var veloII = i_clkName.toString().search("Velo");
+				// var veloIII = i_clkName.toString().search("velo");
+				//
+				// 	if (veloIII >= 0 || veloII >= 0 || veloI >= 0) {
+				// 		console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVELO');
+				// 		i_clkId6 = i_clkId;
+				// 		appII.connectCSC(i_clkId);
+				//
+				// 		setTimeout(appII.connectHR(i_clkId), 5000,
+				// 			function() {
+				// 				console.log("VELO HR Connect Command");
+				// 				//myCenterAlert('Complete', 500);
+				// 			},
+				// 			function() {
+				// 				console.log("VELO HR Connect Command Failed");
+				// 			}
+				// 		);
+				// 	}
+
 
 				console.log("II Starting the: " + i_clkName + '  ID:  ' + i_clkIdHR);
 				i_clkId1 = i_clkIdHR;
@@ -282,7 +310,7 @@ var appII = {
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
 
-			msgBluetoothDisconnect();	
+			msgBluetoothDisconnect();
 
 			// mainView.router.loadPage("#bluetooth");
 			// myApp.alert('Reconnect?', 'SPD/CAD Sensor Disconnected', function() {
@@ -291,6 +319,108 @@ var appII = {
 			// });
 		}
 	},
+
+
+//START MIO VELO
+
+allScanCSC_MIO: function() {
+	console.log('all scan MIO Starting');
+	var mio_item_counter = 0;
+
+
+	//CALLED AFTER A SUCCESS SCAN
+	function onScanCSC_MIO(peripheral) {
+		if(mio_item_counter > 0) {return;
+		}
+
+		console.log('OnScan MIO allScannIII');
+		console.log("Found " + JSON.stringify(peripheral));
+		console.log(peripheral.name + ' - ' + peripheral.id);
+		myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
+
+		$$('.class_ble_results_ul_csc_mio').on('click', 'a', function(e) {
+			console.log('clicked class_ble_results_ul_csc_mio item');
+			var i_service = $$(this).data('service');
+			var i_clkId = $$(this).data('id');
+			var i_clkName = $$(this).data('name');
+			var i_clkItmService = $$(this).data('service');
+			var i_clkItmRSSI = $$(this).data('rssi');
+
+			console.log(i_service);
+			console.log(i_clkId);
+			console.log(i_clkName);
+			console.log(i_clkItmRSSI);
+
+
+
+			if(mio_item_counter < 2) {
+				console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVELO');
+				i_clkId6 = i_clkId;
+				appII.connectCSC(i_clkId);
+				 mio_item_counter++;
+				setTimeout(appII.connectHR(i_clkId), 10000,
+					function() {
+						console.log("VELO HR Connect Command");
+						//myCenterAlert('Complete', 500);
+					},
+					function() {
+						console.log("VELO HR Connect Command Failed");
+					}
+				);
+			}
+
+
+
+
+
+		});
+
+		i = peripheral.id;
+		n = peripheral.name;
+		r = peripheral.rssi;
+
+		$$('#ble_results_ul_csc_mio').append(
+
+			'        <li id = "' + item_counter + '" class = "class_ble_results_li_csc_mio color-white">' +
+			'          <a data-service = "1816" data-rssi = "' + r + '" data-name = "' + n + '" data-id = "' + i + '" href="#" class="item-link item-content ble-clickme">' +
+			'              <div class="item-media"><i class="fa fa-bluetooth"></i></div>' +
+			'              <div class="item-inner"> ' +
+			'              <div class="item-title-row"> ' +
+			'                  <div class="item-title">' + n + '</div> ' +
+			'                  <div class="item-after"><span class="badge">' + r + '</span></div></div> ' +
+			'              </div> ' +
+			'          </a> ' +
+			'      </li>'
+
+		); //END APPEND
+
+
+		mio_item_counter++;
+
+
+	} // END ONSCAN FCTN
+
+	function scanFailureCSC_MIO(reason) {
+		console.log("CSC BLE Scan Failed");
+	}
+
+	ble.startScan(['1816'], onScanCSC_MIO, scanFailureCSC_MIO);
+	setTimeout(ble.stopScan, 5000,
+		function() {
+			console.log("Scan complete");
+			myCenterAlert('Complete', 500);
+
+		},
+		function() {
+			console.log("stopScan failed");
+		}
+	);
+
+}, //END ALL SCAN III CSC FUNCTION
+
+//END MIO VELO
+
+
 
 	//START ALL SCAN and CONNECT III FUNCTION CSC
 	allScanCSC: function() {
@@ -319,8 +449,29 @@ var appII = {
 
 				var wacIII = i_clkName.toString().search("CADEN");
 				var wasIII = i_clkName.toString().search("SPEED");
+				// var veloI = i_clkName.toString().search("VELO");
+				// var veloII = i_clkName.toString().search("Velo");
+				// var veloIII = i_clkName.toString().search("velo");
 				console.log('wacIII:  ' + wacIII);
 				console.log('wasIII:  ' + wasIII);
+
+
+				// if (veloIII >= 0 || veloII >= 0 || veloI >= 0) {
+				// 	console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVELO');
+				// 	i_clkId6 = i_clkId;
+				// 	appII.connectCSC(i_clkId);
+				//
+				// 	setTimeout(appII.connectHR(i_clkId), 5000,
+				// 		function() {
+				// 			console.log("VELO HR Connect Command");
+				// 			//myCenterAlert('Complete', 500);
+				// 		},
+				// 		function() {
+				// 			console.log("VELO HR Connect Command Failed");
+				// 		}
+				// 	);
+				// 	//wait 10 sec, then issue the appII.connectHR(i_clkId);
+				// }
 
 				if (wacIII >= 0) {
 					console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectWAC');
@@ -449,7 +600,7 @@ var appII = {
 			myCenterAlert('CAD Sensor has Disconnected', 1000);
 			mainView.router.loadPage("#bluetooth");
 			$$(".cls_disconnect_message").html('<h3>RECONNECT SENSORS</h3>');
-			
+
 			msgBluetoothDisconnect();
 		}
 	},
