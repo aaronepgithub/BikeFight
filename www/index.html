@@ -446,13 +446,13 @@
 					<div data-page="champs" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="close-popup button button-fill color-red">Back</a>
-								<a href="#myrounds" class="close-popup button button-fill color-red">ME</a>
+								<a href="#main" class="close-popup button button-fill color-red">BACK</a>
+								<a href="#champs_speed" class="close-popup button button-fill color-red">SPEED</a>
 							</div>
 						</div>
 						<div class="page-content bg-black color-white">
 							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
-								<br><div style="margin-bottom:35px">TOP RACERS</div>
+								<br><div style="margin-bottom:35px">EFFORT LEADERS/ROUND</div>
 								<div class="card bg-black" style="margin-top:5px">
 									<div class="card-content bg-black">
 										<div class="card-content-inner small_content_inner color-white bg-black">
@@ -469,6 +469,36 @@
 						</div>
 					</div>
 					<!--champs - END  ***********************************************-->
+
+
+
+					<!--champs_speed - START  ***********************************************-->
+					<div data-page="champs_speed" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#main" class="close-popup button button-fill color-red">BACK</a>
+								<a href="#champs" class="close-popup button button-fill color-red">EFFORT</a>
+							</div>
+						</div>
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:35px">SPEED LEADERS/ROUND</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="champs_page_speed" class="content-block">
+												<div class="cls_champs_page_speed" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+					</div>
+					<!--champs_SPEED - END  ***********************************************-->
 
 
 					<!--myrounds - START  ***********************************************-->
@@ -600,7 +630,7 @@
 					<!--PAGE INDEX - START:    ***********************************************-->
 					<div data-page="index" class="page navbar-fixed">
 						<div class="navbar" style="margin-top:20px">
-							<div class="navbar-inner">
+							<div class="navbar-inner bg-red">
 								<h1 class="color-white" style="margin-top:20px;font-size:1.5em;font-weight:bold;text-align:center;padding-left:15px">VIRTUAL CRIT</h1>
 							</div>
 						</div>
@@ -862,7 +892,7 @@
 			<!-- START OF KING OF THE RING SWIPE -->
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">
-					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP (BEST ROUND):</h5></div>
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE CHAMP (BEST EFFORT/ROUND):</h5></div>
 					<div id="top_king" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
 					<hr>
 
@@ -910,6 +940,60 @@
 				<div id="timer_btn_bubbles30" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 			</div>
 			<!-- END OF KING OF THE RING SWIPE -->
+
+
+			<!-- START OF KING OF SPEED SWIPE -->
+			<div class="swiper-slide bg-black">
+				<div class="card bg-black" style="margin-top:0px">
+					<div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">THE FASTEST (BEST SPEED/ROUND):</h5></div>
+					<div id="top_king_speed" class="bg-black color-white" style="color-white;margin-top:0px;font-size:2em;font-weight:bold"></div>
+					<hr>
+
+					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">TOP CHALLENGERS</h5>
+					</div>
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+							<!-- <div id="ui_report30_div"> -->
+							<div id="top_kings_speed">
+								<div class="cls_top_kings_speed chip bg-white">
+									<div class="chip-media bg-red">30</div>
+									<div class="chip-label color-black">Rako</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="card bg-black" style="margin-top:0px">
+		<!-- 					<div class="card-header color-white bg-black no-border">
+						<h5 class="report_margin" style="padding-top:0px;padding-bottom:0px">MY LAST ROUNDS</h5>
+					</div> -->
+					<div class="card-content bg-black">
+						<div class="card-content-inner small_content_inner color-white bg-black">
+		<!-- 							<div id="my_last_rnd">
+							</div> -->
+							<div>
+
+							<div class="buttons-row bg-black color-white">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+					</div>
+			<!-- END OF KING OF SPEED SWIPE -->
+
+
+
+
 			<!-- START OF GROUP KING OF THE RING SWIPE -->
 			<div class="swiper-slide bg-black">
 				<div class="card bg-black" style="margin-top:0px">

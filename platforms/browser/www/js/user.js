@@ -277,8 +277,23 @@ function newTimer(count) {
 		//5 SECONDS  PAINT BUBBLES
 		var remdr5 = count % 5;
 		if (remdr5 === 0) {
-			publishAvg();
-			bubbleMaker();
+			// publishAvg();
+			// bubbleMaker();
+
+			async.series([
+				function(callback) {
+					//console.log('publishAvg');
+				 	publishAvg();
+				 callback(null, 'pa');
+				},
+				function(callback) {
+					//console.log('bubbleMaker');
+					bubbleMaker();
+					callback(null, 'bm');
+				}
+			]);
+
+
 		}
 
 
@@ -305,15 +320,29 @@ function newTimer(count) {
 
 
 		if (count === 295) {
-			round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+//			round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 			$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+
+			async.series([
+				function(callback) {
+					console.log('round_post');
+				 			round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
+				 callback(null, 'one');
+				},
+				function(callback) {
+					console.log('getTotals');
+					totals_post();
+					callback(null, 'two');
+				}
+			]);
+
 		}
 
 		if (count === 290) {
-			totals_post();
+	//		totals_post();
 		}
 
-		
+
 
 		if (count === 275) {
 				myApp.modal({
@@ -358,7 +387,7 @@ function newTimer(count) {
 						myApp.closeModal();
 						if (tim.timNumberofRounds >= 0) {
 								console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								console.log(strFourMinutes);
+								//console.log(strFourMinutes);
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
@@ -389,7 +418,7 @@ function newTimer(count) {
 						if (tim.timNumberofRounds > 0) {
 								//TTS
 								console.log('TTS180 Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								console.log(strThreeMinutes);
+								//console.log(strThreeMinutes);
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
@@ -478,7 +507,7 @@ function newTimer(count) {
 		}
 
 		if (count === 0) {
-				console.log('Count at 0');
+				//console.log('Count at 0');
 				//myCenterAlert('Round is Complete', 1000);
 		}
 
@@ -507,7 +536,7 @@ function publishEndofRound() {
 		});
 		setTimeout(function() {
 		    myApp.closeModal();
-		}, 3000);
+		}, 5000);
 
 		rounds_end(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 }
@@ -525,12 +554,12 @@ function bubbleMaker() {
 
 
 		if (tim.timHR > 195) {
-			//console.log('tim.timHR > 195');	
+			//console.log('tim.timHR > 195');
 		}
 		var vHeartrate1 = Math.round(tim.timHR / 10);
 		var vHeartrate2 = 20 - vHeartrate1;
 		var vHeartrate3 = '#rt_hr_bubbles';
-		if (vHeartrate1 < 20 )	{ populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3); }	
+		if (vHeartrate1 < 20 )	{ populate_rt_bubbles(vHeartrate1, vHeartrate2, vHeartrate3); }
 
 		if (tim.timCadence > 115) {
 				//console.log('tim.timCadence > 115');
@@ -539,7 +568,7 @@ function bubbleMaker() {
 		var vCadence1 = Math.round(tim.timCadence / 6);
 		var vCadence2 = 20 - vCadence1;
 		var vCadence3 = '#rt_cad_bubbles';
-		if ( vCadence1 < 20 ) { populate_rt_bubbles(vCadence1, vCadence2, vCadence3); } 
+		if ( vCadence1 < 20 ) { populate_rt_bubbles(vCadence1, vCadence2, vCadence3); }
 
 
 		if (tim.timAvgRND > 95) {
