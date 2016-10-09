@@ -322,9 +322,10 @@ allScanCSC_MIO: function() {
 		var veloI = peripheral.name.toString().search("VELO");
 		var veloII = peripheral.name.toString().search("Velo");
 		var veloIII = peripheral.name.toString().search("velo");
-			if (veloIII < 0 || veloII < 0 || veloI <0) {
-				return;
-			}
+
+			if (veloIII >= 0 || veloII >= 0 || veloI >=0) {
+
+
 
 		console.log('OnScan MIO allScannIII');
 		console.log("Found " + JSON.stringify(peripheral));
@@ -374,6 +375,9 @@ allScanCSC_MIO: function() {
 
 		); //END APPEND
 		mio_item_counter++;
+
+	} // END VELO TEST
+		
 	} // END ONSCAN FCTN
 
 	function scanFailureCSC_MIO(reason) {
