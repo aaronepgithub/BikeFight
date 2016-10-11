@@ -196,7 +196,7 @@ function publishAvg() {
 
 
 //START BUTTON
-$$('#start_btn').on('click', function() {
+$$('#start_btn').on('touchstart', function() {
 		var storedData = myApp.formGetData('my-form');
 		// if ( storedData === undefined) {
 		if (!storedData) {

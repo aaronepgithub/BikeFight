@@ -27,48 +27,6 @@ function msgBluetoothDisconnect() {
 }
 
 
-//var i_clkId5;
-
-// function reconnectBluetooth() {
-
-// 	if (i_clkId1) {
-// 		//appII.connectHR(i_clkId1);
-// 		var recon1 = _.delay(function(hrLog) {
-// 			appII.connectHR(i_clkId1);
-// 			console.log(hrLog);
-// 		}, 1000, 'reconnect HR');
-// 	}
-
-// 	if (i_clkId2) {
-// 		//appII.connectCSC(i_clkId2);
-// 		var recon2 = _.delay(function(hrLog) {
-// 			appII.connectCSC(i_clkId2);
-// 			console.log(hrLog);
-// 		}, 2000, 'reconnect CSC');
-// 	}
-
-// 	if (i_clkId3) {
-// 		// appII.connectWAS(i_clkId3);
-// 		var recon3 = _.delay(function(hrLog) {
-// 			appII.connectWAS(i_clkId3);
-// 			console.log(hrLog);
-// 		}, 3000, 'reconnect WAS');
-// 	}
-
-// 	if (i_clkId4) {
-// 		//appII.connectWAC(i_clkId4);
-// 		var recon4 = _.delay(function(hrLog) {
-// 			appII.connectWAC(i_clkId4);
-// 			console.log(hrLog);
-// 		}, 4000, 'reconnect WAC');
-// 	}
-
-// }
-//appII.connectHR(i_clkId1);
-//appII.connectCSC(i_clkId2);
-//appII.connectWAS(i_clkId3);
-//appII.connectWAC(i_clkId4);
-
 
 var btService = {
 	serviceHR: '180d',
@@ -81,23 +39,23 @@ var btService = {
 	measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB'
 };
 
-$$('#scanHR').on('click', function(e) {
+$$('#scanHR').on('touchstart', function(e) {
 	$$('.class_ble_results_li_hr').remove();
-	console.log('click: scanHR');
+	console.log('touchstart: scanHR');
 	appII.allScanII();
 	myCenterAlert('Scanning for HR', 5000);
 });
 
-$$('#scanCSC').on('click', function(e) {
+$$('#scanCSC').on('touchstart', function(e) {
 	$$('.class_ble_results_li_csc').remove();
-	console.log('click: scanCSC');
+	console.log('touchstart: scanCSC');
 	appII.allScanCSC();
 	myCenterAlert('Scanning for Speed/Cadence', 5000);
 });
 
-$$('#scanMIO').on('click', function(e) {
+$$('#scanMIO').on('touchstart', function(e) {
 	$$('.class_ble_results_li_csc_mio').remove();
-	console.log('click: scanMIO');
+	console.log('touchstart: scanMIO');
 	appII.allScanCSC_MIO();
 	myCenterAlert('Scanning for MIO', 5000);
 });
@@ -131,6 +89,8 @@ var appII = {
 		console.log('fctn: HR allScan');
 
 		function onScanII(peripheralHR) {
+			if(nameTest === peripheralHR.name) {return;}
+
 
 			var veloI = peripheralHR.name.toString().search("VELO");
 			var veloII = peripheralHR.name.toString().search("Velo");
@@ -142,12 +102,13 @@ var appII = {
 			console.log('fctn: onScanII <HR SCAN>');
 			console.log("Found " + JSON.stringify(peripheralHR));
 
+
 			//WAIT FOR ITEM TO BE CLICKED ON
 			console.log(peripheralHR.name + ' - ' + peripheralHR.id);
 			myCenterAlert('Found:  ' + peripheralHR.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul').on('click', 'a', function(e) {
-				console.log('click:  HR Item to Connect');
+			$$('.class_ble_results_ul').on('touchstart', 'a', function(e) {
+				console.log('touchstart:  HR Item to Connect');
 				var i_service = $$(this).data('service');
 				var i_clkIdHR = $$(this).data('id');
 				var i_clkName = $$(this).data('name');
@@ -185,6 +146,7 @@ var appII = {
 			); //END APPEND
 
 			item_counter++;
+				var nameTest = peripheralHR.name;
 
 		} // END ONSCAN FCTN HR
 		function scanFailureII(reason) {
@@ -332,7 +294,7 @@ allScanCSC_MIO: function() {
 		console.log(peripheral.name + ' - ' + peripheral.id);
 		myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-		$$('.class_ble_results_ul_csc_mio').on('click', 'a', function(e) {
+		$$('.class_ble_results_ul_csc_mio').on('touchstart', 'a', function(e) {
 			console.log('clicked class_ble_results_ul_csc_mio item');
 			var i_service = $$(this).data('service');
 			var i_clkId = $$(this).data('id');
@@ -350,9 +312,8 @@ allScanCSC_MIO: function() {
 			if(mio_item_counter < 2) {
 				console.log("Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVELO');
 				appII.connectCSC(i_clkId);
+				appII.connectHR(i_clkId);
 				mio_item_counter++;
-				//WAIT 5 SECONDS AND THEN START HR FROM VELO
-				setTimeout(function(){ appII.connectHR(i_clkId); }, 5000);
 			}
 		});
 
@@ -377,7 +338,7 @@ allScanCSC_MIO: function() {
 		mio_item_counter++;
 
 	} // END VELO TEST
-		
+
 	} // END ONSCAN FCTN
 
 	function scanFailureCSC_MIO(reason) {
@@ -417,8 +378,8 @@ allScanCSC_MIO: function() {
 			console.log(peripheral.name + ' - ' + peripheral.id);
 			myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul_csc').on('click', 'a', function(e) {
-				console.log('clicked class_ble_results_ul_csc item');
+			$$('.class_ble_results_ul_csc').on('touchstart', 'a', function(e) {
+				console.log('touchstarted class_ble_results_ul_csc item');
 				var i_service = $$(this).data('service');
 				var i_clkId = $$(this).data('id');
 				var i_clkName = $$(this).data('name');
@@ -453,6 +414,11 @@ allScanCSC_MIO: function() {
 					console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectWAS');
 					i_clkId3 = i_clkId;
 					appII.connectWAS(i_clkId);
+				} else if (veloI >= 0 || veloII >= 0  || veloIII >= 0) {
+					console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVelo');
+					i_clkId6 = i_clkId;
+					appII.connectHR(i_clkId);
+					appII.connectCSC(i_clkId);
 				} else {
 					console.log("III Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectCSC');
 					i_clkId2 = i_clkId;

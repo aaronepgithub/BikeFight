@@ -26,7 +26,7 @@ function myCenterAlert(msg, tiout) {
 //CENTER ALERT WITH OK BUTTON AND CALLBACK
 function myCenterAlertOK(title, message) {
 	myApp.alert(message, title, function() {
-		console.log('Button clicked!');
+		console.log('Button touchstarted!');
 	});
 }
 
@@ -109,7 +109,7 @@ $$(document).on('deviceready', function() {
 
 });
 
-$$('.cls_update_tim').on('click', function() {
+$$('.cls_update_tim').on('touchstart', function() {
 	console.log('update form data');
 	var storedData10 = myApp.formGetData('my-form');
 	console.log('Startup Stored Data1:  ' + JSON.stringify(storedData10));
@@ -117,8 +117,8 @@ $$('.cls_update_tim').on('click', function() {
 });
 
 
-$$('.my_simulator').on('click', function(e) {
-	console.log('clicked simulator');
+$$('.my_simulator').on('touchstart', function(e) {
+	console.log('touchstarted simulator');
 	myCenterAlert('Simulator');
 
 	var measHR = 1;
@@ -141,32 +141,32 @@ $$('.my_simulator').on('click', function(e) {
 
 
 
-$$('#header_btn1').on('click', function(e) {
-	//console.log('clicked hdr1');
+$$('#header_btn1').on('touchstart', function(e) {
+	//console.log('touchstarted hdr1');
 	mainView.router.loadPage("#bluetooth");
 });
-$$('#header_btn2').on('click', function(e) {
-	//console.log('clicked hdr2');
+$$('#header_btn2').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
 	mainView.router.loadPage("#champs");
 });
 
-$$('.cls_blue').on('click', function(e) {
-	//console.log('clicked hdr2');
+$$('.cls_blue').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
 	mainView.router.loadPage("#champs");
 });
 
-$$('.cls_yellow').on('click', function(e) {
-	//console.log('clicked hdr2');
+$$('.cls_yellow').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
 	mainView.router.loadPage("#myrounds");
 });
 
-$$('.cls_green').on('click', function(e) {
-	//console.log('clicked hdr2');
+$$('.cls_green').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
 	mainView.router.loadPage("#dayleaders");
 });
 
-$$('.cls_notice').on('click', function(e) {
-	//console.log('clicked hdr2');
+$$('.cls_notice').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
 	myCenterAlertOK('IMPORTANT NOTICE.', '<div>PLEASE USE THIS APPLICATION ONLY WHEN STOPPED AND IN A SAFE ENVIRONMENT.  THE RIDER WILL ASSUME ALL RESPONSIBILITY FOR ANY EVENTS THAT OCCUR WHILE USING THIS APPLICATION. <div><hr>' +
 	'<div class= "button button-fill button-raised color-blue" style="color: white;margin-bottom:35px; font-size=.4em"><a style="color: white" href="#tandc">TERMS AND CONDITIONS</a><hr></div>');
 });
