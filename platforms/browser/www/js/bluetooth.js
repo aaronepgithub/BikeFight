@@ -10,6 +10,8 @@ var i_clkId1;
 var i_clkId2;
 var i_clkId3;
 var i_clkId4;
+var i_clkId5;
+var i_clkId6;
 
 function msgBluetoothDisconnect() {
 	if (tim.timStyle !== "NO") {
@@ -81,26 +83,26 @@ var btService = {
 	measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB'
 };
 
-$$('#scanHR').on('click', function(e) {
-	$$('.class_ble_results_li_hr').remove();
-	console.log('click: scanHR');
-	appII.allScanII();
-	myCenterAlert('Scanning for HR', 5000);
-});
-
-$$('#scanCSC').on('click', function(e) {
-	$$('.class_ble_results_li_csc').remove();
-	console.log('click: scanCSC');
-	appII.allScanCSC();
-	myCenterAlert('Scanning for Speed/Cadence', 5000);
-});
-
-$$('#scanMIO').on('click', function(e) {
-	$$('.class_ble_results_li_csc_mio').remove();
-	console.log('click: scanMIO');
-	appII.allScanCSC_MIO();
-	myCenterAlert('Scanning for MIO', 5000);
-});
+// $$('#scanHR').on('touchstart', function(e) {
+// 	$$('.class_ble_results_li_hr').remove();
+// 	console.log('click: scanHR');
+// 	appII.allScanII();
+// 	myCenterAlert('Scanning for HR', 5000);
+// });
+//
+// $$('#scanCSC').on('touchstart', function(e) {
+// 	$$('.class_ble_results_li_csc').remove();
+// 	console.log('click: scanCSC');
+// 	appII.allScanCSC();
+// 	myCenterAlert('Scanning for Speed/Cadence', 5000);
+// });
+//
+// $$('#scanMIO').on('touchstart', function(e) {
+// 	$$('.class_ble_results_li_csc_mio').remove();
+// 	console.log('click: scanMIO');
+// 	appII.allScanCSC_MIO();
+// 	myCenterAlert('Scanning for MIO', 5000);
+// });
 
 
 
@@ -146,7 +148,7 @@ var appII = {
 			console.log(peripheralHR.name + ' - ' + peripheralHR.id);
 			myCenterAlert('Found:  ' + peripheralHR.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul').on('click', 'a', function(e) {
+			$$('.class_ble_results_ul').on('touchstart', 'a', function(e) {
 				console.log('click:  HR Item to Connect');
 				var i_service = $$(this).data('service');
 				var i_clkIdHR = $$(this).data('id');
@@ -332,7 +334,7 @@ allScanCSC_MIO: function() {
 		console.log(peripheral.name + ' - ' + peripheral.id);
 		myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-		$$('.class_ble_results_ul_csc_mio').on('click', 'a', function(e) {
+		$$('.class_ble_results_ul_csc_mio').on('touchstart', 'a', function(e) {
 			console.log('clicked class_ble_results_ul_csc_mio item');
 			var i_service = $$(this).data('service');
 			var i_clkId = $$(this).data('id');
@@ -377,7 +379,7 @@ allScanCSC_MIO: function() {
 		mio_item_counter++;
 
 	} // END VELO TEST
-		
+
 	} // END ONSCAN FCTN
 
 	function scanFailureCSC_MIO(reason) {
@@ -417,7 +419,7 @@ allScanCSC_MIO: function() {
 			console.log(peripheral.name + ' - ' + peripheral.id);
 			myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul_csc').on('click', 'a', function(e) {
+			$$('.class_ble_results_ul_csc').on('touchstart', 'a', function(e) {
 				console.log('clicked class_ble_results_ul_csc item');
 				var i_service = $$(this).data('service');
 				var i_clkId = $$(this).data('id');
