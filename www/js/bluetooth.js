@@ -173,6 +173,7 @@ var appII = {
 
 
 	connectHR: function(thisItemHR) {
+		//var oldItemHR = thisItemHR;
 		console.log('thisItemHR:  ' + thisItemHR);
 		console.log('Attempting Connect HR');
 		myCenterAlert('Connecting HR Sensor', 1000);
@@ -315,7 +316,7 @@ allScanCSC_MIO: function() {
 
 				//WAIT 5 SECONDS AND THEN START HR FROM VELO
 				setTimeout(function(){ appII.connectHR(i_clkId); }, 5000);
-				
+
 				mio_item_counter++;
 			}
 		});
