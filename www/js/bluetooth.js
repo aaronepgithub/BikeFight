@@ -39,19 +39,19 @@ var btService = {
 	measurementHRwrist: '000033F2-0000-1000-8000-00805F9B34FB'
 };
 
-$$('#scanHR').on('touchstart', function(e) {
-	$$('.class_ble_results_li_hr').remove();
-	console.log('touchstart: scanHR');
-	appII.allScanII();
-	myCenterAlert('Scanning for HR', 5000);
-});
+// $$('#scanHR').on('touchstart', function(e) {
+// 	$$('.class_ble_results_li_hr').remove();
+// 	console.log('touchstart: scanHR');
+// 	appII.allScanII();
+// 	myCenterAlert('Scanning for HR', 5000);
+// });
 
-$$('#scanCSC').on('touchstart', function(e) {
-	$$('.class_ble_results_li_csc').remove();
-	console.log('touchstart: scanCSC');
-	appII.allScanCSC();
-	myCenterAlert('Scanning for Speed/Cadence', 5000);
-});
+// $$('#scanCSC').on('touchstart', function(e) {
+// 	$$('.class_ble_results_li_csc').remove();
+// 	console.log('touchstart: scanCSC');
+// 	appII.allScanCSC();
+// 	myCenterAlert('Scanning for Speed/Cadence', 5000);
+// });
 
 $$('#scanMIO').on('touchstart', function(e) {
 	$$('.class_ble_results_li_csc_mio').remove();
@@ -183,6 +183,7 @@ var appII = {
 
 		function onConnectHR() {
 			console.log('HR onConnect');
+			//conVelo = 0;
 
 			btService = {
 				serviceHR: '180d',
@@ -218,6 +219,7 @@ var appII = {
 
 	//CSC CONNECT
 	connectCSC: function(thisItem) {
+		// conVelo = 0;
 		console.log('thisItem:  ' + thisItem);
 		console.log('CSC Attempting Connect');
 		myCenterAlert('Connecting Speed/Cadence Sensor', 1000);
@@ -225,6 +227,7 @@ var appII = {
 
 		function onConnectCSC() {
 			console.log('onConnect CSC');
+			//conVelo = 0;
 
 			btService = {
 				serviceHR: '180d',
