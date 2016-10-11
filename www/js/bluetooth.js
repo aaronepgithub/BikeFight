@@ -57,7 +57,7 @@ $$('#scanMIO').on('touchstart', function(e) {
 	$$('.class_ble_results_li_csc_mio').remove();
 	console.log('touchstart: scanMIO');
 	appII.allScanCSC_MIO();
-	myCenterAlert('Scanning for MIO', 5000);
+	myCenterAlert('Scanning for MIO VELO', 5000);
 });
 
 
