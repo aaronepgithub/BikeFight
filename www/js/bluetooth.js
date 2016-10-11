@@ -312,7 +312,10 @@ allScanCSC_MIO: function() {
 			if(mio_item_counter < 2) {
 				console.log("Starting the: " + i_clkName + '  ID:  ' + i_clkId + '  connectVELO');
 				appII.connectCSC(i_clkId);
-				appII.connectHR(i_clkId);
+
+				//WAIT 5 SECONDS AND THEN START HR FROM VELO
+				setTimeout(function(){ appII.connectHR(i_clkId); }, 5000);
+				
 				mio_item_counter++;
 			}
 		});
