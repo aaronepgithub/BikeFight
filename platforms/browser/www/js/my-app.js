@@ -26,7 +26,7 @@ function myCenterAlert(msg, tiout) {
 //CENTER ALERT WITH OK BUTTON AND CALLBACK
 function myCenterAlertOK(title, message) {
 	myApp.alert(message, title, function() {
-		console.log('Button touchstarted!');
+		console.log('Button Clicked!');
 	});
 }
 

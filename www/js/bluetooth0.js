@@ -12,15 +12,18 @@ var blteServices = {
 
 var isVelo = 0;
 var mio_item_counter = 0;
+var connectCounter = 0;var connectCounter1 = 0;var connectCounter2 = 0;
 var oldName;
 
 //COMBO - SCAN FOR HR/CSC
 $$('#scanHR').on('click', function() {
-	$$('.cls_btle_results_li_hr').remove();
+		oldName = '';
+		connectCounter = 0;connectCounter1 = 0;connectCounter2 = 0;
+		$$('.cls_btle_results_li_hr').remove();
     $$('.cls_btle_results_li_csc').remove();
     $$('.cls_btle_results_li_velo').remove();
 
-    
+
 	console.log('touchstart: scanner');
     myCenterAlert('Scanning...', 10000);
 	scanHR();
@@ -36,7 +39,7 @@ function onDiscoverFailure() {
 function onDiscoverDevice(device) {
     console.log(JSON.stringify(device));
     if(device.name.toString() === oldName) {return;}
-    
+
 
     var n = device.name.toString();
     var a = n.search("Velo");var b = n.search("VELO");var c = n.search("velo");
@@ -44,7 +47,7 @@ function onDiscoverDevice(device) {
         isVelo = 1;
         console.log('isVelo: ' + isVelo );
         //return;
-        
+
 
         //START IF VELO
             $$('#ble_results_ul_velo').on('click', 'a', function() {
@@ -54,11 +57,15 @@ function onDiscoverDevice(device) {
             console.log(idHRName + ' | ' + idHR);
             //appII.connectHR(idHR.toString());
             if(mio_item_counter < 1) {
-				console.log("Starting the: " + idHRName + '  ID:  ' + idHR + '  connectVELO');
-				appII.connectCSC(idHR);
-				//WAIT 5 SECONDS AND THEN START HR FROM VELO
-				setTimeout(function(){ appII.connectHR(idHR); }, 5000);
-				mio_item_counter++;
+							console.log("Starting the: " + idHRName + '  ID:  ' + idHR + '  connectVELO');
+
+							if(connectCounter1 < 1) {
+								appII.connectCSC(idHR);
+								//WAIT 5 SECONDS AND THEN START HR FROM VELO
+								setTimeout(function(){ appII.connectHR(idHR); }, 5000);
+								mio_item_counter++;
+								connectCounter1++;
+								}
 			}
 
         });
@@ -75,7 +82,7 @@ function onDiscoverDevice(device) {
         '              </div> ' +
         '          </a> ' +
         '      </li>'
-        ); 
+        );
         //END APPEND
 
         oldName = device.name.toString();
@@ -86,9 +93,13 @@ function onDiscoverDevice(device) {
         $$('#ble_results_ul').on('click', 'a', function(e) {
             console.log('click:  HR Item to Connect');
 
-            var idHR = $$(this).data('id');var idHRName = $$(this).data('name');
+						if(connectCounter < 1) {
+						var idHR = $$(this).data('id');var idHRName = $$(this).data('name');
             console.log(idHRName + ' | ' + idHR);
             appII.connectHR(idHR.toString());
+						connectCounter++;
+						}
+
 
         });
 
@@ -104,17 +115,17 @@ function onDiscoverDevice(device) {
         '              </div> ' +
         '          </a> ' +
         '      </li>'
-        ); 
+        );
         //END APPEND
 
         oldName = device.name.toString();
-   
+
  }  //END ELSE
 
 
 }  //END DISCOVER
 
-function scanHR () {    
+function scanHR () {
     		console.log('1.  ble.startScan for HR');
 		ble.startScan(['180d'], onDiscoverDevice, onDiscoverFailure);
 
@@ -129,7 +140,7 @@ function scanHR () {
 		);
 }
 
-function scanCSC () {    
+function scanCSC () {
     		console.log('1.  ble.startScan for CSC');
 		ble.startScan(['1816'], onDiscoverDeviceCSC, onDiscoverFailure);
 
@@ -150,7 +161,7 @@ function scanCSC () {
 function onDiscoverDeviceCSC(device) {
     console.log(JSON.stringify(device));
     if(device.name.toString() === oldName) {return;}
-    
+
     var n = device.name.toString();
     var a = n.search("Velo");var b = n.search("VELO");var c = n.search("velo");
     if (a>0 || b>0 || c>0) {
@@ -170,18 +181,22 @@ function onDiscoverDeviceCSC(device) {
             var wacIII = idCSCName.toString().search("CADEN");
             var wasIII = idCSCName.toString().search("SPEED");
 
-            if (wacIII >= 0) {
-                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectWAC');
-                appII.connectWAC(idCSC.toString());
-            } else if (wasIII >= 0) {
-                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectWAS');
-                appII.connectWAS(idCSC.toString());
-            } else {
-                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectCSC');
-                appII.connectCSC(idCSC.toString());
-            }
 
-            
+							if(connectCounter2 < 1) {
+				            if (wacIII >= 0) {
+				                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectWAC');
+				                appII.connectWAC(idCSC.toString());
+				            } else if (wasIII >= 0) {
+				                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectWAS');
+				                appII.connectWAS(idCSC.toString());
+				            } else {
+				                console.log("III Starting the: " + idCSCName + '  ID:  ' + idCSC + '  connectCSC');
+				                appII.connectCSC(idCSC.toString());
+				            }
+										connectCounter2++;
+								}
+
+
         });
 
 
@@ -196,7 +211,7 @@ function onDiscoverDeviceCSC(device) {
         '              </div> ' +
         '          </a> ' +
         '      </li>'
-    ); 
+    );
     //END APPEND
 
     oldName = device.name.toString();
