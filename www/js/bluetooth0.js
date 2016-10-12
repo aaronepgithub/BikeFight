@@ -65,6 +65,9 @@ function onDiscoverDevice(device) {
 								setTimeout(function(){ appII.connectHR(idHR); }, 5000);
 								mio_item_counter++;
 								connectCounter1++;
+								$$('.cls_btle_results_li_hr').remove();
+								// $$('.cls_btle_results_li_csc').remove();
+								$$('.cls_btle_results_li_velo').remove();
 								}
 			}
 
@@ -98,6 +101,9 @@ function onDiscoverDevice(device) {
             console.log(idHRName + ' | ' + idHR);
             appII.connectHR(idHR.toString());
 						connectCounter++;
+						$$('.cls_btle_results_li_hr').remove();
+						// $$('.cls_btle_results_li_csc').remove();
+						$$('.cls_btle_results_li_velo').remove();
 						}
 
 
@@ -194,6 +200,9 @@ function onDiscoverDeviceCSC(device) {
 				                appII.connectCSC(idCSC.toString());
 				            }
 										connectCounter2++;
+										// $$('.cls_btle_results_li_hr').remove();
+										$$('.cls_btle_results_li_csc').remove();
+										$$('.cls_btle_results_li_velo').remove();
 								}
 
 
