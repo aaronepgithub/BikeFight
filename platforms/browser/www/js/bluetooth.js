@@ -107,7 +107,7 @@ var appII = {
 			console.log(peripheralHR.name + ' - ' + peripheralHR.id);
 			myCenterAlert('Found:  ' + peripheralHR.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul').on('touchstart', 'a', function(e) {
+			$$('.class_ble_results_ul').on('click', 'a', function(e) {
 				console.log('touchstart:  HR Item to Connect');
 				var i_service = $$(this).data('service');
 				var i_clkIdHR = $$(this).data('id');
@@ -298,7 +298,7 @@ allScanCSC_MIO: function() {
 		console.log(peripheral.name + ' - ' + peripheral.id);
 		myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-		$$('.class_ble_results_ul_csc_mio').on('touchstart', 'a', function(e) {
+		$$('.class_ble_results_ul_csc_mio').on('click', 'a', function(e) {
 			console.log('clicked class_ble_results_ul_csc_mio item');
 			var i_service = $$(this).data('service');
 			var i_clkId = $$(this).data('id');
@@ -385,7 +385,7 @@ allScanCSC_MIO: function() {
 			console.log(peripheral.name + ' - ' + peripheral.id);
 			myCenterAlert('Found:  ' + peripheral.name + '.  Tap to connect.');
 
-			$$('.class_ble_results_ul_csc').on('touchstart', 'a', function(e) {
+			$$('.class_ble_results_ul_csc').on('click', 'a', function(e) {
 				console.log('touchstarted class_ble_results_ul_csc item');
 				var i_service = $$(this).data('service');
 				var i_clkId = $$(this).data('id');
