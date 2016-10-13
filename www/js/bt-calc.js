@@ -122,6 +122,8 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				tim.timDistanceTraveledRound = Math.round(roundDistance * 10) / 10; //round distance
 				$$('.tab-btn-dist').text(tim.timDistanceTraveled);
 				$$('#header_btn1').text(tim.timDistanceTraveled + ' miles');
+				$$('#game1_btn1').html('<i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>' + tim.timDistanceTraveled + ' miles');
+				
 
 
 

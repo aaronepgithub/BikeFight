@@ -119,3 +119,10 @@
   font-size: 2.2em;
   font-weight: bold;
 }
+
+.border{
+  border: 2px solid white;
+}
+.outline{
+  outline: 1px solid white;
+}

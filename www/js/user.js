@@ -207,8 +207,11 @@ $$('#start_btn').on('touchstart', function() {
 				//console.log(JSON.stringify(storedData));
 				updateTim();
 
-				var mySwiper = $$('.swiper-container')[0].swiper;
-				mySwiper.slideNext();
+				mainView.router.loadPage("#game1");
+
+
+				// var mySwiper = $$('.swiper-container')[0].swiper;
+				// mySwiper.slideNext();
 				tim.timStartTime = _.now();
 				timer.start(300000);
 		}
@@ -269,6 +272,7 @@ function newTimer(count) {
 				var tmr1 = date.setSeconds(calcTotalSeconds); // specify value for SECONDS here
 				var tmr2 = date.toISOString().substr(11, 8);
 				$$('#header_btn2').text(tmr2);
+				$$('#game1_btn2').html(tmr2 + '<i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>');
 				tim.timCalculatedDuration = tmr2;
 		}
 

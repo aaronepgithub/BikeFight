@@ -1,6 +1,69 @@
 //Unused
 
+// <!-- #1  Settings -->
+// 									<div class="swiper-slide bg-black">
+// 										<div class="card bg-black" style="margin-top:0px">
 
+// 											<div class="card-header color-white bg-black no-border">
+// 												<h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
+// 											</div>
+// 											<hr>
+// 											<div class="card-content bg-black">
+// 												<div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
+// 													<div class="content-block" style="margin:0px">
+// 														<div class="list-block inset">
+// 															<ul>
+// 																<li>
+// 																	<!-- <a href="#" class="item-link item-content"> -->
+// 																	<a href="#bluetooth" class="item-link item-content">
+// 																		<div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
+// 																		<div class="item-inner">
+// 																			<div class="item-title">Bluetooth</div>
+// 																			<!-- <div class="item-after">Label</div> -->
+// 																		</div>
+// 																	</a>
+// 																</li>
+// 																<li>
+// 																	<a href="#user" class="item-link item-content">
+// 																		<div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
+// 																		<div class="item-inner">
+// 																			<div class="item-title">User Settings</div>
+// 																			<!-- <div class="item-after">Label</div> -->
+// 																		</div>
+// 																	</a>
+// 																</li>
+// 																<li>
+// 																	<a id="id_world_champs" href="#game1" class="item-link item-content">
+// 																		<div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
+// 																		<div class="item-inner">
+// 																			<div class="item-title">Games</div>
+// 																		</div>
+// 																	</a>
+// 																</li>
+// 																<li>
+// 																	<a id="id_team_owners" href="#teams" class="item-link item-content">
+// 																		<div class="item-media"><i class="fa fa-bank fa-2x"></i></div>
+// 																		<div class="item-inner">
+// 																			<div class="item-title">Team Owners</div>
+// 																		</div>
+// 																	</a>
+// 																</li>
+// 															</ul>
+// 															<h5>Swipe for advanced views...</h5>
+// 															<!-- div class="buttons-row bg-black color-white" style="padding: 10px;">
+// 																<a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
+// 															</div> -->
+
+// 														</div>
+// 													</div>
+// 												</div>
+// 											</div><hr>
+
+
+// 										</div>
+// 									</div>
+
+									
 
 //NEW ui_report1
 // function ui_report1(cc1, cc2, cc3, cc4, cc5, cc6) {
@@ -2265,3 +2328,58 @@
 //
 //     });
 // }
+
+
+
+								<div class="card">
+											<div class="card-content">
+												<div class="card-content-inner row bg-black color-white smaller_content_padding">
+													<div class="col-50 color-white">EFFORT(ROUND)
+														<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+															
+															</div>
+														</div>
+													<div id="rt_speed_val" class="tab-btn-s color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+												</div>
+											</div>
+											<div class="col-50 color-white">SPEED(ROUND)
+												<div class="row" style="padding-top: 8px; padding-bottom: 1px;">
+													
+													</div>
+												</div>
+												<div id="rt_cad_val" class="tab-btn-c color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="card">
+									<div class="card-content">
+										<div class="card-content-inner row bg-black color-white smaller_content_padding">
+											<div class="col-50 color-white">EFFORT(DAY)
+												<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+													
+													</div>
+												</div>
+											<div id="rt_hr_val" class="tab-btn-h color-white" style="text-align:center; font-weight: bold; font-size: 3.5em">00</a>
+										</div>
+									</div>
+									<div class="col-50 color-white bg-black">SPEED(DAY)
+										<div class="row" style="padding-top: 1px; padding-bottom: 1px;">
+											
+											</div>
+										</div>
+										<div id="rt_round_val" class="color-white bg-red tab-btn-round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div id="timer_btn_game1" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles_game1" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+
+
+
+
+
+

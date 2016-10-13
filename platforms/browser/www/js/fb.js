@@ -183,6 +183,9 @@ function get_combo() {
 
 				//GET TOP CHAMP aka KING
 				$$('#top_king').text(xx2[0].fb_timName);
+				$$('#ldr_effort_round').text(xx2[0].fb_timName);
+				$$('#ldr_effort_round_score').text(xx2[0].fb_RND);
+
 				$$('#me_vs_king_title2').text('Leading: ' +  xx2[0].fb_timName + " (" + xx2[0].fb_RND  + ")"    )  ;
 				$$('#me_vs_king_title').text('ME VS.  ' + xx2[0].fb_timName.toUpperCase() + ' (THE CHAMP) ');
 
@@ -198,6 +201,8 @@ function get_combo() {
 				top_speed_name = xx_speed[0].fb_timName;
 				top_speed_team = xx_speed[0].fb_timTeam;
 				$$('#top_king_speed').text(top_speed_name);
+				$$('#ldr_speed_round').text(top_speed_name);
+				$$('#ldr_speed_round_score').text(top_speed_value);
 				publishTopSpeedUI(xx_speed);
 
 
@@ -461,6 +466,8 @@ function postToTempScoreLeaderboard(tempLdr) {
 		var temp1counter = 0;
 		//console.log('Best Effort of the Day:  ' + tempLdr[0].fb_timName);
 		$$('#top_effort_day').text(tempLdr[0].fb_timName);
+		$$('#ldr_effort_day').text(tempLdr[0].fb_timName);
+		$$('#ldr_effort_day_score').text(tempLdr[0].a_scoreHRTotal);
 
 
 	//COMBO FOR EACH
@@ -494,6 +501,8 @@ console.log('fctn: postToTempSpeedLeaderboard at:  ' + tim.timCalculatedDuration
 		var temp2counter = 0;
 		//console.log('Best Speed Avg for the Day:  ' + tempLdrSpeed[0].fb_timName);
 		$$('#top_speed_day').text(tempLdrSpeed[0].fb_timName);
+		$$('#ldr_speed_day').text(tempLdrSpeed[0].fb_timName);
+		$$('#ldr_speed_day_score').text(tempLdrSpeed[0].a_speedTotal);
 
 		$$('.cls_temp_leaders_speed').remove();
 	//COMBO FOR EACH

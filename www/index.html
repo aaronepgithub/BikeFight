@@ -270,12 +270,17 @@
 					<div data-page="bluetooth" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="close-popup button button-fill color-red">Back</a>
-								<a href="#user" class="close-popup button button-fill color-red">Next</a>
+								<a href="#" class="back close-popup button button-fill color-red">Back</a>
+								<!-- <a href="#user" class="close-popup button button-fill color-red">Next</a> -->
 							</div>
 						</div>
+
+
+
+
 						<div class="page-content bg-black color-white">
 							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+							<div class="bg-black color-white">BLUETOOTH SETUP</div>
 								<p class="buttons-row">
 									<a href="#" class="button tab-link color-white">MPH</a>
 									<a href="#" class="button tab-link color-white">BPM</a>
@@ -321,12 +326,13 @@
 					<div data-page="user" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="cls_update_tim close-popup button button-fill color-red">Back</a>
-								<a href="#champs" class="cls_update_tim close-popup button button-fill color-red">Next</a>
+								<a href="#" class="back cls_update_tim close-popup button button-fill color-red">Back</a>
+								<!-- <a href="#champs" class="cls_update_tim close-popup button button-fill color-red">Next</a> -->
 							</div>
 						</div>
 						<div class="page-content bg-black color-white">
 							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+							<div>USER SETTINGS</div>
 								<div class="list-block layout-dark" style="margin-top: 20px">
 									<!-- Form has additional "store-data" class to enable form storage on this form -->
 									<form id="my-form" class="list-block store-data" style="margin-top: 5px">
@@ -415,11 +421,13 @@
 					<div data-page="teams" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="back close-popup button button-fill color-red">Back</a>
+								<a href="#" class="back close-popup button button-fill color-red">Back</a>
 							</div>
 						</div>
-						<div class="page-content bg-black color-white" style="margin-top:0px"><br>
-							<div class="content-block bg-black" style="margin:10px;">
+
+						<div class="page-content bg-black color-white" style="margin-top:0px"><div class="content-block" style="margin: 2px;">TEAM OWNERS</div><br>
+							<div class="content-block bg-black" style="margin:1px;">
+
 								<!-- LOGOS GO HERE -->
 								<div class="card-header" >
 									<a href="#zen_page"><img src="Zen Bikes.png" style="width:240px;"></a>
@@ -484,13 +492,198 @@
 					</div>
 					<!--champs - END  ***********************************************-->
 
+					<!--game1 - START  ***********************************************-->
+					<div data-page="game1" class="page cached navbar-fixed">
+
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a id = "game1_btn1" href="#" class="back close-popup button button-fill color-red cls_game1a"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>BACK</a>
+								<a id = "game1_btn2" href="#myrounds" class="close-popup button button-fill color-red cls_game1b"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>ME</a>
+							</div>
+						</div>
+
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;margin-left: 4px;margin-right: 4px;padding: 1px">
+
+
+									<div class="card">
+										<div class="card-content">
+											<div class="card-content-inner row bg-black color-white smaller_content_padding">
+												<div class="col-50 color-white">EFFORT(ROUND)
+													
+													<div class="border row color-white cls_effort_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div id="ldr_effort_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
+													<div id="ldr_effort_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
+												</div>
+												<div class="col-50 color-white bg-black">EFFORT(DAY)
+												
+													<div class="border row color-white cls_effort_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div id="ldr_effort_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
+													<div id="ldr_effort_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+
+								<hr>
+									<div class="card">
+										<div class="card-content">
+											<div class="card-content-inner row bg-black color-white smaller_content_padding">
+												<div class="col-50 color-white">SPEED(ROUND)
+													
+													<div class="border row color-white cls_avg_speed_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div id="ldr_speed_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
+													<div id="ldr_speed_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
+												</div>
+												<div class="col-50 color-white bg-black">SPEED(DAY)
+												
+													<div class="border row color-white cls_avg_speed_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div id="ldr_speed_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
+													<div id="ldr_speed_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+						<hr>
+						<div id="timer_btn_game1" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+						<div id="timer_btn_bubbles_game1" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+
+
+
+
+
+
+<!-- 								<br><div style="margin-bottom:35px">EFFORT/ROUND</div>
+								<div class="card bg-black" style="margin-top:5px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+											<div id="game1_page" class="content-block">
+												<div class="cls_game1" style="font-size:3.5em;font-weight: bold;text-align:center"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br> -->
+							</div>
+						</div>
+					</div>
+					<!--game1 - END  ***********************************************-->
+
+					<!--settings2 - START  ***********************************************-->
+					<div data-page="settings2" class="page cached navbar-fixed">
+						<div class="navbar" style="margin-top:5px">
+							<div class="buttons-row" style="margin:7px">
+								<a href="#" class="back close-popup button button-fill color-red"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>BACK</a>
+								<a href="#game1" class="close-popup button button-fill color-red"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>GAMES</a>
+							</div>
+						</div>
+
+
+						<div class="page-content bg-black color-white">
+							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;">
+								<br><div style="margin-bottom:2px">SETTINGS</div>
+								<div class="card bg-black" style="margin-top:2px">
+									<div class="card-content bg-black">
+										<div class="card-content-inner small_content_inner color-white bg-black">
+
+
+<!-- 										<div class="card-header color-white bg-black no-border">
+												<h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
+											</div> -->
+											<hr>
+											<div class="card-content bg-black">
+												<div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
+													<div class="content-block" style="margin:0px">
+														<div class="list-block inset">
+															<ul>
+																<li>
+																	<!-- <a href="#" class="item-link item-content"> -->
+																	<a href="#bluetooth" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Bluetooth</div>
+																			<!-- <div class="item-after">Label</div> -->
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a href="#user" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">User Settings</div>
+																			<!-- <div class="item-after">Label</div> -->
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a id="id_world_champs" href="#game1" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Games</div>
+																		</div>
+																	</a>
+																</li>
+																<li>
+																	<a id="id_team_owners" href="#teams" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-bank fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Team Owners</div>
+																		</div>
+																	</a>
+																</li>
+
+																<li>
+																	<a id="adv_views" href="#" class="item-link item-content">
+																		<div class="item-media"><i class="fa fa-info-circle fa-2x"></i></div>
+																		<div class="item-inner">
+																			<div class="item-title">Advanced</div>
+																		</div>
+																	</a>
+																</li>
+															</ul>
+															
+															<div class="buttons-row bg-black color-white" style="padding: 10px;">
+																<a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
+															</div>
+															<!-- SIMULATOR START -->
+<!-- 															<div class="buttons-row bg-black color-white" style="padding: 10px;">
+																<a id="sim" href="#" class="my_simulator button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Simulate</a>
+															</div> -->
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+<!-- 											<div id="game2_page" class="content-block">
+												<div class="cls_game2" style="font-size:3.5em;font-weight: bold;text-align:center">
+												</div>
+											</div> -->
+										</div>
+									</div>
+								</div>
+								<br><hr><br><div style="margin-bottom:5px"></div>
+								<div class="card-content bg-black">
+								</div><br><br>
+							</div>
+						</div>
+
+
+					</div>
+					<!--settings2 - END  ***********************************************-->
+
 
 
 					<!--champs_speed - START  ***********************************************-->
 					<div data-page="champs_speed" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="close-popup button button-fill color-red">BACK</a>
+								<a href="#" class="back close-popup button button-fill color-red">BACK</a>
 								<a href="#champs" class="close-popup button button-fill color-red">EFFORT</a>
 							</div>
 						</div>
@@ -519,8 +712,8 @@
 					<div data-page="myrounds" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#main" class="close-popup button button-fill color-red">Back</a>
-								<a href="#champs" class="close-popup button button-fill color-red">ALL</a>
+								<a href="#" class="back close-popup button button-fill color-red">Back</a>
+								<a href="#champs" class="close-popup button button-fill color-red">EVERYONE</a>
 							</div>
 						</div>
 						<div class="page-content bg-black color-white">
@@ -667,7 +860,7 @@
 									</div>
 									<div class="buttons-row bg-black color-white" style="padding: 10px;margin-top:45px">
 										<a href="#" data-popup=".popup-learn" class="open-popup button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Learn More</a>
-										<a href="#main" class="button button-fill button-raised color-red cls_notice" style="font-weight: bold; content-align: center;">Get Started</a>
+										<a href="#settings2" class="button button-fill button-raised color-red cls_notice" style="font-weight: bold; content-align: center;">Get Started</a>
 									</div><hr><div class= "button button-fill button-raised color-blue" style="color: white;margin-bottom:35px; font-size=.4em"><a style="color: white" href="#tandc">TERMS AND CONDITIONS</a><hr></div>
 								</div>
 							</div>
@@ -679,8 +872,8 @@
 						<!-- Top Navbar-->
 						<div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
 							<div class="buttons-row bg-black color-white" style="padding: 10px;">
-								<a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Distance</a>
-								<a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Duration</a>
+								<a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>Distance</a>
+								<a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>	Duration</a>
 							</div>
 						</div>
 						<div class="page-content">
@@ -688,67 +881,11 @@
 							<div class="swiper-container swiper-init bg-black color-red" data-speed="400" data-space-between="40" data-pagination=".swiper-pagination"
 								data-prevButton=".swiper-button-prev" data-nextButton=".swiper-button-next">
 								<div class="swiper-wrapper">
-									<!-- #1  Settings -->
-									<div class="swiper-slide bg-black">
-										<div class="card bg-black" style="margin-top:0px">
-											<div class="card-header color-white bg-black no-border">
-												<h3 style="padding:0px;margin-bottom:0px">SETTINGS</h3>
-											</div>
-											<hr>
-											<div class="card-content bg-black">
-												<div class="card-content-inner small_content_inner color-white bg-black" style="padding:8px">
-													<div class="content-block" style="margin:0px">
-														<div class="list-block inset">
-															<ul>
-																<li>
-																	<!-- <a href="#" class="item-link item-content"> -->
-																	<a href="#bluetooth" class="item-link item-content">
-																		<div class="item-media"><i class="fa fa-bluetooth fa-2x"></i></div>
-																		<div class="item-inner">
-																			<div class="item-title">Bluetooth</div>
-																			<!-- <div class="item-after">Label</div> -->
-																		</div>
-																	</a>
-																</li>
-																<li>
-																	<a href="#user" class="item-link item-content">
-																		<div class="item-media"><i class="fa fa-cog fa-2x"></i></div>
-																		<div class="item-inner">
-																			<div class="item-title">User Settings</div>
-																			<!-- <div class="item-after">Label</div> -->
-																		</div>
-																	</a>
-																</li>
-																<li>
-																	<a id="id_world_champs" href="#champs" class="item-link item-content">
-																		<div class="item-media"><i class="fa fa-trophy fa-2x"></i></div>
-																		<div class="item-inner">
-																			<div class="item-title">World Champs</div>
-																		</div>
-																	</a>
-																</li>
-																<li>
-																	<a id="id_team_owners" href="#teams" class="item-link item-content">
-																		<div class="item-media"><i class="fa fa-bank fa-2x"></i></div>
-																		<div class="item-inner">
-																			<div class="item-title">Team Owners</div>
-																		</div>
-																	</a>
-																</li>
-															</ul>
-															<div class="buttons-row bg-black color-white" style="padding: 10px;">
-																<a id="start_btn" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Start</a>
-															</div>
-															<!-- SIMULATOR START -->
-<!-- 															<div class="buttons-row bg-black color-white" style="padding: 10px;">
-																<a id="sim" href="#" class="my_simulator button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Simulate</a>
-															</div> -->
-														</div>
-													</div>
-												</div>
-											</div><hr>
-										</div>
-									</div>
+									
+
+									
+
+
 									<!-- #1  hSwipe -->
 									<div class="swiper-slide">
 										<div class="card">

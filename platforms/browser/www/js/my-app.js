@@ -143,11 +143,17 @@ $$('.my_simulator').on('touchstart', function(e) {
 
 $$('#header_btn1').on('touchstart', function(e) {
 	//console.log('touchstarted hdr1');
-	mainView.router.loadPage("#bluetooth");
+	mainView.router.loadPage("#settings2");
 });
 $$('#header_btn2').on('touchstart', function(e) {
 	//console.log('touchstarted hdr2');
-	mainView.router.loadPage("#champs");
+	mainView.router.loadPage("#game1");
+});
+
+$$('#adv_views').on('touchstart', function(e) {
+	//console.log('touchstarted hdr1');
+	mainView.router.loadPage("#main");
+	//route to swiper
 });
 
 $$('.cls_blue').on('touchstart', function(e) {
