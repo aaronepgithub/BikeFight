@@ -16,20 +16,53 @@ var connectCounter = 0;var connectCounter1 = 0;var connectCounter2 = 0;
 var oldName;
 
 //COMBO - SCAN FOR HR/CSC
-$$('#scanHR').on('click', function() {
-		oldName = '';
-		connectCounter = 0;connectCounter1 = 0;connectCounter2 = 0;
-		$$('.cls_btle_results_li_hr').remove();
-    $$('.cls_btle_results_li_csc').remove();
-    $$('.cls_btle_results_li_velo').remove();
+// $$('#scanHR').on('click', function() {
+
+// 	oldName = '';
+// 	connectCounter = 0;connectCounter1 = 0;connectCounter2 = 0;
+// 	$$('.cls_btle_results_li_hr').remove();
+//     $$('.cls_btle_results_li_csc').remove();
+//     $$('.cls_btle_results_li_velo').remove();
+
+// 	console.log('touchstart: scanner');
+//     myCenterAlert('Scanning...', 10000);
+// 	//scanHR();
+//     //WAIT 5 SECONDS AND THEN START HR FROM VELO
+//     // setTimeout(function(){ scanCSC(); }, 5000);
+//     appII.allScanII();
+//     setTimeout(function(){ appII.allScanCSC(); }, 5000);
+// });
 
 
-	console.log('touchstart: scanner');
-    myCenterAlert('Scanning...', 10000);
-	scanHR();
-    //WAIT 5 SECONDS AND THEN START HR FROM VELO
-    setTimeout(function(){ scanCSC(); }, 5000);
-});
+function scanHR () {
+            console.log('1.  ble.startScan for HR');
+        ble.startScan(['180d'], onDiscoverDevice, onDiscoverFailure);
+
+        setTimeout(ble.stopScan, 5000,
+            function() {
+                console.log("Scan complete");
+                //myCenterAlert('Complete', 500);
+            },
+            function() {
+                console.log("stopScan failed");
+            }
+        );
+}
+
+function scanCSC () {
+            console.log('1.  ble.startScan for CSC');
+        ble.startScan(['1816'], onDiscoverDeviceCSC, onDiscoverFailure);
+
+        setTimeout(ble.stopScan, 5000,
+            function() {
+                console.log("Scan complete");
+                myCenterAlert('Complete', 500);
+            },
+            function() {
+                console.log("stopScan failed");
+            }
+        );
+}
 
 
 function onDiscoverFailure() {
@@ -43,81 +76,97 @@ function onDiscoverDevice(device) {
 
     var n = device.name.toString();
     var a = n.search("Velo");var b = n.search("VELO");var c = n.search("velo");
-    if (a>0 || b>0 || c>0) {
-        isVelo = 1;
-        console.log('isVelo: ' + isVelo );
-        //return;
+
+        if (a>0 || b>0 || c>0) {
+            isVelo = 1;
+            console.log('isVelo: ' + isVelo );
+            //return;
+        }
 
 
-        //START IF VELO
-            $$('#ble_results_ul_velo').on('click', 'a', function() {
-            console.log('click:  Mio Velo to Connect');
+        //START: IF VELO
+   //          $$('#ble_results_ul_velo').on('click', 'a', function() {
+   //          console.log('click:  Mio Velo to Connect');
 
-            var idHR = $$(this).data('id');var idHRName = $$(this).data('name');
-            console.log(idHRName + ' | ' + idHR);
-            //appII.connectHR(idHR.toString());
-            if(mio_item_counter < 1) {
-							console.log("Starting the: " + idHRName + '  ID:  ' + idHR + '  connectVELO');
+   //          var idHRv = $$(this).data('id');var idHRNamev = $$(this).data('name');
+   //          console.log(idHRNamev + ' | ' + idHRv);
+   //          //appII.connectHR(idHR.toString());
+   //          if(mio_item_counter < 1) {
+			// 				console.log("Starting the: " + idHRNamev + '  ID:  ' + idHRv + '  connectVELO');
 
-							if(connectCounter1 < 1) {
-								appII.connectCSC(idHR);
-								//WAIT 5 SECONDS AND THEN START HR FROM VELO
-								setTimeout(function(){ appII.connectHR(idHR); }, 5000);
-								mio_item_counter++;
-								connectCounter1++;
-								$$('.cls_btle_results_li_hr').remove();
-								// $$('.cls_btle_results_li_csc').remove();
-								$$('.cls_btle_results_li_velo').remove();
-								}
-			}
+			// 				if(connectCounter1 < 1) {
+			// 					appII.connectCSC(idHRv);
+			// 					//WAIT 5 SECONDS AND THEN START HR FROM VELO
+			// 					setTimeout(function(){ appII.connectHR(idHRv); }, 5000);
+			// 					mio_item_counter++;
+			// 					connectCounter1++;
+			// 					$$('.cls_btle_results_li_hr').remove();
+			// 					// $$('.cls_btle_results_li_csc').remove();
+			// 					$$('.cls_btle_results_li_velo').remove();
+			// 					}
+			// }
 
-        });
+   //          });
 
 
-        $$('#ble_results_ul_velo').append(
-        '        <li id = "' + device.id + '" class = "cls_btle_results_li_velo color-white">' +
-        '          <a data-service = "180d" data-rssi = "' + device.rssi + '" data-name = "' + device.name + '" data-id = "' + device.id + '" href="#" class="item-link item-content ble-clickme">' +
-        '              <div class="item-media"><i class="fa fa-bluetooth"></i></div>' +
-        '              <div class="item-inner"> ' +
-        '              <div class="item-title-row"> ' +
-        '                  <div class="item-title">' + device.name + '</div> ' +
-        '                  <div class="item-after"><span class="badge">' + device.rssi + '</span></div></div> ' +
-        '              </div> ' +
-        '          </a> ' +
-        '      </li>'
-        );
-        //END APPEND
+   //          $$('#ble_results_ul_velo').append(
+   //          '        <li id = "' + device.id + '" class = "cls_btle_results_li_velo color-white">' +
+   //          '          <a data-service = "180d" data-rssi = "' + device.rssi + '" data-name = "' + device.name + '" data-id = "' + device.id + '" href="#" class="item-link item-content ble-clickme">' +
+   //          '              <div class="item-media"><i class="fa fa-bluetooth"></i></div>' +
+   //          '              <div class="item-inner"> ' +
+   //          '              <div class="item-title-row"> ' +
+   //          '                  <div class="item-title">' + device.name + '</div> ' +
+   //          '                  <div class="item-after"><span class="badge">' + device.rssi + '</span></div></div> ' +
+   //          '              </div> ' +
+   //          '          </a> ' +
+   //          '      </li>'
+   //          );
+   //          //END APPEND
 
-        oldName = device.name.toString();
-        //END IF VELO
+   //          oldName = device.name.toString();
+            //END IF VELO
 
-    } else {
 
-        $$('#ble_results_ul').on('click', 'a', function(e) {
+
+        $$('#ble_results_ul').on('click', 'a', function() {
             console.log('click:  HR Item to Connect');
 
-						if(connectCounter < 1) {
-						var idHR = $$(this).data('id');var idHRName = $$(this).data('name');
-            console.log(idHRName + ' | ' + idHR);
-            appII.connectHR(idHR.toString());
-						connectCounter++;
-						$$('.cls_btle_results_li_hr').remove();
-						// $$('.cls_btle_results_li_csc').remove();
-						$$('.cls_btle_results_li_velo').remove();
-						}
+    		if(connectCounter < 1) {
+    		var idHR1 = $$(this).data('id');
+            var idHRName1 = $$(this).data('name');
+            console.log(idHRName1 + ' | ' + idHR1);
+
+            // CALL ONCE
+            //appII.connectHR(idHR1);
+            appII.connectHR(idHR1.toString());
+            // CALL ONCE
+
+            // var invokeHRConnect = _.once(appII.connectHR(idHR.toString()));
+            // invokeHRConnect();
+
+
+			
+			$$('.cls_btle_results_li_hr').remove();
+			// $$('.cls_btle_results_li_csc').remove();
+			$$('.cls_btle_results_li_velo').remove();
+			connectCounter++;
+            }
 
 
         });
 
+        var ii = device.id;
+        var nn = device.name;
+        var rr = device.rssi;
 
         $$('#ble_results_ul').append(
-        '        <li id = "' + device.id + '" class = "cls_btle_results_li_hr color-white">' +
-        '          <a data-service = "180d" data-rssi = "' + device.rssi + '" data-name = "' + device.name + '" data-id = "' + device.id + '" href="#" class="item-link item-content ble-clickme">' +
+        '        <li class = "cls_btle_results_li_hr color-white">' +
+        '          <a data-service = "180d" data-rssi = "' + rr + '" data-name = "' + nn + '" data-id = "' + ii + '" href="#" class="item-link item-content ble-clickme">' +
         '              <div class="item-media"><i class="fa fa-bluetooth"></i></div>' +
         '              <div class="item-inner"> ' +
         '              <div class="item-title-row"> ' +
-        '                  <div class="item-title">' + device.name + '</div> ' +
-        '                  <div class="item-after"><span class="badge">' + device.rssi + '</span></div></div> ' +
+        '                  <div class="item-title">' + nn + '</div> ' +
+        '                  <div class="item-after"><span class="badge">' + rr + '</span></div></div> ' +
         '              </div> ' +
         '          </a> ' +
         '      </li>'
@@ -126,40 +175,12 @@ function onDiscoverDevice(device) {
 
         oldName = device.name.toString();
 
- }  //END ELSE
+
 
 
 }  //END DISCOVER
 
-function scanHR () {
-    		console.log('1.  ble.startScan for HR');
-		ble.startScan(['180d'], onDiscoverDevice, onDiscoverFailure);
 
-		setTimeout(ble.stopScan, 5000,
-			function() {
-				console.log("Scan complete");
-				//myCenterAlert('Complete', 500);
-			},
-			function() {
-				console.log("stopScan failed");
-			}
-		);
-}
-
-function scanCSC () {
-    		console.log('1.  ble.startScan for CSC');
-		ble.startScan(['1816'], onDiscoverDeviceCSC, onDiscoverFailure);
-
-		setTimeout(ble.stopScan, 5000,
-			function() {
-				console.log("Scan complete");
-				myCenterAlert('Complete', 500);
-			},
-			function() {
-				console.log("stopScan failed");
-			}
-		);
-}
 
 
 
@@ -176,7 +197,7 @@ function onDiscoverDeviceCSC(device) {
         return;
         }
 
-        $$('#ble_results_ul_csc').on('click', 'a', function(e) {
+        $$('#ble_results_ul_csc').on('click', 'a', function() {
             console.log('touchstart:  CSC Item to Connect');
 
             var idCSC = $$(this).data('id');var idCSCName = $$(this).data('name');

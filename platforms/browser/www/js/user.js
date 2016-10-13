@@ -198,7 +198,6 @@ function publishAvg() {
 //START BUTTON
 $$('#start_btn').on('touchstart', function() {
 		var storedData = myApp.formGetData('my-form');
-		// if ( storedData === undefined) {
 		if (!storedData) {
 				myCenterAlertOK('Enter a Name in User Settings');
 				$$(this).show();
