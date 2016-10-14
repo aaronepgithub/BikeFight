@@ -150,6 +150,27 @@ $$('#header_btn2').on('touchstart', function(e) {
 	mainView.router.loadPage("#game1");
 });
 
+
+$$('#game1_btn1').on('touchstart', function(e) {
+	//console.log('touchstarted hdr1');
+	mainView.router.loadPage("#settings2");
+});
+$$('#game1_btn2').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
+	mainView.router.loadPage("#main");
+});
+
+
+$$('#settings2_btn1').on('touchstart', function(e) {
+	//console.log('touchstarted hdr1');
+	mainView.router.loadPage("#game1");
+});
+$$('#settings2_btn2').on('touchstart', function(e) {
+	//console.log('touchstarted hdr2');
+	mainView.router.loadPage("#main");
+});
+
+
 $$('#adv_views').on('touchstart', function(e) {
 	//console.log('touchstarted hdr1');
 	mainView.router.loadPage("#main");

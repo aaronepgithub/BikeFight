@@ -497,8 +497,8 @@
 
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a id = "game1_btn1" href="#" class="back close-popup button button-fill color-red cls_game1a"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>BACK</a>
-								<a id = "game1_btn2" href="#myrounds" class="close-popup button button-fill color-red cls_game1b"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>ME</a>
+								<a id = "game1_btn1" href="#" class="button button-fill color-red cls_game1a"><i class="fa fa-cog fa-pull-left"></i>SETTINGS</a>
+								<a id = "game1_btn2" href="#" class="button button-fill color-red cls_game1b"><i class="fa fa-info-circle fa-pull-right"></i>ADVANCED</a>
 							</div>
 						</div>
 
@@ -506,51 +506,110 @@
 							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;margin-left: 4px;margin-right: 4px;padding: 1px">
 
 
-									<div class="card">
+<!-- 									<div class="card">
 										<div class="card-content">
 											<div class="card-content-inner row bg-black color-white smaller_content_padding">
 												<div class="col-50 color-white">EFFORT(ROUND)
 													
-													<div class="border row color-white cls_effort_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div class="row color-white cls_effort_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
 													<div id="ldr_effort_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
 													<div id="ldr_effort_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
 												</div>
 												<div class="col-50 color-white bg-black">EFFORT(DAY)
 												
-													<div class="border row color-white cls_effort_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div class="row color-white cls_effort_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
 													<div id="ldr_effort_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
 													<div id="ldr_effort_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
 												</div>
 
 											</div>
 										</div>
-									</div>
+									</div> -->
 
 
-								<hr>
-									<div class="card">
+								<!-- <hr> -->
+<!-- 									<div class="card">
 										<div class="card-content">
 											<div class="card-content-inner row bg-black color-white smaller_content_padding">
 												<div class="col-50 color-white">SPEED(ROUND)
 													
-													<div class="border row color-white cls_avg_speed_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div class="row color-white cls_avg_speed_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
 													<div id="ldr_speed_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
 													<div id="ldr_speed_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
 												</div>
 												<div class="col-50 color-white bg-black">SPEED(DAY)
 												
-													<div class="border row color-white cls_avg_speed_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
+													<div class="row color-white cls_avg_speed_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
 													<div id="ldr_speed_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
 													<div id="ldr_speed_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
 												</div>
 
 											</div>
 										</div>
-									</div>
-						<hr>
-						<div id="timer_btn_game1" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
-						<div id="timer_btn_bubbles_game1" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+									</div> -->
+						<!-- <hr> -->
+						<!-- <div id="timer_btn_game1" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div> -->
+						<!-- <div id="timer_btn_bubbles_game1" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
 
+
+<!-- START -->
+<div class="card bg-black" style="margin-top:0px">
+
+	<div><h5 class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">LEADERBOARD</h5><hr></div>
+	
+	<div class="card-content bg-black">
+	<h5 id="cls_title_roundLeader" style="margin-top: 2px;margin-bottom: 2px" >5 MINUTE CRIT <em>(YOU VS. THE LEADER)</em></h5>
+		<div class="card-content-inner small_content_inner color-white bg-black">
+				<div class="row cls_ld1">
+					<div class="col-25 cls_center_i"><i class="fa fa-heartbeat"></i></div>
+					<div class="bg-red col-50 cls_center cls_effort_round">00</div>
+					<div id="ldr_effort_round_score" class="col-25 cls_center_avg">00</div>
+				</div>
+				<div class="row cls_ld2">
+					<div class="col-25 cls_center_i"><i class="fa fa-dashboard"></i></div>
+					<div class="col-50 cls_center cls_avg_speed_round">00</div>
+					<div id="ldr_speed_round_score" class="col-25 cls_center_avg">00</div>
+				</div>
+		</div><hr>
+	</div>
+
+	<div class="card-content bg-black">
+	<h5 id="cls_title_dayLeader" style="margin-top: 2px;margin-bottom: 2px">ALL DAY CRIT <em>(YOU VS. THE LEADER)</em></h5>
+	<div class="card-content-inner small_content_inner color-white bg-black">
+			<div class="row cls_ld3">
+				<div class="col-25 cls_center_i"><i class="fa fa-heartbeat"></i></div>
+				<div class="bg-red col-50 cls_center cls_effort_total">00</div>
+				<div id="ldr_effort_day_score" class="col-25 cls_center_avg">00</div>
+			</div>
+			<div class="row cls_ld4">
+				<div class="col-25 cls_center_i"><i class="fa fa-dashboard"></i></div>
+				<div class="col-50 cls_center cls_avg_speed_total">00</div>
+				<div id="ldr_speed_day_score" class="col-25 cls_center_avg">00</div>
+			</div>
+	</div><hr>
+</div>
+
+
+</div>
+
+<!-- 							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rthr1"><i class="fa fa-heartbeat"></i></div>
+								<div class="col-auto cls_center cls_rthr2">00</div>
+								<div class="col-auto cls_center_avg cls_rthr3 tab-btn-h">00</div>
+							</div><hr>
+							<div class="row cls_rts">
+								<div class="col-auto cls_center cls_rtrnd1"><i class="fa fa-bullseye"></i></div>
+								<div class="col-auto cls_center cls_rtrnd2 bg-red tab-btn-round" style = "font-size 3.5em">00</div>
+								
+							</div> -->
+<!-- 							<div id="RTJ" class="card-header">
+							</div> -->
+						
+						
+						<div id="timer_btn_bubbles200" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div>
+						<div id="timer_btn200" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div>
+					
+<!-- END -->
 
 
 
@@ -578,8 +637,8 @@
 					<div data-page="settings2" class="page cached navbar-fixed">
 						<div class="navbar" style="margin-top:5px">
 							<div class="buttons-row" style="margin:7px">
-								<a href="#" class="back close-popup button button-fill color-red"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>BACK</a>
-								<a href="#game1" class="close-popup button button-fill color-red"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>GAMES</a>
+								<a id="settings2_btn1" href="#" class="button button-fill color-red"><i class="fa fa-trophy fa-pull-left"></i>GAMES</a>
+								<a id="settings2_btn2" href="#" class="button button-fill color-red"><i class="fa fa-info-circle fa-pull-right"></i>INFO</a>
 							</div>
 						</div>
 
@@ -654,7 +713,7 @@
 <!-- 															<div class="buttons-row bg-black color-white" style="padding: 10px;">
 																<a id="sim" href="#" class="my_simulator button button-fill button-raised color-red" style="font-weight: bold; content-align: center;">Simulate</a>
 															</div> -->
-														</div>
+														</div><br><hr><br>
 													</div>
 												</div>
 											</div>
@@ -870,8 +929,8 @@
 						<!-- Top Navbar-->
 						<div class="navbar center bg-black color-white" style="text-align: center; font-weight: bold;">
 							<div class="buttons-row bg-black color-white" style="padding: 10px;">
-								<a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-chevron-circle-left fa-2x fa-pull-left"></i>Distance</a>
-								<a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>	Duration</a>
+								<a id="header_btn1" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-cog fa-pull-left"></i>Distance</a>
+								<a id="header_btn2" href="#" class="button button-fill button-raised color-red" style="font-weight: bold; content-align: center;"><i class="fa fa-trophy fa-pull-right"></i>Duration</a>
 							</div>
 						</div>
 						<div class="page-content">
@@ -951,12 +1010,19 @@
 								<!-- </div> -->
 
 					<!-- <div><h5 class="bg-black color-white" style="color-white;margin-top:8px;margin-bottom:1px">BEST AVG SPEED/DAY:</h5></div> -->
-					<div id="me_vs_king_title2" class="bg-black color-white" style="color-white;margin-top:0px;font-size:1.5em;font-weight:bold"></div>
+					<div id="me_vs_king_title2" class="bg-black color-white" style="color-white;margin-top:10px;font-size:1.5em;font-weight:bold"></div>
 
+
+							<div class="buttons-row bg-black color-white" style="padding-top: 5px;">
+								<a href="#" class="button button-fill button-raised color-blue cls_blue" style="font-weight: bold; content-align: center;">A</a>
+								<a href="#" class="button button-fill button-raised color-yellow cls_yellow" style="font-weight: bold; content-align: center;">B</a>
+								<a href="#" class="button button-fill button-raised color-green cls_green" style="font-weight: bold; content-align: center;">C</a>
+								<!-- <a href="#" class="button button-fill button-raised color-pink" style="font-weight: bold; content-align: center;">D</a> -->
+							</div>
 
 
 							<div class="card-content">
-								<div class="card-content-inner row bg-black color-white">
+								<div class="card-content-inner row bg-black color-white" style="padding-top: 35px;padding-left: 15px;padding-right: 15px;">
 									<div class="col-50 color-white">EFFORT SCORE
 										<div class="row" style="padding-top: 8px; padding-bottom: 15px;">
 											<div id="round_score_bubbles" class="col-100" style="padding-left:5px;padding:right:5px"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>    </div>

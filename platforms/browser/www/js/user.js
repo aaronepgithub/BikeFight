@@ -271,8 +271,8 @@ function newTimer(count) {
 				var date = new Date(null);
 				var tmr1 = date.setSeconds(calcTotalSeconds); // specify value for SECONDS here
 				var tmr2 = date.toISOString().substr(11, 8);
-				$$('#header_btn2').text(tmr2);
-				$$('#game1_btn2').html(tmr2 + '<i class="fa fa-chevron-circle-right fa-2x fa-pull-right"></i>');
+				$$('#header_btn2').html('<i class="fa fa-trophy fa-pull-right"></i>' + tmr2);
+				$$('#game1_btn2').html('<i class="fa fa-info-circle fa-pull-right"></i>' + tmr2);
 				tim.timCalculatedDuration = tmr2;
 		}
 
