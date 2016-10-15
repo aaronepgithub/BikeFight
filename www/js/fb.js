@@ -205,6 +205,15 @@ function get_combo() {
 				$$('#ldr_speed_round_score').text(top_speed_value);
 				publishTopSpeedUI(xx_speed);
 
+				popupLdr.sprintName = top_king_name;
+				popupLdr.sprintScore = top_king_rnd;
+				popupLdr.sprintSpeedName = top_speed_name;
+				popupLdr.sprintSpeedScore =top_speed_value;
+
+				myLdr.sprintScore = tim.timLastRND;
+				myLdr.sprintSpeedScore = tim.timLastSPD;
+
+
 
 
 				function publishTopSpeedUI(xxx_speed) {
@@ -469,6 +478,11 @@ function postToTempScoreLeaderboard(tempLdr) {
 		$$('#ldr_effort_day').text(tempLdr[0].fb_timName);
 		$$('#ldr_effort_day_score').text(tempLdr[0].a_scoreHRTotal);
 
+				popupLdr.alldayName = tempLdr[0].fb_timName;
+				popupLdr.alldayScore = tempLdr[0].a_scoreHRTotal;
+				myLdr.alldayScore = scoreHRTotal;
+
+
 
 	//COMBO FOR EACH
 	_.forEach(tempLdr, function(value, key) {
@@ -503,6 +517,10 @@ console.log('fctn: postToTempSpeedLeaderboard at:  ' + tim.timCalculatedDuration
 		$$('#top_speed_day').text(tempLdrSpeed[0].fb_timName);
 		$$('#ldr_speed_day').text(tempLdrSpeed[0].fb_timName);
 		$$('#ldr_speed_day_score').text(tempLdrSpeed[0].a_speedTotal);
+
+				popupLdr.alldaySpeedName = tempLdrSpeed[0].fb_timName;
+				popupLdr.alldaySpeedScore =tempLdrSpeed[0].a_speedTotal;
+				myLdr.alldaySpeedScore = tim.timAvgSPDtotal;
 
 		$$('.cls_temp_leaders_speed').remove();
 	//COMBO FOR EACH

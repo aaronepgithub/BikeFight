@@ -1,3 +1,72 @@
+top_king_name = 'Epstein';
+top_king_rnd = 99.0;
+top_king_spd = 22.2;
+
+function popupLeaderboard() {
+	myApp.modal({
+			title: 	'	<div>4 Minutes Remain.<hr> ' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders</span> <br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + top_king_name + ' (' + top_king_rnd + ' %Max)<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + top_king_name + ' (' + top_king_spd + ' Mi/hr)<br><hr>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
+					'	<i class="fa fa-heartbeat"></i> ' + top_king_name + ' (' + top_king_rnd + ' %Max)<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + top_king_name + ' (' + top_king_spd + ' Mi/hr)<br><hr>' +
+					'	</div> '
+	});
+
+	setTimeout(function() {
+			myApp.closeModal();
+
+	}, 10000);
+}
+
+
+function popupMyLeaderboard() {
+	myApp.modal({
+			title: 	'	<div>3 Minutes Remain.<hr> ' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit</span> <br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + top_king_name + ' (' + top_king_rnd + ' %Max)<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + top_king_name + ' (' + top_king_spd + ' Mi/hr)<br><hr>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My All-Day Crit</span> <br>' +
+					'	<i class="fa fa-heartbeat"></i> ' + top_king_name + ' (' + top_king_rnd + ' %Max)<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + top_king_name + ' (' + top_king_spd + ' Mi/hr)<br><hr>' +
+					'	</div> '
+	});
+
+	setTimeout(function() {
+			myApp.closeModal();
+
+	}, 10000);
+}
+
+
+
+
+					// // '	The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+					// 					'	The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name + '</span> ' +
+					// '	from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span> ' +
+					// 					'	The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name + '</span> ' +
+					// '	from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span> ' +
+
+
+						// 				if (tim.timNumberofRounds >= 0) {
+						// 		console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						// 		//console.log(strFourMinutes);
+						// 		if (tim.timStyle !== "NO") {
+						// 				TTS
+						// 					.speak({
+						// 							text: strFourMinutes,
+						// 							locale: 'en-GB',
+						// 							rate: 1.5
+						// 					}, function() {
+						// 							console.log('TTS240 SUCCESS');
+						// 					}, function(reason) {
+						// 							console.log('TTS240 FAILURE:  ' + reason);
+						// 					});
+						// 		} //TTS
+						// }
+
+
 //Unused
 
 // <!-- #1  Settings -->

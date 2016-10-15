@@ -1,3 +1,94 @@
+function popupLeaderboard() {
+	var str_popupLeaderboard = '4 minutes remain.  ' +
+		'Sprint Crit Leader is: ' + popupLdr.sprintName +
+		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
+		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName + 
+		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore;
+
+
+	myApp.modal({
+			title: 	'	<div>4 Minutes Remain.<hr> ' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders</span> <br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + popupLdr.sprintName + ' (' + popupLdr.sprintScore + ' %Max)<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + popupLdr.sprintSpeedName + ' (' + popupLdr.sprintSpeedScore  + ' Mi/hr)<br><hr>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
+					'	<i class="fa fa-heartbeat"></i> ' + popupLdr.alldayName + ' (' + popupLdr.alldayScore + ' %Max)<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + popupLdr.alldaySpeedName + ' (' + popupLdr.alldaySpeedScore + ' Mi/hr)<br><hr>' +
+					'	</div> '
+	});
+
+	setTimeout(function() {
+			myApp.closeModal();
+
+			if (tim.timNumberofRounds >= 0) {
+		console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+		//console.log(strFourMinutes);
+		if (tim.timStyle !== "NO") {
+				TTS
+					.speak({
+							text: str_popupLeaderboard,
+							locale: 'en-GB',
+							rate: 1.5
+					}, function() {
+							console.log('TTS240 SUCCESS');
+					}, function(reason) {
+							console.log('TTS240 FAILURE:  ' + reason);
+					});
+		} //TTS
+}
+
+
+	}, 10000);
+}
+
+
+function popupMyLeaderboard() {
+		var str_popupMyLeaderboard = '2 minutes remain.  ' +
+		'.  Sprint Crit Score is: ' + myLdr.sprintScore +
+		'.  Sprint Crit Speed Leader Score is ' + myLdr.sprintSpeedScore  +
+		'.  All-Day Crit Score is: ' + myLdr.alldayScore +
+		'.  All-Day Crit Speed is ' + myLdr.alldaySpeedScore;
+
+
+	myApp.modal({
+			title: 	'	<div>2 Minutes Remain.<hr> ' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit</span> <br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + myLdr.sprintName + ' (' + myLdr.sprintScore + ' %Max)<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + myLdr.sprintSpeedName + ' (' + myLdr.sprintSpeedScore  + ' Mi/hr)<br><hr>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
+					'	<i class="fa fa-heartbeat"></i> ' + myLdr.alldayName + ' (' + myLdr.alldayScore + ' %Max)<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + myLdr.alldaySpeedName + ' (' + myLdr.alldaySpeedScore + ' Mi/hr)<br><hr>' +
+					'	</div> '
+	});
+
+	setTimeout(function() {
+			myApp.closeModal();
+
+
+						if (tim.timNumberofRounds >= 0) {
+		console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+		//console.log(strFourMinutes);
+		if (tim.timStyle !== "NO") {
+				TTS
+					.speak({
+							text: str_popupMyLeaderboard,
+							locale: 'en-GB',
+							rate: 1.5
+					}, function() {
+							console.log('TTS120 SUCCESS');
+					}, function(reason) {
+							console.log('TTS120 FAILURE:  ' + reason);
+					});
+		} //TTS
+}
+
+
+
+	}, 10000);
+}
+
+
+
 //START ME VS MY BEST ROUND TODAY
 function ui_report10(rnd1, spd1, cad1, hr1) {
 	$$('#ui_report10').html(

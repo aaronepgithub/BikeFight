@@ -62,6 +62,28 @@ var tim = {
 		timMaxHR: 0
 };
 
+var popupLdr = {
+	sprintName: '',
+	sprintScore: 0,
+	sprintSpeedName: '',
+	sprintSpeedScore: 0,
+	alldayName: '',
+	alldayScore: 0,
+	alldaySpeedName: '',
+	alldaySpeedScore: 0
+};
+
+var myLdr = {
+	sprintName: tim.timName,
+	sprintScore: 0,
+	sprintSpeedName: tim.timName,
+	sprintSpeedScore: 0,
+	alldayName: tim.timName,
+	alldayScore: 0,
+	alldaySpeedName: tim.timName,
+	alldaySpeedScore: 0
+};
+
 
 var objScores = {};
 var createAvgRoundScore = [];
@@ -349,7 +371,7 @@ function newTimer(count) {
 
 		if (count === 275) {
 				myApp.modal({
-						title: '<div>A New Round Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+						title: '<div>A New Sprint Criterium Has Just Started.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
 								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
 								'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
 				});
@@ -366,7 +388,7 @@ function newTimer(count) {
 						if (storedDataTTS.style !== "NO") {
 								TTS
 									.speak({
-											text: 'Get Moving.  A new round just started.  Your last round had a score of ' + Math.round(tim.timLastRND),
+											text: 'Get Moving.  A new Sprint Criterium just started.  Your last Criterium had a score of ' + Math.round(tim.timLastRND),
 											locale: 'en-GB',
 											rate: 1.5
 									}, function() {
@@ -381,30 +403,33 @@ function newTimer(count) {
 
 		if (count === 240) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-				myApp.modal({
-						title: '<div>4 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-								'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-				});
-				setTimeout(function() {
-						myApp.closeModal();
-						if (tim.timNumberofRounds >= 0) {
-								console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								//console.log(strFourMinutes);
-								if (tim.timStyle !== "NO") {
-										TTS
-											.speak({
-													text: strFourMinutes,
-													locale: 'en-GB',
-													rate: 1.5
-											}, function() {
-													console.log('TTS240 SUCCESS');
-											}, function(reason) {
-													console.log('TTS240 FAILURE:  ' + reason);
-											});
-								} //TTS
-						}
-				}, 5000);
+				
+
+				popupLeaderboard();
+				// myApp.modal({
+				// 		title: '<div>4 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+				// 				'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+				// 				'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+				// });
+				// setTimeout(function() {
+				// 		myApp.closeModal();
+				// 		if (tim.timNumberofRounds >= 0) {
+				// 				console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+				// 				//console.log(strFourMinutes);
+				// 				if (tim.timStyle !== "NO") {
+				// 						TTS
+				// 							.speak({
+				// 									text: strFourMinutes,
+				// 									locale: 'en-GB',
+				// 									rate: 1.5
+				// 							}, function() {
+				// 									console.log('TTS240 SUCCESS');
+				// 							}, function(reason) {
+				// 									console.log('TTS240 FAILURE:  ' + reason);
+				// 							});
+				// 				} //TTS
+				// 		}
+				// }, 5000);
 		}
 
 
@@ -425,7 +450,8 @@ function newTimer(count) {
 								if (tim.timStyle !== "NO") {
 										TTS
 											.speak({
-													text: strThreeMinutes,
+													//text: strThreeMinutes,
+													text: '3 Minutes Remain',
 													locale: 'en-GB',
 													rate: 1.5
 											}, function() {
@@ -442,29 +468,32 @@ function newTimer(count) {
 
 		if (count === 120) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-				myApp.modal({
-						title: '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-								'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-				});
-				setTimeout(function() {
-						myApp.closeModal();
-						if (tim.timNumberofRounds >= 1) {
-								console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								if (tim.timStyle !== "NO") {
-										TTS
-											.speak({
-													text: strTwoMinutes,
-													locale: 'en-GB',
-													rate: 1.5
-											}, function() {
-													console.log('TTS120 SUCCESS');
-											}, function(reason) {
-													console.log('TTS120 FAILURE:  ' + reason);
-											});
-								} //TTS
-						}
-				}, 5000);
+
+				popupMyLeaderboard();
+
+				// myApp.modal({
+				// 		title: '<div>2 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+				// 				'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+				// 				'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+				// });
+				// setTimeout(function() {
+				// 		myApp.closeModal();
+				// 		if (tim.timNumberofRounds >= 1) {
+				// 				console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+				// 				if (tim.timStyle !== "NO") {
+				// 						TTS
+				// 							.speak({
+				// 									text: strTwoMinutes,
+				// 									locale: 'en-GB',
+				// 									rate: 1.5
+				// 							}, function() {
+				// 									console.log('TTS120 SUCCESS');
+				// 							}, function(reason) {
+				// 									console.log('TTS120 FAILURE:  ' + reason);
+				// 							});
+				// 				} //TTS
+				// 		}
+				// }, 5000);
 		}
 
 
@@ -484,7 +513,8 @@ function newTimer(count) {
 								if (tim.timStyle !== "NO") {
 										TTS
 												.speak({
-														text: strOneMinute,
+														//text: strOneMinute,
+														text: 'Final Minute of this Sprint Criterium',
 														locale: 'en-GB',
 														rate: 1.5
 												}, function() {
