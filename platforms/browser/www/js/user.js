@@ -74,13 +74,9 @@ var popupLdr = {
 };
 
 var myLdr = {
-	sprintName: tim.timName,
 	sprintScore: 0,
-	sprintSpeedName: tim.timName,
 	sprintSpeedScore: 0,
-	alldayName: tim.timName,
 	alldayScore: 0,
-	alldaySpeedName: tim.timName,
 	alldaySpeedScore: 0
 };
 
@@ -403,7 +399,7 @@ function newTimer(count) {
 
 		if (count === 240) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-				
+
 
 				popupLeaderboard();
 				// myApp.modal({
@@ -438,7 +434,7 @@ function newTimer(count) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
 				myApp.modal({
 						title: '<div>3 Minutes Remain.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+								'<br></span> Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
 								'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
 				});
 				setTimeout(function() {

@@ -505,68 +505,25 @@
 						<div class="page-content bg-black color-white">
 							<div class="content-block bg-black" style="margin-top:2px;margin-bottom:4px;margin-left: 4px;margin-right: 4px;padding: 1px">
 
-
-<!-- 									<div class="card">
-										<div class="card-content">
-											<div class="card-content-inner row bg-black color-white smaller_content_padding">
-												<div class="col-50 color-white">EFFORT(ROUND)
-													
-													<div class="row color-white cls_effort_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-													<div id="ldr_effort_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
-													<div id="ldr_effort_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
-												</div>
-												<div class="col-50 color-white bg-black">EFFORT(DAY)
-												
-													<div class="row color-white cls_effort_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-													<div id="ldr_effort_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
-													<div id="ldr_effort_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
-												</div>
-
-											</div>
-										</div>
-									</div> -->
-
-
-								<!-- <hr> -->
-<!-- 									<div class="card">
-										<div class="card-content">
-											<div class="card-content-inner row bg-black color-white smaller_content_padding">
-												<div class="col-50 color-white">SPEED(ROUND)
-													
-													<div class="row color-white cls_avg_speed_round" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-													<div id="ldr_speed_round" class="row" style="padding-top: 1px; padding-bottom: 1px;font-size: small;">LEADER'S NAME</div>
-													<div id="ldr_speed_round_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
-												</div>
-												<div class="col-50 color-white bg-black">SPEED(DAY)
-												
-													<div class="row color-white cls_avg_speed_total" style="text-align:center; font-weight: bold; font-size: 3.5em">00</div>
-													<div id="ldr_speed_day" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S NAME</div>
-													<div id="ldr_speed_day_score" class="row" style="padding-top: 1px; padding-bottom: 1px; font-size: small;">LEADER'S SCORE</div>
-												</div>
-
-											</div>
-										</div>
-									</div> -->
-						<!-- <hr> -->
-						<!-- <div id="timer_btn_game1" class="color-white timer_btn_cls" style="text-align: center">300 SECOND ROUND</div> -->
-						<!-- <div id="timer_btn_bubbles_game1" class="cls_timer_bubbles color-white" style="text-align: center; padding-top: 5px; padding-bottom: 15px;"><i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i>                                        <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i> <i class="fa fa-circle fa-2x"></i></div> -->
-
-
 <!-- START -->
 <div class="card bg-black" style="margin-top:0px">
 
 	<div><h5 class="bg-black color-white my_simulator" style="color-white;margin-top:8px;margin-bottom:1px">LEADERBOARD</h5><hr></div>
 	
 	<div class="card-content bg-black">
-	<h5 id="cls_title_roundLeader" style="margin-top: 2px;margin-bottom: 2px" >5 MINUTE CRIT <em>(YOU VS. THE LEADER)</em></h5>
+	<h5 id="cls_title_roundLeader" style="margin-top: 2px;margin-bottom: 2px" ><i class="fa fa-clock-o"></i> 5 MINUTE CRIT <em id = "em1">(YOU VS. THE LEADER)</em></h5>
 		<div class="card-content-inner small_content_inner color-white bg-black">
 				<div class="row cls_ld1">
-					<div class="col-25 cls_center_i"><i class="fa fa-heartbeat"></i></div>
+					<div class="col-5 cls_center_i"><i class="fa fa-clock-o"></i></div>
+					<div class="col-5 cls_center_i"><i class="fa fa-heartbeat"></i></div>
+					<div class="col-5">  </div>
 					<div class="bg-red col-50 cls_center cls_effort_round">00</div>
 					<div id="ldr_effort_round_score" class="col-25 cls_center_avg">00</div>
 				</div>
 				<div class="row cls_ld2">
-					<div class="col-25 cls_center_i"><i class="fa fa-dashboard"></i></div>
+					<div class="col-5 cls_center_i"><i class="fa fa-clock-o"></i></div>
+					<div class="col-5 cls_center_i"><i class="fa fa-heartbeat"></i></div>
+					<div class="col-5">  </div>
 					<div class="col-50 cls_center cls_avg_speed_round">00</div>
 					<div id="ldr_speed_round_score" class="col-25 cls_center_avg">00</div>
 				</div>
@@ -574,7 +531,7 @@
 	</div>
 
 	<div class="card-content bg-black">
-	<h5 id="cls_title_dayLeader" style="margin-top: 2px;margin-bottom: 2px">ALL DAY CRIT <em>(YOU VS. THE LEADER)</em></h5>
+	<h5 id="cls_title_dayLeader" style="margin-top: 2px;margin-bottom: 2px">ALL DAY CRIT <em id = "em2">(YOU VS. THE LEADER)</em></h5>
 	<div class="card-content-inner small_content_inner color-white bg-black">
 			<div class="row cls_ld3">
 				<div class="col-25 cls_center_i"><i class="fa fa-heartbeat"></i></div>

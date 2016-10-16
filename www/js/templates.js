@@ -13,11 +13,11 @@ function popupLeaderboard() {
 	myApp.modal({
 			title: 	'	<div>4 Minutes Remain.<hr> ' +
 					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders</span> <br>' +
-					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + popupLdr.sprintName + ' (' + popupLdr.sprintScore + ' %Max)<br>' +
-					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + popupLdr.sprintSpeedName + ' (' + popupLdr.sprintSpeedScore  + ' Mi/hr)<br><hr>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + popupLdr.sprintName + ' (' + popupLdr.sprintScore + ')<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + popupLdr.sprintSpeedName + ' (' + popupLdr.sprintSpeedScore  + ')<br><hr>' +
 					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
-					'	<i class="fa fa-heartbeat"></i> ' + popupLdr.alldayName + ' (' + popupLdr.alldayScore + ' %Max)<br>' +
-					'	<i class="fa fa-dashboard"></i> ' + popupLdr.alldaySpeedName + ' (' + popupLdr.alldaySpeedScore + ' Mi/hr)<br><hr>' +
+					'	<i class="fa fa-heartbeat"></i> ' + popupLdr.alldayName + ' (' + popupLdr.alldayScore + ')<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + popupLdr.alldaySpeedName + ' (' + popupLdr.alldaySpeedScore + ')<br><hr>' +
 					'	</div> '
 	});
 
@@ -48,11 +48,11 @@ function popupLeaderboard() {
 
 function popupMyLeaderboard() {
 		var str_popupMyLeaderboard = '2 minutes remain.  ' +
-		'.  My Last Sprint Crit Score was: ' + myLdr.sprintScore +
-		'.  My Last Sprint Crit Speed was ' + myLdr.sprintSpeedScore  +
+		'.  My Last Sprint Crit Score was: ' + myLdr.sprintScore + ' , ranking number ' + rank1 +
+		'.  My Last Sprint Crit Speed was ' + myLdr.sprintSpeedScore  + ' , ranking number ' + rank2 +
 
- 		'.  My Crit Score Average for the day is: ' + myLdr.alldayScore +
- 		'.  My Crit Speed Average for the day is: ' + myLdr.alldaySpeedScore;
+ 		'.  My Crit Score Average is: ' + myLdr.alldayScore + ' , ranking number ' + rank3 +
+ 		'.  My Average Speed is: ' + myLdr.alldaySpeedScore + ' , ranking number ' + rank4;
 
 // 		'.  My All-Day Crit Score is: ' + myLdr.alldayScore +
 // 		'.  My All-Day Crit Speed is ' + myLdr.alldaySpeedScore;
@@ -62,11 +62,11 @@ function popupMyLeaderboard() {
 	myApp.modal({
 			title: 	'	<div>2 Minutes Remain.<hr> ' +
 					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit</span> <br>' +
-					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + myLdr.sprintName + ' (' + myLdr.sprintScore + ' %Max)<br>' +
-					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + myLdr.sprintSpeedName + ' (' + myLdr.sprintSpeedScore  + ' Mi/hr)<br><hr>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + myLdr.sprintScore + ' #' + rank1 + '<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + myLdr.sprintSpeedScore  + ' #' + rank2 + '<br><hr>' +
 					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
-					'	<i class="fa fa-heartbeat"></i> ' + myLdr.alldayName + ' (' + myLdr.alldayScore + ' %Max)<br>' +
-					'	<i class="fa fa-dashboard"></i> ' + myLdr.alldaySpeedName + ' (' + myLdr.alldaySpeedScore + ' Mi/hr)<br><hr>' +
+					'	<i class="fa fa-heartbeat"></i> ' + myLdr.alldayScore + ' #' + rank3 + '<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + myLdr.alldaySpeedScore + ' #' + rank4 + '<br><hr>' +
 					'	</div> '
 	});
 

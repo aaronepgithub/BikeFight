@@ -214,7 +214,8 @@ function get_combo() {
 				myLdr.sprintScore = tim.timLastRND;
 				myLdr.sprintSpeedScore = tim.timLastSPD;
 
-
+				$$('#em1').text('me vs.  ' + xx2[0].fb_timName);
+				$$('#em2').text('me vs.  ' + xx_speed[0].fb_timName);
 
 
 				function publishTopSpeedUI(xxx_speed) {
