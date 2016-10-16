@@ -403,7 +403,7 @@ function newTimer(count) {
 
 		if (count === 240) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
-				
+
 
 				popupLeaderboard();
 				// myApp.modal({

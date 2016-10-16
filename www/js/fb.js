@@ -12,9 +12,9 @@ var rank4;
 
 //DATE FUNCTION
 var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1; //January is 0!
-var yyyy = today.getFullYear();
+var dd = today.getDate().toString();
+var mm = (today.getMonth() + 1).toString(); //January is 0!
+var yyyy = today.getFullYear().toString();
 if (dd < 10) {
 		dd = '0' + dd;
 }
@@ -40,9 +40,9 @@ function round_post(r1, r2, r3, r4) {
 		if (r1 !== 0) {
 
 				var today2 = new Date();
-				var dd2 = today.getDate();
-				var mm2 = today.getMonth() + 1; //January is 0!
-				var yyyy2 = today.getFullYear();
+				var dd2 = today.getDate().toString();
+				var mm2 = (today.getMonth() + 1).toString(); //January is 0!
+				var yyyy2 = today.getFullYear().toString();
 				if (dd2 < 10) {
 						dd2 = '0' + dd2;
 				}
@@ -82,9 +82,9 @@ function totals_post() {
 		if (scoreHRTotal >= 0) {
 
 				var today2 = new Date();
-				var dd2 = today.getDate();
-				var mm2 = today.getMonth() + 1; //January is 0!
-				var yyyy2 = today.getFullYear();
+				var dd2 = today.getDate().toString();
+				var mm2 = (today.getMonth() + 1).toString();
+				var yyyy2 = today.getFullYear().toString();
 				if (dd2 < 10) {
 						dd2 = '0' + dd2;
 				}
