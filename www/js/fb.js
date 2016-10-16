@@ -124,7 +124,8 @@ var dataSize;
 //START GETCOMBO GETJSON
 function get_combo() {
 		console.log('Fctn get_combo at:  ' + tim.timCalculatedDuration);
-		$$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+		// $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+			$$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
 			console.log('getJSON, rounds:  ' + tim.timCalculatedDuration);
 
 				var xx1 = _.values(data);
@@ -381,7 +382,9 @@ function getTotals() {
 console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 
 
-$$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
+// $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
+	$$.getJSON('https://virtualcrit-47b94.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
+
 		console.log('getJSON, totals at:  ' + tim.timCalculatedDuration);
 
 		var xTotals1 = _.values(data);

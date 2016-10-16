@@ -514,7 +514,7 @@ function newTimer(count) {
 										TTS
 												.speak({
 														//text: strOneMinute,
-														text: 'Final Minute of this Sprint Criterium',
+														text: 'Final Minute',
 														locale: 'en-GB',
 														rate: 1.5
 												}, function() {

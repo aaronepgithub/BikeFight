@@ -1,9 +1,11 @@
 function popupLeaderboard() {
 	var str_popupLeaderboard = '4 minutes remain.  ' +
-		'Sprint Crit Leader is: ' + popupLdr.sprintName +
+		'	Sprint Crit Leader is: ' + popupLdr.sprintName +
 		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
 		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName + 
-		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore;
+		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore +
+		'.  All-Day Crit Leader is ' + popupLdr.alldayName +
+		'.  All-Day Speed Leader is ' + popupLdr.alldaySpeedName;
 
 
 	myApp.modal({
@@ -44,10 +46,10 @@ function popupLeaderboard() {
 
 function popupMyLeaderboard() {
 		var str_popupMyLeaderboard = '2 minutes remain.  ' +
-		'.  Sprint Crit Score is: ' + myLdr.sprintScore +
-		'.  Sprint Crit Speed Leader Score is ' + myLdr.sprintSpeedScore  +
-		'.  All-Day Crit Score is: ' + myLdr.alldayScore +
-		'.  All-Day Crit Speed is ' + myLdr.alldaySpeedScore;
+		'.  My Last Sprint Crit Score was: ' + myLdr.sprintScore +
+		'.  My Last Sprint Crit Speed was ' + myLdr.sprintSpeedScore  +
+		'.  My Crit Score Average for the day is: ' + myLdr.alldayScore +
+		'.  My Crit Speed Average for the day is: ' + myLdr.alldaySpeedScore;
 
 
 	myApp.modal({

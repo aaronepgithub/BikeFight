@@ -1495,7 +1495,7 @@
 </div>
 <!--END FRAMEWORK7 CLOSE TAGS  **************-->
 <!--INLINE JS START  ***********************************************-->
-<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script>
 		// Initialize Firebase
 		var config = {
@@ -1505,7 +1505,23 @@
 			storageBucket: "",
 		};
 		firebase.initializeApp(config);
+</script> -->
+
+
+<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCuhaCedpqmXIxIfiZtvH2lNIyq1WqehvQ",
+    authDomain: "virtualcrit-47b94.firebaseapp.com",
+    databaseURL: "https://virtualcrit-47b94.firebaseio.com",
+    storageBucket: "virtualcrit-47b94.appspot.com",
+    messagingSenderId: "454506348897"
+  };
+  firebase.initializeApp(config);
 </script>
+
+
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
 <script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
