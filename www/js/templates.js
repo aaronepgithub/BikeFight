@@ -1,11 +1,18 @@
 function popupLeaderboard() {
 	var str_popupLeaderboard = '4 minutes remain.  ' +
-		'	Sprint Crit Leader is: ' + popupLdr.sprintName +
-		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
-		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName + 
-		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore +
-		'.  All-Day Crit Leader is ' + popupLdr.alldayName +
-		'.  All-Day Speed Leader is ' + popupLdr.alldaySpeedName;
+// <<<<<<< HEAD
+// 		'	Sprint Crit Leader is: ' + popupLdr.sprintName +
+// 		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
+// 		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName + 
+// 		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore +
+// 		'.  All-Day Crit Leader is ' + popupLdr.alldayName +
+// 		'.  All-Day Speed Leader is ' + popupLdr.alldaySpeedName;
+// =======
+// 		'.	Sprint Crit Leader is: ' + popupLdr.sprintName +
+// 		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
+// 		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName +
+// 		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore;
+// >>>>>>> origin/master
 
 
 	myApp.modal({
@@ -48,8 +55,13 @@ function popupMyLeaderboard() {
 		var str_popupMyLeaderboard = '2 minutes remain.  ' +
 		'.  My Last Sprint Crit Score was: ' + myLdr.sprintScore +
 		'.  My Last Sprint Crit Speed was ' + myLdr.sprintSpeedScore  +
-		'.  My Crit Score Average for the day is: ' + myLdr.alldayScore +
-		'.  My Crit Speed Average for the day is: ' + myLdr.alldaySpeedScore;
+// <<<<<<< HEAD
+// 		'.  My Crit Score Average for the day is: ' + myLdr.alldayScore +
+// 		'.  My Crit Speed Average for the day is: ' + myLdr.alldaySpeedScore;
+// =======
+// 		'.  My All-Day Crit Score is: ' + myLdr.alldayScore +
+// 		'.  My All-Day Crit Speed is ' + myLdr.alldaySpeedScore;
+// >>>>>>> origin/master
 
 
 	myApp.modal({
@@ -169,4 +181,3 @@ function ui_report200() {
 		'       </div><br>'
 	);
 }
-
