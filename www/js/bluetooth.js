@@ -1,4 +1,3 @@
-//startup bt
 var blteServices = {
 	serviceHR: '180d',
 	measurementHR: '2a37',
@@ -19,9 +18,9 @@ function msgBlteDisconnect() {
 						locale: 'en-GB',
 						rate: 1.5
 				}, function() {
-						console.log('TTS BT Disconnect SUCCESS');
+						//console.log('TTS BT Disconnect SUCCESS');
 				}, function(reason) {
-						console.log('TTS FAILURE:  ' + reason);
+						//console.log('TTS FAILURE:  ' + reason);
 				});
 	}
 }
@@ -37,7 +36,7 @@ var hrType, cscType;
 	connectCounter = 0;
  	oldName = '';
  	$$('.cls_btle_results_li').remove();
- 	console.log('touchstart: scanner');
+ 	//console.log('touchstart: scanner');
      myCenterAlert('HR Scanning...', 5000);
      scanHR();
  });
@@ -47,7 +46,7 @@ var hrType, cscType;
 	connectCounter = 0;
  	oldName = '';
  	$$('.cls_btle_results_li_csc').remove();
- 	console.log('touchstart: scanner');
+ 	//console.log('touchstart: scanner');
      myCenterAlert('SP/CAD Scanning...', 5000);
      scanCSC();
  });
@@ -57,36 +56,36 @@ var hrType, cscType;
 	connectCounter = 0;
  	oldName = '';
  	$$('.cls_btle_results_li').remove();
- 	console.log('touchstart: scanner');
+ 	//console.log('touchstart: scanner');
      myCenterAlert('HR Scanning...', 5000);
      scanCSC();
  });
 
 
 function scanHR () {
-            console.log('1.  blte scanHR');
+            //console.log('1.  blte scanHR');
         ble.startScan(['180d'], onDiscoverDevice, onDiscoverFailure);
         setTimeout(ble.stopScan, 5000,
             function() {
-                console.log("Scan complete");
+                //console.log("Scan complete");
                 myCenterAlert('Complete', 500);
             },
             function() {
-                console.log("stopScan failed");
+                //console.log("stopScan failed");
             }
         );
 }
 
 function scanCSC () {
-           console.log('1.  ble.startScan for CSC');
+           //console.log('1.  ble.startScan for CSC');
        ble.startScan(['1816'], onDiscoverDeviceCSC, onDiscoverFailure);
        setTimeout(ble.stopScan, 5000,
            function() {
-               console.log("Scan complete");
+               //console.log("Scan complete");
                myCenterAlert('Complete', 500);
            },
            function() {
-               console.log("stopScan failed");
+               //console.log("stopScan failed");
            }
        );
 }
@@ -114,11 +113,11 @@ function searchName (x) {
 }
 
 function onDiscoverFailure() {
-    console.log('Discover Failed');
+    //console.log('Discover Failed');
 }
 
 function onDiscoverDevice(device) {
-    console.log(JSON.stringify(device));
+    //console.log(JSON.stringify(device));
     if(device.name.toString() === oldName) {return;}
 
 				function blteConnect(blteID, blteName) {
@@ -128,7 +127,7 @@ function onDiscoverDevice(device) {
 									myCenterAlert('Connecting.....', 1000);
 
 									if (hrType === 1) {
-									 console.log('VELO');
+									 //console.log('VELO');
 									 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 										 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 											 if(tim.timSpeed > 0 ) {ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError3);}
@@ -142,21 +141,21 @@ function onDiscoverDevice(device) {
 										 }
 
 									 if (hrType === 2) {
-										 console.log('WAC');
+										 //console.log('WAC');
 											//ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError);
 											myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 											ble.startNotification(blteID, blteServices.serviceCSC, blteServices.measurementCSC, onDataWAC, onError);
 											}
 
 									if (hrType === 3) {
-									 console.log('WAS');
+									 //console.log('WAS');
 										 //ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError);
 										 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 										 ble.startNotification(blteID, blteServices.serviceCSC, blteServices.measurementCSC, onDataWAS, onError);
 										 }
 
 									 if (hrType === 0) {
-											 console.log('Other');
+											 //console.log('Other');
 										 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 										 ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError4);
 											 // if(tim.timSpeed > 0 ) {ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError3);}
@@ -169,9 +168,15 @@ function onDiscoverDevice(device) {
 											 // 	}
 									 	}
 
-										function onError2() {console.log('On Error2');}
-										function onError3() {console.log('On Error3');}
-										function onError4() {console.log('On Error4');}
+										function onError2() {
+											//console.log('On Error2');
+										}
+										function onError3() {
+											//console.log('On Error3');
+										}
+										function onError4() {
+											//console.log('On Error4');
+										}
 
 										
 
@@ -219,7 +224,7 @@ function onDiscoverDevice(device) {
 						hrType = type;
 
 						function onError() {
-							console.log('Connect Error');
+							//console.log('Connect Error');
 							tim.timHR = 0;
 							// tim.timSpeed = 0;tim.timCadence = 0;
 							var string = null;
@@ -243,7 +248,7 @@ function onDiscoverDevice(device) {
 
 						
 
-						console.log('blteConnect, id: ' + blteID);
+						//console.log('blteConnect, id: ' + blteID);
 						myCenterAlert('Connecting...', 1000);
 						ble.connect(blteID, onConnect, onError);
 
@@ -252,16 +257,16 @@ function onDiscoverDevice(device) {
 
 
         $$('#blte_results_ul').on('click', 'a', function(e) {
-            console.log('click:  Blte Item to Connect');
+            //console.log('click:  Blte Item to Connect');
 						//$$('.cls_btle_results_li').remove();
 						myCenterAlert('Connecting..', 1000);
 
     				var idBlteId = $$(this).data('id');
             var idBlteName = $$(this).data('name');
-            console.log(idBlteName + ' | ' + idBlteId);
+            //console.log(idBlteName + ' | ' + idBlteId);
 
 
-						console.log(idBlteId);
+						//console.log(idBlteId);
             blteConnect(idBlteId, idBlteName);
         });
 
@@ -290,7 +295,7 @@ function onDiscoverDevice(device) {
 
 //ON DISCOVER CSC
 function onDiscoverDeviceCSC(device) {
-    console.log(JSON.stringify(device));
+    //console.log(JSON.stringify(device));
     if(device.name.toString() === oldName) {return;}
 
 				function blteConnectCSC(blteID, blteName) {
@@ -300,7 +305,7 @@ function onDiscoverDeviceCSC(device) {
 		myCenterAlert('Connecting.....', 1000);
 
 		if (cscType === 1) {
-		 console.log('VELO');
+		 //console.log('VELO');
 		 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 			 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 				 if(tim.timSpeed > 0 ) {ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError3);}
@@ -314,21 +319,21 @@ function onDiscoverDeviceCSC(device) {
 			 }
 
 		 if (cscType === 2) {
-			 console.log('WAC');
+			 //console.log('WAC');
 				//ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError);
 				myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 				ble.startNotification(blteID, blteServices.serviceCSC, blteServices.measurementCSC, onDataWAC, onError);
 				}
 
 		if (cscType === 3) {
-		 console.log('WAS');
+		 //console.log('WAS');
 			 //ble.startNotification(blteID, blteServices.serviceHR, blteServices.measurementHR, onDataHR, onError);
 			 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 			 ble.startNotification(blteID, blteServices.serviceCSC, blteServices.measurementCSC, onDataWAS, onError);
 			 }
 
 		 if (cscType === 0) {
-				 console.log('Other');
+				 //console.log('Other');
 			 myCenterAlert('Sensor Connected.  Connect another Sensor or Return to Settings and Start', 3000);
 			 ble.startNotification(blteID, blteServices.serviceCSC, blteServices.measurementCSC, onDataCSC, onError3);
 			 
@@ -392,7 +397,7 @@ function onDiscoverDeviceCSC(device) {
 						cscType = type;
 
 						function onError() {
-							console.log('Connect Error');
+							//console.log('Connect Error');
 							//tim.timHR = 0;
 							tim.timSpeed = 0;tim.timCadence = 0;
 							var string = null;
@@ -416,7 +421,7 @@ function onDiscoverDeviceCSC(device) {
 
 						
 
-						console.log('blteConnect, id: ' + blteID);
+						//console.log('blteConnect, id: ' + blteID);
 						myCenterAlert('Connecting...', 1000);
 						ble.connect(blteID, onConnectCSC, onError);
 
@@ -425,17 +430,17 @@ function onDiscoverDeviceCSC(device) {
 
 
         $$('#blte_results_ul_csc').on('click', 'a', function(e) {
-            console.log('click:  Blte Item to Connect');
+            //console.log('click:  Blte Item to Connect');
 						//$$('.cls_btle_results_li').remove();
 						myCenterAlert('Connecting..', 1000);
 
     				var idBlteId = $$(this).data('id');
             		var idBlteName = $$(this).data('name');
             		var idBlteService = $$(this).data('service');
-            		console.log(idBlteName + ' | ' + idBlteId);
+            		//console.log(idBlteName + ' | ' + idBlteId);
 
 
-						console.log(idBlteId);
+						//console.log(idBlteId);
             blteConnectCSC(idBlteId, idBlteName);
         });
 

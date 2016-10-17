@@ -36,7 +36,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 				mFirstWheelRevolutions = wheelRevolutions;
 				mLastWheelRevolutions = wheelRevolutions;
 				mLastWheelEventTime = lastWheelEventTime;
-				console.log('First Wheel Revolution this Round');
+				//console.log('First Wheel Revolution this Round');
 				return;
 		}
 		if (lastWheelEventTime < mLastWheelEventTime) {
@@ -130,7 +130,7 @@ function onWheelMeasurementReceived(wheelRevolutions, lastWheelEventTime) {
 
 
 		} else {
-				console.log('Bad wheelRevolutions Number:  ' + wheelRevolutions);
+				//console.log('Bad wheelRevolutions Number:  ' + wheelRevolutions);
 		}
 
 		mLastWheelRevolutions = wheelRevolutions;
@@ -151,7 +151,7 @@ function onCrankMeasurementReceived(crankRevolutions, lastCrankEventTime) {
 				mFirstCrankRevolutions = crankRevolutions;
 				mLastCrankRevolutions = crankRevolutions;
 				mLastCrankEventTime = lastCrankEventTime;
-				console.log('First Crank Revolution this Round');
+				//console.log('First Crank Revolution this Round');
 				return;
 		}
 

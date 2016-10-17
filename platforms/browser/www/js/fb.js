@@ -40,7 +40,7 @@ var strOneMinute = "One Minute is Remaining";
 
 
 function round_post(r1, r2, r3, r4) {
-		console.log('Fctn round_post');
+		//console.log('Fctn round_post');
 		if (r1 >= 0) {
 
 				var today2 = new Date();
@@ -78,11 +78,11 @@ function round_post(r1, r2, r3, r4) {
 						fb_scoreHRRoundLast: scoreHRRoundLast,
 				});
 		}
-		console.log('FIGHTER DATA POSTED AT:  ' + tim.timCalculatedDuration);
+		//console.log('FIGHTER DATA POSTED AT:  ' + tim.timCalculatedDuration);
 }
 
 function totals_post() {
-		console.log('Fctn totals_post');
+		//console.log('Fctn totals_post');
 		if (scoreHRTotal >= 0) {
 
 				var today2 = new Date();
@@ -118,7 +118,7 @@ function totals_post() {
 				});
 
 
-		console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
+		//console.log('TOTALS DATA POSTED AT:  ' + tim.timCalculatedDuration);
 
 	}
 }
@@ -127,13 +127,13 @@ function totals_post() {
 var dataSize;
 //START GETCOMBO GETJSON
 function get_combo() {
-		console.log('Fctn get_combo at:  ' + tim.timCalculatedDuration);
+		//console.log('Fctn get_combo at:  ' + tim.timCalculatedDuration);
 		// $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
 			// $$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
 
 				$$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json?orderBy="fb_RND"&limitToLast=250', function(data) {
 				////?orderBy="fb_RND"
-			console.log('getJSON, rounds:  ' + tim.timCalculatedDuration);
+			//console.log('getJSON, rounds:  ' + tim.timCalculatedDuration);
 
 				var xx1 = _.values(data);
 				var xx2 = _.orderBy(xx1, 'fb_RND', 'desc');
@@ -234,7 +234,7 @@ function get_combo() {
 
 
 				function publishTopSpeedUI(xxx_speed) {
-					console.log('fctn: publishTopSpeedUI');
+					//console.log('fctn: publishTopSpeedUI');
 					var counter333 = 0;
 					$$('.cls_top_kings_speed').remove();
 					$$('.cls_champs_page_speed').remove();
@@ -365,10 +365,10 @@ function get_combo() {
 						//console.log('TOP 10 UI POSTED AT:  ' + tim.timCalculatedDuration);
 
 				}); //END FOR EACH
-				console.log('DATA UI <FOR EACH> POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
+				//console.log('DATA UI <FOR EACH> POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
 
 		});
-		console.log('DATA UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
+		//console.log('DATA UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
 }
 //END GETCOMBO GETJSON
 
@@ -395,14 +395,14 @@ function get_combo() {
 
 var dataSizeLeaders;
 function getTotals() {
-console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
+//console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 
 
 // $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
 	$$.getJSON('https://virtualcrit-47b94.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
 
 
-		console.log('getJSON, totals at:  ' + tim.timCalculatedDuration);
+		//console.log('getJSON, totals at:  ' + tim.timCalculatedDuration);
 
 		var xTotals1 = _.values(data);
 		var xTotals2 = _.orderBy(xTotals1, 'a_scoreHRTotal', 'desc');
@@ -471,14 +471,16 @@ console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 
 		async.series([
 		  function(callback) {
-		  	console.log('Post to Score Leaderboard');
-		   postToTempScoreLeaderboard(xTotals2);console.log('cb1');
+		  	//console.log('Post to Score Leaderboard');
+		   postToTempScoreLeaderboard(xTotals2);
+		   //console.log('cb1');
 		   callback(null, 'cb1');
 
 		  },
 		  function(callback) {
-		  	console.log('Post to Speed Leaderboard');
-		    postToTempSpeedLeaderboard(xTotals3);console.log('cb2');
+		  	//console.log('Post to Speed Leaderboard');
+		    postToTempSpeedLeaderboard(xTotals3);
+		    //console.log('cb2');
 		    callback(null, 'cb2');
 
 		  }
@@ -487,11 +489,11 @@ console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 	});
 
 
-console.log('TOTALS UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
+//console.log('TOTALS UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
 }
 
 function postToTempScoreLeaderboard(tempLdr) {
-	console.log('fctn: postToTempScoreLeaderboard at:  ' + tim.timCalculatedDuration);
+	//console.log('fctn: postToTempScoreLeaderboard at:  ' + tim.timCalculatedDuration);
 		$$('.cls_temp_leaders').remove();
 		var temp1counter = 0;
 		//console.log('Best Effort of the Day:  ' + tempLdr[0].fb_timName);
@@ -528,11 +530,11 @@ function postToTempScoreLeaderboard(tempLdr) {
 
 				temp1counter ++;
 		});
-console.log('TOTAL EFFORT <END FOREACH> UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
+//console.log('TOTAL EFFORT <END FOREACH> UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
 }
 
 function postToTempSpeedLeaderboard(tempLdrSpeed) {
-console.log('fctn: postToTempSpeedLeaderboard at:  ' + tim.timCalculatedDuration);
+//console.log('fctn: postToTempSpeedLeaderboard at:  ' + tim.timCalculatedDuration);
 		var temp2counter = 0;
 		//console.log('Best Speed Avg for the Day:  ' + tempLdrSpeed[0].fb_timName);
 		$$('#top_speed_day').text(tempLdrSpeed[0].fb_timName);
@@ -568,5 +570,5 @@ console.log('fctn: postToTempSpeedLeaderboard at:  ' + tim.timCalculatedDuration
 
 				temp2counter ++;
 		});
-		console.log('TOTAL SPEED UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
+		//console.log('TOTAL SPEED UI POSTED AT:  ' + tim.timCalculatedDuration + '  NOW: ' + _.now());
 }

@@ -26,14 +26,14 @@ function myCenterAlert(msg, tiout) {
 //CENTER ALERT WITH OK BUTTON AND CALLBACK
 function myCenterAlertOK(title, message) {
 	myApp.alert(message, title, function() {
-		console.log('Button Clicked!');
+		//console.log('Button Clicked!');
 	});
 }
 
 
 
 function updateTim() {
-	console.log('Fctn updateTim');
+	//console.log('Fctn updateTim');
 	var storedData = myApp.formGetData('my-form');
 	tim.timName = storedData.name;
 	tim.timTeam = storedData.team;
@@ -90,9 +90,9 @@ function updateTim() {
 
 
 function startup() {
-	console.log('startup function');
+	//console.log('startup function');
 	var storedData = myApp.formGetData('my-form');
-	console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
+	//console.log('Startup Stored Data1:  ' + JSON.stringify(storedData));
 	get_combo();
 	ui_report10(0, 0, 0, 0);
 	ui_report20(0, 0, 0, 0);
@@ -103,16 +103,16 @@ function startup() {
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-	console.log('Device is ready!');
+	//console.log('Device is ready!');
 	startup();
 
 
 });
 
 $$('.cls_update_tim').on('touchstart', function() {
-	console.log('update form data');
+	//console.log('update form data');
 	var storedData10 = myApp.formGetData('my-form');
-	console.log('Startup Stored Data1:  ' + JSON.stringify(storedData10));
+	//console.log('Startup Stored Data1:  ' + JSON.stringify(storedData10));
 	updateTim();
 });
 

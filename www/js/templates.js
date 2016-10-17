@@ -25,7 +25,7 @@ function popupLeaderboard() {
 			myApp.closeModal();
 
 			if (tim.timNumberofRounds >= 0) {
-		console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+		//console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 		//console.log(strFourMinutes);
 		if (tim.timStyle !== "NO") {
 				TTS
@@ -34,9 +34,9 @@ function popupLeaderboard() {
 							locale: 'en-GB',
 							rate: 1.5
 					}, function() {
-							console.log('TTS240 SUCCESS');
+							//console.log('TTS240 SUCCESS');
 					}, function(reason) {
-							console.log('TTS240 FAILURE:  ' + reason);
+							//console.log('TTS240 FAILURE:  ' + reason);
 					});
 		} //TTS
 }
@@ -75,7 +75,7 @@ function popupMyLeaderboard() {
 
 
 						if (tim.timNumberofRounds >= 0) {
-		console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+		//console.log('TTS120 Count:  120, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 		//console.log(strFourMinutes);
 		if (tim.timStyle !== "NO") {
 				TTS
@@ -84,9 +84,9 @@ function popupMyLeaderboard() {
 							locale: 'en-GB',
 							rate: 1.5
 					}, function() {
-							console.log('TTS120 SUCCESS');
+							//console.log('TTS120 SUCCESS');
 					}, function(reason) {
-							console.log('TTS120 FAILURE:  ' + reason);
+							//console.log('TTS120 FAILURE:  ' + reason);
 					});
 		} //TTS
 }
@@ -109,7 +109,7 @@ function popupLeaderboard60() {
 		'.  All-Day Speed Leader is ' + popupLdr.alldaySpeedName;
 
 
-console.log(str_popupLeaderboard60);
+//console.log(str_popupLeaderboard60);
 
 	myApp.modal({
 			title: 	'	<div>1 Minute Remains.<hr> ' +
@@ -126,7 +126,7 @@ console.log(str_popupLeaderboard60);
 			myApp.closeModal();
 
 				if (tim.timNumberofRounds >= 0) {
-						console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						//console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 						//console.log(strFourMinutes);
 						if (tim.timStyle !== "NO") {
 								TTS
@@ -135,9 +135,9 @@ console.log(str_popupLeaderboard60);
 											locale: 'en-GB',
 											rate: 1.5
 									}, function() {
-											console.log('TTS240 SUCCESS');
+											//console.log('TTS240 SUCCESS');
 									}, function(reason) {
-											console.log('TTS240 FAILURE:  ' + reason);
+											//console.log('TTS240 FAILURE:  ' + reason);
 									});
 						} //TTS
 				}

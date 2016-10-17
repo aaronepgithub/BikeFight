@@ -86,7 +86,7 @@ var createAvgRoundScore = [];
 
 
 function rounds_end(lr, ls, lc, lh) {
-		console.log('Fctn: rounds_end');
+		//console.log('Fctn: rounds_end');
 		objScores[tim.timNumberofRounds] = {
 				ind: tim.timNumberofRounds,
 				rnd: lr,
@@ -253,7 +253,7 @@ function aCallbackFunction() {
 }
 
 function aCompleteFunction() {
-		console.log('Round Complete, Restarting Timer');
+		//console.log('Round Complete, Restarting Timer');
 		publishEndofRound();
 		//RESET ROUND VARS
 		wheelRevsRound = 0;
@@ -324,12 +324,12 @@ function newTimer(count) {
 
 					async.series([
 					  function(callback) {
-					  	console.log('get_combo');
+					  	//console.log('get_combo');
 					   get_combo();
 					   callback(null, 'one');
 					  },
 					  function(callback) {
-					  	console.log('getTotals');
+					  	//console.log('getTotals');
 					    getTotals();
 					    callback(null, 'one');
 					  }
@@ -346,12 +346,12 @@ function newTimer(count) {
 
 			async.series([
 				function(callback) {
-					console.log('round_post');
+					//console.log('round_post');
 				 			round_post(tim.timLastRND, tim.timLastSPD, tim.timLastCAD, tim.timLastHR);
 				 callback(null, 'one');
 				},
 				function(callback) {
-					console.log('getTotals');
+					//console.log('getTotals');
 					totals_post();
 					callback(null, 'two');
 				}
@@ -373,7 +373,7 @@ function newTimer(count) {
 				});
 				setTimeout(function() {
 						myApp.closeModal();
-						console.log('TTS275 Count:  275, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						//console.log('TTS275 Count:  275, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 						//
 						$$('#RTJ').html('TTS, 275, CALC DURATION:  ' + tim.timCalculatedDuration);
 						//TTS - AFTER MODAL IS CLOSED
@@ -388,9 +388,9 @@ function newTimer(count) {
 											locale: 'en-GB',
 											rate: 1.5
 									}, function() {
-											console.log('TTS280 SUCCESS');
+											//console.log('TTS280 SUCCESS');
 									}, function(reason) {
-											console.log('TTS280 FAILURE:  ' + reason);
+											//console.log('TTS280 FAILURE:  ' + reason);
 									});
 						} //TTS - AFTER MODAL IS CLOSED
 
@@ -441,7 +441,7 @@ function newTimer(count) {
 						myApp.closeModal();
 						if (tim.timNumberofRounds > 0) {
 								//TTS
-								console.log('TTS180 Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+								//console.log('TTS180 Count:  180, timCalculatedDuration:  ' + tim.timCalculatedDuration);
 								//console.log(strThreeMinutes);
 								if (tim.timStyle !== "NO") {
 										TTS
@@ -451,9 +451,9 @@ function newTimer(count) {
 													locale: 'en-GB',
 													rate: 1.5
 											}, function() {
-													console.log('TTS180 SUCCESS');
+													//console.log('TTS180 SUCCESS');
 											}, function(reason) {
-													console.log('TTS180 FAILURE:  ' + reason);
+													//console.log('TTS180 FAILURE:  ' + reason);
 											});
 								} //TTS
 						}
@@ -546,7 +546,7 @@ function newTimer(count) {
 //END OF NEW TIMER FUNCTION
 
 function publishEndofRound() {
-		console.log('Fctn publishEndofRound');
+		//console.log('Fctn publishEndofRound');
 		//THESE ARE THE VALUES  CREATED FOR END OF ROUND
 		tim.timLastHR = tim.timAvgHR;
 		tim.timLastCAD = tim.timAvgCAD;
