@@ -495,32 +495,33 @@ function newTimer(count) {
 
 		if (count === 60) {
 				$$('.cls_timer_bubbles').html('<i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-red"></i> <i class="fa fa-circle fa-2x color-white"></i> ');
+				popupLeaderboard60();
 
-				myApp.modal({
-						title: '<div>1 Minute Remains.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
-								'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
-								'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
-				});
-				setTimeout(function() {
-						myApp.closeModal();
-						if (tim.timNumberofRounds >= 0) {
-								//TTS
-								console.log('TTS60 Count:  60, timCalculatedDuration:  ' + tim.timCalculatedDuration);
-								if (tim.timStyle !== "NO") {
-										TTS
-												.speak({
-														//text: strOneMinute,
-														text: 'Final Minute',
-														locale: 'en-GB',
-														rate: 1.5
-												}, function() {
-														console.log('TTS60 SUCCESS');
-												}, function(reason) {
-														console.log('TTS60 FAILURE:  ' + reason);
-												});
-								} //TTS
-						}
-				}, 5000);
+				// myApp.modal({
+				// 		title: '<div>1 Minute Remains.<hr>  The Champ is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;"> ' + top_king_name +
+				// 				'</span> from Team <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_team + '</span></div><hr>' +
+				// 				'The leading score is <span class="bg-red color-white" style="font-size:1.5em;font-weight:bold;">' + top_king_rnd + '</span>.<hr>'
+				// });
+				// setTimeout(function() {
+				// 		myApp.closeModal();
+				// 		if (tim.timNumberofRounds >= 0) {
+				// 				//TTS
+				// 				console.log('TTS60 Count:  60, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+				// 				if (tim.timStyle !== "NO") {
+				// 						TTS
+				// 								.speak({
+				// 										//text: strOneMinute,
+				// 										text: 'Final Minute',
+				// 										locale: 'en-GB',
+				// 										rate: 1.5
+				// 								}, function() {
+				// 										console.log('TTS60 SUCCESS');
+				// 								}, function(reason) {
+				// 										console.log('TTS60 FAILURE:  ' + reason);
+				// 								});
+				// 				} //TTS
+				// 		}
+				// }, 5000);
 
 		}
 

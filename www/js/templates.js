@@ -12,10 +12,10 @@ function popupLeaderboard() {
 
 	myApp.modal({
 			title: 	'	<div>4 Minutes Remain.<hr> ' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders</span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders. </span> <br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + popupLdr.sprintName + ' (' + popupLdr.sprintScore + ')<br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + popupLdr.sprintSpeedName + ' (' + popupLdr.sprintSpeedScore  + ')<br><hr>' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders. </span> <br>' +
 					'	<i class="fa fa-heartbeat"></i> ' + popupLdr.alldayName + ' (' + popupLdr.alldayScore + ')<br>' +
 					'	<i class="fa fa-dashboard"></i> ' + popupLdr.alldaySpeedName + ' (' + popupLdr.alldaySpeedScore + ')<br><hr>' +
 					'	</div> '
@@ -61,10 +61,10 @@ function popupMyLeaderboard() {
 
 	myApp.modal({
 			title: 	'	<div>2 Minutes Remain.<hr> ' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit</span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit. </span> <br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + myLdr.sprintScore + ' #' + rank1 + '<br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + myLdr.sprintSpeedScore  + ' #' + rank2 + '<br><hr>' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders</span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders. </span> <br>' +
 					'	<i class="fa fa-heartbeat"></i> ' + myLdr.alldayScore + ' #' + rank3 + '<br>' +
 					'	<i class="fa fa-dashboard"></i> ' + myLdr.alldaySpeedScore + ' #' + rank4 + '<br><hr>' +
 					'	</div> '
@@ -96,6 +96,56 @@ function popupMyLeaderboard() {
 	}, 15000);
 }
 
+
+//1 MIN LDB
+function popupLeaderboard60() {
+	var str_popupLeaderboard60 = '1 minute remains.  ' +
+
+		'.  Sprint Crit Leader is: ' + popupLdr.sprintName +
+		'.  Sprint Crit Score is: ' + popupLdr.sprintScore +
+		'.  Sprint Crit Speed Leader is ' + popupLdr.sprintSpeedName +
+		'.  Sprint Crit Speed Leader Score is ' + popupLdr.sprintSpeedScore +
+		'.  All-Day Crit Leader is ' + popupLdr.alldayName +
+		'.  All-Day Speed Leader is ' + popupLdr.alldaySpeedName;
+
+
+console.log(str_popupLeaderboard60);
+
+	myApp.modal({
+			title: 	'	<div>1 Minute Remains.<hr> ' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">Sprint Crit Leaders. </span> <br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + popupLdr.sprintName + ' (' + popupLdr.sprintScore + ')<br>' +
+					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + popupLdr.sprintSpeedName + ' (' + popupLdr.sprintSpeedScore  + ')<br><hr>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders. </span> <br>' +
+					'	<i class="fa fa-heartbeat"></i> ' + popupLdr.alldayName + ' (' + popupLdr.alldayScore + ')<br>' +
+					'	<i class="fa fa-dashboard"></i> ' + popupLdr.alldaySpeedName + ' (' + popupLdr.alldaySpeedScore + ')<br><hr>' +
+					'	</div> '
+	});
+
+	setTimeout(function() {
+			myApp.closeModal();
+
+				if (tim.timNumberofRounds >= 0) {
+						console.log('TTS240 Count:  240, timCalculatedDuration:  ' + tim.timCalculatedDuration);
+						//console.log(strFourMinutes);
+						if (tim.timStyle !== "NO") {
+								TTS
+									.speak({
+											text: 'Final Minute.',
+											locale: 'en-GB',
+											rate: 1.5
+									}, function() {
+											console.log('TTS240 SUCCESS');
+									}, function(reason) {
+											console.log('TTS240 FAILURE:  ' + reason);
+									});
+						} //TTS
+				}
+
+
+
+	}, 15000);
+}
 
 
 //START ME VS MY BEST ROUND TODAY
