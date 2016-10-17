@@ -117,27 +117,27 @@ $$('.cls_update_tim').on('touchstart', function() {
 });
 
 
-$$('.my_simulator').on('touchstart', function(e) {
-	console.log('touchstarted simulator');
-	myCenterAlert('Simulator');
+// $$('.my_simulator').on('touchstart', function(e) {
+// 	console.log('touchstarted simulator');
+// 	myCenterAlert('Simulator');
 
-	var measHR = 1;
-	var measSPD = 1;
-	var measCAD = 1;
-	onWheelMeasurementReceived(measSPD, _.now());
-	onCrankMeasurementReceived(measCAD, _.now());
-	onHRMeasurementReceived(150);
+// 	var measHR = 1;
+// 	var measSPD = 1;
+// 	var measCAD = 1;
+// 	onWheelMeasurementReceived(measSPD, _.now());
+// 	onCrankMeasurementReceived(measCAD, _.now());
+// 	onHRMeasurementReceived(150);
 
-	function test() {
-		measHR  =   _.random(80, 140);
-		measCAD =  measCAD +  _.random(0.1, 2.1);
-		measSPD =  measSPD + _.random(1.0, 4.5);
-		onWheelMeasurementReceived(measSPD, _.now());
-		onCrankMeasurementReceived(measCAD, _.now());
-		onHRMeasurementReceived(measHR);
-	}
-	var refreshId = setInterval(test, 1000);
-});
+// 	function test() {
+// 		measHR  =   _.random(80, 140);
+// 		measCAD =  measCAD +  _.random(0.1, 2.1);
+// 		measSPD =  measSPD + _.random(1.0, 4.5);
+// 		onWheelMeasurementReceived(measSPD, _.now());
+// 		onCrankMeasurementReceived(measCAD, _.now());
+// 		onHRMeasurementReceived(measHR);
+// 	}
+// 	var refreshId = setInterval(test, 1000);
+// });
 
 
 

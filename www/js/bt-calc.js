@@ -249,7 +249,7 @@ function onHRMeasurementReceived(hrMeasurement) {
 		arrAvgHRTotal.push(Math.round(tim.timHR));
 		tim.timAvgHRtotal = Math.round(_.mean(arrAvgHRTotal));
 
-		if (tim.timMaxHR > 159 && tim.timMaxHR < 211) {
+		if (tim.timMaxHR > 179 && tim.timMaxHR < 211) {
 			maxHRTotal = tim.timMaxHR;
 		}
 
