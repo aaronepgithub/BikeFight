@@ -10,6 +10,10 @@ var rank2;
 var rank3;
 var rank4;
 
+var rank999_round = 0;
+var rank99_total = 0;
+
+
 //DATE FUNCTION
 var today = new Date();
 var dd = today.getDate().toString();
@@ -37,7 +41,7 @@ var strOneMinute = "One Minute is Remaining";
 
 function round_post(r1, r2, r3, r4) {
 		console.log('Fctn round_post');
-		if (r1 !== 0) {
+		if (r1 >= 0) {
 
 				var today2 = new Date();
 				var dd2 = today.getDate().toString();
@@ -125,7 +129,10 @@ var dataSize;
 function get_combo() {
 		console.log('Fctn get_combo at:  ' + tim.timCalculatedDuration);
 		// $$.getJSON('https://project-5844362817932994168.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
-			$$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+			// $$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json', function(data) {
+
+				$$.getJSON('https://virtualcrit-47b94.firebaseio.com/rounds/' + pubFullDate + '.json?orderBy="fb_RND"&limitToLast=250', function(data) {
+				////?orderBy="fb_RND"
 			console.log('getJSON, rounds:  ' + tim.timCalculatedDuration);
 
 				var xx1 = _.values(data);
@@ -176,7 +183,13 @@ function get_combo() {
 						$$('.cls_avg_speed_round_rank').text(rank2);
 						//console.log('Round Speed Rank2:  ' + rank2);
 						}
+
+					
 					}
+
+					// if (dataSize > 999) {
+					// 	rank999_round = xx2[999].fb_RND;
+					// }
 
 
 				}
@@ -196,6 +209,8 @@ function get_combo() {
 				top_king_spd = xx2[0].fb_SPD;
 				top_king_cad = xx2[0].fb_CAD;
 				top_king_hr = xx2[0].fb_HR;
+
+
 
 				//TOP SPEED CHAMP
 				top_speed_value = xx_speed[0].fb_SPD;
@@ -386,6 +401,7 @@ console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 // $$.getJSON('https://project-5844362817932994168.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
 	$$.getJSON('https://virtualcrit-47b94.firebaseio.com/totals/' + pubFullDate + '.json', function(data) {
 
+
 		console.log('getJSON, totals at:  ' + tim.timCalculatedDuration);
 
 		var xTotals1 = _.values(data);
@@ -426,6 +442,7 @@ console.log('fctn:  getTotals at: ' + tim.timCalculatedDuration);
 		if (rank3 > 0) {
 				if (dataSizeLeaders > 99) {
 					$$('.cls_effort_total_rank').text(rank4);
+					//rank99_total = xTotals2[99].a_scoreHRTotal;
 				} else {
 					$$('.cls_effort_total_rank').text(rank3 + '/' + dataSizeLeaders);
 				}

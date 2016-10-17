@@ -42,7 +42,7 @@ function popupLeaderboard() {
 }
 
 
-	}, 10000);
+	}, 15000);
 }
 
 
@@ -93,7 +93,7 @@ function popupMyLeaderboard() {
 
 
 
-	}, 10000);
+	}, 15000);
 }
 
 
