@@ -61,10 +61,10 @@ function popupMyLeaderboard() {
 
 	myApp.modal({
 			title: 	'	<div>2 Minutes Remain.<hr> ' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Latest Crit. </span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My Last Crit Scores. </span> <br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-heartbeat"></i> ' + myLdr.sprintScore + ' #' + rank1 + '<br>' +
 					'	<i class="fa fa-clock-o"></i> <i class="fa fa-dashboard"></i> ' + myLdr.sprintSpeedScore  + ' #' + rank2 + '<br><hr>' +
-					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">All-Day Crit Leaders. </span> <br>' +
+					'	<span class="bg-red color-white" style="font-size:1.1em;font-weight:bold;">My All-Day Averages. </span> <br>' +
 					'	<i class="fa fa-heartbeat"></i> ' + myLdr.alldayScore + ' #' + rank3 + '<br>' +
 					'	<i class="fa fa-dashboard"></i> ' + myLdr.alldaySpeedScore + ' #' + rank4 + '<br><hr>' +
 					'	</div> '
