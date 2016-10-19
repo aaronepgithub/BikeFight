@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.virtualcrit.aaron" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.virtualcrit.virtualcrit" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>VirtualCrit</name>
     <description>
         VirtualCrit
     </description>
-    <author email="aaron@gvirtualcrit.com" href="http://virtualcrit.com">
+    <author email="aaron@virtualcrit.com" href="http://virtualcrit.com">
         Aaron Epstein
     </author>
     <content src="index.html" />
